@@ -1,0 +1,89 @@
+/* General Styles */
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Space between items */
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+}
+
+/* Item Layout */
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Link Style */
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Image Style */
+.product-image {
+    width: 100%;
+    height: auto;
+    max-width: 200px; /* Adjust as needed */
+}
+
+/* Product Info Style */
+.product-info {
+    margin-top: 10px;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price,
+.product-size {
+    color: #555;
+}
+
+/* RTL Styles */
+.rtl .gallery-grid {
+    direction: rtl;
+}
+
+.rtl .gallery-item {
+    text-align: right;
+}
+
+/* LTR Styles */
+.ltr .gallery-grid {
+    direction: ltr;
+}
+
+.ltr .gallery-item {
+    text-align: left;
+}
+
+.filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters select,
+  .filters input {
+    margin-right: 10px;
+    padding: 5px;
+  }
+
+  .not-for-sale {
+    color: red;
+  }
+  
