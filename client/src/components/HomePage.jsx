@@ -10,6 +10,25 @@ import painting5 from '../images/DSC05481.jpg';
 import painting6 from '../images/DSC05529.jpg';
 
 function HomePage({ language }) {
+    const [text, setText] = useState('');
+
+    useEffect(() => {
+        const fullText = language === 'he'
+            ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
+            : 'Painting, A Love Story | The Artists Shoshi and Jacob Hayat';
+        
+        let index = 0;
+        const typingInterval = setInterval(() => {
+            setText((prev) => prev + fullText[index]);
+            index++;
+            if (index === fullText.length) {
+                clearInterval(typingInterval);
+            }
+        }, 100);
+
+        return () => clearInterval(typingInterval);
+    }, [language]);
+
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageClick = (index) => {
@@ -59,7 +78,7 @@ function HomePage({ language }) {
                     Your browser does not support the video tag.
                 </video>
                 <div className="video-text">
-                    <h1>{language === 'he' ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל' : 'Painting, A Love Story | The Artists Shoshi and Jacob Hayat'}</h1>
+                    <h1>{text}</h1>
                     <p>{language === 'he' ? 'ברוכים הבאים לאתר האמנות הייחודי שלנו.' : 'Welcome to our unique art website.'}</p>
                     <p>{language === 'he' ? 'אנו מזמינות אתכם לעיין בגלריה המקוונת שלנו, בה תוכלו למצוא את יצירותיהם המרהיבות ולהתרשם מן ההשקפה האמנותית הייחודית של זוג האמנים.' : 'We invite you to browse our online gallery, where you can find their stunning works and be impressed by the unique artistic perspective of the artist couple.'}</p>
                     <p>{language === 'he' ? 'כל יצירה מספרת סיפור משלה, ומשלבת טקסטורות, רגשות וצבעים.' : 'Each work tells its own story, blending textures, emotions, and colors.'}</p>

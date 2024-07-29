@@ -1,55 +1,70 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header */
 .header {
     text-align: center;
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure navbar stays on top of other content */
-    background-color: white; /* Background color for the navbar */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better contrast */
-    width: 100%; /* Full width */
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
+/* Logo Container */
 .logo-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background-color: white; /* Background color for logo container */
+    background-color: white;
 }
 
 .left-logo, .right-logo {
+    margin: 0 700px;
     text-align: center;
-    margin-left: 200px; /* Adjust left margin */
-    margin-right: 200px; /* Adjust right margin */
 }
 
 .left-logo img, .right-logo img {
-    max-width: 800px;
+    max-width: 200px;
     height: auto;
 }
 
+.logo-text {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Black Bar */
 .black-bar {
-    background-color: black; /* Background color for black bar */
-    color: white; /* Text color for black bar */
+    background-color: black;
+    color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-.left-bar-text {
-    margin-left: 200px; /* Adjust left margin */
+.black-bar span {
+    margin: 0 800px;
+    font-size: 14px;
 }
 
-.right-bar-text {
-    margin-right: 200px; /* Adjust right margin */
-}
-
+/* Navbar */
 .navbar {
-    background-color: white; /* Navbar background color */
+    background-color: white;
     padding: 1rem;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar ul {
@@ -73,11 +88,11 @@
 
 .dropdown {
     position: absolute;
-    background-color: white; /* Dropdown background color */
+    background-color: white;
     list-style-type: none;
     padding: 0;
     margin: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for dropdown */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown li {
@@ -85,18 +100,68 @@
 }
 
 .dropdown li a {
-    color: black; /* Dropdown link text color */
+    color: black;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .navbar ul.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 24px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        height: 3px;
+        background: black;
+        margin: 4px 0;
+        width: 100%;
+    }
+
+    .language-toggle {
+        margin-left: auto;
+    }
+
+    .left-logo, .right-logo {
+        margin: 0;
+    }
+
+    .black-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .left-bar-text, .right-bar-text {
+        margin: 0;
+    }
 }
 
 /* CSS for English mode */
 .english-mode {
-    direction: ltr; /* Left-to-right text direction */
+    direction: ltr;
     text-align: left;
 }
 
 /* CSS for Hebrew mode */
 .hebrew-mode {
-    direction: rtl; /* Right-to-left text direction */
+    direction: rtl;
     text-align: right;
 }
 
@@ -106,27 +171,8 @@
     align-items: center;
 }
 
-.language-toggle button {
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.language-toggle button:hover {
-    background-color: #0056b3;
-}
-
-.language-toggle {
-    display: flex;
-    align-items: center;
-}
-
 .flag-icon {
-    width: 30px; /* Adjust size as needed */
+    width: 30px;
     height: auto;
     cursor: pointer;
 }

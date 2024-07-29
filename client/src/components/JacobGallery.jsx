@@ -12,6 +12,30 @@ function JacobGallery({ language }) {
     technic: '' // Corrected filter for technic
   });
 
+  const categoryMapping = {
+    en: {
+      all: 'All Categories',
+      jerusalem: 'Jerusalem',
+      women: 'Women',
+      tributeToInbal: 'A Tribute To Inbal'
+    },
+    he: {
+      all: 'כל הקטגוריות',
+      jerusalem: 'ירושלים',
+      women: 'נשים',
+      tributeToInbal: 'מחווה לענבל'
+    }
+  };
+
+  const getCategoryValue = (category) => {
+    const mapping = language === 'he' ? categoryMapping.he : categoryMapping.en;
+    return Object.keys(mapping).find(key => mapping[key] === category) || '';
+  };
+
+  const getCategoryLabel = (value) => {
+    return categoryMapping[language][value];
+  };
+
   useEffect(() => {
     fetch(`http://localhost:5000/api/products/jacob-gallery?lang=${language}`)
       .then(response => {
@@ -38,7 +62,7 @@ function JacobGallery({ language }) {
       // Convert price from string to number
       const price = parseFloat(product.price.replace(/,/g, ''));
 
-      const matchesCategory = filters.category === '' || product.category === filters.category;
+      const matchesCategory = filters.category === '' || product.category === getCategoryLabel(filters.category);
       const matchesPrice = price >= filters.priceRange[0] && price <= filters.priceRange[1];
       const matchesTechnic = filters.technic === '' || product.technic.includes(filters.technic);
 
@@ -82,10 +106,10 @@ function JacobGallery({ language }) {
     <div className={`gallery-container ${language === 'he' ? 'rtl' : 'ltr'}`}>
       <div className="filters">
         <select name="category" onChange={handleFilterChange} value={filters.category}>
-          <option value="">All Categories</option>
-          {/* Example categories */}
-          <option value="ירושלים">ירושלים</option>
-          <option value="נשים">נשים</option>
+          <option value="">{getCategoryLabel('all')}</option>
+          <option value="jerusalem">{getCategoryLabel('jerusalem')}</option>
+          <option value="women">{getCategoryLabel('women')}</option>
+          <option value="tributeToInbal">{getCategoryLabel('tributeToInbal')}</option>
         </select>
 
         <input
@@ -96,7 +120,7 @@ function JacobGallery({ language }) {
             ...prevFilters,
             priceRange: [Number(e.target.value), prevFilters.priceRange[1]]
           }))}
-          placeholder="Min Price"
+          placeholder={language === 'he' ? 'מחיר מינימלי' : 'Min Price'}
         />
         <input
           type="number"
@@ -106,7 +130,7 @@ function JacobGallery({ language }) {
             ...prevFilters,
             priceRange: [prevFilters.priceRange[0], Number(e.target.value)]
           }))}
-          placeholder="Max Price"
+          placeholder={language === 'he' ? 'מחיר מקסימלי' : 'Max Price'}
         />
 
         <input
@@ -114,7 +138,7 @@ function JacobGallery({ language }) {
           name="technic"
           value={filters.technic}
           onChange={handleFilterChange}
-          placeholder="Technic Specification"
+          placeholder={language === 'he' ? 'טכניקת ציור' : 'Technic Specification'}
         />
       </div>
 
@@ -147,7 +171,7 @@ function JacobGallery({ language }) {
           </div>
         ))
       ) : (
-        <div>No products found</div>
+        <div>{language === 'he' ? 'לא נמצאו מוצרים' : 'No products found'}</div>
       )}
     </div>
   );

@@ -32,12 +32,51 @@
 .video-text h1 {
     font-size: 2.5rem; /* Adjust title font size */
     margin-bottom: 20px; /* Space below the title */
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid;
+    width: 0;
+    animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
 }
 
 .video-text p {
     font-size: 1.2rem; /* Adjust paragraph font size */
     line-height: 1.6; /* Adjust line height */
     margin-bottom: 10px; /* Space between paragraphs */
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+.video-text p:nth-child(2) {
+    animation-delay: 3.5s;
+}
+
+.video-text p:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.video-text p:nth-child(4) {
+    animation-delay: 4.5s;
+}
+
+.video-text p:nth-child(5) {
+    animation-delay: 5s;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .gallery {
@@ -75,17 +114,6 @@
 .gallery h2 {
     opacity: 0;
     animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .gridTitle {

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Jacob.css'; // Make sure to create and link the CSS file for styling
+import '../css/Biography.css'; // Make sure to create and link the CSS file for styling
 import jacobPortrait from '../images/jacob_chayat_portrait.jpg'; // Make sure to add the image
 
 function Jacob({ language }) {

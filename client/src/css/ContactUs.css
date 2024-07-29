@@ -1,0 +1,134 @@
+.contact-container {
+    max-width: 600px;
+    margin: 50px auto; /* Margin to create space around the container */
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-container p {
+    color: #666;
+    margin: 5px 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #333;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #555;
+}
+
+/* RTL Support */
+.contact-container.rtl {
+    direction: rtl;
+}
+
+.contact-container.rtl .form-group label {
+    text-align: right;
+}
+
+.contact-container.ltr {
+    direction: ltr;
+}
+
+.contact-container.ltr .form-group label {
+    text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .submit-button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 10px;
+    }
+
+    .contact-container h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .contact-container p {
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .submit-button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}

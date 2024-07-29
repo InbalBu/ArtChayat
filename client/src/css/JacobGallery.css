@@ -73,17 +73,37 @@ h1 {
     text-align: left;
 }
 
+/* Filter Styles */
 .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
-  }
-  
-  .filters select,
-  .filters input {
-    margin-right: 10px;
-    padding: 5px;
-  }
+}
 
-  .not-for-sale {
+.filters select,
+.filters input {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filters select {
+    width: 150px;
+}
+
+.filters input[type="number"] {
+    width: 100px;
+}
+
+.filters input[type="text"] {
+    width: 200px;
+}
+
+/* Not for Sale Style */
+.not-for-sale {
     color: red;
-  }
-  
+    font-weight: bold;
+}

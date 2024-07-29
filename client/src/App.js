@@ -10,6 +10,8 @@ import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import JacobGallery from './components/JacobGallery';
 import ProductPage from './components/ProductPage';
+import ShoshiExhibitions from './components/ShoshiExhibitions';
+import JacobExhibitions from './components/JacobExhibitions';
 
 function App() {
   const [language, setLanguage] = useState('he');
@@ -25,7 +27,11 @@ function App() {
         <Route path="/" element={<HomePage language={language} />} />
         <Route path="/about" element={<About language={language} />} />
         <Route path="/shoshi" element={<Shoshi language={language} />} />
+        <Route path="/shoshi/biography" element={<Shoshi language={language} />} />
+        <Route path="/shoshi/exhibitions" element={<ShoshiExhibitions language={language} />} />
         <Route path="/jacob" element={<Jacob language={language} />} />
+        <Route path="/jacob/biography" element={<Jacob language={language} />} />
+        <Route path="/jacob/exhibitions" element={<JacobExhibitions language={language} />} />
         <Route path="/jacob/gallery" element={<JacobGallery language={language} />} />
         <Route path="/product/:id" element={<ProductPage language={language} />} />
         <Route path="/gallery" element={<Gallery language={language} />} />
