@@ -5,6 +5,10 @@ import shoshiAndJacob from '../images/shoshiandjacob.jpeg';
 function About({ language }) {
     return (
         <div className={`about-container ${language === 'he' ? 'rtl' : 'ltr'}`}>
+            <video autoPlay loop muted className="background-video">
+                <source src="" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
             <div className="about-content">
                 <div className="image-container">
                     <img src={shoshiAndJacob} alt="Art Khayat" className="about-image" />

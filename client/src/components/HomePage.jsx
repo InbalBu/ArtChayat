@@ -17,16 +17,7 @@ function HomePage({ language }) {
             ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
             : 'Painting, A Love Story | The Artists Shoshi and Jacob Hayat';
         
-        let index = 0;
-        const typingInterval = setInterval(() => {
-            setText((prev) => prev + fullText[index]);
-            index++;
-            if (index === fullText.length) {
-                clearInterval(typingInterval);
-            }
-        }, 100);
-
-        return () => clearInterval(typingInterval);
+        setText(fullText);
     }, [language]);
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -79,9 +70,10 @@ function HomePage({ language }) {
                 </video>
                 <div className="video-text">
                     <h1>{text}</h1>
-                    <p>{language === 'he' ? 'ברוכים הבאים לאתר האמנות הייחודי שלנו.' : 'Welcome to our unique art website.'}</p>
-                    <p>{language === 'he' ? 'אנו מזמינות אתכם לעיין בגלריה המקוונת שלנו, בה תוכלו למצוא את יצירותיהם המרהיבות ולהתרשם מן ההשקפה האמנותית הייחודית של זוג האמנים.' : 'We invite you to browse our online gallery, where you can find their stunning works and be impressed by the unique artistic perspective of the artist couple.'}</p>
-                    <p>{language === 'he' ? 'כל יצירה מספרת סיפור משלה, ומשלבת טקסטורות, רגשות וצבעים.' : 'Each work tells its own story, blending textures, emotions, and colors.'}</p>
+                    <p>{language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Hayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'}</p>
+                    <p>{language === 'he' ? 'נעים להכיר: אנחנו, מיכל בוקריס וריקי חייט, בנותיהם, בעלים של חב\' ארט חייט ומנהלות את אוסף היצירות שהותירו אחריהם.' : 'Nice to meet you: we are Michal Bokris and Riki Hayat, their daughters, owners of Art Hayat Ltd., and managers of the collection of works they left behind.'}</p>
+                    <p>{language === 'he' ? 'רבות מיצירותיהם מוצגות בגלריות ובקרב אספני אומנות בישראל ובחו"ל. האוסף שמוצע למכירה, כולל יצירות אומנות רבות ומגוונות מתקופות שונות ומציג את המסע האישי שכל אמן עבר בנפרד ומשקף 50 שנות יצירה, אהבה וזוגיות.' : 'Many of their works are displayed in galleries and among art collectors in Israel and abroad. The collection offered for sale includes many diverse artworks from different periods and showcases the personal journey each artist went through separately, reflecting 50 years of creation, love, and partnership.'}</p>
+                    <p>{language === 'he' ? 'אנו מזמינות אתכם, להיכנס לגלריה המקוונת ולבחור את היצירה שתכניס לביתכם צבע ואהבה. כל יצירה מספרת סיפור משלה ומשלבת טקסטורות, רגשות וצבעים.' : 'We invite you to enter the online gallery and choose the artwork that will bring color and love to your home. Each piece tells its own story and combines textures, emotions, and colors.'}</p>
                     <p>{language === 'he' ? 'היכנסו, התרגשו והתאהבו ביצירותיהם של זוג האמנים הישראלי.' : 'Enter, get excited, and fall in love with the works of the Israeli artist couple.'}</p>
                 </div>
             </div>

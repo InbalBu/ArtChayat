@@ -7,9 +7,7 @@ function JacobGallery({ language }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
-    category: '',
-    priceRange: [0, 100000], // Example high price range
-    technic: '' // Corrected filter for technic
+    category: ''
   });
 
   const categoryMapping = {
@@ -58,17 +56,11 @@ function JacobGallery({ language }) {
 
     const filtered = products.filter(product => {
       console.log('Applying filter to:', product); // Log each product being filtered
-      
-      // Convert price from string to number
-      const price = parseFloat(product.price.replace(/,/g, ''));
 
       const matchesCategory = filters.category === '' || product.category === getCategoryLabel(filters.category);
-      const matchesPrice = price >= filters.priceRange[0] && price <= filters.priceRange[1];
-      const matchesTechnic = filters.technic === '' || product.technic.includes(filters.technic);
+      console.log(`Category match: ${matchesCategory}`); // Log filter match
 
-      console.log(`Category match: ${matchesCategory}, Price match: ${matchesPrice}, Technic match: ${matchesTechnic}`); // Log filter matches
-
-      return matchesCategory && matchesPrice && matchesTechnic;
+      return matchesCategory;
     });
 
     console.log('Filtered products:', filtered); // Log products after filtering
@@ -77,18 +69,10 @@ function JacobGallery({ language }) {
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'priceRange') {
-      const [min, max] = value.split(',').map(Number);
-      setFilters(prevFilters => ({
-        ...prevFilters,
-        priceRange: [min, max]
-      }));
-    } else {
-      setFilters(prevFilters => ({
-        ...prevFilters,
-        [name]: value
-      }));
-    }
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [name]: value
+    }));
   };
 
   if (error) return <div>{error}</div>;
@@ -111,35 +95,6 @@ function JacobGallery({ language }) {
           <option value="women">{getCategoryLabel('women')}</option>
           <option value="tributeToInbal">{getCategoryLabel('tributeToInbal')}</option>
         </select>
-
-        <input
-          type="number"
-          name="priceRange"
-          value={filters.priceRange[0]}
-          onChange={(e) => setFilters(prevFilters => ({
-            ...prevFilters,
-            priceRange: [Number(e.target.value), prevFilters.priceRange[1]]
-          }))}
-          placeholder={language === 'he' ? 'מחיר מינימלי' : 'Min Price'}
-        />
-        <input
-          type="number"
-          name="priceRange"
-          value={filters.priceRange[1]}
-          onChange={(e) => setFilters(prevFilters => ({
-            ...prevFilters,
-            priceRange: [prevFilters.priceRange[0], Number(e.target.value)]
-          }))}
-          placeholder={language === 'he' ? 'מחיר מקסימלי' : 'Max Price'}
-        />
-
-        <input
-          type="text"
-          name="technic"
-          value={filters.technic}
-          onChange={handleFilterChange}
-          placeholder={language === 'he' ? 'טכניקת ציור' : 'Technic Specification'}
-        />
       </div>
 
       {Object.keys(groupedProducts).length > 0 ? (
