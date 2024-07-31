@@ -10,9 +10,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000' // Adjust to match your frontend URL
-}));
-
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000'
+  }));
+  
 app.get('/', (req, res) => {
     res.send("Hello from Node API");
 });
