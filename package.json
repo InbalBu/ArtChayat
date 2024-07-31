@@ -1,0 +1,14 @@
+{
+    "name": "art-chayat",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "npm run install-client && npm run build-client",
+      "install-client": "cd client && npm install && npm run prepare",
+      "build-client": "cd client && npm run build",
+      "install-server": "cd server && npm install"
+    },
+    "dependencies": {
+      "concurrently": "^6.3.0"
+    }
+  }
+  
