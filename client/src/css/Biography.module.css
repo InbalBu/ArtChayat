@@ -1,0 +1,143 @@
+/* General Styles for Jacob Component */
+.jacob-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.jacob-content {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.jacob-image-container {
+    flex: 1;
+}
+
+.jacob-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.jacob-text-container {
+    flex: 2;
+}
+
+.jacob-text-container h1, .jacob-text-container h2, .jacob-text-container p {
+    margin: 0 0 10px 0;
+}
+
+.jacob-video-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.jacob-video-section h2 {
+    margin: 0 0 10px;
+}
+
+.jacob-video-section p {
+    margin: 0 0 20px;
+}
+
+.jacob-video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.jacob-category-section {
+    margin-bottom: 40px;
+}
+
+.jacob-category-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* RTL Styles */
+.jacob-rtl .jacob-content {
+    flex-direction: row;
+}
+
+.jacob-rtl .jacob-image-container {
+    padding-right: 30px;
+}
+
+.jacob-rtl .jacob-text-container {
+    padding-left: 30px;
+    direction: rtl;
+    text-align: right;
+}
+
+.jacob-rtl .jacob-video-section p {
+    direction: rtl;
+    text-align: center;
+}
+
+/* LTR Styles */
+.jacob-ltr .jacob-content {
+    flex-direction: row-reverse;
+}
+
+.jacob-ltr .jacob-image-container {
+    padding-left: 30px;
+}
+
+.jacob-ltr .jacob-text-container {
+    padding-right: 30px;
+    direction: ltr;
+}
+
+.jacob-ltr .jacob-video-section p {
+    direction: ltr;
+}
+
+.jacob-blockquote {
+    margin: 20px 0;
+    padding: 10px 20px;
+    border-left: 3px solid #ccc;
+    background-color: #f5f5f5;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .jacob-container {
+        padding: 20px;
+    }
+
+    .jacob-content {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .jacob-image-container {
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .jacob-rtl .jacob-image-container, .jacob-ltr .jacob-image-container {
+        padding: 0;
+    }
+
+    .jacob-text-container {
+        padding: 0;
+    }
+
+    .jacob-rtl .jacob-text-container, .jacob-ltr .jacob-text-container {
+        padding: 0;
+    }
+
+    .jacob-video-container .jacob-iframe {
+        width: 100%;
+        height: 200px;
+    }
+}

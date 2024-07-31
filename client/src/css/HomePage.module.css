@@ -1,0 +1,163 @@
+/* General Styles */
+.homepage {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide any overflow content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; /* Text color on top of video */
+}
+
+.homepage-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1; /* Ensure video stays behind content */
+    object-fit: cover; /* Cover the entire container */
+    filter: brightness(0.3);
+}
+
+.homepage-video-text {
+    position: relative;
+    z-index: 1; /* Ensure text is above the video */
+    max-width: 900px; /* Limit text width if needed */
+    padding: 20px; /* Add padding around text */
+    margin-top: -300px;
+}
+
+.homepage-video-text h1 {
+    font-size: 2.5rem; /* Adjust title font size */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.homepage-video-text p {
+    font-size: 1.2rem; /* Adjust paragraph font size */
+    line-height: 1.6; /* Adjust line height */
+    margin-bottom: 10px; /* Space between paragraphs */
+    opacity: 0;
+    animation: homepage-fadeIn 0.5s forwards;
+}
+
+.homepage-video-text p:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.homepage-video-text p:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+.homepage-video-text p:nth-child(4) {
+    animation-delay: 2s;
+}
+
+.homepage-video-text p:nth-child(5) {
+    animation-delay: 2.5s;
+}
+
+.homepage-video-text p:nth-child(6) {
+    animation-delay: 3s;
+}
+
+@keyframes homepage-fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.homepage-gallery {
+    padding: 20px;
+    text-align: center; /* Center the gallery heading */
+    margin-top: 20px; /* Add margin on top of the gallery */
+}
+
+.homepage-grid {
+    column-count: 4; /* Number of columns in the masonry layout */
+    column-gap: 20px; /* Space between columns */
+    max-width: 1200px; /* Limit grid width */
+    margin: 0 auto; /* Center align grid horizontally */
+    padding-bottom: 50px;
+}
+
+.homepage-grid img {
+    width: 100%;
+    margin-bottom: 20px; /* Space between images */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transitions for hover effects */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow for a 3D effect */
+}
+
+.homepage-grid img:hover {
+    transform: scale(1.05); /* Slightly enlarge image on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
+}
+
+@media (max-width: 1024px) {
+    .homepage-grid {
+        column-count: 3; /* 3 columns for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .homepage-grid {
+        column-count: 2; /* 2 columns for smaller devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .homepage-grid {
+        column-count: 1; /* 1 column for very small devices */
+    }
+}
+
+/* Adjustments for mobile view */
+@media (max-width: 768px) {
+    .homepage-video-bg {
+        display: none; /* Hide the video on mobile */
+    }
+    .homepage-video-text {
+        color: black; /* Change text color to black */
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.homepage-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.homepage-modal-content {
+    position: relative;
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.homepage-modal img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.homepage-close {
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+}

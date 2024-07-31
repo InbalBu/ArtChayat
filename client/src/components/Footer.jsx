@@ -1,13 +1,13 @@
 import React from 'react';
-import '../css/Footer.css'; // Assuming you have a separate CSS file for styling
+import styles from '../css/Footer.module.css'; // Import the CSS module
 
 function Footer({ language }) {
     return (
-        <footer className="footer" dir={language === 'he' ? 'rtl' : 'ltr'}>
-            <div className="footer-content">
+        <footer className={styles.footer} dir={language === 'he' ? 'rtl' : 'ltr'}>
+            <div className={styles['footer-content']}>
                 <h2>{language === 'he' ? 'ארט חייט | ArtChayat' : 'Art Chayat'}</h2>
                 <p>© {new Date().getFullYear()} {language === 'he' ? 'כל הזכויות שמורות.' : 'All rights reserved.'}</p>
-                <div className="footer-links">
+                <div className={styles['footer-links']}>
                     <a href="/">{language === 'he' ? 'בית' : 'Home'}</a>
                     <a href="/gallery">{language === 'he' ? 'גלריה' : 'Gallery'}</a>
                     <a href="/about">{language === 'he' ? 'אודות' : 'About'}</a>
@@ -15,7 +15,7 @@ function Footer({ language }) {
                     <a href="/shop">{language === 'he' ? 'חנות' : 'Shop'}</a>
                 </div>
                 <p>{language === 'he' ? 'עקבו אחרינו ברשתות החברתיות:' : 'Follow us on social media:'}</p>
-                <div className="social-media">
+                <div className={styles['social-media']}>
                     <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                         {language === 'he' ? 'פייסבוק' : 'Facebook'}
                     </a>

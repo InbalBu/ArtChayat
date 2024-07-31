@@ -1,17 +1,17 @@
 import React from 'react';
-import '../css/Biography.css'; // Make sure to create and link the CSS file for styling
+import styles from '../css/ShoshiBiography.module.css'; // Ensure this CSS file is linked
 import shoshiPortrait from '../images/shoshi_chayat_portrait.jpg';
 
 function Shoshi({ language }) {
   const isHebrew = language === 'he';
 
   return (
-    <div className={`shoshi-container ${isHebrew ? 'rtl' : 'ltr'}`}>
-      <div className="shoshi-content">
-        <div className="image-container">
-          <img src={shoshiPortrait} alt="Shoshi Khayat" className="shoshi-image" />
+    <div className={`${styles['shoshi-container']} ${isHebrew ? styles['shoshi-rtl'] : styles['shoshi-ltr']}`}>
+      <div className={styles['shoshi-content']}>
+        <div className={styles['shoshi-image-container']}>
+          <img src={shoshiPortrait} alt="Shoshi Khayat" className={styles['shoshi-image']} />
         </div>
-        <div className="text-container">
+        <div className={styles['shoshi-text-container']}>
           <h1>{isHebrew ? 'שושי חייט' : 'Shoshi Khayat'}</h1>
           <h2>{isHebrew ? 'ביוגרפיה' : 'Biography'}</h2>
           <p>
@@ -70,7 +70,7 @@ function Shoshi({ language }) {
               : 'In one of the interviews she gave to the media, she explained the depth of her work and the connection to clown figures:'
             }
           </p>
-          <blockquote>
+          <blockquote className={styles['shoshi-blockquote']}>
             <p>
               {isHebrew
                 ? '"אני משתמשת בדמותו של הליצן כדי להמחיש את מורכבות האדם ואת הצורך שלו להסתתר מאחורי מסכות. ליצן הוא אדם שעוטה על פניו מסכה, כולנו עוטים על פנינו מסכות. רוב שעות היום אנחנו מכסים את האמת במסכות כדי להתאים את עצמנו לסביבה. הליצן הוא אני, ומזה אני לא יכולה לברוח".'

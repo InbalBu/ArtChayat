@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { ShoshiGallery, JacobGallery } = require('./models/product.model'); 
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 
@@ -93,6 +96,29 @@ app.get('/api/products/jacob-gallery', async (req, res) => {
     }
 });
 
+app.get('/api/products/shoshi-gallery', async (req, res) => {
+    try {
+        const { lang } = req.query; // Get the language from the query parameters
+        const products = await ShoshiGallery.find();
+
+        // Filter products based on the language parameter
+        const localizedProducts = products.map(product => ({
+            ...product.toObject(),
+            name: product.name[lang],
+            artist: product.artist[lang],
+            size: product.size[lang],
+            technic: product.technic[lang],
+            price: product.price[lang],
+            category: product.category[lang],
+        }));
+
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(localizedProducts);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 app.get('/api/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -125,7 +151,8 @@ app.get('/api/products/:id', async (req, res) => {
 });
 
 
-mongoose.connect("mongodb+srv://admin:Gxk2po7@cluster0.qteihos.mongodb.net/ArtChayat?retryWrites=true&w=majority&appName=Cluster0")
+
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("Connected to database");
     app.listen(5000, () => {

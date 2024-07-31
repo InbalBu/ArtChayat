@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/JacobGallery.css'; // Import the CSS file
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
+import styles from '../css/JacobGallery.module.css'; // Import the CSS module
 
 function JacobGallery({ language }) {
   const [products, setProducts] = useState([]);
@@ -9,19 +11,26 @@ function JacobGallery({ language }) {
   const [filters, setFilters] = useState({
     category: ''
   });
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const categoryMapping = {
     en: {
       all: 'All Categories',
       jerusalem: 'Jerusalem',
       women: 'Women',
-      tributeToInbal: 'A Tribute To Inbal'
+      tributeToInbal: 'A Tribute To Inbal',
+      tanachPaintings: 'The Tanach Paintings',
+      views: 'Views',
+      bookSeries: 'A Series Of Paintings From The Exhibition "Seeing God through the Darkness"'
     },
     he: {
       all: 'כל הקטגוריות',
       jerusalem: 'ירושלים',
       women: 'נשים',
-      tributeToInbal: 'מחווה לענבל'
+      tributeToInbal: 'מחווה לענבל',
+      tanachPaintings: 'ציורי התנך',
+      views: 'נופים',
+      bookSeries: '"סדרת ציורים מתוך התערוכה "לראות את אלוהים מבעד לחשכה'
     }
   };
 
@@ -75,6 +84,26 @@ function JacobGallery({ language }) {
     }));
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   if (error) return <div>{error}</div>;
 
   // Group products by category
@@ -87,36 +116,44 @@ function JacobGallery({ language }) {
   }, {});
 
   return (
-    <div className={`gallery-container ${language === 'he' ? 'rtl' : 'ltr'}`}>
-      <div className="filters">
+    <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
+      <div className={styles['gallery-filters']}>
         <select name="category" onChange={handleFilterChange} value={filters.category}>
           <option value="">{getCategoryLabel('all')}</option>
           <option value="jerusalem">{getCategoryLabel('jerusalem')}</option>
           <option value="women">{getCategoryLabel('women')}</option>
           <option value="tributeToInbal">{getCategoryLabel('tributeToInbal')}</option>
+          <option value="tanachPaintings">{getCategoryLabel('tanachPaintings')}</option>
+          <option value="views">{getCategoryLabel('views')}</option>
+          <option value="bookSeries">{getCategoryLabel('bookSeries')}</option>
         </select>
       </div>
 
       {Object.keys(groupedProducts).length > 0 ? (
         Object.keys(groupedProducts).map(category => (
-          <div key={category} className="category-section">
-            <h2 className="category-header">{category}</h2>
-            <div className="gallery-grid">
+          <div key={category} className={styles['gallery-category-section']}>
+            <h2 className={styles['gallery-category-header']}>{category}</h2>
+            <div className={styles['gallery-grid']}>
               {groupedProducts[category].map(product => {
                 const price = parseFloat(product.price.replace(/,/g, ''));
                 return (
-                  <div className="gallery-item" key={product._id}>
-                    <Link to={`/product/${product._id}`} className="product-link">
-                      <img src={product.imageURL} alt={product.name} className="product-image" />
-                      <div className="product-info">
-                        <div className="product-name">{product.name}</div>
-                        <div className="product-price">
+                  <div className={styles['gallery-item']} key={product._id}>
+                    <Link to={`/product/${product._id}`} className={styles['gallery-product-link']}>
+                      <LazyLoadImage
+                        src={product.imageURL}
+                        alt={product.name}
+                        className={styles['gallery-product-image']}
+                        effect="blur"
+                      />
+                      <div className={styles['gallery-product-info']}>
+                        <div className={styles['gallery-product-name']}>{product.name}</div>
+                        <div className={styles['gallery-product-price']}>
                           {price === 0 
-                            ? <span className="not-for-sale">{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span> 
+                            ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span> 
                             : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
                           }
                         </div>
-                        <div className="product-size">{language === 'he' ? 'גודל:' : 'Size:'} {product.size}</div>
+                        <div className={styles['gallery-product-size']}>{language === 'he' ? 'גודל:' : 'Size:'} {product.size}</div>
                       </div>
                     </Link>
                   </div>
@@ -128,6 +165,10 @@ function JacobGallery({ language }) {
       ) : (
         <div>{language === 'he' ? 'לא נמצאו מוצרים' : 'No products found'}</div>
       )}
+
+      <button className={`${styles['gallery-scroll-to-top']} ${showScrollTop ? styles['show'] : ''}`} onClick={scrollToTop}>
+        ↑
+      </button>
     </div>
   );
 }

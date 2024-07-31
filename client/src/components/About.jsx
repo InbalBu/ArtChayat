@@ -1,23 +1,23 @@
 import React from 'react';
-import '../css/About.css'; // Ensure this CSS file is linked
+import styles from '../css/About.module.css'; // Import CSS module
 import shoshiAndJacob from '../images/shoshiandjacob.jpeg';
 
 function About({ language }) {
     return (
-        <div className={`about-container ${language === 'he' ? 'rtl' : 'ltr'}`}>
-            <video autoPlay loop muted className="background-video">
+        <div className={`${styles['about-container']} ${language === 'he' ? styles['about-rtl'] : styles['about-ltr']}`}>
+            <video autoPlay loop muted className={styles['about-background-video']}>
                 <source src="" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <div className="about-content">
-                <div className="image-container">
-                    <img src={shoshiAndJacob} alt="Art Khayat" className="about-image" />
-                    <div className="image-text">
+            <div className={styles['about-content']}>
+                <div className={styles['about-image-container']}>
+                    <img src={shoshiAndJacob} alt="Art Khayat" className={styles['about-image']} />
+                    <div className={styles['about-image-text']}>
                         <p>{language === 'he' ? 'נשמח לעמוד לשירותכם ולענות על כל שאלה.' : 'We are happy to assist you and answer any questions.'}</p>
-                        <p>{language === 'he' ? 'בברכה,מיכל בוקריס ריקי חייט' : 'Best regards, Michal Bukris Riki Khayat'}</p>
+                        <p>{language === 'he' ? <>בברכה,<br />מיכל בוקריס<br />ריקי חייט</> : <>Best regards,<br />Michal Bukris<br />Riki Khayat</>}</p>
                     </div>
                 </div>
-                <div className="text-container">
+                <div className={styles['about-text-container']}>
                     <h1>{language === 'he' ? 'ארט חייט - מציירים סיפור אהבה' : 'Art Khayat - Painting a Love Story'}</h1>
                     <p>{language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות, משולב בסיפור אהבתם של הורינו, זוג האומנים שושי ויעקב חייט ז"ל.' : 'Art Khayat was born out of creativity and a love for art, intertwined with the love story of our parents, the artists Shoshi and Yaakov Khayat.'}</p>
                     <p>{language === 'he' ? 'נעים להכיר: מיכל בוקריס וריקי חייט בנותיהם, בעלים של חברת "ארט חייט" ומנהלות העיזבון שהותירו אחריהם.' : 'Nice to meet you: Michal Bukris and Riki Khayat, their daughters, owners of "Art Khayat," and managers of the estate they left behind.'}</p>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import '../css/HomePage.css'; // Assuming you have a separate CSS file for styling
-import video from "../images/video.mp4";
+import styles from '../css/HomePage.module.css'; // Import the CSS module
+import video from "../images/artVideo.mp4";
 
 import painting1 from '../images/DSC05325.jpg'; // Replace with your actual image paths
 import painting2 from '../images/DSC05355.jpg';
@@ -63,12 +63,12 @@ function HomePage({ language }) {
 
     return (
         <div className='container'>
-            <div className="homepage" dir={language === 'he' ? 'rtl' : 'ltr'}>
-                <video id='video_bg' className='video-bg' autoPlay loop muted>
+            <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
+                <video id='video_bg' className={styles['homepage-video-bg']} autoPlay loop muted>
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-                <div className="video-text">
+                <div className={styles['homepage-video-text']}>
                     <h1>{text}</h1>
                     <p>{language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Hayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'}</p>
                     <p>{language === 'he' ? 'נעים להכיר: אנחנו, מיכל בוקריס וריקי חייט, בנותיהם, בעלים של חב\' ארט חייט ומנהלות את אוסף היצירות שהותירו אחריהם.' : 'Nice to meet you: we are Michal Bokris and Riki Hayat, their daughters, owners of Art Hayat Ltd., and managers of the collection of works they left behind.'}</p>
@@ -78,9 +78,9 @@ function HomePage({ language }) {
                 </div>
             </div>
 
-            <div className="gallery">
+            <div className={styles['homepage-gallery']}>
                 <h2 className='gridTitle'>{language === 'he' ? 'עבודות אמנות נבחרות' : 'Selected Artworks'}</h2>
-                <div className="grid">
+                <div className={styles['homepage-grid']}>
                     {images.map((image, index) => (
                         <img
                             key={index}
@@ -93,9 +93,9 @@ function HomePage({ language }) {
             </div>
 
             {selectedImage !== null && (
-                <div className="modal" onClick={handleCloseModal}>
-                    <div className="modal-content">
-                        <span className="close" onClick={handleCloseModal}>&times;</span>
+                <div className={styles['homepage-modal']} onClick={handleCloseModal}>
+                    <div className={styles['homepage-modal-content']} onClick={e => e.stopPropagation()}>
+                        <span className={styles['homepage-close']} onClick={handleCloseModal}>&times;</span>
                         <img src={images[selectedImage]} alt={`Painting ${selectedImage + 1}`} />
                     </div>
                 </div>

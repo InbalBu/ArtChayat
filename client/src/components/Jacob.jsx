@@ -1,16 +1,16 @@
 import React from 'react';
-import '../css/Biography.css'; // Make sure to create and link the CSS file for styling
+import styles from '../css/Biography.module.css'; // Import CSS module
 import jacobPortrait from '../images/jacob_chayat_portrait.jpg'; // Make sure to add the image
 
 function Jacob({ language }) {
   return (
-    <div className={language === 'he' ? 'rtl' : 'ltr'}>
-      <div className="jacob-container">
-        <div className="jacob-content">
-          <div className="image-container">
-            <img src={jacobPortrait} alt="Jacob Khayat" className="jacob-image" />
+    <div className={`${language === 'he' ? styles['jacob-rtl'] : styles['jacob-ltr']}`}>
+      <div className={styles['jacob-container']}>
+        <div className={styles['jacob-content']}>
+          <div className={styles['jacob-image-container']}>
+            <img src={jacobPortrait} alt="Jacob Khayat" className={styles['jacob-image']} />
           </div>
-          <div className="text-container">
+          <div className={styles['jacob-text-container']}>
             <h1>{language === 'he' ? 'יעקב חייט' : 'Yaakov Khayat'}</h1>
             <h2>{language === 'he' ? 'ביוגרפיה' : 'Biography'}</h2>
             <p>
@@ -66,7 +66,7 @@ function Jacob({ language }) {
           </div>
         </div>
       </div>
-      <div className="video-section">
+      <div className={styles['jacob-video-section']}>
         <p>
           {language === 'he' 
             ? 'סרט דוקומנטרי על יצירתו וחייו של הצייר הישראלי יעקב חייט ז"ל.'
@@ -79,8 +79,9 @@ function Jacob({ language }) {
             : 'The film includes many references to his wife, the painter Shoshi Khayat.'
           }
         </p>
-        <div className="video-container">
-          <iframe
+        <div className={styles['jacob-video-container']}>
+        <iframe
+         className={styles['jacob-iframe']}
             width="890"
             height="515"
             src="https://www.youtube.com/embed/QifoTZm_NdM" // Replace with your video ID

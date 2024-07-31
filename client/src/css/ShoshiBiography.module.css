@@ -1,0 +1,143 @@
+/* General Styles for Shoshi Component */
+.shoshi-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.shoshi-content {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.shoshi-image-container {
+    flex: 1;
+}
+
+.shoshi-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.shoshi-text-container {
+    flex: 2;
+}
+
+.shoshi-text-container h1, .shoshi-text-container h2, .shoshi-text-container p {
+    margin: 0 0 10px 0;
+}
+
+.shoshi-video-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.shoshi-video-section h2 {
+    margin: 0 0 10px;
+}
+
+.shoshi-video-section p {
+    margin: 0 0 20px;
+}
+
+.shoshi-video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.shoshi-category-section {
+    margin-bottom: 40px;
+}
+
+.shoshi-category-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* RTL Styles */
+.shoshi-rtl .shoshi-content {
+    flex-direction: row;
+}
+
+.shoshi-rtl .shoshi-image-container {
+    padding-right: 30px;
+}
+
+.shoshi-rtl .shoshi-text-container {
+    padding-left: 30px;
+    direction: rtl;
+    text-align: right;
+}
+
+.shoshi-rtl .shoshi-video-section p {
+    direction: rtl;
+    text-align: center;
+}
+
+/* LTR Styles */
+.shoshi-ltr .shoshi-content {
+    flex-direction: row-reverse;
+}
+
+.shoshi-ltr .shoshi-image-container {
+    padding-left: 30px;
+}
+
+.shoshi-ltr .shoshi-text-container {
+    padding-right: 30px;
+    direction: ltr;
+}
+
+.shoshi-ltr .shoshi-video-section p {
+    direction: ltr;
+}
+
+.shoshi-blockquote {
+    margin: 20px 0;
+    padding: 10px 20px;
+    border-left: 3px solid #ccc;
+    background-color: #f5f5f5;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .shoshi-container {
+        padding: 20px;
+    }
+
+    .shoshi-content {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .shoshi-image-container {
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .shoshi-rtl .shoshi-image-container, .shoshi-ltr .shoshi-image-container {
+        padding: 0;
+    }
+
+    .shoshi-text-container {
+        padding: 0;
+    }
+
+    .shoshi-rtl .shoshi-text-container, .shoshi-ltr .shoshi-text-container {
+        padding: 0;
+    }
+
+    .shoshi-video-container .shoshi-iframe {
+        width: 100%;
+        height: 200px;
+    }
+}

@@ -1,0 +1,73 @@
+/* General Styles for JacobExhibitions Component */
+.exhibitions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 40px auto; /* Margin to create space around the container */
+    max-width: 800px;
+    margin-bottom: 70px;
+}
+
+.exhibitions-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.exhibitions-container p {
+    text-align: center;
+    color: #666;
+    margin: 5px 0;
+}
+
+.exhibitions-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.exhibitions-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.exhibitions-list li {
+    margin: 5px 0;
+}
+
+/* RTL Support */
+.exhibitions-rtl {
+    direction: rtl;
+}
+
+.exhibitions-ltr {
+    direction: ltr;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .exhibitions-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .exhibitions-container {
+        padding: 30px;
+    }
+
+    .exhibitions-container h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .exhibitions-container p {
+        font-size: 14px;
+    }
+
+    .exhibitions-list li {
+        font-size: 14px;
+    }
+}
