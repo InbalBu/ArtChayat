@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
@@ -13,7 +13,7 @@ function ShoshiGallery({ language }) {
   });
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const categoryMapping = {
+  const categoryMapping = useMemo(() => ({
     en: {
       all: 'All Categories',
       jerusalem: 'Jerusalem',
@@ -32,16 +32,11 @@ function ShoshiGallery({ language }) {
       views: 'נופים',
       bookSeries: '"סדרת ציורים מתוך התערוכה "לראות את אלוהים מבעד לחשכה'
     }
-  };
+  }), []);
 
-  const getCategoryValue = (category) => {
-    const mapping = language === 'he' ? categoryMapping.he : categoryMapping.en;
-    return Object.keys(mapping).find(key => mapping[key] === category) || '';
-  };
-
-  const getCategoryLabel = (value) => {
+  const getCategoryLabel = useCallback((value) => {
     return categoryMapping[language][value];
-  };
+  }, [categoryMapping, language]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/products/shoshi-gallery?lang=${language}`)
@@ -67,7 +62,7 @@ function ShoshiGallery({ language }) {
     });
 
     setFilteredProducts(filtered);
-  }, [filters, products]);
+  }, [filters, products, getCategoryLabel]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
