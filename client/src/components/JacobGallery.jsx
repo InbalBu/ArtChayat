@@ -46,7 +46,6 @@ function JacobGallery({ language }) {
         return response.json(); // Parse JSON directly
       })
       .then(data => {
-        console.log('Fetched data:', data); // Log fetched data
         setProducts(data);
         setFilteredProducts(data); // Initialize filteredProducts with all products
       })
@@ -57,18 +56,11 @@ function JacobGallery({ language }) {
   }, [language]);
   
   useEffect(() => {
-    console.log('Products before filtering:', products); // Log products before filtering
-
     const filtered = products.filter(product => {
-      console.log('Applying filter to:', product); // Log each product being filtered
-
       const matchesCategory = filters.category === '' || product.category === getCategoryLabel(filters.category);
-      console.log(`Category match: ${matchesCategory}`); // Log filter match
-
       return matchesCategory;
     });
 
-    console.log('Filtered products:', filtered); // Log products after filtering
     setFilteredProducts(filtered);
   }, [filters, products, getCategoryLabel]);
 
