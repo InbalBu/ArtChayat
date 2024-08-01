@@ -23,7 +23,7 @@ app.use(cors({
         return callback(null, true);
     }
 }));
-  
+
 app.get('/', (req, res) => {
     res.send("Hello from Node API");
 });
@@ -80,16 +80,16 @@ app.post('/api/products', async (req, res) => {
 
         res.status(200).json(product);
     } catch (error) {
+        console.error('Error creating product:', error); // Log server-side error
         res.status(500).json({ message: error.message });
     }
 });
 
 app.get('/api/products/jacob-gallery', async (req, res) => {
     try {
-        const { lang } = req.query; // Get the language from the query parameters
+        const { lang } = req.query;
         const products = await JacobGallery.find();
 
-        // Filter products based on the language parameter
         const localizedProducts = products.map(product => ({
             ...product.toObject(),
             name: product.name[lang],
@@ -103,16 +103,16 @@ app.get('/api/products/jacob-gallery', async (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(localizedProducts);
     } catch (error) {
+        console.error('Error fetching products:', error); // Log server-side error
         res.status(500).json({ message: error.message });
     }
 });
 
 app.get('/api/products/shoshi-gallery', async (req, res) => {
     try {
-        const { lang } = req.query; // Get the language from the query parameters
+        const { lang } = req.query;
         const products = await ShoshiGallery.find();
 
-        // Filter products based on the language parameter
         const localizedProducts = products.map(product => ({
             ...product.toObject(),
             name: product.name[lang],
@@ -126,6 +126,7 @@ app.get('/api/products/shoshi-gallery', async (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(localizedProducts);
     } catch (error) {
+        console.error('Error fetching products:', error); // Log server-side error
         res.status(500).json({ message: error.message });
     }
 });
@@ -133,17 +134,15 @@ app.get('/api/products/shoshi-gallery', async (req, res) => {
 app.get('/api/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { lang } = req.query; // Get the language from the query parameters
+        const { lang } = req.query;
         
-        // Default to English if no language is specified
         const language = lang === 'he' ? 'he' : 'en';
         
-        const product = await JacobGallery.findById(id); // Adjust for the correct gallery
+        const product = await JacobGallery.findById(id); 
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
 
-        // Return the product details in the specified language
         const localizedProduct = {
             _id: product._id,
             name: product.name[language],
@@ -157,19 +156,18 @@ app.get('/api/products/:id', async (req, res) => {
 
         res.status(200).json(localizedProduct);
     } catch (error) {
+        console.error('Error fetching product:', error); // Log server-side error
         res.status(500).json({ message: error.message });
     }
 });
 
-
-
 mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-    console.log("Connected to database");
-    app.listen(5000, () => {
-        console.log('Server is running on port 5000');
+    .then(() => {
+        console.log("Connected to database");
+        app.listen(process.env.PORT || 5000, () => {
+            console.log(`Server is running on port ${process.env.PORT || 5000}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Connection failed:', error); // Log server-side error
     });
-})
-.catch(() => {
-    console.log("Connection failed")
-});
