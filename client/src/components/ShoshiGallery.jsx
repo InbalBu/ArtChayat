@@ -39,7 +39,8 @@ function ShoshiGallery({ language }) {
   }, [categoryMapping, language]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/shoshi-gallery?lang=${language}`)
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    fetch(`${apiUrl}/api/products/shoshi-gallery?lang=${language}`)
       .then(response => {
         if (!response.ok) throw new Error('Network response was not ok.');
         return response.json(); // Parse JSON directly
