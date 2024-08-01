@@ -9,8 +9,7 @@ const app = express();
 
 const allowedOrigins = [
     process.env.FRONTEND_URL || 'http://localhost:3000', 
-    'https://artchayat.netlify.app',
-    'https://art-chayat-server.vercel.app'
+    'https://artchayat.netlify.app'
 ];
 
 app.use(cors({
