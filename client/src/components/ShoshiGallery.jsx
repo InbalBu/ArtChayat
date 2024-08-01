@@ -46,7 +46,6 @@ function ShoshiGallery({ language }) {
         return response.json(); // Parse JSON directly
       })
       .then(data => {
-        console.log('Fetched data:', data); // Log fetched data
         setProducts(data);
         setFilteredProducts(data); // Initialize filteredProducts with all products
       })
