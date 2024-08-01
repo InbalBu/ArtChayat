@@ -39,7 +39,7 @@ function JacobGallery({ language }) {
   }, [categoryMapping, language]);
 
   useEffect(() => {
-    const apiUrl = process.env.BACKEND_API_URL || 'http://localhost:5000';
+    const apiUrl = process.env.REACT_APP_BACKEND_API_URL || 'http://localhost:5000';
     fetch(`${apiUrl}/api/products/jacob-gallery?lang=${language}`)
       .then(response => {
         if (!response.ok) throw new Error('Network response was not ok.');
