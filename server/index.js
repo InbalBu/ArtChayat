@@ -7,10 +7,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
-app.use(express.json());
 const allowedOrigins = [
     process.env.FRONTEND_URL || 'http://localhost:3000', 
-    'https://artchayat.netlify.app'
+    'https://artchayat.netlify.app',
+    'https://art-chayat-server.vercel.app'
 ];
 
 app.use(cors({
