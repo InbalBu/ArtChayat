@@ -9,9 +9,20 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+// Configure CORS to allow requests from your Netlify domain
+const allowedOrigins = [process.env.FRONTEND_URL || 'http://localhost:3000', 'https://artchayat.netlify.app'];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000'
-  }));
+    origin: (origin, callback) => {
+        // allow requests with no origin, like mobile apps or curl requests
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
   
 app.get('/', (req, res) => {
     res.send("Hello from Node API");
