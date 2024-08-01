@@ -16,21 +16,23 @@ function ShoshiGallery({ language }) {
   const categoryMapping = useMemo(() => ({
     en: {
       all: 'All Categories',
-      jerusalem: 'Jerusalem',
-      women: 'Women',
-      tributeToInbal: 'A Tribute To Inbal',
+      clowns: 'Clowns',
+      flowers: 'Flowers',
+      colorfulHarmony: 'Colorful Harmony',
       tanachPaintings: 'The Tanach Paintings',
-      views: 'Views',
-      bookSeries: 'A Series Of Paintings From The Exhibition "Seeing God through the Darkness"'
+      sketches: 'Sketches',
+      watercolor: 'Watercolor',
+      prints: 'Prints',
     },
     he: {
       all: 'כל הקטגוריות',
-      jerusalem: 'ירושלים',
-      women: 'נשים',
-      tributeToInbal: 'מחווה לענבל',
+      clowns: 'ליצנים',
+      flowers: 'פרחים',
+      colorfulHarmony: 'הרמוניה צבעונית',
       tanachPaintings: 'ציורי התנך',
-      views: 'נופים',
-      bookSeries: '"סדרת ציורים מתוך התערוכה "לראות את אלוהים מבעד לחשכה'
+      sketches: 'רישומים',
+      watercolor: 'אקוורל',
+      prints: 'הדפסים',
     }
   }), []);
 
