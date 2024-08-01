@@ -10,7 +10,7 @@ function ProductPage({ language }) {
   const navigate = useNavigate(); // Use navigate for navigation
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const apiUrl = process.env.BACKEND_API_URL || 'http://localhost:5000';
     // Fetch the product details with language parameter
     fetch(`${apiUrl}/api/products/${id}?lang=${language}`)
       .then(response => response.json())

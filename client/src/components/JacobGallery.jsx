@@ -39,27 +39,23 @@ function JacobGallery({ language }) {
   }, [categoryMapping, language]);
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const apiUrl = process.env.BACKEND_API_URL || 'http://localhost:5000';
     fetch(`${apiUrl}/api/products/jacob-gallery?lang=${language}`)
-        .then(async response => {
-            if (!response.ok) {
-                const text = await response.text();
-                console.error('Non-JSON response:', text);
-                throw new Error('Network response was not ok.');
-            }
-            return response.json(); // Parse JSON directly
-        })
-        .then(data => {
-            console.log('Fetched data:', data); // Log fetched data
-            setProducts(data);
-            setFilteredProducts(data); // Initialize filteredProducts with all products
-        })
-        .catch(error => {
-            console.error('Error fetching products:', error);
-            setError('Failed to fetch products.');
-        });
-}, [language]);
-
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok.');
+        return response.json(); // Parse JSON directly
+      })
+      .then(data => {
+        console.log('Fetched data:', data); // Log fetched data
+        setProducts(data);
+        setFilteredProducts(data); // Initialize filteredProducts with all products
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+        setError('Failed to fetch products.');
+      });
+  }, [language]);
+  
   useEffect(() => {
     console.log('Products before filtering:', products); // Log products before filtering
 

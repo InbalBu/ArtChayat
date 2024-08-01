@@ -39,7 +39,7 @@ function ShoshiGallery({ language }) {
   }, [categoryMapping, language]);
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const apiUrl = process.env.BACKEND_API_URL || 'http://localhost:5000';
     fetch(`${apiUrl}/api/products/shoshi-gallery?lang=${language}`)
       .then(response => {
         if (!response.ok) throw new Error('Network response was not ok.');
