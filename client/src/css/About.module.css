@@ -27,6 +27,7 @@
   background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
   z-index: 1; /* Ensure content is above the video */
   position: relative;
+  flex-direction: row; /* Default direction for desktop */
 }
 
 .about-image-container {
@@ -39,17 +40,14 @@
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  animation: about-fadeIn 2s ease-in; /* Add a fade-in animation */
 }
 
 .about-image-text {
   margin-top: 10px;
-  animation: about-fadeInUp 2s ease-in; /* Add a fade-in-up animation */
 }
 
 .about-text-container {
   flex: 2;
-  animation: about-fadeInUp 2s ease-in; /* Add a fade-in-up animation */
 }
 
 .about-text-container h1, .about-text-container p {
@@ -89,5 +87,39 @@
   padding-right: 20px; /* Space between text and image */
   direction: ltr;
   text-align: left;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  .about-content {
+    flex-direction: column; /* Stack text vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .about-text-container {
+    width: 100%; /* Full width for text container */
+    text-align: center; /* Center-align text on mobile */
+    margin-bottom: 20px; /* Space between text and image */
+  }
+
+  .about-image-container {
+    display: none; /* Hide image container on mobile */
+  }
+
+  .about-image {
+    display: none; /* Hide image on mobile */
+  }
+
+  .about-rtl .about-text-container {
+    text-align: right; /* Align text to the right for RTL languages */
+  }
+
+  .about-ltr .about-text-container {
+    text-align: left; /* Align text to the left for LTR languages */
+  }
 }
 

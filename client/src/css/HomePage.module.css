@@ -23,10 +23,10 @@
 }
 
 .homepage-video-text {
-    position: relative;
-    z-index: 1; /* Ensure text is above the video */
-    max-width: 900px; /* Limit text width if needed */
-    padding: 20px; /* Add padding around text */
+    display: flex;
+    flex-direction: column; /* Stack text content vertically */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center content vertically */
     margin-top: -300px;
 }
 
@@ -95,15 +95,62 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
 }
 
-@media (max-width: 1024px) {
-    .homepage-grid {
-        column-count: 3; /* 3 columns for tablets */
-    }
-}
-
+/* Mobile adjustments */
 @media (max-width: 768px) {
-    .homepage-grid {
-        column-count: 2; /* 2 columns for smaller devices */
+    .homepage {
+        height: auto;
+    }
+    .homepage-video-text {
+        background-color: lightgrey; /* Ensure background color for mobile view */
+        color: black; /* Change text color to black */
+        padding: 20px; /* Add padding around text */
+        text-align: center; /* Center text alignment */
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
+
+    .homepage-video-text h1 {
+        font-size: 1.8rem; /* Adjust title font size for mobile */
+        margin: 0; /* Remove margin to avoid cutting off */
+        padding: 10px; /* Add padding for better spacing */
+        white-space: normal; /* Allow text to wrap */
+        overflow-wrap: break-word; /* Ensure text wraps properly */
+    }
+
+    .homepage-video-text p {
+        font-size: 1rem; /* Adjust paragraph font size for mobile */
+        padding: 5px; /* Add padding for better spacing */
+        white-space: normal; /* Allow text to wrap */
+        overflow-wrap: break-word; /* Ensure text wraps properly */
+    }
+
+    .typing-effect {
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: .15em solid orange; /* Cursor effect */
+        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        background-color: lightgrey; /* Light grey background color */
+        padding: 5px;
+        width: 100%; /* Ensure it takes full width */
+        box-sizing: border-box; /* Include padding in width */
+        max-width: 100%; /* Prevent it from exceeding the viewport width */
+    }
+
+    .homepage-video-text {
+        display: block;
+        align-items: center; /* Center align items */
+        justify-content: center; /* Center content vertically */
+        margin-top: auto;
+    }
+    
+    /* Keyframes for typing effect */
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+    
+    @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: orange; }
     }
 }
 

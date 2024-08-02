@@ -34,8 +34,9 @@
     color: white;
     margin: 0 10px;
     text-decoration: none;
+    font-size: 24px; /* Adjust the size of the icons */
 }
 
 .social-media a:hover {
-    text-decoration: underline; /* Adds an underline on hover */
+    color: #ccc; /* Changes the color on hover */
 }

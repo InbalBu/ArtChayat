@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import styles from '../css/Footer.module.css'; // Import the CSS module
 
 function Footer({ language }) {
@@ -8,22 +11,23 @@ function Footer({ language }) {
                 <h2>{language === 'he' ? 'ארט חייט | ArtChayat' : 'Art Chayat'}</h2>
                 <p>© {new Date().getFullYear()} {language === 'he' ? 'כל הזכויות שמורות.' : 'All rights reserved.'}</p>
                 <div className={styles['footer-links']}>
-                    <a href="/">{language === 'he' ? 'בית' : 'Home'}</a>
-                    <a href="/gallery">{language === 'he' ? 'גלריה' : 'Gallery'}</a>
-                    <a href="/about">{language === 'he' ? 'אודות' : 'About'}</a>
-                    <a href="/contact">{language === 'he' ? 'צור קשר' : 'Contact'}</a>
-                    <a href="/shop">{language === 'he' ? 'חנות' : 'Shop'}</a>
+                    <Link to="/">{language === 'he' ? 'בית' : 'Home'}</Link>
+                    <Link to="/about">{language === 'he' ? 'אודות' : 'About'}</Link>
+                    <Link to="/shoshi">{language === 'he' ? 'שושי חייט' : 'Shoshi Hayat'}</Link>
+                    <Link to="/jacob">{language === 'he' ? 'יעקב חייט' : 'Jacob Hayat'}</Link>
+                    <Link to="/press">{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
+                    <Link to="/contact">{language === 'he' ? 'צור קשר' : 'Contact'}</Link>
                 </div>
                 <p>{language === 'he' ? 'עקבו אחרינו ברשתות החברתיות:' : 'Follow us on social media:'}</p>
                 <div className={styles['social-media']}>
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                        {language === 'he' ? 'פייסבוק' : 'Facebook'}
+                    <a href="https://www.facebook.com/JacobChayat" target="_blank" rel="noopener noreferrer">
+                        <FontAwesomeIcon icon={faFacebook} />
                     </a>
                     <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                        {language === 'he' ? 'אינסטגרם' : 'Instagram'}
+                        <FontAwesomeIcon icon={faInstagram} />
                     </a>
                     <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                        {language === 'he' ? 'טוויטר' : 'Twitter'}
+                        <FontAwesomeIcon icon={faTwitter} />
                     </a>
                 </div>
             </div>

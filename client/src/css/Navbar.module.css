@@ -66,13 +66,20 @@ body {
     justify-content: center;
 }
 
-.navbar-nav ul {
+.navbar-nav > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 2rem;
     justify-content: center;
+}
+
+.navbar-dropdown {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 .navbar-nav a {
@@ -85,11 +92,12 @@ body {
     text-decoration: underline;
 }
 
+/* Adjusted Dropdown Styles */
 .navbar-dropdown {
     position: absolute;
     background-color: white;
     list-style-type: none;
-    padding: 0;
+    padding: 0; /* Adjusted padding */
     margin: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -97,11 +105,13 @@ body {
 }
 
 .navbar-dropdown li {
-    padding: 10px;
+    padding: 5px 10px; /* Adjusted padding */
+    margin: 0; /* Ensure no extra margin */
 }
 
 .navbar-dropdown li a {
     color: black;
+    display: block; /* Ensure full clickable area */
 }
 
 /* CSS for English mode */

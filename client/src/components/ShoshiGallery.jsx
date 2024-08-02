@@ -22,7 +22,7 @@ function ShoshiGallery({ language }) {
       tanachPaintings: 'The Tanach Paintings',
       sketches: 'Sketches',
       watercolor: 'Watercolor',
-      prints: 'Prints',
+      prints: 'Prints'
     },
     he: {
       all: 'כל הקטגוריות',
@@ -32,7 +32,7 @@ function ShoshiGallery({ language }) {
       tanachPaintings: 'ציורי התנך',
       sketches: 'רישומים',
       watercolor: 'אקוורל',
-      prints: 'הדפסים',
+      prints: 'הדפסים'
     }
   }), []);
 
@@ -56,7 +56,7 @@ function ShoshiGallery({ language }) {
         setError('Failed to fetch products.');
       });
   }, [language]);
-
+  
   useEffect(() => {
     const filtered = products.filter(product => {
       const matchesCategory = filters.category === '' || product.category === getCategoryLabel(filters.category);
@@ -110,12 +110,13 @@ function ShoshiGallery({ language }) {
       <div className={styles['gallery-filters']}>
         <select name="category" onChange={handleFilterChange} value={filters.category}>
           <option value="">{getCategoryLabel('all')}</option>
-          <option value="jerusalem">{getCategoryLabel('jerusalem')}</option>
-          <option value="women">{getCategoryLabel('women')}</option>
-          <option value="tributeToInbal">{getCategoryLabel('tributeToInbal')}</option>
+          <option value="clowns">{getCategoryLabel('clowns')}</option>
+          <option value="flowers">{getCategoryLabel('flowers')}</option>
+          <option value="colorfulHarmony">{getCategoryLabel('colorfulHarmony')}</option>
           <option value="tanachPaintings">{getCategoryLabel('tanachPaintings')}</option>
-          <option value="views">{getCategoryLabel('views')}</option>
-          <option value="bookSeries">{getCategoryLabel('bookSeries')}</option>
+          <option value="sketches">{getCategoryLabel('sketches')}</option>
+          <option value="watercolor">{getCategoryLabel('watercolor')}</option>
+          <option value="prints">{getCategoryLabel('prints')}</option>
         </select>
       </div>
 
@@ -128,7 +129,7 @@ function ShoshiGallery({ language }) {
                 const price = parseFloat(product.price.replace(/,/g, ''));
                 return (
                   <div className={styles['gallery-item']} key={product._id}>
-                    <Link to={`/product/${product._id}`} className={styles['gallery-product-link']}>
+                    <Link to={`/shoshi/product/${product._id}`} className={styles['gallery-product-link']}>
                       <LazyLoadImage
                         src={product.imageURL}
                         alt={product.name}

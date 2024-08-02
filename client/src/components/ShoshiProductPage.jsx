@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../css/ProductPage.module.css'; // Import the CSS module
 
-function ProductPage({ language }) {
+function ShoshiProductPage({ language }) {
   const { id } = useParams(); // Get the product ID from the URL
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ function ProductPage({ language }) {
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_BACKEND_API_URL || 'http://localhost:5000';
     // Fetch the product details with language parameter
-    fetch(`${apiUrl}/api/products/${id}?lang=${language}`)
+    fetch(`${apiUrl}/api/products/shoshi-gallery/${id}?lang=${language}`)
       .then(response => response.json())
       .then(data => setProduct(data))
       .catch(error => {
@@ -30,7 +30,7 @@ function ProductPage({ language }) {
   };
 
   const handleReturnToGallery = () => {
-    navigate('/jacob/gallery'); // Navigate back to the gallery page
+    navigate('/shoshi/gallery'); // Navigate back to the gallery page
   };
 
   if (error) return <div>{error}</div>;
@@ -88,4 +88,4 @@ function ProductPage({ language }) {
   );
 }
 
-export default ProductPage;
+export default ShoshiProductPage;

@@ -126,7 +126,7 @@ function JacobGallery({ language }) {
                 const price = parseFloat(product.price.replace(/,/g, ''));
                 return (
                   <div className={styles['gallery-item']} key={product._id}>
-                    <Link to={`/product/${product._id}`} className={styles['gallery-product-link']}>
+                    <Link to={`/jacob/product/${product._id}`} className={styles['gallery-product-link']}>
                       <LazyLoadImage
                         src={product.imageURL}
                         alt={product.name}

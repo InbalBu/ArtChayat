@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '../css/HomePage.module.css'; // Import the CSS module
 import video from "../images/artVideo.mp4";
 
+// Import images
 import painting1 from '../images/DSC05325.jpg'; // Replace with your actual image paths
 import painting2 from '../images/DSC05355.jpg';
 import painting3 from '../images/DSC05356.jpg';
@@ -11,6 +12,7 @@ import painting6 from '../images/DSC05529.jpg';
 
 function HomePage({ language }) {
     const [text, setText] = useState('');
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     useEffect(() => {
         const fullText = language === 'he'
@@ -19,6 +21,14 @@ function HomePage({ language }) {
         
         setText(fullText);
     }, [language]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const [selectedImage, setSelectedImage] = useState(null);
 
@@ -69,7 +79,7 @@ function HomePage({ language }) {
                     Your browser does not support the video tag.
                 </video>
                 <div className={styles['homepage-video-text']}>
-                    <h1>{text}</h1>
+                    <h1 className={isMobile ? styles['typing-effect'] : ''}>{text}</h1>
                     <p>{language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Hayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'}</p>
                     <p>{language === 'he' ? 'נעים להכיר: אנחנו, מיכל בוקריס וריקי חייט, בנותיהם, בעלים של חב\' ארט חייט ומנהלות את אוסף היצירות שהותירו אחריהם.' : 'Nice to meet you: we are Michal Bokris and Riki Hayat, their daughters, owners of Art Hayat Ltd., and managers of the collection of works they left behind.'}</p>
                     <p>{language === 'he' ? 'רבות מיצירותיהם מוצגות בגלריות ובקרב אספני אומנות בישראל ובחו"ל. האוסף שמוצע למכירה, כולל יצירות אומנות רבות ומגוונות מתקופות שונות ומציג את המסע האישי שכל אמן עבר בנפרד ומשקף 50 שנות יצירה, אהבה וזוגיות.' : 'Many of their works are displayed in galleries and among art collectors in Israel and abroad. The collection offered for sale includes many diverse artworks from different periods and showcases the personal journey each artist went through separately, reflecting 50 years of creation, love, and partnership.'}</p>

@@ -15,25 +15,30 @@ const Navbar = ({ language, handleLanguageToggle }) => {
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  const closeMenu = () => setMenuOpen(false);
+
+  const toggleDropdownJacob = () => setShowDropdownJacob(!showDropdownJacob);
+  const toggleDropdownShoshi = () => setShowDropdownShoshi(!showDropdownShoshi);
+
   return (
     <div className={`${styles['navbar-header']} ${language === 'he' ? styles['navbar-hebrew-mode'] : styles['navbar-english-mode']}`}>
       <div className={styles['navbar-logo-container']}>
         {language === 'he' ? (
           <>
             <div className={styles['navbar-right-logo']}>
-              <Link to="/"><img src={logoHE} alt="אמנות ישראלית Logo" /></Link>
+              <Link to="/" onClick={closeMenu}><img src={logoHE} alt="אמנות ישראלית Logo" /></Link>
             </div>
             <div className={styles['navbar-left-logo']}>
-              <Link to="/"><img src={logoEN} alt="Israeli Art Logo" /></Link>
+              <Link to="/" onClick={closeMenu}><img src={logoEN} alt="Israeli Art Logo" /></Link>
             </div>
           </>
         ) : (
           <>
             <div className={styles['navbar-left-logo']}>
-              <Link to="/"><img src={logoEN} alt="Israeli Art Logo" /></Link>
+              <Link to="/" onClick={closeMenu}><img src={logoEN} alt="Israeli Art Logo" /></Link>
             </div>
             <div className={styles['navbar-right-logo']}>
-              <Link to="/"><img src={logoHE} alt="אמנות ישראלית Logo" /></Link>
+              <Link to="/" onClick={closeMenu}><img src={logoHE} alt="אמנות ישראלית Logo" /></Link>
             </div>
           </>
         )}
@@ -50,39 +55,39 @@ const Navbar = ({ language, handleLanguageToggle }) => {
       <nav className={`${styles['navbar-nav']} ${menuOpen ? styles['active'] : ''}`}>
         <ul>
           <li>
-            <Link to="/about">{language === 'he' ? 'אודות' : 'About'}</Link>
+            <Link to="/about" onClick={closeMenu}>{language === 'he' ? 'אודות' : 'About'}</Link>
           </li>
-          <li onMouseEnter={() => setShowDropdownShoshi(true)} onMouseLeave={() => setShowDropdownShoshi(false)}>
-            <Link to="/shoshi">{language === 'he' ? 'שושי חייט' : 'Shoshi Hayat'}</Link>
+          <li onMouseEnter={() => setShowDropdownShoshi(true)} onMouseLeave={() => setShowDropdownShoshi(false)} onClick={toggleDropdownShoshi}>
+            <Link to="#" onClick={(e) => e.preventDefault()}>{language === 'he' ? 'שושי חייט' : 'Shoshi Hayat'}</Link>
             {showDropdownShoshi && (
               <ul className={styles['navbar-dropdown']}>
-                <li><Link to="/shoshi/biography">{language === 'he' ? 'ביוגרפיה' : 'Biography'}</Link></li>
-                <li><Link to="/shoshi/exhibitions">{language === 'he' ? 'תערוכות' : 'Exhibitions'}</Link></li>
-                <li><Link to="/shoshi/gallery">{language === 'he' ? 'גלריה' : 'Gallery'}</Link></li>
+                <li><Link to="/shoshi/biography" onClick={closeMenu}>{language === 'he' ? 'ביוגרפיה' : 'Biography'}</Link></li>
+                <li><Link to="/shoshi/exhibitions" onClick={closeMenu}>{language === 'he' ? 'תערוכות' : 'Exhibitions'}</Link></li>
+                <li><Link to="/shoshi/gallery" onClick={closeMenu}>{language === 'he' ? 'גלריה' : 'Gallery'}</Link></li>
               </ul>
             )}
           </li>
-          <li onMouseEnter={() => setShowDropdownJacob(true)} onMouseLeave={() => setShowDropdownJacob(false)}>
-            <Link to="/jacob">{language === 'he' ? 'יעקב חייט' : 'Jacob Hayat'}</Link>
+          <li onMouseEnter={() => setShowDropdownJacob(true)} onMouseLeave={() => setShowDropdownJacob(false)} onClick={toggleDropdownJacob}>
+            <Link to="#" onClick={(e) => e.preventDefault()}>{language === 'he' ? 'יעקב חייט' : 'Jacob Hayat'}</Link>
             {showDropdownJacob && (
               <ul className={styles['navbar-dropdown']}>
-                <li><Link to="/jacob/biography">{language === 'he' ? 'ביוגרפיה' : 'Biography'}</Link></li>
-                <li><Link to="/jacob/exhibitions">{language === 'he' ? 'תערוכות' : 'Exhibitions'}</Link></li>
-                <li><Link to="/jacob/gallery">{language === 'he' ? 'גלריה' : 'Gallery'}</Link></li>
+                <li><Link to="/jacob/biography" onClick={closeMenu}>{language === 'he' ? 'ביוגרפיה' : 'Biography'}</Link></li>
+                <li><Link to="/jacob/exhibitions" onClick={closeMenu}>{language === 'he' ? 'תערוכות' : 'Exhibitions'}</Link></li>
+                <li><Link to="/jacob/gallery" onClick={closeMenu}>{language === 'he' ? 'גלריה' : 'Gallery'}</Link></li>
               </ul>
             )}
           </li>
           <li>
-            <Link to="/press">{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
+            <Link to="/press" onClick={closeMenu}>{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
           </li>
           <li>
-            <Link to="/contact">{language === 'he' ? 'צור קשר' : 'Contact'}</Link>
+            <Link to="/contact" onClick={closeMenu}>{language === 'he' ? 'צור קשר' : 'Contact'}</Link>
           </li>
           <li className={styles['navbar-language-toggle']}>
             <img
-              src={language === 'he' ? flagHE : flagEN}
-              alt={language === 'he' ? 'Switch to English' : 'עברית'}
-              onClick={handleLanguageToggle}
+              src={language === 'he' ? flagEN : flagHE}
+              alt="Toggle Language"
+              onClick={() => {handleLanguageToggle(); closeMenu();}}
               className={styles['navbar-flag-icon']}
             />
           </li>

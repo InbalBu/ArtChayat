@@ -7,6 +7,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
+app.use(express.json());
+console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
+
 const allowedOrigins = [
     process.env.FRONTEND_URL || 'http://localhost:3000', 
     'https://artchayat.netlify.app'
@@ -14,7 +17,6 @@ const allowedOrigins = [
 
 app.use(cors({
     origin: (origin, callback) => {
-        console.log('Origin:', origin); 
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
@@ -130,7 +132,8 @@ app.get('/api/products/shoshi-gallery', async (req, res) => {
     }
 });
 
-app.get('/api/products/:id', async (req, res) => {
+// Fetch a single product from JacobGallery by ID
+app.get('/api/products/jacob-gallery/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { lang } = req.query;
@@ -138,6 +141,37 @@ app.get('/api/products/:id', async (req, res) => {
         const language = lang === 'he' ? 'he' : 'en';
         
         const product = await JacobGallery.findById(id); 
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+
+        const localizedProduct = {
+            _id: product._id,
+            name: product.name[language],
+            artist: product.artist[language],
+            size: product.size[language],
+            technic: product.technic[language],
+            price: product.price[language],
+            category: product.category[language],
+            imageURL: product.imageURL
+        };
+
+        res.status(200).json(localizedProduct);
+    } catch (error) {
+        console.error('Error fetching product:', error); // Log server-side error
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Fetch a single product from ShoshiGallery by ID
+app.get('/api/products/shoshi-gallery/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { lang } = req.query;
+        
+        const language = lang === 'he' ? 'he' : 'en';
+        
+        const product = await ShoshiGallery.findById(id); 
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
