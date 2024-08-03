@@ -53,6 +53,7 @@
 .homepage-video-text p:nth-child(4) { animation-delay: 1.5s; }
 .homepage-video-text p:nth-child(5) { animation-delay: 2s; }
 .homepage-video-text p:nth-child(6) { animation-delay: 2.5s; }
+.homepage-video-text p:nth-child(7) { animation-delay: 3s; }
 
 @keyframes homepage-fadeIn {
     from { opacity: 0; }
