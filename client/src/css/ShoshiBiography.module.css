@@ -65,15 +65,15 @@
 
 /* RTL Styles */
 .shoshi-rtl .shoshi-content {
-    flex-direction: row;
+    flex-direction: row-reverse;
 }
 
 .shoshi-rtl .shoshi-image-container {
-    padding-right: 30px;
+    padding-left: 30px;
 }
 
 .shoshi-rtl .shoshi-text-container {
-    padding-left: 30px;
+    padding-right: 30px;
     direction: rtl;
     text-align: right;
 }
@@ -85,15 +85,15 @@
 
 /* LTR Styles */
 .shoshi-ltr .shoshi-content {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 .shoshi-ltr .shoshi-image-container {
-    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .shoshi-ltr .shoshi-text-container {
-    padding-right: 30px;
+    padding-left: 30px;
     direction: ltr;
 }
 
@@ -124,8 +124,16 @@
         margin-bottom: 20px;
     }
 
-    .shoshi-rtl .shoshi-image-container, .shoshi-ltr .shoshi-image-container {
-        padding: 0;
+    .shoshi-image-container-rtl {
+        align-self: end;
+    }
+
+    .shoshi-image-container-ltr {
+        align-self: start;
+    }
+
+    .shoshi-rtl .shoshi-content, .shoshi-ltr .shoshi-content {
+        flex-direction: column;
     }
 
     .shoshi-text-container {

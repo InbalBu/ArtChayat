@@ -1,4 +1,3 @@
-/* General Styles for Jacob Component */
 .jacob-container {
     display: flex;
     justify-content: center;
@@ -12,7 +11,7 @@
     max-width: 900px;
     width: 100%;
     padding: 20px;
-    flex-direction: column;
+    flex-direction: column; /* Default to column for smaller screens */
 }
 
 .jacob-image-container {
@@ -65,15 +64,15 @@
 
 /* RTL Styles */
 .jacob-rtl .jacob-content {
-    flex-direction: row;
+    flex-direction: row-reverse;
 }
 
 .jacob-rtl .jacob-image-container {
-    padding-right: 30px;
+    padding-left: 30px;
 }
 
 .jacob-rtl .jacob-text-container {
-    padding-left: 30px;
+    padding-right: 30px;
     direction: rtl;
     text-align: right;
 }
@@ -85,15 +84,15 @@
 
 /* LTR Styles */
 .jacob-ltr .jacob-content {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 .jacob-ltr .jacob-image-container {
-    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .jacob-ltr .jacob-text-container {
-    padding-right: 30px;
+    padding-left: 30px;
     direction: ltr;
 }
 
@@ -115,13 +114,25 @@
     }
 
     .jacob-content {
-        flex-direction: column;
+        flex-direction: column; /* Column direction for mobile */
         padding: 10px;
     }
 
     .jacob-image-container {
         padding: 0;
-        margin-bottom: 20px;
+        margin-bottom: 20px; /* Add margin to separate image from text */
+    }
+
+    .jacob-image-container-rtl {
+        align-self: flex-end; /* Ensure image is at the end for RTL */
+    }
+
+    .jacob-image-container-ltr {
+        align-self: flex-start; /* Ensure image is at the start for LTR */
+    }
+
+    .jacob-rtl .jacob-content, .jacob-ltr .jacob-content {
+        flex-direction: column;
     }
 
     .jacob-rtl .jacob-image-container, .jacob-ltr .jacob-image-container {

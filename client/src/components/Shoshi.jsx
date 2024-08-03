@@ -14,15 +14,15 @@ function Shoshi({ language }) {
         <meta name="keywords" content={isHebrew ? 'שושי חייט, אומנות, ביוגרפיה' : 'Shoshi Khayat, art, biography'} />
         <meta name="robots" content="index, follow" />
 
-           {/* Open Graph tags */}
-           <meta property="og:title" content={isHebrew ? 'שושי חייט - ביוגרפיה' : 'Shoshi Khayat - Biography'} />
+        {/* Open Graph tags */}
+        <meta property="og:title" content={isHebrew ? 'שושי חייט - ביוגרפיה' : 'Shoshi Khayat - Biography'} />
         <meta property="og:description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Khayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
         <meta property="og:image" content={shoshiPortrait} />
         <meta property="og:url" content="https://artchayat.netlify.app/shoshi" />
         <meta property="og:type" content="website" />
       </Helmet>
       <div className={styles['shoshi-content']}>
-        <div className={styles['shoshi-image-container']}>
+      <div className={`${styles['shoshi-image-container']} ${isHebrew ? styles['shoshi-image-container-rtl'] : styles['shoshi-image-container-ltr']}`}>
           <img src={shoshiPortrait} alt="Shoshi Khayat" className={styles['shoshi-image']} />
         </div>
         <div className={styles['shoshi-text-container']}>

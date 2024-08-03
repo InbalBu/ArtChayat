@@ -101,19 +101,21 @@ function HomePage({ language }) {
                 <meta name="twitter:image" content={randomImage} />
             </Helmet>
             <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
-                <video
-                    id='video_bg'
-                    className={styles['homepage-video-bg']}
-                    autoPlay
-                    loop
-                    muted
-                    onCanPlayThrough={() => setVideoLoaded(true)}
-                    preload="auto"
-                    style={{ opacity: videoLoaded ? 1 : 0 }}
-                >
-                    <source src={video} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                {!isMobile && (
+                    <video
+                        id='video_bg'
+                        className={styles['homepage-video-bg']}
+                        autoPlay
+                        loop
+                        muted
+                        onCanPlayThrough={() => setVideoLoaded(true)}
+                        preload="auto"
+                        style={{ opacity: videoLoaded ? 1 : 0 }}
+                    >
+                        <source src={video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                )}
                 <div className={styles['homepage-video-text']}>
                     <h1 className={isMobile ? styles['typing-effect'] : ''}>{text}</h1>
                     {language === 'he' ? (

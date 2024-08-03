@@ -152,6 +152,16 @@ body {
     margin: 5px 0;
 }
 
+/* Dropdown Arrow */
+.dropdown-arrow {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .navbar-logo-container {
@@ -201,4 +211,3 @@ body {
         padding: 10px;
     }
 }
-

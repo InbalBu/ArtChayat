@@ -32,7 +32,8 @@
 
 .about-image-container {
   flex: 1;
-  padding-right: 20px;
+  padding-right: 70px;
+  padding-left: 70px;
   position: relative; /* For slideshow positioning */
 }
 
@@ -56,15 +57,15 @@
 
 /* RTL Layout */
 .about-rtl .about-content {
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 
 .about-rtl .about-image-container {
-  padding-right: 20px; /* Space between image and text */
+  padding-left: 20px; /* Space between image and text */
 }
 
 .about-rtl .about-text-container {
-  padding-left: 20px; /* Space between text and image */
+  padding-right: 20px; /* Space between text and image */
   direction: rtl;
   text-align: right;
 }
@@ -76,15 +77,15 @@
 
 /* LTR Layout */
 .about-ltr .about-content {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 .about-ltr .about-image-container {
-  padding-left: 20px; /* Space between image and text */
+  padding-right: 20px; /* Space between image and text */
 }
 
 .about-ltr .about-text-container {
-  padding-right: 20px; /* Space between text and image */
+  padding-left: 20px; /* Space between text and image */
   direction: ltr;
   text-align: left;
 }
@@ -112,8 +113,9 @@
     width: 100%; /* Full width for image container */
     padding: 0; /* Remove padding */
     margin-top: 20px; /* Space above image container */
-    display: block; /* Show image container on mobile */
-    text-align: center; /* Center image container horizontally */
+    display: flex; /* Ensure image container is flex */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center image container horizontally */
   }
 
   .about-image {

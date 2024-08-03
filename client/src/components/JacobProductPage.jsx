@@ -73,15 +73,15 @@ function JacobProductPage({ language }) {
             {language === 'he' ? (
               <>
                 <p>לרכישה ופרטים נוספים נא ליצור קשר בטלפונים:</p>
-                <p>מיכל בוקריס - <a href="https://wa.me/0538311215" target="_blank" rel="noopener noreferrer">וואטסאפ</a></p>
-                <p>ריקי חייט - <a href="https://wa.me/0526652571" target="_blank" rel="noopener noreferrer">וואטסאפ</a></p>
+                <p>מיכל בוקריס - <a href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">וואטסאפ</a></p>
+                <p>ריקי חייט - <a href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">וואטסאפ</a></p>
                 <p>אימייל - <a href="mailto:artchayat@gmail.com">artchayat@gmail.com</a></p>
               </>
             ) : (
               <>
                 <p>For purchase and more details, please contact:</p>
-                <p>Michal Bukris - <a href="https://wa.me/0538311215" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
-                <p>Riki Khayat - <a href="https://wa.me/0526652571" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                <p>Michal Bukris - <a href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                <p>Riki Khayat - <a href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
                 <p>Email - <a href="mailto:artchayat@gmail.com">artchayat@gmail.com</a></p>
               </>
             )}
