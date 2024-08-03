@@ -1,18 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../css/HomePage.module.css'; // Import the CSS module
+import { Helmet } from 'react-helmet';
+import styles from '../css/HomePage.module.css';
 import video from "../images/artVideo.mp4";
-
-// Import images
-import painting1 from '../images/DSC05325.jpg'; // Replace with your actual image paths
-import painting2 from '../images/DSC05355.jpg';
-import painting3 from '../images/DSC05356.jpg';
-import painting4 from '../images/DSC05371.jpg';
-import painting5 from '../images/DSC05481.jpg';
-import painting6 from '../images/DSC05529.jpg';
+import painting1 from '../images/homepagefirst.jpg';
+import painting2 from '../images/homepagesecond.jpg';
+import painting3 from '../images/homepage5.jpg';
+import painting4 from '../images/homepage6.jpg';
+import painting5 from '../images/homepage7.jpg';
+import painting6 from '../images/DSC05355.jpg';
+import painting7 from '../images/DSC05371.jpg';
+import painting8 from '../images/homepage8.jpg';
+import painting10 from '../images/homepage10.jpg';
+import painting11 from '../images/homepage11.jpg';
+import painting12 from '../images/homepage12.jpg';
+import painting13 from '../images/homepage13.jpg';
+import painting14 from '../images/DSC05356.jpg';
+import painting15 from '../images/homepage1.jpg';
+import painting16 from '../images/DSC05529.jpg';
+import painting17 from '../images/homepage3.jpg';
+import painting18 from '../images/homepage2.jpg';
+import painting19 from '../images/DSC05481.jpg';
 
 function HomePage({ language }) {
     const [text, setText] = useState('');
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [videoLoaded, setVideoLoaded] = useState(false);
+
+    const images = [
+        painting1, painting2, painting3, painting4, painting5, painting6, painting7, painting8, painting10, painting11, painting12, painting13, painting14, painting15, painting16, painting17, painting18, painting19
+    ];
 
     useEffect(() => {
         const fullText = language === 'he'
@@ -45,7 +61,7 @@ function HomePage({ language }) {
             const parallaxElements = document.querySelectorAll('.parallax');
             parallaxElements.forEach(element => {
                 let scrollPosition = window.pageYOffset;
-                element.style.transform = `translateY(-${scrollPosition * 0.5}px)`; // Adjust the multiplier for desired effect
+                element.style.transform = `translateY(-${scrollPosition * 0.5}px)`;
             });
         };
 
@@ -56,25 +72,25 @@ function HomePage({ language }) {
         };
     }, []);
 
-    const images = [
-        painting1,
-        painting2,
-        painting3,
-        painting4,
-        painting5,
-        painting6,
-        painting1, // Repeat for demonstration
-        painting2,
-        painting3,
-        painting4,
-        painting5,
-        painting6
-    ];
-
     return (
         <div className='container'>
+            <Helmet>
+                <title>{language === 'he' ? 'ארט חייט - דף הבית' : 'Art Chayat - Home'}</title>
+                <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
+                <meta name="keywords" content={language === 'he' ? 'אומנות, אהבה, יצירה' : 'art, love, creation'} />
+                <meta name="robots" content="index, follow" />
+            </Helmet>
             <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
-                <video id='video_bg' className={styles['homepage-video-bg']} autoPlay loop muted>
+                <video
+                    id='video_bg'
+                    className={styles['homepage-video-bg']}
+                    autoPlay
+                    loop
+                    muted
+                    onCanPlayThrough={() => setVideoLoaded(true)}
+                    preload="auto"
+                    style={{ opacity: videoLoaded ? 1 : 0 }}
+                >
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>

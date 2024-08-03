@@ -164,10 +164,10 @@ body {
         margin: 0;
         text-align: center;
     }
-    .navbar-right-logo {
+    .navbar-left-logo img, .navbar-right-logo img {
         display: none;
     }
-    .navbar-left-logo img {
+    .navbar-left-logo img.show, .navbar-right-logo img.show {
         display: block;
     }
     .navbar-hamburger {
@@ -201,3 +201,4 @@ body {
         padding: 10px;
     }
 }
+

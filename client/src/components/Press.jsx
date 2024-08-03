@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Modal from 'react-modal';
 import styles from '../css/Press.module.css'; // Import the CSS module
 
@@ -13,15 +14,14 @@ const images = [
   'pressImages/article15.jpeg',
 ];
 
-// Set the app element for the modal
 Modal.setAppElement('#root');
 
-function Press() {
+function Press({ language }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
 
   const openModal = (index) => {
-    setCurrentImageIndex(index);
+    setCurrentImage(index);
     setModalIsOpen(true);
   };
 
@@ -30,38 +30,49 @@ function Press() {
   };
 
   const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentImage((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentImage((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   return (
     <div className={styles['press-container']}>
-      <h1>מן העיתונות</h1>
-      <p>מה נכתב על הציירים שושי ויעקב חייט ז"ל</p>
-      <div className={styles['press-grid']}>
-        {images.map((image, index) => (
-          <div key={index} className={styles['press-item']} onClick={() => openModal(index)}>
-            <img src={image} alt={`Press item ${index + 1}`} />
+      <Helmet>
+        <title>{language === 'he' ? 'מן העיתונות - שושי ויעקב חייט' : 'From the Press - Shoshi and Yaacov Khayat'}</title>
+        <meta name="description" content={language === 'he' ? 'מה נכתב על שושי ויעקב חייט ז"ל בעיתונות' : 'What was written about Shoshi and Yaacov Khayat z"l in the press'} />
+        <meta name="keywords" content={language === 'he' ? 'שושי חייט, יעקב חייט, עיתונות, אומנות' : 'Shoshi Khayat, Yaacov Khayat, press, art'} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+      <header>
+        <h1>{language === 'he' ? 'מן העיתונות' : 'From the Press'}</h1>
+        <p>{language === 'he' ? 'מה נכתב על שושי ויעקב חייט ז"ל' : 'What was written about Shoshi and Yaacov Khayat z"l'}</p>
+      </header>
+      <div className={styles['articles-grid']}>
+        {images.map((img, index) => (
+          <div key={index} className={styles['article']} onClick={() => openModal(index)}>
+            <img src={img} alt={`Article ${index + 1}`} />
           </div>
         ))}
       </div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Image Modal"
-        className={styles['press-modal']}
-        overlayClassName={styles['press-overlay']}
-      >
-        <button onClick={closeModal} className={styles['press-close-button']}>X</button>
-        <button onClick={prevImage} className={`${styles['press-nav-button']} ${styles['press-nav-button-prev']}`}>❮</button>
-        <button onClick={nextImage} className={`${styles['press-nav-button']} ${styles['press-nav-button-next']}`}>❯</button>
-        <div className={styles['press-modal-content']}>
-          <img src={images[currentImageIndex]} alt={`Press item ${currentImageIndex + 1}`} />
+
+      {modalIsOpen && (
+        <div className={styles['overlay']}>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Image Modal"
+            className={styles['modal']}
+            overlayClassName={styles['overlay']}
+          >
+            <button onClick={closeModal} className={styles['close-button']}>×</button>
+            <button onClick={prevImage} className={styles['arrow-button']}>‹</button>
+            <img src={images[currentImage]} alt={`Article ${currentImage + 1}`} className={styles['modal-image']} />
+            <button onClick={nextImage} className={styles['arrow-button']}>›</button>
+          </Modal>
         </div>
-      </Modal>
+      )}
     </div>
   );
 }

@@ -1,10 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styles from '../css/About.module.css'; // Import CSS module
 import shoshiAndJacob from '../images/shoshiandjacob.jpeg';
 
 function About({ language }) {
     return (
         <div className={`${styles['about-container']} ${language === 'he' ? styles['about-rtl'] : styles['about-ltr']}`}>
+            <Helmet>
+                <title>{language === 'he' ? 'ארט חייט - מציירים סיפור אהבה' : 'Art Khayat - Painting a Love Story'}</title>
+                <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות...' : 'Art Khayat was born out of creativity and a love for art...'} />
+                <meta name="keywords" content={language === 'he' ? 'אומנות, ציור, פיסול' : 'art, painting, sculpture'} />
+                <meta name="robots" content="index, follow" />
+            </Helmet>
             <video autoPlay loop muted className={styles['about-background-video']}>
                 <source src="" type="video/mp4" />
                 Your browser does not support the video tag.

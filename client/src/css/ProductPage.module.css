@@ -140,6 +140,16 @@
     text-align: center; /* Center title on mobile */
   }
 
+  .productDetails-rtl {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .productDetails-ltr {
+    direction: ltr;
+    text-align: left;
+  }
+
   .productImage {
     order: 2; /* Place the image second */
     width: 100%; /* Full width for image on mobile */
@@ -147,7 +157,6 @@
 
   .productDetails {
     order: 3; /* Place the details third */
-    text-align: center; /* Center text on mobile */
   }
 
   .productImage img {

@@ -2,13 +2,14 @@
 .homepage {
     position: relative;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    min-height: 70vh; /* Ensure the homepage takes at least 70% of the viewport height */
     overflow: hidden; /* Hide any overflow content */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white; /* Text color on top of video */
+    box-sizing: border-box;
 }
 
 .homepage-video-bg {
@@ -19,7 +20,8 @@
     min-height: 100%;
     z-index: -1; /* Ensure video stays behind content */
     object-fit: cover; /* Cover the entire container */
-    filter: brightness(0.3);
+    filter: brightness(0.6); /* Slightly darker video for better text contrast */
+    transition: top 0.5s ease-out, height 0.5s ease-out;
 }
 
 .homepage-video-text {
@@ -27,12 +29,15 @@
     flex-direction: column; /* Stack text content vertically */
     align-items: center; /* Center align items */
     justify-content: center; /* Center content vertically */
-    margin-top: -300px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better text readability */
+    border-radius: 10px; /* Rounded corners */
 }
 
 .homepage-video-text h1 {
     font-size: 2.5rem; /* Adjust title font size */
     margin-bottom: 20px; /* Space below the title */
+    animation: slideIn 1s forwards; /* Slide-in effect for the title */
 }
 
 .homepage-video-text p {
@@ -43,29 +48,20 @@
     animation: homepage-fadeIn 0.5s forwards;
 }
 
-.homepage-video-text p:nth-child(2) {
-    animation-delay: 1s;
-}
-
-.homepage-video-text p:nth-child(3) {
-    animation-delay: 1.5s;
-}
-
-.homepage-video-text p:nth-child(4) {
-    animation-delay: 2s;
-}
-
-.homepage-video-text p:nth-child(5) {
-    animation-delay: 2.5s;
-}
-
-.homepage-video-text p:nth-child(6) {
-    animation-delay: 3s;
-}
+.homepage-video-text p:nth-child(2) { animation-delay: 0.5s; }
+.homepage-video-text p:nth-child(3) { animation-delay: 1s; }
+.homepage-video-text p:nth-child(4) { animation-delay: 1.5s; }
+.homepage-video-text p:nth-child(5) { animation-delay: 2s; }
+.homepage-video-text p:nth-child(6) { animation-delay: 2.5s; }
 
 @keyframes homepage-fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .homepage-gallery {
@@ -99,76 +95,34 @@
 @media (max-width: 768px) {
     .homepage {
         height: auto;
+        padding: 20px;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        background-image: url('../images/mobileBG.png'); /* Set the background image */
+        background-size:cover; /* Ensure the background covers the entire container */
+        background-position: center; /* Center the background image */
     }
+
+    .homepage-video-bg {
+        display: none; /* Hide the video on mobile */
+    }
+
     .homepage-video-text {
-        background-color: lightgrey; /* Ensure background color for mobile view */
-        color: black; /* Change text color to black */
+        background: none;
+        color: white;
         padding: 20px; /* Add padding around text */
-        text-align: center; /* Center text alignment */
-        box-sizing: border-box; /* Ensure padding is included in width */
+        width: 100%; /* Ensure it fits within the container on mobile */
     }
 
     .homepage-video-text h1 {
         font-size: 1.8rem; /* Adjust title font size for mobile */
-        margin: 0; /* Remove margin to avoid cutting off */
-        padding: 10px; /* Add padding for better spacing */
-        white-space: normal; /* Allow text to wrap */
-        overflow-wrap: break-word; /* Ensure text wraps properly */
     }
 
     .homepage-video-text p {
         font-size: 1rem; /* Adjust paragraph font size for mobile */
-        padding: 5px; /* Add padding for better spacing */
-        white-space: normal; /* Allow text to wrap */
-        overflow-wrap: break-word; /* Ensure text wraps properly */
     }
 
-    .typing-effect {
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: .15em solid orange; /* Cursor effect */
-        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        background-color: lightgrey; /* Light grey background color */
-        padding: 5px;
-        width: 100%; /* Ensure it takes full width */
-        box-sizing: border-box; /* Include padding in width */
-        max-width: 100%; /* Prevent it from exceeding the viewport width */
-    }
-
-    .homepage-video-text {
-        display: block;
-        align-items: center; /* Center align items */
-        justify-content: center; /* Center content vertically */
-        margin-top: auto;
-    }
-    
-    /* Keyframes for typing effect */
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-    }
-    
-    @keyframes blink-caret {
-        from, to { border-color: transparent; }
-        50% { border-color: orange; }
-    }
-}
-
-@media (max-width: 480px) {
     .homepage-grid {
         column-count: 1; /* 1 column for very small devices */
-    }
-}
-
-/* Adjustments for mobile view */
-@media (max-width: 768px) {
-    .homepage-video-bg {
-        display: none; /* Hide the video on mobile */
-    }
-    .homepage-video-text {
-        color: black; /* Change text color to black */
-        justify-content: center;
-        align-items: center;
     }
 }
 

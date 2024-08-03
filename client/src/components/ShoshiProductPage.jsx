@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../css/ProductPage.module.css'; // Import the CSS module
 
@@ -41,6 +42,12 @@ function ShoshiProductPage({ language }) {
 
   return (
     <div className={`${styles.productPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
+      <Helmet>
+        <title>{language === 'he' ? `${product.name} - שושי חייט` : `${product.name} - Shoshi Khayat`}</title>
+        <meta name="description" content={language === 'he' ? `פרטים אודות יצירתה של שושי חייט בשם ${product.name}.` : `Details about the artwork by Shoshi Khayat named ${product.name}.`} />
+        <meta name="keywords" content={language === 'he' ? `שושי חייט, אומנות, ${product.name}` : `Shoshi Khayat, art, ${product.name}`} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <div className={`${styles.productGrid} ${language === 'he' ? styles.rtl : styles.ltr}`}>
         <div className={styles.productImage} onClick={handleImageClick}>
           <img src={product.imageURL} alt={product.name} />

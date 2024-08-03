@@ -1,25 +1,38 @@
 {
   "files": {
-    "main.css": "/static/css/main.b37d54eb.css",
-    "main.js": "/static/js/main.89e457b5.js",
-    "static/js/453.419a5d54.chunk.js": "/static/js/453.419a5d54.chunk.js",
+    "main.css": "/static/css/main.f11219d1.css",
+    "main.js": "/static/js/main.7bc2925b.js",
+    "static/js/453.258b012d.chunk.js": "/static/js/453.258b012d.chunk.js",
     "static/media/artVideo.mp4": "/static/media/artVideo.37bcf4bb368e0ef8ce2d.mp4",
     "static/media/DSC05371.jpg": "/static/media/DSC05371.45a3c23ef2f97bee906c.jpg",
     "static/media/DSC05356.jpg": "/static/media/DSC05356.cf6f32f54d3270476147.jpg",
+    "static/media/homepage7.jpg": "/static/media/homepage7.9a6eae115b62289dc95d.jpg",
     "static/media/DSC05481.jpg": "/static/media/DSC05481.505f1348947aedab06ae.jpg",
+    "static/media/mobileBG.png": "/static/media/mobileBG.b7485d3ac2dd2e7be361.png",
     "static/media/DSC05355.jpg": "/static/media/DSC05355.68d1dbc70f03481de359.jpg",
-    "static/media/DSC05325.jpg": "/static/media/DSC05325.d5c1e4c381377b37ef9f.jpg",
+    "static/media/homepage2.jpg": "/static/media/homepage2.e549c1ba4969c1d29414.jpg",
+    "static/media/homepage6.jpg": "/static/media/homepage6.7d1709fb6f852f4cb94d.jpg",
+    "static/media/homepagefirst.jpg": "/static/media/homepagefirst.9211bdf193b8e1961018.jpg",
     "static/media/DSC05529.jpg": "/static/media/DSC05529.17cc41de3b43aa3b6825.jpg",
+    "static/media/homepage12.jpg": "/static/media/homepage12.59e275677a37f243cd47.jpg",
+    "static/media/homepage5.jpg": "/static/media/homepage5.bfd7b8df283447051e3d.jpg",
+    "static/media/homepage10.jpg": "/static/media/homepage10.d7f4ac5658b5cd750b1f.jpg",
     "static/media/shoshiandjacob.jpeg": "/static/media/shoshiandjacob.380a1f773fa9999a2293.jpeg",
+    "static/media/homepage13.jpg": "/static/media/homepage13.ec1633e0f2f116bbea2d.jpg",
+    "static/media/homepage11.jpg": "/static/media/homepage11.42fc1c14639dde0dd660.jpg",
+    "static/media/homepagesecond.jpg": "/static/media/homepagesecond.3d03aa402c4d5016fe73.jpg",
+    "static/media/homepage1.jpg": "/static/media/homepage1.766707a2c88e407f3605.jpg",
+    "static/media/homepage3.jpg": "/static/media/homepage3.32a51162c7d470e712bd.jpg",
+    "static/media/homepage8.jpg": "/static/media/homepage8.6e97544ca4f4f7b5de91.jpg",
     "static/media/isFlag.png": "/static/media/isFlag.35bf661dd7805720e9a3.png",
     "static/media/shoshi_chayat_portrait.jpg": "/static/media/shoshi_chayat_portrait.469994281b4c51155271.jpg",
     "index.html": "/index.html",
-    "main.b37d54eb.css.map": "/static/css/main.b37d54eb.css.map",
-    "main.89e457b5.js.map": "/static/js/main.89e457b5.js.map",
-    "453.419a5d54.chunk.js.map": "/static/js/453.419a5d54.chunk.js.map"
+    "main.f11219d1.css.map": "/static/css/main.f11219d1.css.map",
+    "main.7bc2925b.js.map": "/static/js/main.7bc2925b.js.map",
+    "453.258b012d.chunk.js.map": "/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b37d54eb.css",
-    "static/js/main.89e457b5.js"
+    "static/css/main.f11219d1.css",
+    "static/js/main.7bc2925b.js"
   ]
 }

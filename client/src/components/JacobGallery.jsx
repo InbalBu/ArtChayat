@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
@@ -105,6 +106,12 @@ function JacobGallery({ language }) {
 
   return (
     <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
+      <Helmet>
+        <title>{language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Yaakov Khayat'}</title>
+        <meta name="description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Yaakov Khayat\'s works'} />
+        <meta name="keywords" content={language === 'he' ? 'יעקב חייט, גלריה, אומנות' : 'Yaakov Khayat, gallery, art'} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <div className={styles['gallery-filters']}>
         <select name="category" onChange={handleFilterChange} value={filters.category}>
           <option value="">{getCategoryLabel('all')}</option>

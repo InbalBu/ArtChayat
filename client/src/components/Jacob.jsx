@@ -1,10 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styles from '../css/Biography.module.css'; // Import CSS module
 import jacobPortrait from '../images/jacob_chayat_portrait.jpg'; // Make sure to add the image
 
 function Jacob({ language }) {
   return (
     <div className={`${language === 'he' ? styles['jacob-rtl'] : styles['jacob-ltr']}`}>
+      <Helmet>
+        <title>{language === 'he' ? 'יעקב חייט - ביוגרפיה' : 'Yaakov Khayat - Biography'}</title>
+        <meta name="description" content={language === 'he' ? 'יעקב חייט היה צייר ישראלי, חבר באגודת הציירים והפסלים תל אביב ובין התורמים להכרה ולהתפתחות של האמנות בישראל.' : 'Yaakov Khayat was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel.'} />
+        <meta name="keywords" content={language === 'he' ? 'יעקב חייט, ביוגרפיה, אומנות' : 'Yaakov Khayat, biography, art'} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <div className={styles['jacob-container']}>
         <div className={styles['jacob-content']}>
           <div className={styles['jacob-image-container']}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styles from '../css/Exhibitions.module.css'; // Import the CSS module
 
 function JacobExhibitions({ language }) {
@@ -6,6 +7,12 @@ function JacobExhibitions({ language }) {
 
   return (
     <div className={`${styles['exhibitions-container']} ${isHebrew ? styles['exhibitions-rtl'] : styles['exhibitions-ltr']}`}>
+      <Helmet>
+        <title>{isHebrew ? 'תערוכות - יעקב חייט' : 'Exhibitions - Yaakov Khayat'}</title>
+        <meta name="description" content={isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'} />
+        <meta name="keywords" content={isHebrew ? 'יעקב חייט, תערוכות, אומנות' : 'Yaakov Khayat, exhibitions, art'} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
       <p>{isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'}</p>
       <div className={styles['exhibitions-list']}>

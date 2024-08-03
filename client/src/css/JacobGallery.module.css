@@ -73,6 +73,13 @@
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller devices */
     }
+
+    .gallery-filter-button {
+        width: 100%; /* Ensure button takes full width */
+        box-sizing: border-box; /* Include padding and border in the button's total width */
+        margin: 5px 0; /* Adjust margin to avoid horizontal overflow */
+        padding: 10px; 
+    }
 }
 
 @media (max-width: 480px) {
@@ -239,4 +246,13 @@
     transform: translateY(-50%);
     pointer-events: none;
     color: #333;
+}
+
+
+/* Responsive Dropdown Styles */
+@media (max-width: 768px) {
+    .gallery-filters select {
+        width: 100%; /* Full width on smaller screens */
+        box-sizing: border-box; /* Include padding and border in the total width */
+    }
 }

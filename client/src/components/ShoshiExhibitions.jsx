@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styles from '../css/Exhibitions.module.css'; // Import the CSS module
 
 function ShoshiExhibitions({ language }) {
@@ -6,6 +7,12 @@ function ShoshiExhibitions({ language }) {
 
   return (
     <div className={`${styles['exhibitions-container']} ${isHebrew ? styles['exhibitions-rtl'] : styles['exhibitions-ltr']}`}>
+      <Helmet>
+        <title>{isHebrew ? 'תערוכות - שושי חייט' : 'Exhibitions - Shoshi Khayat'}</title>
+        <meta name="description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Khayat during her artistic career.'} />
+        <meta name="keywords" content={isHebrew ? 'שושי חייט, תערוכות, אומנות' : 'Shoshi Khayat, exhibitions, art'} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
       <p>{isHebrew ? 'במהלך הקריירה האמנותית שלה הציגה שושי חייט 27 תערוכות יחיד ועוד 36 תערוכות קבוצתיות בישראל ובעולם.' : 'During her artistic career, Shoshi Khayat presented 27 solo exhibitions and 36 group exhibitions in Israel and around the world.'}</p>
       <div className={styles['exhibitions-list']}>

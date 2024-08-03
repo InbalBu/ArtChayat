@@ -14,6 +14,7 @@ import JacobExhibitions from './components/JacobExhibitions';
 import Press from './components/Press';
 import ShoshiGallery from './components/ShoshiGallery';
 import ShoshiProductPage from './components/ShoshiProductPage';
+import Articles from './components/Articles';
 
 function App() {
   // Initialize language state from localStorage or default to 'he'
@@ -46,6 +47,7 @@ function App() {
         <Route path="/jacob/product/:id" element={<JacobProductPage language={language} />} />
         <Route path="/press" element={<Press language={language} />} />
         <Route path="/contact" element={<ContactUs language={language} />} />
+        <Route path="/articles" element={<Articles language={language} />} />
       </Routes>
       <Footer language={language} />
     </Router>

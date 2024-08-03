@@ -26,7 +26,7 @@ const Navbar = ({ language, handleLanguageToggle }) => {
         {language === 'he' ? (
           <>
             <div className={styles['navbar-right-logo']}>
-              <Link to="/" onClick={closeMenu}><img src={logoHE} alt="אמנות ישראלית Logo" /></Link>
+              <Link to="/" onClick={closeMenu}><img src={logoHE} alt="אמנות ישראלית Logo" className={styles['show']} /></Link>
             </div>
             <div className={styles['navbar-left-logo']}>
               <Link to="/" onClick={closeMenu}><img src={logoEN} alt="Israeli Art Logo" /></Link>
@@ -34,11 +34,11 @@ const Navbar = ({ language, handleLanguageToggle }) => {
           </>
         ) : (
           <>
+            <div className={styles['navbar-right-logo']}>
+              <Link to="/" onClick={closeMenu}><img src={logoHE} alt="אמנות ישראלית Logo" className={styles['show']} /></Link>
+            </div>
             <div className={styles['navbar-left-logo']}>
               <Link to="/" onClick={closeMenu}><img src={logoEN} alt="Israeli Art Logo" /></Link>
-            </div>
-            <div className={styles['navbar-right-logo']}>
-              <Link to="/" onClick={closeMenu}><img src={logoHE} alt="אמנות ישראלית Logo" /></Link>
             </div>
           </>
         )}
@@ -81,11 +81,14 @@ const Navbar = ({ language, handleLanguageToggle }) => {
             <Link to="/press" onClick={closeMenu}>{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
           </li>
           <li>
+            <Link to="/articles" onClick={closeMenu}>{language === 'he' ?  "כתבות ": 'Articles'}</Link>
+          </li>
+          <li>
             <Link to="/contact" onClick={closeMenu}>{language === 'he' ? 'צור קשר' : 'Contact'}</Link>
           </li>
           <li className={styles['navbar-language-toggle']}>
             <img
-              src={language === 'he' ? flagEN : flagHE}
+              src={language === 'he' ? flagHE : flagEN}
               alt="Toggle Language"
               onClick={() => {handleLanguageToggle(); closeMenu();}}
               className={styles['navbar-flag-icon']}

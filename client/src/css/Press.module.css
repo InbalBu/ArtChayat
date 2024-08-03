@@ -1,113 +1,133 @@
+/* Press.module.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .press-container {
   text-align: center;
   padding: 20px;
-}
-
-.press-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.press-container p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.press-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px;
   margin: 0 auto;
+  max-width: 1200px; /* Add a max-width for the container */
 }
 
-.press-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ddd;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  width: 200px;
-  height: 300px;
+header {
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+header p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 0 20px; /* Add margins to the grid */
+}
+
+.article {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   overflow: hidden;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
-.press-item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+.article:hover {
+  transform: scale(1.05);
 }
 
-.press-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
+.article img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+  header p {
+    font-size: 0.9em;
+  }
+  .article img {
+    height: 150px;
+  }
+}
+
+.modal {
+  position: relative;
+  background: white;
   padding: 20px;
   border-radius: 10px;
-  outline: none;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 80%;
+  max-height: 80%;
+  margin: auto;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.press-overlay {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.press-close-button {
+.close-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #333;
-  color: #fff;
+  background: none;
   border: none;
-  padding: 5px 10px;
+  font-size: 2em;
+  color: black;
   cursor: pointer;
-  border-radius: 50%;
+  z-index: 1001;
 }
 
-.press-nav-button {
+.arrow-button {
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: black;
+  cursor: pointer;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #333;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 1.5rem;
+  z-index: 1001;
 }
 
-.press-nav-button-prev {
+.arrow-button:nth-of-type(2) {
   left: 10px;
 }
 
-.press-nav-button-next {
+.arrow-button:nth-of-type(3) {
   right: 10px;
 }
 
-.press-modal-content {
-  text-align: center;
-}
-
-.press-modal-content img {
+.modal-image {
   max-width: 100%;
-  max-height: 90vh;
-  object-fit: contain;
+  max-height: calc(100vh - 100px); /* Ensure the image fits within the viewport */
+  margin: 20px 0;
+  z-index: 1000;
 }

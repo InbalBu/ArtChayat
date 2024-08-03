@@ -96,22 +96,30 @@
   }
 
   .about-content {
-    flex-direction: column; /* Stack text vertically */
+    flex-direction: column; /* Stack content vertically */
     align-items: center; /* Center align items */
+    padding: 10px; /* Add padding for mobile */
   }
 
   .about-text-container {
     width: 100%; /* Full width for text container */
-    text-align: center; /* Center-align text on mobile */
+    text-align: left; /* Left-align text on mobile */
     margin-bottom: 20px; /* Space between text and image */
+    padding: 0 10px; /* Add padding to the text container */
   }
 
   .about-image-container {
-    display: none; /* Hide image container on mobile */
+    width: 100%; /* Full width for image container */
+    padding: 0; /* Remove padding */
+    margin-top: 20px; /* Space above image container */
+    display: block; /* Show image container on mobile */
+    text-align: center; /* Center image container horizontally */
   }
 
   .about-image {
-    display: none; /* Hide image on mobile */
+    width: 80%; /* Ensure image is not too large on mobile */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Add border radius to image */
   }
 
   .about-rtl .about-text-container {
@@ -122,4 +130,3 @@
     text-align: left; /* Align text to the left for LTR languages */
   }
 }
-

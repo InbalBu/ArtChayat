@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import emailjs from 'emailjs-com';
 import styles from '../css/ContactUs.module.css'; // Import the CSS module
 
@@ -32,6 +33,12 @@ function ContactUs({ language }) {
 
   return (
     <div className={`${styles['contact-container']} ${isHebrew ? styles['contact-rtl'] : styles['contact-ltr']}`}>
+      <Helmet>
+        <title>{isHebrew ? 'צור קשר' : 'Contact Us'}</title>
+        <meta name="description" content={isHebrew ? 'לשאלות, פרטים ומידע נוסף פנו אלינו' : 'For questions, details, and more information, please contact us'} />
+        <meta name="keywords" content={isHebrew ? 'צור קשר, פרטים, מידע' : 'contact, details, information'} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <h2>{isHebrew ? 'לשאלות, פרטים ומידע נוסף בבקשה פנו ע"י -' : 'For questions, details, and more information, please contact us by -'}</h2>
       <p>{isHebrew ? 'טלפון:' : 'Phone:'}</p>
       <p>{isHebrew ? '053-8311215 - מיכל בוקריס' : '053-8311215 - Michal Bukris'}</p>

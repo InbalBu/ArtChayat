@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styles from '../css/ShoshiBiography.module.css'; // Ensure this CSS file is linked
 import shoshiPortrait from '../images/shoshi_chayat_portrait.jpg';
 
@@ -7,6 +8,12 @@ function Shoshi({ language }) {
 
   return (
     <div className={`${styles['shoshi-container']} ${isHebrew ? styles['shoshi-rtl'] : styles['shoshi-ltr']}`}>
+      <Helmet>
+        <title>{isHebrew ? 'שושי חייט - ביוגרפיה' : 'Shoshi Khayat - Biography'}</title>
+        <meta name="description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Khayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
+        <meta name="keywords" content={isHebrew ? 'שושי חייט, אומנות, ביוגרפיה' : 'Shoshi Khayat, art, biography'} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <div className={styles['shoshi-content']}>
         <div className={styles['shoshi-image-container']}>
           <img src={shoshiPortrait} alt="Shoshi Khayat" className={styles['shoshi-image']} />
