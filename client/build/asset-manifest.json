@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f11219d1.css",
-    "main.js": "/static/js/main.7bc2925b.js",
+    "main.css": "/static/css/main.5f474dcc.css",
+    "main.js": "/static/js/main.f4dadce4.js",
     "static/js/453.258b012d.chunk.js": "/static/js/453.258b012d.chunk.js",
     "static/media/artVideo.mp4": "/static/media/artVideo.37bcf4bb368e0ef8ce2d.mp4",
     "static/media/DSC05371.jpg": "/static/media/DSC05371.45a3c23ef2f97bee906c.jpg",
@@ -27,12 +27,12 @@
     "static/media/isFlag.png": "/static/media/isFlag.35bf661dd7805720e9a3.png",
     "static/media/shoshi_chayat_portrait.jpg": "/static/media/shoshi_chayat_portrait.469994281b4c51155271.jpg",
     "index.html": "/index.html",
-    "main.f11219d1.css.map": "/static/css/main.f11219d1.css.map",
-    "main.7bc2925b.js.map": "/static/js/main.7bc2925b.js.map",
+    "main.5f474dcc.css.map": "/static/css/main.5f474dcc.css.map",
+    "main.f4dadce4.js.map": "/static/js/main.f4dadce4.js.map",
     "453.258b012d.chunk.js.map": "/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f11219d1.css",
-    "static/js/main.7bc2925b.js"
+    "static/css/main.5f474dcc.css",
+    "static/js/main.f4dadce4.js"
   ]
 }

@@ -13,6 +13,13 @@ function Shoshi({ language }) {
         <meta name="description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Khayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
         <meta name="keywords" content={isHebrew ? 'שושי חייט, אומנות, ביוגרפיה' : 'Shoshi Khayat, art, biography'} />
         <meta name="robots" content="index, follow" />
+
+           {/* Open Graph tags */}
+           <meta property="og:title" content={isHebrew ? 'שושי חייט - ביוגרפיה' : 'Shoshi Khayat - Biography'} />
+        <meta property="og:description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Khayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
+        <meta property="og:image" content={shoshiPortrait} />
+        <meta property="og:url" content="https://artchayat.netlify.app/shoshi" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <div className={styles['shoshi-content']}>
         <div className={styles['shoshi-image-container']}>

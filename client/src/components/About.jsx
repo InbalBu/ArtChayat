@@ -11,6 +11,13 @@ function About({ language }) {
                 <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות...' : 'Art Khayat was born out of creativity and a love for art...'} />
                 <meta name="keywords" content={language === 'he' ? 'אומנות, ציור, פיסול' : 'art, painting, sculpture'} />
                 <meta name="robots" content="index, follow" />
+
+                {/* Open Graph tags */}
+                <meta property="og:title" content={language === 'he' ? 'ארט חייט - מציירים סיפור אהבה' : 'Art Khayat - Painting a Love Story'} />
+                <meta property="og:description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות...' : 'Art Khayat was born out of creativity and a love for art...'} />
+                <meta property="og:image" content={shoshiAndJacob} />
+                <meta property="og:url" content="https://artchayat.netlify.app/about" />
+                <meta property="og:type" content="website" />
             </Helmet>
             <video autoPlay loop muted className={styles['about-background-video']}>
                 <source src="" type="video/mp4" />

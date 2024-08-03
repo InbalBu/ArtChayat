@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
 import styles from '../css/JacobGallery.module.css'; // Import the CSS module
+import logoEN from '../images/logoEN.png';
 
 function JacobGallery({ language }) {
   const [products, setProducts] = useState([]);
@@ -111,6 +112,13 @@ function JacobGallery({ language }) {
         <meta name="description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Yaakov Khayat\'s works'} />
         <meta name="keywords" content={language === 'he' ? 'יעקב חייט, גלריה, אומנות' : 'Yaakov Khayat, gallery, art'} />
         <meta name="robots" content="index, follow" />
+
+         {/* Open Graph tags */}
+         <meta property="og:title" content={language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Yaakov Khayat'} />
+        <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Yaakov Khayat\'s works'} />
+        <meta property="og:image" content={logoEN} />
+        <meta property="og:url" content="https://artchayat.netlify.app/jacob/gallery" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <div className={styles['gallery-filters']}>
         <select name="category" onChange={handleFilterChange} value={filters.category}>

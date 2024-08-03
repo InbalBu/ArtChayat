@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styles from '../css/Exhibitions.module.css'; // Import the CSS module
+import logoEN from '../images/logoEN.png';
 
 function ShoshiExhibitions({ language }) {
   const isHebrew = language === 'he';
@@ -12,6 +13,13 @@ function ShoshiExhibitions({ language }) {
         <meta name="description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Khayat during her artistic career.'} />
         <meta name="keywords" content={isHebrew ? 'שושי חייט, תערוכות, אומנות' : 'Shoshi Khayat, exhibitions, art'} />
         <meta name="robots" content="index, follow" />
+
+        {/* Open Graph tags */}
+        <meta property="og:title" content={isHebrew ? 'תערוכות - שושי חייט' : 'Exhibitions - Shoshi Khayat'} />
+        <meta property="og:description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Khayat during her artistic career.'} />
+        <meta property="og:image" content={logoEN} />
+        <meta property="og:url" content="https://artchayat.netlify.app/shoshi-exhibitions" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
       <p>{isHebrew ? 'במהלך הקריירה האמנותית שלה הציגה שושי חייט 27 תערוכות יחיד ועוד 36 תערוכות קבוצתיות בישראל ובעולם.' : 'During her artistic career, Shoshi Khayat presented 27 solo exhibitions and 36 group exhibitions in Israel and around the world.'}</p>

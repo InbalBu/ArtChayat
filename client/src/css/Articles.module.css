@@ -108,3 +108,27 @@
   direction: ltr;
   text-align: left;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .articlesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .image {
+    height: 200px;
+  }
+
+  .card {
+    margin: 0 1rem;
+  }
+}

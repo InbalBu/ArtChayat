@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styles from '../css/Articles.module.css';
+import logoEN from '../images/logoEN.png';
 
 const articles = [
   {
@@ -52,6 +53,13 @@ const Articles = ({ language }) => (
       <meta name="description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
       <meta name="keywords" content={language === 'he' ? 'אמנות, מאמרים, תערוכה' : 'art, articles, exhibition'} />
       <meta name="robots" content="index, follow" />
+
+      {/* Open Graph tags */}
+      <meta property="og:title" content={language === 'he' ? 'מאמרים' : 'Articles'} />
+      <meta property="og:description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
+      <meta property="og:image" content={logoEN} />
+      <meta property="og:url" content="https://artchayat.netlify.app/articles" />
+      <meta property="og:type" content="website" />
     </Helmet>
     <header className={styles.header}>
       <h1>{language === 'he' ? 'מאמרים' : 'Articles'}</h1>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styles from '../css/Exhibitions.module.css'; // Import the CSS module
+import logoEN from '../images/logoEN.png';
 
 function JacobExhibitions({ language }) {
   const isHebrew = language === 'he';
@@ -12,6 +13,13 @@ function JacobExhibitions({ language }) {
         <meta name="description" content={isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'} />
         <meta name="keywords" content={isHebrew ? 'יעקב חייט, תערוכות, אומנות' : 'Yaakov Khayat, exhibitions, art'} />
         <meta name="robots" content="index, follow" />
+
+         {/* Open Graph tags */}
+         <meta property="og:title" content={isHebrew ? 'תערוכות - יעקב חייט' : 'Exhibitions - Yaakov Khayat'} />
+        <meta property="og:description" content={isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'} />
+        <meta property="og:image" content={logoEN} />
+        <meta property="og:url" content="https://artchayat.netlify.app/jacob/exhibitions" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
       <p>{isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'}</p>

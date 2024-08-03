@@ -47,6 +47,13 @@ function JacobProductPage({ language }) {
         <meta name="description" content={language === 'he' ? `פרטים אודות יצירתו של יעקב חייט בשם ${product.name}.` : `Details about the artwork by Yaakov Khayat named ${product.name}.`} />
         <meta name="keywords" content={language === 'he' ? `יעקב חייט, אומנות, ${product.name}` : `Yaakov Khayat, art, ${product.name}`} />
         <meta name="robots" content="index, follow" />
+
+        {/* Open Graph tags */}
+        <meta property="og:title" content={language === 'he' ? `${product.name} - יעקב חייט` : `${product.name} - Yaakov Khayat`} />
+        <meta property="og:description" content={language === 'he' ? `פרטים אודות יצירתו של יעקב חייט בשם ${product.name}.` : `Details about the artwork by Yaakov Khayat named ${product.name}.`} />
+        <meta property="og:image" content={product.imageURL} />
+        <meta property="og:url" content={`https://artchayat.netlify.app/jacob/product/${id}`} />
+        <meta property="og:type" content="article" />
       </Helmet>
       <div className={`${styles.productGrid} ${language === 'he' ? styles.rtl : styles.ltr}`}>
         <div className={styles.productImage} onClick={handleImageClick}>

@@ -11,6 +11,13 @@ function Jacob({ language }) {
         <meta name="description" content={language === 'he' ? 'יעקב חייט היה צייר ישראלי, חבר באגודת הציירים והפסלים תל אביב ובין התורמים להכרה ולהתפתחות של האמנות בישראל.' : 'Yaakov Khayat was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel.'} />
         <meta name="keywords" content={language === 'he' ? 'יעקב חייט, ביוגרפיה, אומנות' : 'Yaakov Khayat, biography, art'} />
         <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph tags */}
+        <meta property="og:title" content={language === 'he' ? 'יעקב חייט - ביוגרפיה' : 'Yaakov Khayat - Biography'} />
+        <meta property="og:description" content={language === 'he' ? 'יעקב חייט היה צייר ישראלי, חבר באגודת הציירים והפסלים תל אביב ובין התורמים להכרה ולהתפתחות של האמנות בישראל.' : 'Yaakov Khayat was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel.'} />
+        <meta property="og:image" content={jacobPortrait} />
+        <meta property="og:url" content="https://artchayat.netlify.app/jacob/biography" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <div className={styles['jacob-container']}>
         <div className={styles['jacob-content']}>

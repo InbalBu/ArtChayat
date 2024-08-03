@@ -44,6 +44,13 @@ function Press({ language }) {
         <meta name="description" content={language === 'he' ? 'מה נכתב על שושי ויעקב חייט ז"ל בעיתונות' : 'What was written about Shoshi and Yaacov Khayat z"l in the press'} />
         <meta name="keywords" content={language === 'he' ? 'שושי חייט, יעקב חייט, עיתונות, אומנות' : 'Shoshi Khayat, Yaacov Khayat, press, art'} />
         <meta name="robots" content="index, follow" />
+
+        {/* Open Graph tags */}
+        <meta property="og:title" content={language === 'he' ? 'מן העיתונות - שושי ויעקב חייט' : 'From the Press - Shoshi and Yaacov Khayat'} />
+        <meta property="og:description" content={language === 'he' ? 'מה נכתב על שושי ויעקב חייט ז"ל בעיתונות' : 'What was written about Shoshi and Yaacov Khayat z"l in the press'} />
+        <meta property="og:image" content={images[0]} />
+        <meta property="og:url" content="https://artchayat.netlify.app/press" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <header>
         <h1>{language === 'he' ? 'מן העיתונות' : 'From the Press'}</h1>

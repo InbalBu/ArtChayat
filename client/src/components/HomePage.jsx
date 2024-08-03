@@ -30,6 +30,13 @@ function HomePage({ language }) {
         painting1, painting2, painting3, painting4, painting5, painting6, painting7, painting8, painting10, painting11, painting12, painting13, painting14, painting15, painting16, painting17, painting18, painting19
     ];
 
+    const getRandomImage = () => {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex];
+    };
+
+    const randomImage = getRandomImage();
+
     useEffect(() => {
         const fullText = language === 'he'
             ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
@@ -79,6 +86,19 @@ function HomePage({ language }) {
                 <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
                 <meta name="keywords" content={language === 'he' ? 'אומנות, אהבה, יצירה' : 'art, love, creation'} />
                 <meta name="robots" content="index, follow" />
+
+                {/* Open Graph tags */}
+                <meta property="og:title" content={language === 'he' ? 'ארט חייט - דף הבית' : 'Art Chayat - Home'} />
+                <meta property="og:description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
+                <meta property="og:image" content={randomImage} />
+                <meta property="og:url" content="https://artchayat.netlify.app/" />
+                <meta property="og:type" content="website" />
+
+                {/* Twitter Card tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={language === 'he' ? 'ארט חייט - דף הבית' : 'Art Chayat - Home'} />
+                <meta name="twitter:description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
+                <meta name="twitter:image" content={randomImage} />
             </Helmet>
             <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
                 <video

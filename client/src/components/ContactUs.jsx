@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import emailjs from 'emailjs-com';
 import styles from '../css/ContactUs.module.css'; // Import the CSS module
+import logoEN from '../images/logoEN.png';
 
 function ContactUs({ language }) {
   const [formData, setFormData] = useState({
@@ -38,6 +39,13 @@ function ContactUs({ language }) {
         <meta name="description" content={isHebrew ? 'לשאלות, פרטים ומידע נוסף פנו אלינו' : 'For questions, details, and more information, please contact us'} />
         <meta name="keywords" content={isHebrew ? 'צור קשר, פרטים, מידע' : 'contact, details, information'} />
         <meta name="robots" content="index, follow" />
+
+        {/* Open Graph tags */}
+        <meta property="og:title" content={isHebrew ? 'צור קשר' : 'Contact Us'} />
+        <meta property="og:description" content={isHebrew ? 'לשאלות, פרטים ומידע נוסף פנו אלינו' : 'For questions, details, and more information, please contact us'} />
+        <meta property="og:image" content={logoEN} />
+        <meta property="og:url" content="https://artchayat.netlify.app/contact" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <h2>{isHebrew ? 'לשאלות, פרטים ומידע נוסף בבקשה פנו ע"י -' : 'For questions, details, and more information, please contact us by -'}</h2>
       <p>{isHebrew ? 'טלפון:' : 'Phone:'}</p>
