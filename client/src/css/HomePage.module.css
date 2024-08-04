@@ -19,7 +19,7 @@
     min-width: 100%;
     min-height: 100%;
     z-index: -1; /* Ensure video stays behind content */
-    object-fit: cover; /* Cover the entire container */
+    object-fit:contain; /* Cover the entire container */
     filter: brightness(0.6); /* Slightly darker video for better text contrast */
     transition: top 0.5s ease-out, height 0.5s ease-out;
 }
@@ -38,6 +38,7 @@
     font-size: 2.5rem; /* Adjust title font size */
     margin-bottom: 20px; /* Space below the title */
     animation: slideIn 1s forwards; /* Slide-in effect for the title */
+    font-weight: lighter;
 }
 
 .homepage-video-text p {

@@ -10,8 +10,8 @@ function Footer({ language }) {
         <footer className={styles.footer} dir={language === 'he' ? 'rtl' : 'ltr'}>
             <Helmet>
                 <title>{language === 'he' ? 'ארט חייט | ArtChayat' : 'Art Chayat'}</title>
-                <meta name="description" content={language === 'he' ? 'עקבו אחרינו ברשתות החברתיות ולמדו עוד על האומנים שושי ויעקב חייט.' : 'Follow us on social media and learn more about the artists Shoshi and Yaakov Khayat.'} />
-                <meta name="keywords" content={language === 'he' ? 'אומנות, רשתות חברתיות, שושי חייט, יעקב חייט' : 'art, social media, Shoshi Hayat, Yaakov Khayat'} />
+                <meta name="description" content={language === 'he' ? 'עקבו אחרינו ברשתות החברתיות ולמדו עוד על האומנים שושי ויעקב חייט.' : 'Follow us on social media and learn more about the artists Shoshi and Yaakov Chayat.'} />
+                <meta name="keywords" content={language === 'he' ? 'אומנות, רשתות חברתיות, שושי חייט, יעקב חייט' : 'art, social media, Shoshi Hayat, Yaakov Chayat'} />
                 <meta name="robots" content="index, follow" />
             </Helmet>
             <div className={styles['footer-content']}>
@@ -20,8 +20,8 @@ function Footer({ language }) {
                 <div className={styles['footer-links']}>
                     <Link to="/">{language === 'he' ? 'בית' : 'Home'}</Link>
                     <Link to="/about">{language === 'he' ? 'אודות' : 'About'}</Link>
-                    <Link to="/shoshi">{language === 'he' ? 'שושי חייט' : 'Shoshi Hayat'}</Link>
-                    <Link to="/jacob">{language === 'he' ? 'יעקב חייט' : 'Jacob Hayat'}</Link>
+                    <Link to="/shoshi">{language === 'he' ? 'שושי חייט' : 'Shoshi Chayat'}</Link>
+                    <Link to="/jacob">{language === 'he' ? 'יעקב חייט' : 'Jacob Chayat'}</Link>
                     <Link to="/press">{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
                     <Link to="/articles">{language === 'he' ? 'כתבות' : 'Articles'}</Link>
                     <Link to="/contact">{language === 'he' ? 'צור קשר' : 'Contact'}</Link>

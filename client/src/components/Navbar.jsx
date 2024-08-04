@@ -64,7 +64,7 @@ const Navbar = ({ language, handleLanguageToggle }) => {
             <Link to="/about" onClick={closeMenu}>{language === 'he' ? 'אודות' : 'About'}</Link>
           </li>
           <li onMouseEnter={() => setShowDropdownShoshi(true)} onMouseLeave={() => setShowDropdownShoshi(false)} onClick={toggleDropdownShoshi}>
-            <Link to="#" onClick={(e) => e.preventDefault()}>{language === 'he' ? 'שושי חייט' : 'Shoshi Hayat'}
+            <Link to="#" onClick={(e) => e.preventDefault()}>{language === 'he' ? 'שושי חייט' : 'Shoshi Chayat'}
               <span className={`${styles['dropdown-arrow']} ${showDropdownShoshi ? styles['open'] : ''}`}>&#9662;</span>
             </Link>
             {showDropdownShoshi && (
@@ -76,7 +76,7 @@ const Navbar = ({ language, handleLanguageToggle }) => {
             )}
           </li>
           <li onMouseEnter={() => setShowDropdownJacob(true)} onMouseLeave={() => setShowDropdownJacob(false)} onClick={toggleDropdownJacob}>
-            <Link to="#" onClick={(e) => e.preventDefault()}>{language === 'he' ? 'יעקב חייט' : 'Jacob Hayat'}
+            <Link to="#" onClick={(e) => e.preventDefault()}>{language === 'he' ? 'יעקב חייט' : 'Jacob Chayat'}
               <span className={`${styles['dropdown-arrow']} ${showDropdownJacob ? styles['open'] : ''}`}>&#9662;</span>
             </Link>
             {showDropdownJacob && (

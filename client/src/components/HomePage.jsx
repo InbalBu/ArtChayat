@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import styles from '../css/HomePage.module.css';
-import video from "../images/artVideo.mp4";
+import video from "../images/artNewcut.mp4";
 import painting1 from '../images/homepagefirst.jpg';
 import painting2 from '../images/homepagesecond.jpg';
 import painting3 from '../images/homepage5.jpg';
@@ -40,7 +40,7 @@ function HomePage({ language }) {
     useEffect(() => {
         const fullText = language === 'he'
             ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
-            : 'Painting, A Love Story | The Artists Shoshi and Jacob Hayat';
+            : 'Painting, A Love Story | The Artists Shoshi and Jacob Chayat';
         
         setText(fullText);
     }, [language]);
@@ -129,8 +129,8 @@ function HomePage({ language }) {
                         </>
                     ) : (
                         <>
-                            <p>Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.</p>
-                            <p>Nice to meet you: we are Michal Bokris and Riki Hayat, their daughters, owners of Art Hayat Ltd., and managers of the collection of works they left behind.</p>
+                            <p>Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Chayat.</p>
+                            <p>Nice to meet you: we are Michal Bokris and Riki Chayat, their daughters, owners of Art Hayat Ltd., and managers of the collection of works they left behind.</p>
                             <p>Many of their works are displayed in galleries and among art collectors in Israel and abroad. The collection offered for sale includes many diverse artworks from different periods and showcases the personal journey each artist went through separately, reflecting 50 years of creation, love, and partnership.</p>
                             <p>We invite you to enter the online gallery and choose the artwork that will bring color and love to your home. Each piece tells its own story and combines textures, emotions, and colors.</p>
                             <p>Enter, get excited, and fall in love with the works of the Israeli artist couple.</p>
@@ -164,5 +164,21 @@ function HomePage({ language }) {
         </div>
     );
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('.homepage-video-bg');
+    const resizeVideo = () => {
+        if (video.videoWidth / video.videoHeight > window.innerWidth / window.innerHeight) {
+            video.style.width = '100%';
+            video.style.height = 'auto';
+        } else {
+            video.style.width = 'auto';
+            video.style.height = '100%';
+        }
+    };
+    resizeVideo();
+    window.addEventListener('resize', resizeVideo);
+});
+
 
 export default HomePage;

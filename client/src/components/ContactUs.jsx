@@ -50,7 +50,7 @@ function ContactUs({ language }) {
       <h2>{isHebrew ? 'לשאלות, פרטים ומידע נוסף בבקשה פנו ע"י -' : 'For questions, details, and more information, please contact us by -'}</h2>
       <p>{isHebrew ? 'טלפון:' : 'Phone:'}</p>
       <p>{isHebrew ? '053-8311215 - מיכל בוקריס' : '053-8311215 - Michal Bukris'}</p>
-      <p>{isHebrew ? '052-6652571 - ריקי חייט' : '052-6652571 - Riki Khayat'}</p>
+      <p>{isHebrew ? '052-6652571 - ריקי חייט' : '052-6652571 - Riki Chayat'}</p>
       <p>{isHebrew ? 'או מלאו את הטופס ונדאג ליצור אתכם קשר בהקדם.' : 'Or fill out the form and we will get back to you as soon as possible.'}</p>
       
       <form onSubmit={handleSubmit} className={styles['contact-form']}>
