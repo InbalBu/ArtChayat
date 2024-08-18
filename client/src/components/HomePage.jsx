@@ -120,18 +120,20 @@ function HomePage({ language }) {
                     <h1 className={isMobile ? styles['typing-effect'] : ''}>{text}</h1>
                     {language === 'he' ? (
                         <>
-                            <p>מציירים, סיפור אהבה : זוג האמנים, שושי ויעקב חייט ז"ל.</p>
-                            <p>ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.</p>
+                            <p>ארט חייט נולד מתוך יצירה ואהבה לאומנות, משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האומנים שושי ויעקב חייט ז"ל.</p>
                             <p>נעים להכיר: אנחנו, מיכל בוקריס וריקי חייט, בנותיהם, בעלים של חב' ארט חייט ומנהלות את אוסף היצירות שהותירו אחריהם.</p>
-                            <p>רבות מיצירותיהם מוצגות בגלריות ובקרב אספני אומנות בישראל ובחו"ל. האוסף שמוצע למכירה, כולל יצירות אומנות רבות ומגוונות מתקופות שונות ומציג את המסע האישי שכל אמן עבר בנפרד ומשקף 50 שנות יצירה, אהבה וזוגיות.</p>
-                            <p>אנו מזמינות אתכם, להיכנס לגלריה המקוונת ולבחור את היצירה שתכניס לביתכם צבע ואהבה. כל יצירה מספרת סיפור משלה ומשלבת טקסטורות, רגשות וצבעים.</p>
+                            <p>רבות מיצירותיהם מוצגות בגלריות ובקרב אספני אומנות בישראל ובחו"ל.</p>
+                            <p>האוסף שמוצע למכירה באתר, כולל יצירות אומנות רבות ומגוונות מתקופות שונות ומציג את המסע האישי שכל אמן עבר בנפרד ומשקף 50 שנות יצירה, אהבה וזוגיות.</p>
+                            <p>אנו מזמינות אתכם, להיכנס לגלריה המקוונת ולבחור את היצירה שתכניס לביתכם צבע ואהבה.</p>
+                            <p>כל יצירה מספרת סיפור משלה ומשלבת טקסטורות, רגשות וצבעים.</p>
                             <p>היכנסו, התרגשו והתאהבו ביצירותיהם של זוג האמנים הישראלי.</p>
                         </>
                     ) : (
                         <>
-                            <p>Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Chayat.</p>
+                            <p>Art Chayat was born out of creation and a love for art, Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Chayat.</p>
                             <p>Nice to meet you: we are Michal Bokris and Riki Chayat, their daughters, owners of Art Hayat Ltd., and managers of the collection of works they left behind.</p>
-                            <p>Many of their works are displayed in galleries and among art collectors in Israel and abroad. The collection offered for sale includes many diverse artworks from different periods and showcases the personal journey each artist went through separately, reflecting 50 years of creation, love, and partnership.</p>
+                            <p>Many of their works are displayed in galleries and among art collectors in Israel and abroad.</p>
+                            <p>The collection offered for sale includes many diverse artworks from different periods and showcases the personal journey each artist went through separately, reflecting 50 years of creation, love, and partnership.</p>
                             <p>We invite you to enter the online gallery and choose the artwork that will bring color and love to your home. Each piece tells its own story and combines textures, emotions, and colors.</p>
                             <p>Enter, get excited, and fall in love with the works of the Israeli artist couple.</p>
                         </>
@@ -140,7 +142,7 @@ function HomePage({ language }) {
             </div>
 
             <div className={styles['homepage-gallery']}>
-                <h2 className='gridTitle'>{language === 'he' ? 'עבודות אמנות נבחרות' : 'Selected Artworks'}</h2>
+                <h2 className='gridTitle'>{language === 'he' ? 'עבודות אומנות נבחרות' : 'Selected Artworks'}</h2>
                 <div className={styles['homepage-grid']}>
                     {images.map((image, index) => (
                         <img

@@ -56,7 +56,7 @@ function JacobGallery({ language }) {
         setError('Failed to fetch products.');
       });
   }, [language]);
-  
+
   useEffect(() => {
     const filtered = products.filter(product => {
       const matchesCategory = filters.category === '' || product.category === getCategoryLabel(filters.category);
@@ -113,8 +113,8 @@ function JacobGallery({ language }) {
         <meta name="keywords" content={language === 'he' ? 'יעקב חייט, גלריה, אומנות' : 'Yaakov Khayat, gallery, art'} />
         <meta name="robots" content="index, follow" />
 
-         {/* Open Graph tags */}
-         <meta property="og:title" content={language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Yaakov Khayat'} />
+        {/* Open Graph tags */}
+        <meta property="og:title" content={language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Yaakov Khayat'} />
         <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Yaakov Khayat\'s works'} />
         <meta property="og:image" content={logoEN} />
         <meta property="og:url" content="https://artchayat.netlify.app/jacob/gallery" />
@@ -151,9 +151,11 @@ function JacobGallery({ language }) {
                       <div className={styles['gallery-product-info']}>
                         <div className={styles['gallery-product-name']}>{product.name}</div>
                         <div className={styles['gallery-product-price']}>
-                          {price === 0 
-                            ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span> 
-                            : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
+                          {price === 0
+                            ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span>
+                            : price === 1
+                              ? <span className={styles['gallery-sold']}>{language === 'he' ? 'נמכר' : 'Sold'}</span>
+                              : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
                           }
                         </div>
                         <div className={styles['gallery-product-size']}>{language === 'he' ? 'גודל:' : 'Size:'} {product.size}</div>

@@ -153,6 +153,12 @@
     font-weight: bold;
 }
 
+/* Sold Style */
+.gallery-sold {
+    color: red;
+    font-weight: bold;
+}
+
 /* Scroll to Top Button Styles */
 .gallery-scroll-to-top {
     position: fixed;

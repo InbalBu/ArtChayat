@@ -30,7 +30,6 @@
     align-items: center; /* Center align items */
     justify-content: center; /* Center content vertically */
     padding: 20px;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better text readability */
     border-radius: 10px; /* Rounded corners */
 }
 
@@ -43,7 +42,7 @@
 
 .homepage-video-text p {
     font-size: 1.2rem; /* Adjust paragraph font size */
-    line-height: 1.6; /* Adjust line height */
+    line-height: 1; /* Adjust line height */
     margin-bottom: 10px; /* Space between paragraphs */
     opacity: 0;
     animation: homepage-fadeIn 0.5s forwards;
@@ -55,6 +54,7 @@
 .homepage-video-text p:nth-child(5) { animation-delay: 2s; }
 .homepage-video-text p:nth-child(6) { animation-delay: 2.5s; }
 .homepage-video-text p:nth-child(7) { animation-delay: 3s; }
+.homepage-video-text p:nth-child(8) { animation-delay: 3.5s; }
 
 @keyframes homepage-fadeIn {
     from { opacity: 0; }
@@ -157,10 +157,18 @@
 }
 
 .homepage-close {
-    color: white;
-    font-size: 2rem;
     position: absolute;
-    top: 15px;
-    right: 25px;
+    top: 10px;
+    right: 10px;
+    font-size: 36px; /* Adjusted to fit inside the square */
     cursor: pointer;
+    color: white; /* Higher contrast color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    width: 30px; /* Sets the width */
+    height: 30px; /* Sets the height, making it a square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white; /* Adds a border for visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
 }

@@ -1,7 +1,7 @@
 .footer {
     background-color: black;
     color: white;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
 }
 
@@ -40,3 +40,15 @@
 .social-media a:hover {
     color: #ccc; /* Changes the color on hover */
 }
+
+.footer-signature {
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+    margin-top: 20px; /* Optional: Adds space between the social media links and the signature */
+}
+
+.footer-signature img {
+    max-width: 20%; /* Ensures the image doesn't exceed the container width */
+    height: auto;
+}
+

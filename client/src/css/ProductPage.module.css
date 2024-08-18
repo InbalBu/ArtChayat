@@ -78,10 +78,20 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 24px;
+  font-size: 36px; /* Adjusted to fit inside the square */
   cursor: pointer;
-  color: white;
+  color: white; /* Higher contrast color */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  width: 30px; /* Sets the width */
+  height: 30px; /* Sets the height, making it a square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white; /* Adds a border for visibility */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
 }
+
+
 
 .notForSale {
   color: red;

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import styles from '../css/Footer.module.css'; // Import the CSS module
+import signature from '../images/signature.jpg'; // Ensure the image is imported
 
 function Footer({ language }) {
     return (
@@ -37,6 +38,9 @@ function Footer({ language }) {
                     <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faTwitter} />
                     </a>
+                </div>
+                <div className={styles['footer-signature']}>
+                    <img src={signature} alt="Signature" />
                 </div>
             </div>
         </footer>

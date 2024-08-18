@@ -35,7 +35,7 @@ header p {
 }
 
 .article {
-  background-color: white;
+  background-color: red;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -67,7 +67,7 @@ header p {
 
 .modal {
   position: relative;
-  background: white;
+  background: red;
   padding: 20px;
   border-radius: 10px;
   max-width: 80%;
