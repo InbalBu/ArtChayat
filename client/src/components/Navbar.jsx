@@ -94,6 +94,9 @@ const Navbar = ({ language, handleLanguageToggle }) => {
             <Link to="/articles" onClick={closeMenu}>{language === 'he' ?  "כתבות ": 'Articles'}</Link>
           </li>
           <li>
+            <Link to="/personalGallery" onClick={closeMenu}>{language === 'he' ?  "גלריה מזווית אישית ": 'Gallery From Personal Angle'}</Link>
+          </li>
+          <li>
             <Link to="/contact" onClick={closeMenu}>{language === 'he' ? 'צור קשר' : 'Contact'}</Link>
           </li>
           <li className={styles['navbar-language-toggle']}>

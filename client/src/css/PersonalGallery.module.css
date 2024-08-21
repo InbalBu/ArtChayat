@@ -1,0 +1,104 @@
+.homepage-gallery {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.homepage-grid {
+    column-count: 4;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.homepage-grid-item {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.homepage-grid img {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.homepage-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.image-description {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.homepage-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.homepage-modal-content {
+    position: relative;
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.homepage-modal img {
+    max-width: 80vw;  /* Make sure the image doesn't exceed 80% of the viewport width */
+    max-height: 80vh; /* Make sure the image doesn't exceed 80% of the viewport height */
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+.homepage-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 36px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-description {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Responsive Styles for Smaller Devices */
+@media (max-width: 1024px) { /* For tablets and smaller PCs */
+    .homepage-modal img {
+        max-width: 70vw; /* Slightly larger image for smaller devices */
+        max-height: 70vh;
+    }
+  
+    .homepage-close {
+        font-size: 28px; /* Slightly smaller close button for smaller screens */
+        width: 25px;
+        height: 25px;
+    }
+  }

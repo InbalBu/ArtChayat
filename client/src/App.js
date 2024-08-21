@@ -15,6 +15,7 @@ import Press from './components/Press';
 import ShoshiGallery from './components/ShoshiGallery';
 import ShoshiProductPage from './components/ShoshiProductPage';
 import Articles from './components/Articles';
+import PersonalGallery from './components/PersonalGallery';
 
 function App() {
   // Initialize language state from localStorage or default to 'he'
@@ -48,6 +49,7 @@ function App() {
         <Route path="/press" element={<Press language={language} />} />
         <Route path="/contact" element={<ContactUs language={language} />} />
         <Route path="/articles" element={<Articles language={language} />} />
+        <Route path="/personalGallery" element={<PersonalGallery language={language} />} />
       </Routes>
       <Footer language={language} />
     </Router>

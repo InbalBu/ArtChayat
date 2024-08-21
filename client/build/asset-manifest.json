@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c8c433a4.css",
-    "main.js": "/static/js/main.7bb4474b.js",
+    "main.css": "/static/css/main.ac3f2087.css",
+    "main.js": "/static/js/main.6f9ffaef.js",
     "static/js/453.258b012d.chunk.js": "/static/js/453.258b012d.chunk.js",
     "static/media/artNewcut.mp4": "/static/media/artNewcut.9fd38d8aaada4fd5e354.mp4",
     "static/media/DSC05371.jpg": "/static/media/DSC05371.45a3c23ef2f97bee906c.jpg",
@@ -19,8 +19,13 @@
     "static/media/homepage10.jpg": "/static/media/homepage10.d7f4ac5658b5cd750b1f.jpg",
     "static/media/shoshiandjacob.jpeg": "/static/media/shoshiandjacob.380a1f773fa9999a2293.jpeg",
     "static/media/homepage13.jpg": "/static/media/homepage13.ec1633e0f2f116bbea2d.jpg",
+    "static/media/personalGallery2.jpg": "/static/media/personalGallery2.c61d0dd979fd7c051355.jpg",
+    "static/media/personalGallery1.jpg": "/static/media/personalGallery1.d910541db63d0de03686.jpg",
+    "static/media/personalGallery5.jpg": "/static/media/personalGallery5.23dbfe823036bf3f768d.jpg",
     "static/media/homepage11.jpg": "/static/media/homepage11.42fc1c14639dde0dd660.jpg",
     "static/media/homepagesecond.jpg": "/static/media/homepagesecond.3d03aa402c4d5016fe73.jpg",
+    "static/media/personalGallery3.jpg": "/static/media/personalGallery3.5381f6f5eec6a000a64c.jpg",
+    "static/media/personalGallery4.jpg": "/static/media/personalGallery4.aaa4af3582cefbdaf90e.jpg",
     "static/media/homepage1.jpg": "/static/media/homepage1.766707a2c88e407f3605.jpg",
     "static/media/homepage3.jpg": "/static/media/homepage3.32a51162c7d470e712bd.jpg",
     "static/media/homepage8.jpg": "/static/media/homepage8.6e97544ca4f4f7b5de91.jpg",
@@ -28,12 +33,12 @@
     "static/media/isFlag.png": "/static/media/isFlag.35bf661dd7805720e9a3.png",
     "static/media/shoshi_chayat_portrait.jpg": "/static/media/shoshi_chayat_portrait.469994281b4c51155271.jpg",
     "index.html": "/index.html",
-    "main.c8c433a4.css.map": "/static/css/main.c8c433a4.css.map",
-    "main.7bb4474b.js.map": "/static/js/main.7bb4474b.js.map",
+    "main.ac3f2087.css.map": "/static/css/main.ac3f2087.css.map",
+    "main.6f9ffaef.js.map": "/static/js/main.6f9ffaef.js.map",
     "453.258b012d.chunk.js.map": "/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8c433a4.css",
-    "static/js/main.7bb4474b.js"
+    "static/css/main.ac3f2087.css",
+    "static/js/main.6f9ffaef.js"
   ]
 }

@@ -22,7 +22,7 @@ function Shoshi({ language }) {
         <meta property="og:type" content="website" />
       </Helmet>
       <div className={styles['shoshi-content']}>
-      <div className={`${styles['shoshi-image-container']} ${isHebrew ? styles['shoshi-image-container-rtl'] : styles['shoshi-image-container-ltr']}`}>
+        <div className={`${styles['shoshi-image-container']} ${isHebrew ? styles['shoshi-image-container-rtl'] : styles['shoshi-image-container-ltr']}`}>
           <img src={shoshiPortrait} alt="Shoshi Khayat" className={styles['shoshi-image']} />
         </div>
         <div className={styles['shoshi-text-container']}>
@@ -30,16 +30,16 @@ function Shoshi({ language }) {
           <h2>{isHebrew ? 'ביוגרפיה' : 'Biography'}</h2>
           <p>
             {isHebrew
-              ? 'נולדה למשפחת גולדמן, דור שני לשואה בעיר קלוז\' בטרנסליבניה, רומניה. בשנת 1950 עלתה לישראל. חיי ילדותה ונערותה היו קשים מנשוא היות שאביה נטש אותה בהיותה תינוקת ואמה התאבדה כשהייתה נערה בת 12. ובשנת 1964 נישאה לצייר יעקב חייט. לזוג שתי בנות.'
-              : 'Born to the Goldman family, a second generation Holocaust survivor in Cluj, Transylvania, Romania. In 1950, she immigrated to Israel. Her childhood and youth were unbearably difficult as her father abandoned her as a baby and her mother committed suicide when she was a 12-year-old girl. In 1964, she married the painter Yaakov Khayat. The couple has two daughters.'
+              ? 'נולדה למשפחת גולדמן, דור שני לשואה בעיר קלוז\' בטרנסליבניה, רומניה. בשנת 1950 עלתה לישראל. חיי ילדותה ונערותה היו קשים מנשוא היות שאביה נטש אותה בהיותה תינוקת ואמה התאבדה כשהייתה נערה בת 12. בשנת 1964 נישאה לצייר יעקב חייט. לזוג שתי בנות ו5 נכדים.'
+              : 'Born to the Goldman family, a second generation Holocaust survivor in Cluj, Transylvania, Romania. In 1950, she immigrated to Israel. Her childhood and youth were unbearably difficult as her father abandoned her as a baby and her mother committed suicide when she was a 12-year-old girl. In 1964, she married the painter Yaakov Khayat. The couple has two daughters and 5 grandchildren.'
             }
           </p>
-          
+
           <h2>{isHebrew ? 'לימודים' : 'Education'}</h2>
           <p>
             {isHebrew
-              ? '1961-1964 - לימודי אמנות בויצו צרפת. בין מוריה היו היוצרים: אלכסנדר בוגן, שמואל טפלר, משה רוזנטליס, ויצחק יורש.'
-              : '1961-1964 - Art studies at WIZO France. Among her teachers were creators: Alexander Bogen, Shmuel Tefler, Moshe Rosenthalis, and Yitzhak Yuresh.'
+              ? '1961-1964 - לימודי אמנות בויצו צרפת. בין מוריה היו האומנים והציירים: אלכסנדר בוגן, שמואל טפלר, משה רוזנטליס, ויצחק יורש.'
+              : '1961-1964 - Art studies at WIZO France. Among her teachers were the artists and painters: Alexander Bogen, Shmuel Tefler, Moshe Rosenthalis, and Yitzhak Yuresh.'
             }
           </p>
           <p>
@@ -48,7 +48,7 @@ function Shoshi({ language }) {
               : '1984-1986 - Sculpture studies at the Bat Yam Art Institute. Main teacher: sculptor Yaakov Epstein.'
             }
           </p>
-          
+
           <h2>{isHebrew ? 'סגנון היצירה' : 'Artistic Style'}</h2>
           <p>
             {isHebrew
@@ -56,28 +56,28 @@ function Shoshi({ language }) {
               : 'Khayat was nicknamed the "Clown Painter" because the human figures in her paintings often wear masks. Symmetry, tranquility, authority, and color calmness acted as shock absorbers against the harsh reality. In her works, Khayat allowed finding many shades and sometimes left only black and white, seemingly simple pencil drawings, to express diverse human expressions such as wisdom, innocence, cunning, and misery.'
             }
           </p>
-          
+
           <p>
             {isHebrew
               ? 'בין יצירותיה הטריפטיכון, המשקף את מסכת חייה הקשים של האמנית כבר מילדותה, שהטילה אותה כהגדרתה, וכשם היצירה, אל זירת קרקס החיים של שושי. בכוח אישיותה, בדומה למסכה שביצירותיה, היא עוטה על רגשותיה מעטה בדמוי של \'רומנטיקת קרקסים\', ובכך מרחיקה את הצופה מן ההליכה על חבל הזכרונות הדק האישי שלה.'
               : 'Among her works is the triptych, reflecting the difficult life story of the artist from her childhood, which she described and named, into the circus arena of Shoshi’s life. With her personality, similar to the mask in her works, she covers her emotions with a cloak resembling "circus romance", thus distancing the viewer from walking on the thin rope of her personal memories.'
             }
           </p>
-          
+
           <p>
             {isHebrew
               ? 'אף על פי שהעיסוק בדמות הליצן מאפשר זאת, קשה למצוא בעבודותיה פארסה, בוטות או סלפסטיק לשמו, שכן דומה כי מרבית הדמויות, לרבות הפסלים שיצרה, נושאות בנטל של סבילות.'
               : 'Although dealing with the clown figure allows for it, it is difficult to find farce, crudeness, or slapstick in her works, as most of the characters, including the sculptures she created, seem to bear the burden of passivity.'
             }
           </p>
-          
+
           <p>
             {isHebrew
               ? 'דוגמה לשימוש בלקסיקון הלולייני החזותי של היוצרת הייתה נוכחת ביצירת סדרת ציורי התנ"ך שיצרה, שבה הדמויות המסורתיות לובשות על פניהן מסכות של ליצנים. מתוך הסדרה בולט ציור בשם "טרוף טורף יוסף" (מתוך מעמד כתונת הפסים לאחר מכירתו של יוסף לישמעאלים), המהווה כמשל וכנמשל מרחשי ליבה וסיפורה האישי.'
               : 'An example of using the creator\'s visual circus lexicon was present in her series of Bible paintings, where traditional characters wear clown masks. From this series, a painting named "Joseph was Torn to Pieces" (from the scene of the coat of many colors after Joseph was sold to the Ishmaelites) stands out, serving as both allegory and analogy to her inner feelings and personal story.'
             }
           </p>
-          
+
           <p>
             {isHebrew
               ? 'באחד הראיונות שנתנה לתקשורת הסבירה את עומק יצירתה ואת ההקשר לדמויות הליצנים:'

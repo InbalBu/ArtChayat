@@ -23,7 +23,7 @@ function JacobGallery({ language }) {
       tributeToInbal: 'A Tribute To Inbal',
       tanachPaintings: 'The Tanach Paintings',
       views: 'Views',
-      bookSeries: 'A Series Of Paintings From The Exhibition "Seeing God through the Darkness"'
+      bookSeries: 'A Series Of Paintings From The Book Of Songs "Seeing God through the Darkness"'
     },
     he: {
       all: 'כל הקטגוריות',
@@ -32,7 +32,7 @@ function JacobGallery({ language }) {
       tributeToInbal: 'מחווה לענבל',
       tanachPaintings: 'ציורי התנך',
       views: 'נופים',
-      bookSeries: '"סדרת ציורים מתוך התערוכה "לראות את אלוהים מבעד לחשכה'
+      bookSeries: '"סדרת ציורים מתוך ספר השירים "לראות את אלוהים מבעד לחשכה'
     }
   }), []);
 
