@@ -4,14 +4,22 @@ import Modal from 'react-modal';
 import styles from '../css/Press.module.css'; // Import the CSS module
 
 const images = [
-  'pressImages/articl1.jpg',
-  'pressImages/article2.jpg',
-  'pressImages/article10.jpeg',
-  'pressImages/article11.jpeg',
-  'pressImages/article12.jpeg',
-  'pressImages/article13.jpeg',
-  'pressImages/article14.jpeg',
-  'pressImages/article15.jpeg',
+  'pressImages/article3.jpg',
+  'pressImages/article24.jpeg',
+  'pressImages/article20.jpeg',
+  'pressImages/article21.jpeg',
+  'pressImages/article22.jpeg',
+  'pressImages/article23.jpeg',
+  'pressImages/article25.jpg',
+  'pressImages/article4.jpg',
+  'pressImages/article27.jpg',
+  'pressImages/article26.jpg',
+  'pressImages/article28.jpg',
+  'pressImages/article29.jpg',
+  'pressImages/article30.jpg',
+  'pressImages/article31.jpg',
+  'pressImages/article32.jpg',
+  'pressImages/article33.jpg',
 ];
 
 Modal.setAppElement('#root');
@@ -53,8 +61,7 @@ function Press({ language }) {
         <meta property="og:type" content="website" />
       </Helmet>
       <header>
-        <h1>{language === 'he' ? 'מן העיתונות' : 'From the Press'}</h1>
-        <p>{language === 'he' ? 'מה נכתב על שושי ויעקב חייט ז"ל' : 'What was written about Shoshi and Yaacov Khayat z"l'}</p>
+      <h1>{language === 'he' ? 'כתבות מאוסף אלבומים פרטי של זוג האומנים' : 'Articles from a private album collection of the artist couple'}</h1>
       </header>
       <div className={styles['articles-grid']}>
         {images.map((img, index) => (
@@ -74,9 +81,9 @@ function Press({ language }) {
             overlayClassName={styles['overlay']}
           >
             <button onClick={closeModal} className={styles['close-button']}>×</button>
-            <button onClick={prevImage} className={styles['arrow-button']}>‹</button>
+            <button onClick={prevImage} className={`${styles['arrow-button']} ${styles['prev']}`}>‹</button>
             <img src={images[currentImage]} alt={`Article ${currentImage + 1}`} className={styles['modal-image']} />
-            <button onClick={nextImage} className={styles['arrow-button']}>›</button>
+            <button onClick={nextImage} className={`${styles['arrow-button']} ${styles['next']}`}>›</button>
           </Modal>
         </div>
       )}

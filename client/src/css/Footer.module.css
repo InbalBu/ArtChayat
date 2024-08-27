@@ -52,3 +52,9 @@
     height: auto;
 }
 
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .footer-signature img {
+        max-width: 50%; /* Increases logo size on mobile */
+    }
+}
