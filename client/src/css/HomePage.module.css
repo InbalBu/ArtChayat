@@ -95,10 +95,6 @@
 
 /* Responsive Styles for Smaller Devices */
 @media (max-width: 1024px) { /* For tablets and smaller PCs */
-    .homepage-modal{
-      max-width: 90vw; /* Ensure the modal image scales well on smaller screens */
-    }
-  
     .homepage-close {
       font-size: 28px; /* Slightly smaller close button for smaller screens */
       width: 25px;

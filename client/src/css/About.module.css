@@ -1,7 +1,7 @@
 /* General Styles for About Component */
 .about-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack items vertically */
   align-items: center;
   padding: 50px;
   box-sizing: border-box;
@@ -28,6 +28,7 @@
   z-index: 1; /* Ensure content is above the video */
   position: relative;
   flex-direction: row; /* Default direction for desktop */
+  justify-content: space-between; /* Space between text and image */
 }
 
 .about-image-container {
@@ -53,6 +54,20 @@
 
 .about-text-container h1, .about-text-container p {
   margin: 0 0 10px 0;
+}
+
+/* Centered Presentation Section */
+.presentation-container {
+  margin-top: 50px; /* Space above the presentation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.presentation-container > div {
+  width: 100%;
+  max-width: 800px;
 }
 
 /* RTL Layout */
@@ -131,4 +146,59 @@
   .about-ltr .about-text-container {
     text-align: left; /* Align text to the left for LTR languages */
   }
+
+  .presentation-container {
+    margin-top: 30px; /* Reduced space above the presentation for mobile */
+  }
+}
+
+
+.presentation-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 8px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out; /* Ensure the transition is smooth */
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  outline: none;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }

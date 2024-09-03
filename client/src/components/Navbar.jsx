@@ -8,6 +8,8 @@ import flagEN from '../images/isFlag.png';
 import logoHE from '../images/logoHe.png';
 import logoEN from '../images/logoEN.png';
 
+import logos from '../images/logos3optimized.png';
+
 const Navbar = ({ language, handleLanguageToggle }) => {
   const [showDropdownJacob, setShowDropdownJacob] = useState(false);
   const [showDropdownShoshi, setShowDropdownShoshi] = useState(false);
@@ -30,34 +32,51 @@ const Navbar = ({ language, handleLanguageToggle }) => {
 
   return (
     <div className={`${styles['navbar-header']} ${language === 'he' ? styles['navbar-hebrew-mode'] : styles['navbar-english-mode']}`}>
-      <div className={styles['navbar-logo-container']}>
-        <div className={styles['navbar-left-logo']}>
-          <Link to="/" onClick={closeMenu}>
-            <img 
-              src={isMobile ? (language === 'he' ? logoHE : logoEN) : logoHE} 
-              alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
-              className={styles['show']} 
-            />
-          </Link>
-        </div>
-        <div className={styles['navbar-right-logo']}>
-          <Link to="/" onClick={closeMenu}>
-            <img 
-              src={isMobile ? (language === 'he' ? logoHE : logoEN) : logoEN} 
-              alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
-            />
-          </Link>
-        </div>
-        <div className={styles['navbar-hamburger']} onClick={toggleMenu}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+    <div className={styles['navbar-logo-container']}>
+  
+      {/* Desktop View */}
+      {!isMobile && (
+        <Link to="/">
+          <img
+            src={logos} 
+            alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'}
+            className={styles['show']}
+          />
+        </Link>
+      )}
+  
+      {/* Mobile View */}
+      {isMobile && (
+        <>
+          <div className={styles['navbar-left-logo']}>
+            <Link to="/" onClick={closeMenu}>
+              <img 
+                src={language === 'he' ? logoHE : logoEN} 
+                alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
+                className={styles['show']} 
+              />
+            </Link>
+          </div>
+  
+          <div className={styles['navbar-right-logo']}>
+            <Link to="/" onClick={closeMenu}>
+              <img 
+                src={language === 'he' ? logoHE : logoEN} 
+                alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
+              />
+            </Link>
+          </div>
+        </>
+      )}
+  
+      {/* Hamburger Menu (visible in both desktop and mobile) */}
+      <div className={styles['navbar-hamburger']} onClick={toggleMenu}>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      <div className={styles['navbar-black-bar']}>
-        <span className={styles['navbar-left-bar-text']}>אמנות ישראלית</span>
-        <span className={styles['navbar-right-bar-text']}>Israeli Art</span>
-      </div>
+    </div>
+  
       <nav className={`${styles['navbar-nav']} ${menuOpen ? styles['active'] : ''}`}>
         <ul>
           <li>
@@ -91,10 +110,10 @@ const Navbar = ({ language, handleLanguageToggle }) => {
             <Link to="/press" onClick={closeMenu}>{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
           </li>
           <li>
-            <Link to="/articles" onClick={closeMenu}>{language === 'he' ?  "כתבות ": 'Articles'}</Link>
+            <Link to="/articles" onClick={closeMenu}>{language === 'he' ? "כתבות " : 'Articles'}</Link>
           </li>
           <li>
-            <Link to="/personalGallery" onClick={closeMenu}>{language === 'he' ?  "גלריה מזווית אישית ": 'Gallery From Personal Angle'}</Link>
+            <Link to="/personalGallery" onClick={closeMenu}>{language === 'he' ? "גלריה מזווית אישית " : 'Gallery From Personal Angle'}</Link>
           </li>
           <li>
             <Link to="/contact" onClick={closeMenu}>{language === 'he' ? 'צור קשר' : 'Contact'}</Link>

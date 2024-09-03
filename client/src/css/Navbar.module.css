@@ -1,80 +1,73 @@
-/* General Styles */
-body {
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
 /* Header */
 .navbar-header {
-    text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
-}
-
-/* Logo Container */
-.navbar-logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    background-color: white;
+    flex-direction: column;
+    padding: 0;
+}
+
+.navbar-logo-container {
+    display: flex;
+    justify-content: center; /* Center the logos and separator */
+    align-items: center; /* Align items vertically in the center */
+    position: relative;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    max-width: 929.35px;
+    width: 100%;
 }
 
 .navbar-left-logo, .navbar-right-logo {
-    margin: 0 700px;
+    margin: 0 700px; /* Maintain the large margins for logos */
     text-align: center;
+    position: relative; /* Set relative position to allow absolute positioning of separator */
+    z-index: 1; /* Make sure logos are above the separator */
 }
 
-.navbar-left-logo img, .navbar-right-logo img {
-    max-width: 200px;
-    height: auto;
+/* Updated Separator Style */
+.navbar-logo-separator {
+    position: absolute;
+  top: 59%;
+  left: calc(55% - 900px);
+  right: calc(54.5% - 900px);
+  height: 12px;
+  background-color: #231f20;
+  z-index: 10;
 }
 
-.navbar-logo-text {
-    margin-top: 5px;
-    font-size: 16px;
-    color: #333;
-}
-
-/* Black Bar */
-.navbar-black-bar {
-    background-color: black;
-    color: white;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar-black-bar span {
-    margin: 0 800px;
+.navbar-left-bar-text, .navbar-right-bar-text {
+    flex: 1;
     font-size: 14px;
+    text-align: center;
     white-space: nowrap;
 }
-
-/* Navbar */
-.navbar-nav {
+  
+  /* Navbar */
+  .navbar-nav {
     background-color: white;
     padding: 1rem;
     position: sticky;
     top: 0;
     display: flex;
     justify-content: center;
-}
-
-.navbar-nav > ul {
+  }
+  
+  .navbar-nav > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 2rem;
     justify-content: center;
-}
+  }
+  
 
 .navbar-dropdown {
     list-style-type: none;

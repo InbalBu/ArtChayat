@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import styles from '../css/About.module.css'; // Import CSS module
 import shoshiAndJacob from '../images/shoshiandjacob.jpeg';
+import Presentation from './Presentation';
 
 function About({ language }) {
     return (
@@ -41,6 +42,9 @@ function About({ language }) {
                         <p>{language === 'he' ? <>בברכה,<br />מיכל בוקריס<br />ריקי חייט</> : <>Best regards,<br />Michal Bukris<br />Riki Chayat</>}</p>
                     </div>
                 </div>
+            </div>
+            <div className={styles['presentation-container']}>
+                <Presentation />
             </div>
         </div>
     );
