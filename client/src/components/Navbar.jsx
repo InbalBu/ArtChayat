@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from '../css/Navbar.module.css'; // Import the CSS module
 
 import flagHE from '../images/usFlag.png';
@@ -15,6 +15,8 @@ const Navbar = ({ language, handleLanguageToggle }) => {
   const [showDropdownShoshi, setShowDropdownShoshi] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+  const location = useLocation(); // Hook to get current location
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
@@ -30,53 +32,58 @@ const Navbar = ({ language, handleLanguageToggle }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the route changes
+  }, [location]);
+
   return (
     <div className={`${styles['navbar-header']} ${language === 'he' ? styles['navbar-hebrew-mode'] : styles['navbar-english-mode']}`}>
-    <div className={styles['navbar-logo-container']}>
-  
-      {/* Desktop View */}
-      {!isMobile && (
-        <Link to="/">
-          <img
-            src={logos} 
-            alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'}
-            className={styles['show']}
-          />
-        </Link>
-      )}
-  
-      {/* Mobile View */}
-      {isMobile && (
-        <>
-          <div className={styles['navbar-left-logo']}>
-            <Link to="/" onClick={closeMenu}>
-              <img 
-                src={language === 'he' ? logoHE : logoEN} 
-                alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
-                className={styles['show']} 
-              />
-            </Link>
-          </div>
-  
-          <div className={styles['navbar-right-logo']}>
-            <Link to="/" onClick={closeMenu}>
-              <img 
-                src={language === 'he' ? logoHE : logoEN} 
-                alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
-              />
-            </Link>
-          </div>
-        </>
-      )}
-  
-      {/* Hamburger Menu (visible in both desktop and mobile) */}
-      <div className={styles['navbar-hamburger']} onClick={toggleMenu}>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div className={styles['navbar-logo-container']}>
+
+        {/* Desktop View */}
+        {!isMobile && (
+          <Link to="/" onClick={closeMenu}>
+            <img
+              src={logos} 
+              alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'}
+              className={styles['show']}
+            />
+          </Link>
+        )}
+
+        {/* Mobile View */}
+        {isMobile && (
+          <>
+            <div className={styles['navbar-left-logo']}>
+              <Link to="/" onClick={closeMenu}>
+                <img 
+                  src={language === 'he' ? logoHE : logoEN} 
+                  alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
+                  className={styles['show']} 
+                />
+              </Link>
+            </div>
+
+            <div className={styles['navbar-right-logo']}>
+              <Link to="/" onClick={closeMenu}>
+                <img 
+                  src={language === 'he' ? logoHE : logoEN} 
+                  alt={language === 'he' ? 'אמנות ישראלית Logo' : 'Israeli Art Logo'} 
+                />
+              </Link>
+            </div>
+          </>
+        )}
+
+        {/* Hamburger Menu (visible in both desktop and mobile) */}
+        <div className={styles['navbar-hamburger']} onClick={toggleMenu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
-    </div>
-  
+
       <nav className={`${styles['navbar-nav']} ${menuOpen ? styles['active'] : ''}`}>
         <ul>
           <li>

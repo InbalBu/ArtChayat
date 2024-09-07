@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import emailjs from 'emailjs-com';
-import styles from '../css/ContactUs.module.css'; // Import the CSS module
+import styles from '../css/ContactUs.module.css';
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'; // Importing icons
 import logoEN from '../images/logoEN.png';
 
 function ContactUs({ language }) {
@@ -11,8 +12,9 @@ function ContactUs({ language }) {
     phone: '',
     message: ''
   });
-  const [status, setStatus] = useState(''); // State to track success/failure
-  const [isSubmitting, setIsSubmitting] = useState(false); // State to track form submission
+  const [status, setStatus] = useState(''); // Success/Failure status
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false); // For showing the modal
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +26,13 @@ function ContactUs({ language }) {
     setIsSubmitting(true);
     setStatus('');
 
-    emailjs.send('service_nya61d8', 'template_f160kop', formData, 'Gj73Mpv5pgaQD134m')
+    emailjs.send( process.env.REACT_APP_EMAILJS_SERVICE_ID,  process.env.REACT_APP_EMAILJS_TEMPLATE_ID, formData,  process.env.REACT_APP_EMAILJS_USER_ID)
       .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
         setStatus('success');
+        setShowModal(true); // Show modal on success
       }, (error) => {
-        console.log('FAILED...', error);
         setStatus('failure');
+        setShowModal(true); // Show modal on failure
       })
       .finally(() => {
         setIsSubmitting(false);
@@ -39,11 +41,16 @@ function ContactUs({ language }) {
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+    setStatus('');
+  };
+
   const isHebrew = language === 'he';
 
   return (
     <div className={`${styles['contact-container']} ${isHebrew ? styles['contact-rtl'] : styles['contact-ltr']}`}>
-      <Helmet>
+        <Helmet>
         <title>{isHebrew ? 'צור קשר' : 'Contact Us'}</title>
         <meta name="description" content={isHebrew ? 'לייעוץ אומנותי ופרטים נוספים:' : 'For artistic advice and additional details:'} />
         <meta name="keywords" content={isHebrew ? 'צור קשר, פרטים, מידע' : 'contact, details, information'} />
@@ -61,7 +68,6 @@ function ContactUs({ language }) {
       <p>{isHebrew ? '053-8311215 - מיכל בוקריס' : '053-8311215 - Michal Bukris'}</p>
       <p>{isHebrew ? '052-6652571 - ריקי חייט' : '052-6652571 - Riki Chayat'}</p>
       <p>{isHebrew ? 'או מלאו את הטופס ונדאג ליצור אתכם קשר בהקדם.' : 'Or fill out the form and we will get back to you as soon as possible.'}</p>
-      
       <form onSubmit={handleSubmit} className={styles['contact-form']}>
         <div className={styles['contact-form-group']}>
           <label>{isHebrew ? 'שם*' : 'Name*'}</label>
@@ -111,16 +117,26 @@ function ContactUs({ language }) {
         </button>
       </form>
 
-      {/* Success and Failure Messages */}
-      {status === 'success' && (
-        <p className={styles['contact-success']}>
-          {isHebrew ? 'ההודעה נשלחה בהצלחה!' : 'Your message was sent successfully!'}
-        </p>
-      )}
-      {status === 'failure' && (
-        <p className={styles['contact-error']}>
-          {isHebrew ? 'אירעה שגיאה בשליחת ההודעה, נסה שנית.' : 'There was an error sending your message, please try again.'}
-        </p>
+      {/* Modal for Success and Failure Messages */}
+      {showModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <button className={styles.closeModal} onClick={closeModal}>
+              &times;
+            </button>
+            {status === 'success' ? (
+              <div className={styles.modalSuccess}>
+                <FaCheckCircle size={40} color="green" />
+                <p>{isHebrew ? 'ההודעה נשלחה בהצלחה!' : 'Your message was sent successfully!'}</p>
+              </div>
+            ) : (
+              <div className={styles.modalError}>
+                <FaTimesCircle size={40} color="red" />
+                <p>{isHebrew ? 'אירעה שגיאה בשליחת ההודעה, נסה שנית.' : 'There was an error sending your message, please try again.'}</p>
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import styles from '../css/Footer.module.css'; // Import the CSS module
 import signature from '../images/signature.jpg'; // Ensure the image is imported
 
@@ -25,6 +25,7 @@ function Footer({ language }) {
                     <Link to="/jacob">{language === 'he' ? 'יעקב חייט' : 'Jacob Chayat'}</Link>
                     <Link to="/press">{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
                     <Link to="/articles">{language === 'he' ? 'כתבות' : 'Articles'}</Link>
+                    <Link to="/personalGallery">{language === 'he' ? 'גלריה מזווית אישית' : 'A Gallery From A Personal Angle'}</Link>
                     <Link to="/contact">{language === 'he' ? 'צור קשר' : 'Contact'}</Link>
                 </div>
                 <p>{language === 'he' ? 'עקבו אחרינו ברשתות החברתיות:' : 'Follow us on social media:'}</p>
@@ -34,9 +35,6 @@ function Footer({ language }) {
                     </a>
                     <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faInstagram} />
-                    </a>
-                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon icon={faTwitter} />
                     </a>
                 </div>
                 <div className={styles['footer-signature']}>

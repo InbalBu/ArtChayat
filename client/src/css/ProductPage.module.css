@@ -128,11 +128,26 @@
   background: grey;
 }
 
+@media (max-width: 1440px) { /* For tablets and smaller PCs */
+  .modalImage {
+    max-width: 80vw; /* Ensure modal image scales well */
+    height: 80vh;
+  }
+
+  .close {
+    font-size: 28px; /* Slightly smaller close button for smaller screens */
+    width: 25px;
+    height: 25px;
+  }
+}
+
 /* Responsive Styles for Smaller Devices */
 @media (max-width: 1024px) { /* For tablets and smaller PCs */
   .modalImage {
-    max-width: 90vw; /* Ensure the modal image scales well on smaller screens */
+    max-width: 90vw; /* Ensure modal image scales well */
+    height: 90vh;
   }
+  
 
   .close {
     font-size: 28px; /* Slightly smaller close button for smaller screens */

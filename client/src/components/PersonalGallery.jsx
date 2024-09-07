@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../css/PersonalGallery.module.css'; // Assuming you're using CSS Modules
+import { Helmet } from 'react-helmet';
 
 // Import images
 import painting1 from '../images/personalGallery1.jpg';
@@ -21,17 +22,31 @@ import painting16 from '../images/personalGallery16.jpg';
 import painting17 from '../images/personalGallery17.jpg';
 import painting18 from '../images/personalGallery18.jpg';
 import painting19 from '../images/personalGallery19.jpg';
+import painting20 from '../images/personalGallery20.jpeg';
+import painting21 from '../images/personalGallery21.jpeg';
+import painting22 from '../images/personalGallery22.jpg';
+import painting23 from '../images/personalGallery23.jpg';
+import painting24 from '../images/personalGallery24.jpg';
+import painting25 from '../images/personalGallery25.jpg';
+import painting26 from '../images/personalGallery26.jpg';
+import painting27 from '../images/personalGallery27.jpg';
 
 const PersonalGallery = ({ language }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
+    { src: painting20, description: language === 'he' ? 'תיבת נח | תערוכה בבנק הפועלים 2017' : 'Noah\'s ark Exhibition at Bank Hapoalim 2017' },
+    { src: painting21, description: language === 'he' ? 'בסטודיו, ציור \'ניו יורק\'' : 'In the studio, painting "New York"' },
+    { src: painting25, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
+    { src: painting26, description: language === 'he' ? 'תיבת נח - שושי חייט | תערוכה בבנק הפועלים 2023' : 'Noah\'s Ark - Shushi Hayat | Exhibition at Bank Hapoalim 2023' },
+    { src: painting27, description: language === 'he' ? 'חגיגה בכרם - יעקב חייט | תערוכה בבנק הפועלים 2023' : 'A celebration in the vineyard - Yaakov Hait | Exhibition at Bank Hapoalim 2023' },
     { src: painting14, description: language === 'he' ? 'תיאור בעברית לתמונה 14' : 'Description for painting 14' },
     { src: painting15, description: language === 'he' ? 'תיאור בעברית לתמונה 15' : 'Description for painting 15' },
     { src: painting16, description: language === 'he' ? 'תיאור בעברית לתמונה 16' : 'Description for painting 16' },
     { src: painting17, description: language === 'he' ? 'תיאור בעברית לתמונה 17' : 'Description for painting 17' },
     { src: painting18, description: language === 'he' ? 'תיאור בעברית לתמונה 18' : 'Description for painting 18' },
     { src: painting19, description: language === 'he' ? 'תיאור בעברית לתמונה 19' : 'Description for painting 19' },
+    { src: painting22, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
     { src: painting1, description: language === 'he' ? 'תיאור בעברית לתמונה 1' : 'Description for painting 1' },
     { src: painting2, description: language === 'he' ? 'תיאור בעברית לתמונה 2' : 'Description for painting 2' },
     { src: painting3, description: language === 'he' ? 'תיאור בעברית לתמונה 3' : 'Description for painting 3' },
@@ -40,10 +55,12 @@ const PersonalGallery = ({ language }) => {
     { src: painting6, description: language === 'he' ? 'תיאור בעברית לתמונה 6' : 'Description for painting 6' },
     { src: painting7, description: language === 'he' ? 'תיאור בעברית לתמונה 7' : 'Description for painting 7' },
     { src: painting8, description: language === 'he' ? 'תיאור בעברית לתמונה 8' : 'Description for painting 8' },
+    { src: painting23, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
     { src: painting9, description: language === 'he' ? 'תיאור בעברית לתמונה 9' : 'Description for painting 9' },
     { src: painting10, description: language === 'he' ? 'תיאור בעברית לתמונה 10' : 'Description for painting 10' },
     { src: painting11, description: language === 'he' ? 'תיאור בעברית לתמונה 11' : 'Description for painting 11' },
     { src: painting12, description: language === 'he' ? 'תיאור בעברית לתמונה 12' : 'Description for painting 12' },
+    { src: painting24, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
     { src: painting13, description: language === 'he' ? 'תיאור בעברית לתמונה 13' : 'Description for painting 13' },
   ];
 
@@ -55,8 +72,21 @@ const PersonalGallery = ({ language }) => {
     setSelectedImage(null);
   };
 
-  return (
+  return ( 
     <div className={styles['homepage-gallery']}>
+        <Helmet>
+        <title>{language === 'he' ? 'גלריה אישית' : 'Personal Gallery'}</title>
+        <meta name="description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
+        <meta name="keywords" content={language === 'he' ? 'גלריה, ציורים, תערוכות' : 'gallery, paintings, exhibitions'} />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph tags */}
+        <meta property="og:title" content={language === 'he' ? 'גלריה אישית' : 'Personal Gallery'} />
+        <meta property="og:description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
+        <meta property="og:url" content="https://artchayat.netlify.app/personalGallery" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <h2 className='gridTitle'>
         {language === 'he' ? 'גלריה מזווית אישית' : 'A Gallery From A Personal Angle'}
       </h2>
