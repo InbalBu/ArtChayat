@@ -41,7 +41,7 @@ function HomePage({ language }) {
         const fullText = language === 'he'
             ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
             : 'Painting, A Love Story | The Artists Shoshi and Jacob Chayat';
-        
+
         setText(fullText);
     }, [language]);
 
@@ -82,13 +82,13 @@ function HomePage({ language }) {
     return (
         <div className='container'>
             <Helmet>
-                <title>{language === 'he' ? 'ארט חייט - דף הבית' : 'Art Chayat - Home'}</title>
+                <title>{language === 'he' ? 'ArtChayat - ארט חייט' : 'ArtChayat - ארט חייט'}</title>
                 <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
                 <meta name="keywords" content={language === 'he' ? 'אומנות, אהבה, יצירה' : 'art, love, creation'} />
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph tags */}
-                <meta property="og:title" content={language === 'he' ? 'ארט חייט - דף הבית' : 'Art Chayat - Home'} />
+                <meta property="og:title" content={language === 'he' ? 'ArtChayat - ארט חייט' : 'ArtChayat - ארט חייט'} />
                 <meta property="og:description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
                 <meta property="og:image" content={randomImage} />
                 <meta property="og:url" content="https://artchayat.netlify.app/" />
@@ -167,7 +167,7 @@ function HomePage({ language }) {
     );
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const video = document.querySelector('.homepage-video-bg');
     const resizeVideo = () => {
         if (video.videoWidth / video.videoHeight > window.innerWidth / window.innerHeight) {

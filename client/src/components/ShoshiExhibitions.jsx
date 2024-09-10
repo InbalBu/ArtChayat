@@ -9,13 +9,13 @@ function ShoshiExhibitions({ language }) {
   return (
     <div className={`${styles['exhibitions-container']} ${isHebrew ? styles['exhibitions-rtl'] : styles['exhibitions-ltr']}`}>
       <Helmet>
-        <title>{isHebrew ? 'תערוכות - שושי חייט' : 'Exhibitions - Shoshi Khayat'}</title>
+      <title>{language === 'he' ? 'ArtChayat - שושי חייט | תערוכות | ארט חייט' : 'Shoshi Chayat | Exhibitions | ArtChayat - ארט חייט'}</title>
         <meta name="description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Khayat during her artistic career.'} />
         <meta name="keywords" content={isHebrew ? 'שושי חייט, תערוכות, אומנות' : 'Shoshi Khayat, exhibitions, art'} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
-        <meta property="og:title" content={isHebrew ? 'תערוכות - שושי חייט' : 'Exhibitions - Shoshi Khayat'} />
+        <meta property="og:title" content={isHebrew ? 'ArtChayat - שושי חייט | תערוכות | ארט חייט' : 'Shoshi Chayat | Exhibitions | ArtChayat - ארט חייט'} />
         <meta property="og:description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Khayat during her artistic career.'} />
         <meta property="og:image" content={logoEN} />
         <meta property="og:url" content="https://artchayat.netlify.app/shoshi-exhibitions" />

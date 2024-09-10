@@ -9,13 +9,13 @@ function Jacob({ language }) {
   return (
     <div className={`${isHebrew ? styles['jacob-rtl'] : styles['jacob-ltr']}`}>
       <Helmet>
-        <title>{isHebrew ? 'יעקב חייט - ביוגרפיה' : 'Yaakov Khayat - Biography'}</title>
-        <meta name="description" content={isHebrew ? 'יעקב חייט היה צייר ישראלי, חבר באגודת הציירים והפסלים תל אביב ובין התורמים להכרה ולהתפתחות של האמנות בישראל.' : 'Yaakov Khayat was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel.'} />
+      <title>{language === 'he' ? 'ArtChayat - יעקב חייט | ביוגרפיה | ארט חייט' : 'Jacob Chayat | Biography | ArtChayat - ארט חייט'}</title>
+      <meta name="description" content={isHebrew ? 'יעקב חייט היה צייר ישראלי, חבר באגודת הציירים והפסלים תל אביב ובין התורמים להכרה ולהתפתחות של האמנות בישראל.' : 'Yaakov Khayat was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel.'} />
         <meta name="keywords" content={isHebrew ? 'יעקב חייט, ביוגרפיה, אומנות' : 'Yaakov Khayat, biography, art'} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
-        <meta property="og:title" content={isHebrew ? 'יעקב חייט - ביוגרפיה' : 'Yaakov Khayat - Biography'} />
+        <meta property="og:title" content={isHebrew ? 'ArtChayat - יעקב חייט | ביוגרפיה | ארט חייט' : 'Jacob Chayat | Biography | ArtChayat - ארט חייט'} />
         <meta property="og:description" content={isHebrew ? 'יעקב חייט היה צייר ישראלי, חבר באגודת הציירים והפסלים תל אביב ובין התורמים להכרה ולהתפתחות של האמנות בישראל.' : 'Yaakov Khayat was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel.'} />
         <meta property="og:image" content={jacobPortrait} />
         <meta property="og:url" content="https://artchayat.netlify.app/jacob/biography" />

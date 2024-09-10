@@ -43,13 +43,13 @@ function ShoshiProductPage({ language }) {
   return (
     <div className={`${styles.productPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
       <Helmet>
-        <title>{language === 'he' ? `${product.name} - שושי חייט` : `${product.name} - Shoshi Khayat`}</title>
+      <title>{language === 'he' ? `ArtChayat - שושי חייט | גלריה | ${product.name} | ארט חייט` : `Shoshi Chayat | Gallery | ${product.name} | ArtChayat - ארט חייט`}</title>
         <meta name="description" content={language === 'he' ? `פרטים אודות יצירתה של שושי חייט בשם ${product.name}.` : `Details about the artwork by Shoshi Khayat named ${product.name}.`} />
         <meta name="keywords" content={language === 'he' ? `שושי חייט, אומנות, ${product.name}` : `Shoshi Khayat, art, ${product.name}`} />
         <meta name="robots" content="index, follow" />
 
          {/* Open Graph tags */}
-         <meta property="og:title" content={language === 'he' ? `${product.name} - שושי חייט` : `${product.name} - Shoshi Khayat`} />
+         <meta property="og:title" content={language === 'he' ? `ArtChayat - שושי חייט | גלריה | ${product.name} | ארט חייט` : `Shoshi Chayat | Gallery | ${product.name} | ArtChayat - ארט חייט`} />
         <meta property="og:description" content={language === 'he' ? `פרטים אודות יצירתה של שושי חייט בשם ${product.name}.` : `Details about the artwork by Shoshi Khayat named ${product.name}.`} />
         <meta property="og:image" content={product.imageURL} />
         <meta property="og:url" content={`https://artchayat.netlify.app/shoshi/product/${id}`} />

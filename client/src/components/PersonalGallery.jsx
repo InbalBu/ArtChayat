@@ -75,13 +75,13 @@ const PersonalGallery = ({ language }) => {
   return ( 
     <div className={styles['homepage-gallery']}>
         <Helmet>
-        <title>{language === 'he' ? 'גלריה אישית' : 'Personal Gallery'}</title>
+        <title>{language === 'he' ? 'ArtChayat - גלריה מזווית אישית | ארט חייט' : 'Personal Gallery | ArtChayat - ארט חייט'}</title>
         <meta name="description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
         <meta name="keywords" content={language === 'he' ? 'גלריה, ציורים, תערוכות' : 'gallery, paintings, exhibitions'} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
-        <meta property="og:title" content={language === 'he' ? 'גלריה אישית' : 'Personal Gallery'} />
+        <meta property="og:title" content={language === 'he' ? 'ArtChayat - גלריה מזווית אישית | ארט חייט' : 'Personal Gallery | ArtChayat - ארט חייט'} />
         <meta property="og:description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
         <meta property="og:url" content="https://artchayat.netlify.app/personalGallery" />
         <meta property="og:type" content="website" />

@@ -5,11 +5,13 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
 import styles from '../css/JacobGallery.module.css'; // Import the CSS module
 import logoEN from '../images/logoEN.png';
+import { Oval } from 'react-loader-spinner'; // Import Oval loader
 
 function ShoshiGallery({ language }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
   const [filters, setFilters] = useState({
     category: ''
   });
@@ -52,10 +54,12 @@ function ShoshiGallery({ language }) {
       .then(data => {
         setProducts(data);
         setFilteredProducts(data); // Initialize filteredProducts with all products
+        setLoading(false); // Set loading to false after data is fetched
       })
       .catch(error => {
         console.error('Error fetching products:', error);
         setError('Failed to fetch products.');
+        setLoading(false); // Set loading to false even if there's an error
       });
   }, [language]);
   
@@ -110,66 +114,85 @@ function ShoshiGallery({ language }) {
   return (
     <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
       <Helmet>
-        <title>{language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Khayat'}</title>
+      <title>{language === 'he' ? 'ArtChayat - שושי חייט | גלריה | ארט חייט' : 'Shoshi Chayat | Gallery | ArtChayat - ארט חייט'}</title>
         <meta name="description" content={language === 'he' ? 'גלריה של יצירות שושי חייט' : 'Gallery of Shoshi Khayat\'s works'} />
         <meta name="keywords" content={language === 'he' ? 'שושי חייט, גלריה, אומנות' : 'Shoshi Khayat, gallery, art'} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
-        <meta property="og:title" content={language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Khayat'} />
+        <meta property="og:title" content={language === 'he' ? 'ArtChayat - שושי חייט | גלריה | ארט חייט' : 'Shoshi Chayat | Gallery | ArtChayat - ארט חייט'} />
         <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות שושי חייט' : 'Gallery of Shoshi Khayat\'s works'} />
         <meta property="og:image" content={logoEN} />
         <meta property="og:url" content="https://artchayat.netlify.app/shoshi-gallery" />
         <meta property="og:type" content="website" />
       </Helmet>
-      <div className={styles['gallery-filters']}>
-        <select name="category" onChange={handleFilterChange} value={filters.category}>
-          <option value="">{getCategoryLabel('all')}</option>
-          <option value="clowns">{getCategoryLabel('clowns')}</option>
-          <option value="flowers">{getCategoryLabel('flowers')}</option>
-          <option value="colorfulHarmony">{getCategoryLabel('colorfulHarmony')}</option>
-          <option value="tanachPaintings">{getCategoryLabel('tanachPaintings')}</option>
-          <option value="sketches">{getCategoryLabel('sketches')}</option>
-          <option value="watercolor">{getCategoryLabel('watercolor')}</option>
-          <option value="prints">{getCategoryLabel('prints')}</option>
-        </select>
-      </div>
-
-      {Object.keys(groupedProducts).length > 0 ? (
-        Object.keys(groupedProducts).map(category => (
-          <div key={category} className={styles['gallery-category-section']}>
-            <h2 className={styles['gallery-category-header']}>{category}</h2>
-            <div className={styles['gallery-grid']}>
-              {groupedProducts[category].map(product => {
-                const price = parseFloat(product.price.replace(/,/g, ''));
-                return (
-                  <div className={styles['gallery-item']} key={product._id}>
-                    <Link to={`/shoshi/product/${product._id}`} className={styles['gallery-product-link']}>
-                      <LazyLoadImage
-                        src={product.imageURL}
-                        alt={product.name}
-                        className={styles['gallery-product-image']}
-                        effect="blur"
-                      />
-                      <div className={styles['gallery-product-info']}>
-                        <div className={styles['gallery-product-name']}>{product.name}</div>
-                        <div className={styles['gallery-product-price']}>
-                          {price === 0 
-                            ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span> 
-                            : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
-                          }
-                        </div>
-                        <div className={styles['gallery-product-size']}>{language === 'he' ? 'גודל:' : 'Size:'} {product.size}</div>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ))
+      
+      {/* Loader */}
+      {loading ? (
+        <div className={styles['loading-container']}>
+          <Oval 
+            height={80} 
+            width={80} 
+            color="#00BFFF" 
+            visible={true} 
+            ariaLabel="oval-loading"
+            secondaryColor="#f0f0f0"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        </div>
       ) : (
-        <div>{language === 'he' ? 'לא נמצאו מוצרים' : 'No products found'}</div>
+        <>
+          <div className={styles['gallery-filters']}>
+            <select name="category" onChange={handleFilterChange} value={filters.category}>
+              <option value="">{getCategoryLabel('all')}</option>
+              <option value="clowns">{getCategoryLabel('clowns')}</option>
+              <option value="flowers">{getCategoryLabel('flowers')}</option>
+              <option value="colorfulHarmony">{getCategoryLabel('colorfulHarmony')}</option>
+              <option value="tanachPaintings">{getCategoryLabel('tanachPaintings')}</option>
+              <option value="sketches">{getCategoryLabel('sketches')}</option>
+              <option value="watercolor">{getCategoryLabel('watercolor')}</option>
+              <option value="prints">{getCategoryLabel('prints')}</option>
+            </select>
+          </div>
+
+          {Object.keys(groupedProducts).length > 0 ? (
+            Object.keys(groupedProducts).map(category => (
+              <div key={category} className={styles['gallery-category-section']}>
+                <h2 className={styles['gallery-category-header']}>{category}</h2>
+                <div className={styles['gallery-grid']}>
+                  {groupedProducts[category].map(product => {
+                    const price = parseFloat(product.price.replace(/,/g, ''));
+                    return (
+                      <div className={styles['gallery-item']} key={product._id}>
+                        <Link to={`/shoshi/product/${product._id}`} className={styles['gallery-product-link']}>
+                          <LazyLoadImage
+                            src={product.imageURL}
+                            alt={product.name}
+                            className={styles['gallery-product-image']}
+                            effect="blur"
+                          />
+                          <div className={styles['gallery-product-info']}>
+                            <div className={styles['gallery-product-name']}>{product.name}</div>
+                            <div className={styles['gallery-product-price']}>
+                              {price === 0 
+                                ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span> 
+                                : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
+                              }
+                            </div>
+                            <div className={styles['gallery-product-size']}>{language === 'he' ? 'גודל:' : 'Size:'} {product.size}</div>
+                          </div>
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div>{language === 'he' ? 'לא נמצאו מוצרים' : 'No products found'}</div>
+          )}
+        </>
       )}
 
       <button className={`${styles['gallery-scroll-to-top']} ${showScrollTop ? styles['show'] : ''}`} onClick={scrollToTop}>

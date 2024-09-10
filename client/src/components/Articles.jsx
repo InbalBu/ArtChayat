@@ -49,20 +49,20 @@ const articles = [
 const Articles = ({ language }) => (
   <div className={`${styles.articlesPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
     <Helmet>
-      <title>{language === 'he' ? 'מאמרים' : 'Articles'}</title>
+      <title>{language === 'he' ? 'ArtChayat - כתבות | ארט חייט' : 'Articles | ArtChayat - ארט חייט'}</title>
       <meta name="description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
       <meta name="keywords" content={language === 'he' ? 'אמנות, מאמרים, תערוכה' : 'art, articles, exhibition'} />
       <meta name="robots" content="index, follow" />
 
       {/* Open Graph tags */}
-      <meta property="og:title" content={language === 'he' ? 'מאמרים' : 'Articles'} />
+      <meta property="og:title" content={language === 'he' ? 'ArtChayat - כתבות | ארט חייט' : 'Articles | ArtChayat - ארט חייט'} />
       <meta property="og:description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
       <meta property="og:image" content={logoEN} />
       <meta property="og:url" content="https://artchayat.netlify.app/articles" />
       <meta property="og:type" content="website" />
     </Helmet>
     <header className={styles.header}>
-      <h1>{language === 'he' ? 'מאמרים' : 'Articles'}</h1>
+      <h1>{language === 'he' ? 'כתבות' : 'Articles'}</h1>
       <p>{language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'}</p>
     </header>
     <div className={styles.articlesContainer}>

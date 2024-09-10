@@ -4,6 +4,7 @@ import emailjs from 'emailjs-com';
 import styles from '../css/ContactUs.module.css';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'; // Importing icons
 import logoEN from '../images/logoEN.png';
+import { Oval } from 'react-loader-spinner'; // Importing Oval loader
 
 function ContactUs({ language }) {
   const [formData, setFormData] = useState({
@@ -25,19 +26,22 @@ function ContactUs({ language }) {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus('');
-
-    emailjs.send( process.env.REACT_APP_EMAILJS_SERVICE_ID,  process.env.REACT_APP_EMAILJS_TEMPLATE_ID, formData,  process.env.REACT_APP_EMAILJS_USER_ID)
+  
+    emailjs.send(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, formData, process.env.REACT_APP_EMAILJS_USER_ID)
       .then((response) => {
         setStatus('success');
         setShowModal(true); // Show modal on success
-      }, (error) => {
+      })
+      .catch((error) => {
         setStatus('failure');
         setShowModal(true); // Show modal on failure
+        console.error("EmailJS Error:", error); // Log error for debugging
       })
       .finally(() => {
         setIsSubmitting(false);
       });
-
+  
+    // Reset the form data
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
@@ -50,14 +54,14 @@ function ContactUs({ language }) {
 
   return (
     <div className={`${styles['contact-container']} ${isHebrew ? styles['contact-rtl'] : styles['contact-ltr']}`}>
-        <Helmet>
-        <title>{isHebrew ? 'צור קשר' : 'Contact Us'}</title>
+      <Helmet>
+        <title>{language === 'he' ? 'ArtChayat - צור קשר | ארט חייט' : 'Contact Us | ArtChayat - ארט חייט'}</title>
         <meta name="description" content={isHebrew ? 'לייעוץ אומנותי ופרטים נוספים:' : 'For artistic advice and additional details:'} />
         <meta name="keywords" content={isHebrew ? 'צור קשר, פרטים, מידע' : 'contact, details, information'} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
-        <meta property="og:title" content={isHebrew ? 'צור קשר' : 'Contact Us'} />
+        <meta property="og:title" content={isHebrew ? 'ArtChayat - צור קשר | ארט חייט' : 'Contact Us | ArtChayat - ארט חייט'} />
         <meta property="og:description" content={isHebrew ? 'לייעוץ אומנותי ופרטים נוספים:' : 'For artistic advice and additional details:'} />
         <meta property="og:image" content={logoEN} />
         <meta property="og:url" content="https://artchayat.netlify.app/contact" />
@@ -116,6 +120,22 @@ function ContactUs({ language }) {
           {isHebrew ? 'שלח' : 'Submit'}
         </button>
       </form>
+
+      {/* Loader */}
+      {isSubmitting && (
+        <div className={styles['loading-container']}>
+          <Oval 
+            height={80} 
+            width={80} 
+            color="#00BFFF" 
+            visible={true} 
+            ariaLabel="oval-loading"
+            secondaryColor="#f0f0f0"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        </div>
+      )}
 
       {/* Modal for Success and Failure Messages */}
       {showModal && (
