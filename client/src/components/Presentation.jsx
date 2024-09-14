@@ -47,10 +47,10 @@ function Presentation() {
           className={styles[fadeClass]} // Apply fade class
         />
       </div>
-      <button className={styles['prev-button']} onClick={goToPreviousSlide}>
+      <button className={styles['next-button']} onClick={goToNextSlide}>
         &#10094; {/* Left arrow */}
       </button>
-      <button className={styles['next-button']} onClick={goToNextSlide}>
+      <button className={styles['prev-button']} onClick={goToPreviousSlide}>
         &#10095; {/* Right arrow */}
       </button>
     </div>
