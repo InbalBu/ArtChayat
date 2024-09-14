@@ -22,33 +22,37 @@ function ContactUs({ language }) {
     setFormData({ ...formData, [name]: value });
   };
 
+  const [errorMessage, setErrorMessage] = useState(''); // State to store the error message
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus('');
-    
+    setErrorMessage(''); // Reset the error message
+
     const timeout = setTimeout(() => {
       setIsSubmitting(false);
       setShowModal(true);
-      setStatus('failure'); 
-    }, 15000); 
-  
+      setStatus('failure');
+    }, 15000);
+
     emailjs.send(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, formData, process.env.REACT_APP_EMAILJS_USER_ID)
       .then((response) => {
-        clearTimeout(timeout); 
+        clearTimeout(timeout);
         setStatus('success');
         setShowModal(true);
       })
       .catch((error) => {
-        clearTimeout(timeout); 
+        clearTimeout(timeout);
         setStatus('failure');
         setShowModal(true);
+        setErrorMessage(error.text || 'An unknown error occurred.'); // Capture the error message
         console.error("EmailJS Error:", error);
       })
       .finally(() => {
         setIsSubmitting(false);
       });
-  
+
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
@@ -82,46 +86,46 @@ function ContactUs({ language }) {
       <form onSubmit={handleSubmit} className={styles['contact-form']}>
         <div className={styles['contact-form-group']}>
           <label>{isHebrew ? 'שם*' : 'Name*'}</label>
-          <input 
-            type="text" 
-            name="name" 
-            value={formData.name} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
           />
         </div>
         <div className={styles['contact-form-group']}>
           <label>{isHebrew ? 'אימייל*' : 'Email*'}</label>
-          <input 
-            type="email" 
-            name="email" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
         </div>
         <div className={styles['contact-form-group']}>
           <label>{isHebrew ? 'טלפון*' : 'Phone*'}</label>
-          <input 
-            type="tel" 
-            name="phone" 
-            value={formData.phone} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
           />
         </div>
         <div className={styles['contact-form-group']}>
           <label>{isHebrew ? 'הודעה*' : 'Message*'}</label>
-          <textarea 
-            name="message" 
-            value={formData.message} 
-            onChange={handleChange} 
-            required 
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
           />
         </div>
-        <button 
-          type="submit" 
-          className={styles['contact-submit-button']} 
+        <button
+          type="submit"
+          className={styles['contact-submit-button']}
           disabled={isSubmitting}
         >
           {isHebrew ? 'שלח' : 'Submit'}
@@ -131,11 +135,11 @@ function ContactUs({ language }) {
       {/* Loader */}
       {isSubmitting && (
         <div className={styles['loading-container']}>
-          <Oval 
-            height={80} 
-            width={80} 
-            color="#00BFFF" 
-            visible={true} 
+          <Oval
+            height={80}
+            width={80}
+            color="#00BFFF"
+            visible={true}
             ariaLabel="oval-loading"
             secondaryColor="#f0f0f0"
             strokeWidth={2}
@@ -160,6 +164,8 @@ function ContactUs({ language }) {
               <div className={styles.modalError}>
                 <FaTimesCircle size={40} color="red" />
                 <p>{isHebrew ? 'אירעה שגיאה בשליחת ההודעה, נסה שנית.' : 'There was an error sending your message, please try again.'}</p>
+                {/* Display the error message for debugging */}
+                {errorMessage && <p>{`Error: ${errorMessage}`}</p>}
               </div>
             )}
           </div>
