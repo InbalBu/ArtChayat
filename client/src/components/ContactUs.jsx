@@ -26,22 +26,29 @@ function ContactUs({ language }) {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus('');
+    
+    const timeout = setTimeout(() => {
+      setIsSubmitting(false);
+      setShowModal(true);
+      setStatus('failure'); 
+    }, 15000); 
   
     emailjs.send(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, formData, process.env.REACT_APP_EMAILJS_USER_ID)
       .then((response) => {
+        clearTimeout(timeout); 
         setStatus('success');
-        setShowModal(true); // Show modal on success
+        setShowModal(true);
       })
       .catch((error) => {
+        clearTimeout(timeout); 
         setStatus('failure');
-        setShowModal(true); // Show modal on failure
-        console.error("EmailJS Error:", error); // Log error for debugging
+        setShowModal(true);
+        console.error("EmailJS Error:", error);
       })
       .finally(() => {
         setIsSubmitting(false);
       });
   
-    // Reset the form data
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
