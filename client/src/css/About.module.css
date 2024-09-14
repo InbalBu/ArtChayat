@@ -156,6 +156,7 @@
 }
 
 
+/* Updated styles for presentation */
 .presentation-container {
   position: relative;
   max-width: 800px;
@@ -178,30 +179,35 @@
   opacity: 0;
 }
 
-.prev-button,
-.next-button {
+/* Container for buttons */
+.buttons-container {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Media Player Style Buttons without background */
+.prev-button,
+.next-button,
+.play-pause-button {
+  color: white; /* Icon color */
   border: none;
-  padding: 10px;
+  padding: 5px 10px;
   cursor: pointer;
-  border-radius: 50%;
-  z-index: 2;
+  font-size: 20px; /* Adjust size of icons */
   outline: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
 }
 
-.prev-button {
-  left: 10px;
-}
-
-.next-button {
-  right: 10px;
-}
-
+/* Hover effect for buttons */
 .prev-button:hover,
-.next-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.next-button:hover,
+.play-pause-button:hover {
+  color: #ccc; /* Lighter color on hover */
 }
+

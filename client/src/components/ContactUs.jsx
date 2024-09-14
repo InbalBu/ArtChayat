@@ -21,7 +21,7 @@ function ContactUs({ language }) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -32,14 +32,7 @@ function ContactUs({ language }) {
       setShowModal(true);
       setStatus('failure'); 
     }, 10000); 
-  
-    console.log("Sending Email with:", {
-      service_id: process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      template_id: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      user_id: process.env.REACT_APP_EMAILJS_USER_ID,
-      formData
-    });
-  
+    
     emailjs.send(
       process.env.REACT_APP_EMAILJS_SERVICE_ID,
       process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
