@@ -20,12 +20,16 @@ const links = [
   { url: '/press', changefreq: 'monthly', priority: 0.6 },
   { url: '/articles', changefreq: 'monthly', priority: 0.6 },
   { url: '/contact', changefreq: 'monthly', priority: 0.6 },
-  // Add more links if you have more pages
+  { url: '/personalGallery', changefreq: 'monthly', priority: 0.6 },
 ];
 
-const sitemap = new SitemapStream({ hostname: 'https://artchayat.netlify.app/' });
+const sitemap = new SitemapStream({
+  hostname: 'https://artchayat.netlify.app/',
+  xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9'
+});
 
 const writeStream = createWriteStream(resolve(publicDir, 'sitemap.xml'));
+
 sitemap.pipe(writeStream);
 
 writeStream.on('finish', () => {
