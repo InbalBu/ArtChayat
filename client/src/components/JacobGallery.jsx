@@ -57,7 +57,7 @@ function JacobGallery({ language }) {
       })
       .catch(error => {
         console.error('Error fetching products:', error);
-        setError('Failed to fetch products.');
+        setError(error.message); // Set the error message in state
         setLoading(false); // Set loading to false even if there is an error
       });
   }, [language]);
@@ -99,8 +99,11 @@ function JacobGallery({ language }) {
     });
   };
 
-  if (error) return <div>{error}</div>;
-
+  if (error) {
+    // Display the actual error message on the page
+    return <div className={styles['error-message']}>Error: {error}</div>;
+  }
+  
   // Group products by category
   const groupedProducts = filteredProducts.reduce((acc, product) => {
     if (!acc[product.category]) {
