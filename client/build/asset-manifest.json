@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7384cd5d.css",
-    "main.js": "/static/js/main.8c8ee4a6.js",
+    "main.js": "/static/js/main.1711add5.js",
     "static/js/453.258b012d.chunk.js": "/static/js/453.258b012d.chunk.js",
     "static/media/artNewcut.mp4": "/static/media/artNewcut.9fd38d8aaada4fd5e354.mp4",
     "static/media/DSC05371.jpg": "/static/media/DSC05371.45a3c23ef2f97bee906c.jpg",
@@ -108,11 +108,11 @@
     "static/media/shoshi_chayat_portrait.jpg": "/static/media/shoshi_chayat_portrait.469994281b4c51155271.jpg",
     "index.html": "/index.html",
     "main.7384cd5d.css.map": "/static/css/main.7384cd5d.css.map",
-    "main.8c8ee4a6.js.map": "/static/js/main.8c8ee4a6.js.map",
+    "main.1711add5.js.map": "/static/js/main.1711add5.js.map",
     "453.258b012d.chunk.js.map": "/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7384cd5d.css",
-    "static/js/main.8c8ee4a6.js"
+    "static/js/main.1711add5.js"
   ]
 }
