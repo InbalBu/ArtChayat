@@ -6,10 +6,27 @@ import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for 
 import styles from '../css/JacobGallery.module.css'; // Import the CSS module
 import logoEN from '../images/logoEN.png';
 
+// CSS for the loader
+const loaderStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100vh',
+};
+
+function Spinner() {
+  return (
+    <div style={loaderStyle}>
+      <div className={styles.spinner}></div>
+    </div>
+  );
+}
+
 function ShoshiGallery({ language }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // Added loading state
   const [filters, setFilters] = useState({
     category: ''
   });
@@ -44,6 +61,7 @@ function ShoshiGallery({ language }) {
 
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_BACKEND_API_URL || 'http://localhost:5000';
+    setLoading(true); // Set loading to true before fetch
     fetch(`${apiUrl}/api/products/shoshi-gallery?lang=${language}`)
       .then(response => {
         if (!response.ok) throw new Error('Network response was not ok.');
@@ -56,6 +74,9 @@ function ShoshiGallery({ language }) {
       .catch(error => {
         console.error('Error fetching products:', error);
         setError('Failed to fetch products.');
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false after fetch
       });
   }, [language]);
 
@@ -96,6 +117,7 @@ function ShoshiGallery({ language }) {
     });
   };
 
+  if (loading) return <Spinner />; // Show loader while loading
   if (error) return <div>{error}</div>;
 
   // Group products by category
@@ -153,9 +175,11 @@ function ShoshiGallery({ language }) {
                       <div className={styles['gallery-product-info']}>
                         <div className={styles['gallery-product-name']}>{product.name}</div>
                         <div className={styles['gallery-product-price']}>
-                          {price === 0 
-                            ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span> 
-                            : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
+                          {price === 0
+                            ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span>
+                            : price === 1
+                              ? <span className={styles['gallery-sold']}>{language === 'he' ? 'נמכר' : 'Sold'}</span>
+                              : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
                           }
                         </div>
                         <div className={styles['gallery-product-size']}>{language === 'he' ? 'גודל:' : 'Size:'} {product.size}</div>

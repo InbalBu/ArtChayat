@@ -12,7 +12,8 @@ console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
 
 const allowedOrigins = [
     process.env.FRONTEND_URL || 'http://localhost:3000', 
-    'https://artchayat.netlify.app'
+    'https://artchayat.netlify.app',
+    'https://artchayat.onrender.com'  
 ];
 
 app.use(cors({
