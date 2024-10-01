@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.56b23731.css",
-    "main.js": "/static/js/main.192dc802.js",
+    "main.js": "/static/js/main.9ff24d04.js",
     "static/js/453.258b012d.chunk.js": "/static/js/453.258b012d.chunk.js",
     "static/media/artNewcut.mp4": "/static/media/artNewcut.9fd38d8aaada4fd5e354.mp4",
     "static/media/DSC05371.jpg": "/static/media/DSC05371.45a3c23ef2f97bee906c.jpg",
@@ -104,15 +104,17 @@
     "static/media/personalGallery25.jpg": "/static/media/personalGallery25.99562d310b2d498dc67b.jpg",
     "static/media/personalGallery23.jpg": "/static/media/personalGallery23.cd67bb3d40a90984a28d.jpg",
     "static/media/signature.jpg": "/static/media/signature.929dc750c52ccf432e79.jpg",
+    "static/media/logoENog.png": "/static/media/logoENog.725213c2455b96ec792a.png",
+    "static/media/logoHeog.png": "/static/media/logoHeog.f7b4a4cd4aacf7d8b093.png",
     "static/media/isFlag.png": "/static/media/isFlag.35bf661dd7805720e9a3.png",
     "static/media/shoshi_chayat_portrait.jpg": "/static/media/shoshi_chayat_portrait.469994281b4c51155271.jpg",
     "index.html": "/index.html",
     "main.56b23731.css.map": "/static/css/main.56b23731.css.map",
-    "main.192dc802.js.map": "/static/js/main.192dc802.js.map",
+    "main.9ff24d04.js.map": "/static/js/main.9ff24d04.js.map",
     "453.258b012d.chunk.js.map": "/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.56b23731.css",
-    "static/js/main.192dc802.js"
+    "static/js/main.9ff24d04.js"
   ]
 }

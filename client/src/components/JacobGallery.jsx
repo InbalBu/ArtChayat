@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
 import styles from '../css/JacobGallery.module.css'; // Import the CSS module
-import logoEN from '../images/logoEN.png';
+import logoENog from '../images/logoENog.png';
+import logoHeog from '../images/logoHeog.png';
 
 // CSS for the loader
 const loaderStyle = {
@@ -130,16 +131,18 @@ function JacobGallery({ language }) {
   return (
     <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
       <Helmet>
-        <title>{language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Yaakov Khayat'}</title>
-        <meta name="description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Yaakov Khayat\'s works'} />
-        <meta name="keywords" content={language === 'he' ? 'יעקב חייט, גלריה, אומנות' : 'Yaakov Khayat, gallery, art'} />
+        <title>{language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Jacob Chayat'}</title>
+        <meta name="description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Jacob Chayat\'s works'} />
+        <meta name="keywords" content={language === 'he' ? 'יעקב חייט, גלריה, אומנות' : 'Jacob Chayat, gallery, art'} />
         <meta name="robots" content="index, follow" />
         {/* Open Graph tags */}
-        <meta property="og:title" content={language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Yaakov Khayat'} />
-        <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Yaakov Khayat\'s works'} />
-        <meta property="og:image" content={logoEN} />
+        <meta property="og:title" content={language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Jacob Chayat'} />
+        <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Jacob Chayat\'s works'} />
+        <meta property="og:image" content={language === 'he' ? {logoHeog} : {logoENog}} />
         <meta property="og:url" content="https://artchayat.netlify.app/jacob/gallery" />
         <meta property="og:type" content="website" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
       </Helmet>
       <div className={styles['gallery-filters']}>
         <select name="category" onChange={handleFilterChange} value={filters.category}>
