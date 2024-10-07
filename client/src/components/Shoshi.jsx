@@ -23,7 +23,7 @@ function Shoshi({ language }) {
       </Helmet>
       <div className={styles['shoshi-content']}>
         <div className={`${styles['shoshi-image-container']} ${isHebrew ? styles['shoshi-image-container-rtl'] : styles['shoshi-image-container-ltr']}`}>
-          <img src={shoshiPortrait} alt="Shoshi Khayat" className={styles['shoshi-image']} />
+          <img src={shoshiPortrait} alt="שושי חייט" className={styles['shoshi-image']} />
         </div>
         <div className={styles['shoshi-text-container']}>
           <h1>{isHebrew ? 'שושי חייט' : 'Shoshi Khayat'}</h1>

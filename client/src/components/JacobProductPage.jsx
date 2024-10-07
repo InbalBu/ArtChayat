@@ -44,13 +44,13 @@ function JacobProductPage({ language }) {
     <div className={`${styles.productPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
       <Helmet>
         <title>{language === 'he' ? `ArtChayat - יעקב חייט | גלריה | ${product.name} | ארט חייט` : `Jacob Chayat | Gallery | ${product.name} | ArtChayat - ארט חייט`}</title>
-        <meta name="description" content={language === 'he' ? `פרטים אודות יצירתו של יעקב חייט בשם ${product.name}.` : `Details about the artwork by Yaakov Khayat named ${product.name}.`} />
-        <meta name="keywords" content={language === 'he' ? `יעקב חייט, אומנות, ${product.name}` : `Yaakov Khayat, art, ${product.name}`} />
+        <meta name="description" content={language === 'he' ? `פרטים אודות יצירתו של יעקב חייט בשם ${product.name}.` : `Details about the artwork by Yaakov Chayat named ${product.name}.`} />
+        <meta name="keywords" content={language === 'he' ? `יעקב חייט, אומנות, ${product.name}` : `Yaakov Chayat, art, ${product.name}`} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
         <meta property="og:title" content={language === 'he' ? `ArtChayat - יעקב חייט | גלריה | ${product.name} | ארט חייט` : `Jacob Chayat | Gallery | ${product.name} | ArtChayat - ארט חייט`} />
-        <meta property="og:description" content={language === 'he' ? `פרטים אודות יצירתו של יעקב חייט בשם ${product.name}.` : `Details about the artwork by Yaakov Khayat named ${product.name}.`} />
+        <meta property="og:description" content={language === 'he' ? `פרטים אודות יצירתו של יעקב חייט בשם ${product.name}.` : `Details about the artwork by Yaakov Chayat named ${product.name}.`} />
         <meta property="og:image" content={product.imageURL} />
         <meta property="og:url" content={`https://artchayat.netlify.app/jacob/product/${id}`} />
         <meta property="og:type" content="article" />

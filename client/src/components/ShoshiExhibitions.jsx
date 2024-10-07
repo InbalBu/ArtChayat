@@ -10,19 +10,19 @@ function ShoshiExhibitions({ language }) {
     <div className={`${styles['exhibitions-container']} ${isHebrew ? styles['exhibitions-rtl'] : styles['exhibitions-ltr']}`}>
       <Helmet>
       <title>{language === 'he' ? 'ArtChayat - שושי חייט | תערוכות | ארט חייט' : 'Shoshi Chayat | Exhibitions | ArtChayat - ארט חייט'}</title>
-        <meta name="description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Khayat during her artistic career.'} />
-        <meta name="keywords" content={isHebrew ? 'שושי חייט, תערוכות, אומנות' : 'Shoshi Khayat, exhibitions, art'} />
+        <meta name="description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Chayat during her artistic career.'} />
+        <meta name="keywords" content={isHebrew ? 'שושי חייט, תערוכות, אומנות' : 'Shoshi Chayat, exhibitions, art'} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
         <meta property="og:title" content={isHebrew ? 'ArtChayat - שושי חייט | תערוכות | ארט חייט' : 'Shoshi Chayat | Exhibitions | ArtChayat - ארט חייט'} />
-        <meta property="og:description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Khayat during her artistic career.'} />
+        <meta property="og:description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Chayat during her artistic career.'} />
         <meta property="og:image" content={logoEN} />
         <meta property="og:url" content="https://artchayat.netlify.app/shoshi-exhibitions" />
         <meta property="og:type" content="website" />
       </Helmet>
       <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
-      <p>{isHebrew ? 'במהלך הקריירה האמנותית שלה הציגה שושי חייט 27 תערוכות יחיד ועוד 36 תערוכות קבוצתיות בישראל ובעולם.' : 'During her artistic career, Shoshi Khayat presented 27 solo exhibitions and 36 group exhibitions in Israel and around the world.'}</p>
+      <p>{isHebrew ? 'במהלך הקריירה האמנותית שלה הציגה שושי חייט 27 תערוכות יחיד ועוד 36 תערוכות קבוצתיות בישראל ובעולם.' : 'During her artistic career, Shoshi Chayat presented 27 solo exhibitions and 36 group exhibitions in Israel and around the world.'}</p>
       <div className={styles['exhibitions-list']}>
         <ul>
           {isHebrew ? (

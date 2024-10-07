@@ -10,7 +10,7 @@ function About({ language }) {
             <Helmet>
                 <title>{language === 'he' ? 'ArtChayat - אודות | ארט חייט' : 'About | ArtChayat - ארט חייט'}</title>
                 <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות...' : 'Art Chayat was born out of creativity and a love for art...'} />
-                <meta name="keywords" content={language === 'he' ? 'אומנות, ציור, פיסול' : 'art, painting, sculpture'} />
+                <meta name="keywords" content={language === 'he' ? 'ארט חייט, יעקב חייט, שושי חייט, אומנות, ציור, פיסול' : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, painting, sculpture'} />
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph tags */}

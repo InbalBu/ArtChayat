@@ -84,7 +84,7 @@ function HomePage({ language }) {
             <Helmet>
                 <title>{language === 'he' ? 'ArtChayat - ארט חייט' : 'ArtChayat - ארט חייט'}</title>
                 <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
-                <meta name="keywords" content={language === 'he' ? 'אומנות, אהבה, יצירה' : 'art, love, creation'} />
+                <meta name="keywords" content={language === 'he' ? 'ארט חייט, יעקב חייט, שושי חייט, אומנות, אהבה, יצירה' : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, love, creation'} />
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph tags */}

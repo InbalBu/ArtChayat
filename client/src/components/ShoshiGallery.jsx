@@ -132,14 +132,14 @@ function ShoshiGallery({ language }) {
   return (
     <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
       <Helmet>
-        <title>{language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Khayat'}</title>
-        <meta name="description" content={language === 'he' ? 'גלריה של יצירות שושי חייט' : 'Gallery of Shoshi Khayat\'s works'} />
-        <meta name="keywords" content={language === 'he' ? 'שושי חייט, גלריה, אומנות' : 'Shoshi Khayat, gallery, art'} />
+        <title>{language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Chayat'}</title>
+        <meta name="description" content={language === 'he' ? 'גלריה של יצירות שושי חייט' : 'Gallery of Shoshi Chayat\'s works'} />
+        <meta name="keywords" content={language === 'he' ? 'שושי חייט, גלריה, אומנות' : 'Shoshi Chayat, gallery, art'} />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph tags */}
-        <meta property="og:title" content={language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Khayat'} />
-        <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות שושי חייט' : 'Gallery of Shoshi Khayat\'s works'} />
+        <meta property="og:title" content={language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Chayat'} />
+        <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות שושי חייט' : 'Gallery of Shoshi Chayat\'s works'} />
         <meta property="og:image" content={logoEN} />
         <meta property="og:url" content="https://artchayat.netlify.app/shoshi-gallery" />
         <meta property="og:type" content="website" />

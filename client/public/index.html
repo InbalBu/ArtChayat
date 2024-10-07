@@ -1,50 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="google-site-verification" content="1mLEa9PZka9OeDM2PExHNbnqSIeiAB0ZnUlR1c5HpZ0" />
-    <meta charset="utf-8" />
-    <link id="favicon" rel="icon" href="%PUBLIC_URL%/logoEN.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Art Chayat | ארט חייט" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap">
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Art Chayat | ארט חייט</title>
 
-    <!-- Open Graph meta tags -->
-    <meta id="og-title" property="og:title" content="Art Chayat | ארט חייט" />
-    <meta id="og-description" property="og:description" content="מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז&quot;ל" />
-    <meta id="og-image" property="og:image" content="%PUBLIC_URL%/logoEN.png" />
-    <meta property="og:url" content="https://artchayat.netlify.app/" />
-    <meta property="og:type" content="website" />
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script src="https://cdn.enable.co.il/licenses/enable-L2868189n5wfkql0-0824-62134/init.js"></script>
-    <div id="root"></div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        // Function to update the language
-        function updateLanguage(language) {
-          let favicon = document.getElementById('favicon');
-          let ogImage = document.getElementById('og-image');
+<head>
+  <meta name="google-site-verification" content="1mLEa9PZka9OeDM2PExHNbnqSIeiAB0ZnUlR1c5HpZ0" />
+  <meta charset="utf-8" />
+  <link id="favicon" rel="icon" href="%PUBLIC_URL%/logoEN.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Art Chayat | ארט חייט" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <meta name="keywords"
+    content="Art Chayat, ארט חייט, fine art, Shoshi Chayat, Yaakov Chayat, contemporary art, modern art, art gallery, שושי חייט, יעקב חייט, אמנות, גלריה, אמנות עכשווית">
+  <title>Art Chayat | ארט חייט</title>
+</head>
 
-          if (language === 'he') {
-            favicon.href = '%PUBLIC_URL%/logoHe.png';
-            ogImage.content = '%PUBLIC_URL%/logoHe.png';
-          } else {
-            favicon.href = '%PUBLIC_URL%/logoEN.png';
-            ogImage.content = '%PUBLIC_URL%/logoEN.png';
-          }
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script src="https://cdn.enable.co.il/licenses/enable-L2868189n5wfkql0-0824-62134/init.js"></script>
+  <div id="root"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Function to update the language
+      function updateLanguage(language) {
+        let favicon = document.getElementById('favicon');
+        let ogImage = document.getElementById('og-image');
+
+        if (language === 'he') {
+          favicon.href = '%PUBLIC_URL%/logoHe.png';
+          ogImage.content = '%PUBLIC_URL%/logoHe.png';
+        } else {
+          favicon.href = '%PUBLIC_URL%/logoEN.png';
+          ogImage.content = '%PUBLIC_URL%/logoEN.png';
         }
+      }
 
-        // Detect language from URL or other methods
-        const urlParams = new URLSearchParams(window.location.search);
-        const language = urlParams.get('lang') || 'en'; // Default to 'en' if no parameter
+      // Detect language from URL or other methods
+      const urlParams = new URLSearchParams(window.location.search);
+      const language = urlParams.get('lang') || 'he';
 
-        // Update language-specific assets
-        updateLanguage(language);
-      });
-    </script>
-  </body>
+      // Update language-specific assets
+      updateLanguage(language);
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "Art Chayat",
+    "url": "https://artchayat.netlify.app/",
+    "logo": '%PUBLIC_URL%/logoHe.png',
+    "sameAs": [
+    "https://www.facebook.com/JacobChayat"
+  ]
+  }
+  </script>
+
+</body>
+
 </html>

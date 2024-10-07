@@ -51,7 +51,7 @@ const Articles = ({ language }) => (
     <Helmet>
       <title>{language === 'he' ? 'ArtChayat - כתבות | ארט חייט' : 'Articles | ArtChayat - ארט חייט'}</title>
       <meta name="description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
-      <meta name="keywords" content={language === 'he' ? 'אמנות, מאמרים, תערוכה' : 'art, articles, exhibition'} />
+      <meta name="keywords" content={language === 'he' ? 'ארט חייט, יעקב חייט, שושי חייט, אמנות, מאמרים, תערוכה' : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, articles, exhibition'} />
       <meta name="robots" content="index, follow" />
 
       {/* Open Graph tags */}

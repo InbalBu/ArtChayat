@@ -10,19 +10,19 @@ function JacobExhibitions({ language }) {
     <div className={`${styles['exhibitions-container']} ${isHebrew ? styles['exhibitions-rtl'] : styles['exhibitions-ltr']}`}>
       <Helmet>
       <title>{language === 'he' ? 'ArtChayat - יעקב חייט | תערוכות | ארט חייט' : 'Jacob Chayat | Exhibitions | ArtChayat - ארט חייט'}</title>
-        <meta name="description" content={isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'} />
-        <meta name="keywords" content={isHebrew ? 'יעקב חייט, תערוכות, אומנות' : 'Yaakov Khayat, exhibitions, art'} />
+        <meta name="description" content={isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Chayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'} />
+        <meta name="keywords" content={isHebrew ? 'יעקב חייט, תערוכות, אומנות' : 'Yaakov Chayat, exhibitions, art'} />
         <meta name="robots" content="index, follow" />
 
          {/* Open Graph tags */}
          <meta property="og:title" content={isHebrew ? 'ArtChayat - יעקב חייט | תערוכות | ארט חייט' : 'Jacob Chayat | Exhibitions | ArtChayat - ארט חייט'} />
-        <meta property="og:description" content={isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'} />
+        <meta property="og:description" content={isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Chayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'} />
         <meta property="og:image" content={logoEN} />
         <meta property="og:url" content="https://artchayat.netlify.app/jacob/exhibitions" />
         <meta property="og:type" content="website" />
       </Helmet>
       <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
-      <p>{isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Khayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'}</p>
+      <p>{isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Chayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'}</p>
       <div className={styles['exhibitions-list']}>
         <ul>
           {isHebrew ? (

@@ -95,7 +95,7 @@ const PersonalGallery = ({ language }) => {
           <div key={index} className={styles['homepage-grid-item']}>
             <img
               src={image.src}
-              alt={`Painting ${index + 1}`}
+              alt={`${index + 1}`}
               onClick={() => handleImageClick(index)}
             />
             <p className={styles['image-description']}>{image.description}</p>
