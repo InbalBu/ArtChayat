@@ -5,20 +5,44 @@ import shoshiAndJacob from '../images/shoshiandjacob.jpeg';
 import Presentation from './Presentation';
 
 function About({ language }) {
+    const title = language === 'he' ? 'ArtChayat - אודות | ארט חייט' : 'About | ArtChayat - ארט חייט';
+    const description = language === 'he' 
+        ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות, משולב בסיפור אהבתם של הורינו, זוג האומנים שושי ויעקב חייט ז"ל.'
+        : 'Art Chayat was born out of creativity and a love for art, intertwined with the love story of our parents, the artists Shoshi and Yaakov Chayat.';
+    const keywords = language === 'he'
+        ? 'ארט חייט, יעקב חייט, שושי חייט, אומנות, ציור, פיסול'
+        : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, painting, sculpture';
+    const ogTitle = language === 'he' 
+        ? 'אודות | ארט חייט - ArtChayat'
+        : 'Art Chayat - Painting a Love Story';
+    const ogDescription = description;
+    const pageUrl = "https://artchayat.netlify.app/about";
+    
     return (
         <div className={`${styles['about-container']} ${language === 'he' ? styles['about-rtl'] : styles['about-ltr']}`}>
             <Helmet>
-                <title>{language === 'he' ? 'ArtChayat - אודות | ארט חייט' : 'About | ArtChayat - ארט חייט'}</title>
-                <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות...' : 'Art Chayat was born out of creativity and a love for art...'} />
-                <meta name="keywords" content={language === 'he' ? 'ארט חייט, יעקב חייט, שושי חייט, אומנות, ציור, פיסול' : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, painting, sculpture'} />
+                <title>{title}</title>
+                <meta name="description" content={description} />
+                <meta name="keywords" content={keywords} />
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph tags */}
-                <meta property="og:title" content={language === 'he' ? 'אודות | ארט חייט - ArtChayat' : 'Art Chayat - Painting a Love Story'} />
-                <meta property="og:description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות...' : 'Art Chayat was born out of creativity and a love for art...'} />
-                <meta property="og:image" content={shoshiAndJacob} />
-                <meta property="og:url" content="https://artchayat.netlify.app/about" />
+                <meta property="og:title" content={ogTitle} />
+                <meta property="og:description" content={ogDescription} />
+                <meta property="og:image" content='https://artchayat.netlify.app/shoshiandjacob.jpeg' />
+                <meta property="og:url" content={pageUrl} />
                 <meta property="og:type" content="website" />
+                <meta property="og:locale" content={language === 'he' ? 'he_IL' : 'en_US'} />
+
+                {/* Twitter Card tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={ogTitle} />
+                <meta name="twitter:description" content={ogDescription} />
+                <meta name="twitter:image" content='https://artchayat.netlify.app/shoshiandjacob.jpeg' />
+                <meta name="twitter:url" content={pageUrl} />
+
+                {/* Canonical URL */}
+                <link rel="canonical" href={pageUrl} />
             </Helmet>
 
             <h1>{language === 'he' ? 'ארט חייט - מציירים סיפור אהבה' : 'Art Chayat - Painting a Love Story'}</h1>

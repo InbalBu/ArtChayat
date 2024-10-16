@@ -131,14 +131,26 @@ function JacobGallery({ language }) {
   return (
     <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
       <Helmet>
-        <title>{language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Jacob Chayat'}</title>
-        <meta name="description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Jacob Chayat\'s works'} />
-        <meta name="keywords" content={language === 'he' ? 'יעקב חייט, גלריה, אומנות' : 'Jacob Chayat, gallery, art'} />
+        {/* Title - הצגת המונחים המרכזיים כמו "ארט חייט" ו"יעקב חייט" */}
+        <title>{language === 'he' ? 'ארט חייט | גלריה של יעקב חייט - אומנות יעקב חייט' : 'Art Chayat | Jacob Chayat Gallery - Jacob Chayat\'s Art'}</title>
+
+        {/* Description - שימוש במונחי חיפוש שונים בתיאור */}
+        <meta name="description" content={language === 'he'
+          ? 'ארט חייט - גלריה יעקב חייט. אומנות מודרנית ועכשווית מאת האמן יעקב חייט ז״ל. צפו ביצירות בגלריה.'
+          : 'Art Chayat - Jacob Chayat Gallery. Modern and contemporary art by artist Jacob Chayat. Explore his gallery of works.'} />
+
+        {/* Keywords - הוספת מונחי חיפוש רחבים וממוקדים */}
+        <meta name="keywords" content={language === 'he'
+          ? 'ארט חייט, יעקב חייט, אומנות יעקב חייט, גלריה יעקב חייט, גלריה לאומנות, אומנות מודרנית, אומנות עכשווית, שושי חייט, יעקב חייט ז״ל'
+          : 'Art Chayat, Jacob Chayat, Jacob Chayat art, Jacob Chayat gallery, art gallery, modern art, contemporary art, Shoshi Chayat, Jacob Chayat Z\'L'} />
+
+        {/* Robots */}
         <meta name="robots" content="index, follow" />
+
         {/* Open Graph tags */}
-        <meta property="og:title" content={language === 'he' ? 'גלריה - יעקב חייט' : 'Gallery - Jacob Chayat'} />
-        <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות יעקב חייט' : 'Gallery of Jacob Chayat\'s works'} />
-        <meta property="og:image" content={language === 'he' ? {logoHeog} : {logoENog}} />
+        <meta property="og:title" content={language === 'he' ? 'ארט חייט - גלריה יעקב חייט' : 'Art Chayat - Jacob Chayat Gallery'} />
+        <meta property="og:description" content={language === 'he' ? 'אומנות מודרנית מאת יעקב חייט ז״ל בגלריה ארט חייט' : 'Modern art by Jacob Chayat in the Art Chayat gallery'} />
+        <meta property="og:image" content={language === 'he' ? 'https://artchayat.netlify.app/logoHe.png' : 'https://artchayat.netlify.app/logoEN.png'} />
         <meta property="og:url" content="https://artchayat.netlify.app/jacob/gallery" />
         <meta property="og:type" content="website" />
         <meta property="og:image:width" content="1200" />

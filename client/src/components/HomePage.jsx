@@ -82,24 +82,34 @@ function HomePage({ language }) {
     return (
         <div className='container'>
             <Helmet>
-                <title>{language === 'he' ? 'ArtChayat - ארט חייט' : 'ArtChayat - ארט חייט'}</title>
-                <meta name="description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
-                <meta name="keywords" content={language === 'he' ? 'ארט חייט, יעקב חייט, שושי חייט, אומנות, אהבה, יצירה' : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, love, creation'} />
+                <title>{language === 'he' ? 'ארט חייט - אמנות יעקב ושושי חייט' : 'ArtChayat - Art of Jacob and Shoshi Chayat'}</title>
+
+                <meta name="description" content={language === 'he'
+                    ? 'ארט חייט מציג את יצירותיהם של האמנים יעקב חייט ושושי חייט, המספרים סיפור של אהבה, יצירה ואמנות. הגלריה שלנו מציגה אומנות מקורית של יעקב ושושי חייט ז"ל.'
+                    : 'ArtChayat showcases the works of artists Jacob Chayat and Shoshi Chayat, telling a story of love, creation, and art. Our gallery presents original art by Jacob and Shoshi Chayat.'} />
+
+                <meta name="keywords" content={language === 'he'
+                    ? 'ארט חייט, יעקב חייט, שושי חייט, גלריה יעקב חייט, אומנות יעקב חייט, אומנות, יצירה, אהבה'
+                    : 'ArtChayat, Jacob Chayat, Shoshi Chayat, Jacob Chayat Gallery, Jacob Chayat Art, art, creation, love'} />
+
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph tags */}
-                <meta property="og:title" content={language === 'he' ? 'ArtChayat - ארט חייט' : 'ArtChayat - ארט חייט'} />
-                <meta property="og:description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
-                <meta property="og:image" content={randomImage} />
+                <meta property="og:title" content={language === 'he'
+                    ? 'ארט חייט - אמנות יעקב ושושי חייט'
+                    : 'ArtChayat - Art of Jacob and Shoshi Chayat'} />
+
+                <meta property="og:description" content={language === 'he'
+                    ? 'ארט חייט מציג יצירות מקוריות של יעקב ושושי חייט, ושוזר את סיפור אהבתם היוצא דופן.'
+                    : 'ArtChayat presents the original works of Jacob and Shoshi Chayat, intertwined with their extraordinary love story.'} />
+
+                <meta property="og:image" content='https://artchayat.netlify.app/shoshiandjacob.jpeg' />
                 <meta property="og:url" content="https://artchayat.netlify.app/" />
                 <meta property="og:type" content="website" />
-
-                {/* Twitter Card tags */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={language === 'he' ? 'ארט חייט - דף הבית' : 'Art Chayat - Home'} />
-                <meta name="twitter:description" content={language === 'he' ? 'ארט חייט נולד מתוך יצירה ואהבה לאמנות. משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האמנים שושי ויעקב חייט ז"ל.' : 'Art Chayat was born out of creation and a love for art. Combined with the extraordinary and touching love story of our parents, the artists Shoshi and Jacob Hayat.'} />
-                <meta name="twitter:image" content={randomImage} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />       
             </Helmet>
+
             <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
                 {!isMobile && (
                     <video
