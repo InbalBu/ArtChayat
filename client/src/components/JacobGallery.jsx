@@ -2,10 +2,8 @@ import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
-import styles from '../css/JacobGallery.module.css'; // Import the CSS module
-import logoENog from '../images/logoENog.png';
-import logoHeog from '../images/logoHeog.png';
+import 'react-lazy-load-image-component/src/effects/blur.css'; 
+import styles from '../css/JacobGallery.module.css'; 
 
 // CSS for the loader
 const loaderStyle = {

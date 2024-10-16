@@ -19,30 +19,6 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <script src="https://cdn.enable.co.il/licenses/enable-L2868189n5wfkql0-0824-62134/init.js"></script>
   <div id="root"></div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Function to update the language
-      function updateLanguage(language) {
-        let favicon = document.getElementById('favicon');
-        let ogImage = document.getElementById('og-image');
-
-        if (language === 'he') {
-          favicon.href = '%PUBLIC_URL%/logoHe.png';
-          ogImage.content = '%PUBLIC_URL%/logoHe.png';
-        } else {
-          favicon.href = '%PUBLIC_URL%/logoEN.png';
-          ogImage.content = '%PUBLIC_URL%/logoEN.png';
-        }
-      }
-
-      // Detect language from URL or other methods
-      const urlParams = new URLSearchParams(window.location.search);
-      const language = urlParams.get('lang') || 'he';
-
-      // Update language-specific assets
-      updateLanguage(language);
-    });
-  </script>
 
   <script type="application/ld+json">
     {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import styles from '../css/About.module.css'; // Import CSS module
-import shoshiAndJacob from '../images/shoshiandjacob.jpeg';
+import styles from '../css/About.module.css'; 
 import Presentation from './Presentation';
 
 function About({ language }) {

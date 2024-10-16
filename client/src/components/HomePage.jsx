@@ -103,7 +103,7 @@ function HomePage({ language }) {
                     ? 'ארט חייט מציג יצירות מקוריות של יעקב ושושי חייט, ושוזר את סיפור אהבתם היוצא דופן.'
                     : 'ArtChayat presents the original works of Jacob and Shoshi Chayat, intertwined with their extraordinary love story.'} />
 
-                <meta property="og:image" content='https://artchayat.netlify.app/shoshiandjacob.jpeg' />
+                <meta property="og:image" content={randomImage} />
                 <meta property="og:url" content="https://artchayat.netlify.app/" />
                 <meta property="og:type" content="website" />
                 <meta property="og:image:width" content="1200" />
@@ -179,6 +179,11 @@ function HomePage({ language }) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const video = document.querySelector('.homepage-video-bg');
+    if (!video) {
+        console.error('Video element not found!');
+        return; 
+    }
+    
     const resizeVideo = () => {
         if (video.videoWidth / video.videoHeight > window.innerWidth / window.innerHeight) {
             video.style.width = '100%';
@@ -188,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
             video.style.height = '100%';
         }
     };
+    
     resizeVideo();
     window.addEventListener('resize', resizeVideo);
 });
