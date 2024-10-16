@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import styles from '../css/Articles.module.css';
 import logoEN from '../images/logoEN.png';
 
@@ -46,44 +46,55 @@ const articles = [
   }
 ];
 
-const Articles = ({ language }) => (
-  <div className={`${styles.articlesPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
-    <Helmet>
-      <title>{language === 'he' ? 'ArtChayat - כתבות | ארט חייט' : 'Articles | ArtChayat - ארט חייט'}</title>
-      <meta name="description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
-      <meta name="keywords" content={language === 'he' ? 'ארט חייט, יעקב חייט, שושי חייט, אמנות, מאמרים, תערוכה' : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, articles, exhibition'} />
-      <meta name="robots" content="index, follow" />
+const Articles = ({ language }) => {
+  const pageUrl = language === 'he'
+    ? "https://artchayat.netlify.app/he/articles"
+    : "https://artchayat.netlify.app/en/articles";
 
-      {/* Open Graph tags */}
-      <meta property="og:title" content={language === 'he' ? 'ArtChayat - כתבות | ארט חייט' : 'Articles | ArtChayat - ארט חייט'} />
-      <meta property="og:description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
-      <meta property="og:image" content={logoEN} />
-      <meta property="og:url" content="https://artchayat.netlify.app/articles" />
-      <meta property="og:type" content="website" />
-    </Helmet>
-    <header className={styles.header}>
-      <h1>{language === 'he' ? 'כתבות' : 'Articles'}</h1>
-      <p>{language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'}</p>
-    </header>
-    <div className={styles.articlesContainer}>
-      <div className={styles.articlesGrid}>
-        {articles.map((article, index) => (
-          <div key={index} className={styles.card}>
-            <img src={article.image} alt={article.title[language]} className={styles.image} />
-            <div className={styles.content}>
-              <p className={styles.author}>{article.author[language]}</p>
-              <p className={styles.date}>{article.date[language]}</p>
-              <h2 className={styles.title}>{article.title[language]}</h2>
-              <p className={styles.excerpt}>{article.excerpt[language]}</p>
-              <a href={article.link} target="_blank" rel="noopener noreferrer" className={styles.link}>
-                {language === 'he' ? 'קרא עוד >' : 'Read More >'}
-              </a>
-            </div>
+  return (
+    <HelmetProvider>
+      <div className={`${styles.articlesPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
+        <Helmet>
+          <title>{language === 'he' ? 'ArtChayat - כתבות | ארט חייט' : 'Articles | ArtChayat - ארט חייט'}</title>
+          <meta name="description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
+          <meta name="keywords" content={language === 'he' ? 'ארט חייט, יעקב חייט, שושי חייט, אמנות, מאמרים, תערוכה' : 'Art Chayat, Jacob Chayat, Shoshi Chayat, art, articles, exhibition'} />
+          <meta name="robots" content="index, follow" />
+
+          {/* Open Graph tags */}
+          <meta property="og:title" content={language === 'he' ? 'ArtChayat - כתבות | ארט חייט' : 'Articles | ArtChayat - ארט חייט'} />
+          <meta property="og:description" content={language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'} />
+          <meta property="og:image" content={logoEN} />
+          <meta property="og:url" content={pageUrl} />
+          <meta property="og:type" content="website" />
+
+          {/* Canonical URL */}
+          <link rel="canonical" href={pageUrl} />
+        </Helmet>
+        <header className={styles.header}>
+          <h1>{language === 'he' ? 'כתבות' : 'Articles'}</h1>
+          <p>{language === 'he' ? 'גלו מה נכתב על יעקב ושושי חייט ז"ל' : 'Find out what was written about the late Yaakov and Shushi Hait'}</p>
+        </header>
+        <div className={styles.articlesContainer}>
+          <div className={styles.articlesGrid}>
+            {articles.map((article, index) => (
+              <div key={index} className={styles.card}>
+                <img src={article.image} alt={article.title[language]} className={styles.image} />
+                <div className={styles.content}>
+                  <p className={styles.author}>{article.author[language]}</p>
+                  <p className={styles.date}>{article.date[language]}</p>
+                  <h2 className={styles.title}>{article.title[language]}</h2>
+                  <p className={styles.excerpt}>{article.excerpt[language]}</p>
+                  <a href={article.link} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                    {language === 'he' ? 'קרא עוד >' : 'Read More >'}
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </div>
-);
+    </HelmetProvider>
+  );
+};
 
 export default Articles;

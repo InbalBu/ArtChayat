@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../css/PersonalGallery.module.css'; // Assuming you're using CSS Modules
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // Import images
 import painting1 from '../images/personalGallery1.jpg';
@@ -72,54 +72,63 @@ const PersonalGallery = ({ language }) => {
     setSelectedImage(null);
   };
 
-  return ( 
-    <div className={styles['homepage-gallery']}>
+  const pageUrl = language === 'he'
+    ? "https://artchayat.netlify.app/he/personalGallery"
+    : "https://artchayat.netlify.app/en/personalGallery";
+
+  return (
+    <HelmetProvider>
+      <div className={styles['homepage-gallery']}>
         <Helmet>
-        <title>{language === 'he' ? 'ArtChayat - גלריה מזווית אישית | ארט חייט' : 'Personal Gallery | ArtChayat - ארט חייט'}</title>
-        <meta name="description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
-        <meta name="keywords" content={language === 'he' ? 'גלריה, ציורים, תערוכות' : 'gallery, paintings, exhibitions'} />
-        <meta name="robots" content="index, follow" />
+          <title>{language === 'he' ? 'ArtChayat - גלריה מזווית אישית | ארט חייט' : 'Personal Gallery | ArtChayat - ארט חייט'}</title>
+          <meta name="description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
+          <meta name="keywords" content={language === 'he' ? 'גלריה, ציורים, תערוכות' : 'gallery, paintings, exhibitions'} />
+          <meta name="robots" content="index, follow" />
 
-        {/* Open Graph tags */}
-        <meta property="og:title" content={language === 'he' ? 'ArtChayat - גלריה מזווית אישית | ארט חייט' : 'Personal Gallery | ArtChayat - ארט חייט'} />
-        <meta property="og:description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
-        <meta property="og:url" content="https://artchayat.netlify.app/personalGallery" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+          {/* Open Graph tags */}
+          <meta property="og:title" content={language === 'he' ? 'ArtChayat - גלריה מזווית אישית | ארט חייט' : 'Personal Gallery | ArtChayat - ארט חייט'} />
+          <meta property="og:description" content={language === 'he' ? 'גלריה של ציורים אישיים ותערוכות' : 'Gallery of personal paintings and exhibitions'} />
+          <meta property="og:url" content={pageUrl} />
+          <meta property="og:type" content="website" />
 
-      <h2 className='gridTitle'>
-        {language === 'he' ? 'גלריה מזווית אישית' : 'A Gallery From A Personal Angle'}
-      </h2>
-      <div className={styles['homepage-grid']}>
-        {images.map((image, index) => (
-          <div key={index} className={styles['homepage-grid-item']}>
-            <img
-              src={image.src}
-              alt={`${index + 1}`}
-              onClick={() => handleImageClick(index)}
-            />
-            <p className={styles['image-description']}>{image.description}</p>
-          </div>
-        ))}
-      </div>
+          {/* Canonical URL */}
+          <link rel="canonical" href={pageUrl} />
+        </Helmet>
 
-      {selectedImage !== null && (
-        <div className={styles['homepage-modal']} onClick={handleCloseModal}>
-          <div
-            className={styles['homepage-modal-content']}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className={styles['homepage-close']} onClick={handleCloseModal}>
-              &times;
-            </span>
-            <img src={images[selectedImage].src} alt={`Painting ${selectedImage + 1}`} />
-            <p className={styles['modal-description']}>
-              {images[selectedImage].description}
-            </p>
-          </div>
+        <h2 className='gridTitle'>
+          {language === 'he' ? 'גלריה מזווית אישית' : 'A Gallery From A Personal Angle'}
+        </h2>
+        <div className={styles['homepage-grid']}>
+          {images.map((image, index) => (
+            <div key={index} className={styles['homepage-grid-item']}>
+              <img
+                src={image.src}
+                alt={`${index + 1}`}
+                onClick={() => handleImageClick(index)}
+              />
+              <p className={styles['image-description']}>{image.description}</p>
+            </div>
+          ))}
         </div>
-      )}
-    </div>
+
+        {selectedImage !== null && (
+          <div className={styles['homepage-modal']} onClick={handleCloseModal}>
+            <div
+              className={styles['homepage-modal-content']}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className={styles['homepage-close']} onClick={handleCloseModal}>
+                &times;
+              </span>
+              <img src={images[selectedImage].src} alt={`Painting ${selectedImage + 1}`} />
+              <p className={styles['modal-description']}>
+                {images[selectedImage].description}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </HelmetProvider>
   );
 };
 

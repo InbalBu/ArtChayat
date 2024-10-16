@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../css/ProductPage.module.css'; // Import the CSS module
 
@@ -40,7 +40,12 @@ function ShoshiProductPage({ language }) {
   // Convert price from string to number
   const price = parseFloat(product.price.replace(/,/g, ''));
 
+  const pageUrl = language === 'he' 
+  ? `https://artchayat.netlify.app/he/shoshi/product/${id}` 
+  : `https://artchayat.netlify.app/en/jacob/product/${id}`;
+
   return (
+    <HelmetProvider>
     <div className={`${styles.productPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
       <Helmet>
       <title>{language === 'he' ? `ArtChayat - שושי חייט | גלריה | ${product.name} | ארט חייט` : `Shoshi Chayat | Gallery | ${product.name} | ArtChayat - ארט חייט`}</title>
@@ -52,8 +57,11 @@ function ShoshiProductPage({ language }) {
          <meta property="og:title" content={language === 'he' ? `ArtChayat - שושי חייט | גלריה | ${product.name} | ארט חייט` : `Shoshi Chayat | Gallery | ${product.name} | ArtChayat - ארט חייט`} />
         <meta property="og:description" content={language === 'he' ? `פרטים אודות יצירתה של שושי חייט בשם ${product.name}.` : `Details about the artwork by Shoshi Chayat named ${product.name}.`} />
         <meta property="og:image" content={product.imageURL} />
-        <meta property="og:url" content={`https://artchayat.netlify.app/shoshi/product/${id}`} />
+        <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="article" />
+
+             {/* Canonical URL */}
+             <link rel="canonical" href={pageUrl} />
       </Helmet>
       <div className={`${styles.productGrid} ${language === 'he' ? styles.rtl : styles.ltr}`}>
         <div className={styles.productImage} onClick={handleImageClick}>
@@ -99,6 +107,7 @@ function ShoshiProductPage({ language }) {
         </div>
       )}
     </div>
+    </HelmetProvider>
   );
 }
 

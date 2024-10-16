@@ -20,7 +20,7 @@
   <script src="https://cdn.enable.co.il/licenses/enable-L2868189n5wfkql0-0824-62134/init.js"></script>
   <div id="root"></div>
 
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="org-logo">
     {
       "@context": "http://schema.org",
       "@type": "Organization",
@@ -33,6 +33,35 @@
     }
   </script>
 
+  <script>
+    // Function to update the logo and favicon based on the URL
+    function updateLogo() {
+      const currentUrl = window.location.href;
+      const favicon = document.getElementById("favicon");
+      const orgLogoScript = document.getElementById("org-logo");
+      let logoUrl;
+
+      if (currentUrl.includes("/he")) {
+        logoUrl = "https://artchayat.netlify.app/logoHe.png";
+      } else if (currentUrl.includes("/en")) {
+        logoUrl = "https://artchayat.netlify.app/logoEN.png";
+      } else {
+        // Default logo (English)
+        logoUrl = "https://artchayat.netlify.app/logoEN.png";
+      }
+
+      // Update favicon
+      favicon.href = logoUrl;
+
+      // Update the logo in structured data (ld+json)
+      const orgLogoJson = JSON.parse(orgLogoScript.innerHTML);
+      orgLogoJson.logo = logoUrl;
+      orgLogoScript.innerHTML = JSON.stringify(orgLogoJson, null, 2);
+    }
+
+    // Call the function on page load
+    window.onload = updateLogo;
+  </script>
 </body>
 
 </html>

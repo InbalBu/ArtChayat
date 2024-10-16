@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Shoshi from './components/Shoshi';
@@ -20,6 +20,7 @@ import PersonalGallery from './components/PersonalGallery';
 function App() {
   // Initialize language state from localStorage or default to 'he'
   const [language, setLanguage] = useState(localStorage.getItem('language') || 'he');
+  const navigate = useNavigate();
 
   // Update localStorage whenever language state changes
   useEffect(() => {
@@ -27,32 +28,38 @@ function App() {
   }, [language]);
 
   const handleLanguageToggle = () => {
-    setLanguage((prevLanguage) => (prevLanguage === 'he' ? 'en' : 'he'));
+    const newLanguage = language === 'he' ? 'en' : 'he';
+    setLanguage(newLanguage);
+
+    // Get the current path and replace the language prefix
+    const currentPath = window.location.pathname;
+    const newPath = currentPath.replace(/^\/(he|en)?/, `/${newLanguage}`);
+    navigate(newPath); // Navigate to the new path
   };
 
   return (
-    <Router>
+    <>
       <Navbar language={language} handleLanguageToggle={handleLanguageToggle} />
       <Routes>
-        <Route path="/" element={<HomePage language={language} />} />
-        <Route path="/about" element={<About language={language} />} />
-        <Route path="/shoshi" element={<Shoshi language={language} />} />
-        <Route path="/shoshi/biography" element={<Shoshi language={language} />} />
-        <Route path="/shoshi/exhibitions" element={<ShoshiExhibitions language={language} />} />
-        <Route path="/shoshi/gallery" element={<ShoshiGallery language={language} />} />
-        <Route path="/shoshi/product/:id" element={<ShoshiProductPage language={language} />} />
-        <Route path="/jacob" element={<Jacob language={language} />} />
-        <Route path="/jacob/biography" element={<Jacob language={language} />} />
-        <Route path="/jacob/exhibitions" element={<JacobExhibitions language={language} />} />
-        <Route path="/jacob/gallery" element={<JacobGallery language={language} />} />
-        <Route path="/jacob/product/:id" element={<JacobProductPage language={language} />} />
-        <Route path="/press" element={<Press language={language} />} />
-        <Route path="/contact" element={<ContactUs language={language} />} />
-        <Route path="/articles" element={<Articles language={language} />} />
-        <Route path="/personalGallery" element={<PersonalGallery language={language} />} />
+        <Route path="/:lang?" element={<HomePage language={language} />} />
+        <Route path="/:lang/about" element={<About language={language} />} />
+        <Route path="/:lang/shoshi" element={<Shoshi language={language} />} />
+        <Route path="/:lang/shoshi/biography" element={<Shoshi language={language} />} />
+        <Route path="/:lang/shoshi/exhibitions" element={<ShoshiExhibitions language={language} />} />
+        <Route path="/:lang/shoshi/gallery" element={<ShoshiGallery language={language} />} />
+        <Route path="/:lang/shoshi/product/:id" element={<ShoshiProductPage language={language} />} />
+        <Route path="/:lang/jacob" element={<Jacob language={language} />} />
+        <Route path="/:lang/jacob/biography" element={<Jacob language={language} />} />
+        <Route path="/:lang/jacob/exhibitions" element={<JacobExhibitions language={language} />} />
+        <Route path="/:lang/jacob/gallery" element={<JacobGallery language={language} />} />
+        <Route path="/:lang/jacob/product/:id" element={<JacobProductPage language={language} />} />
+        <Route path="/:lang/press" element={<Press language={language} />} />
+        <Route path="/:lang/contact" element={<ContactUs language={language} />} />
+        <Route path="/:lang/articles" element={<Articles language={language} />} />
+        <Route path="/:lang/personalGallery" element={<PersonalGallery language={language} />} />
       </Routes>
       <Footer language={language} />
-    </Router>
+    </>
   );
 }
 

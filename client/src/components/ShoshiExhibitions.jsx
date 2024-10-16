@@ -1,12 +1,17 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import styles from '../css/Exhibitions.module.css'; // Import the CSS module
 import logoEN from '../images/logoEN.png';
 
 function ShoshiExhibitions({ language }) {
   const isHebrew = language === 'he';
 
+  const pageUrl = language === 'he' 
+    ? "https://artchayat.netlify.app/he/shoshi-exhibitions" 
+    : "https://artchayat.netlify.app/en/shoshi-exhibitions";
+
   return (
+    <HelmetProvider>
     <div className={`${styles['exhibitions-container']} ${isHebrew ? styles['exhibitions-rtl'] : styles['exhibitions-ltr']}`}>
       <Helmet>
       <title>{language === 'he' ? 'ArtChayat - שושי חייט | תערוכות | ארט חייט' : 'Shoshi Chayat | Exhibitions | ArtChayat - ארט חייט'}</title>
@@ -18,8 +23,11 @@ function ShoshiExhibitions({ language }) {
         <meta property="og:title" content={isHebrew ? 'ArtChayat - שושי חייט | תערוכות | ארט חייט' : 'Shoshi Chayat | Exhibitions | ArtChayat - ארט חייט'} />
         <meta property="og:description" content={isHebrew ? 'תערוכות של שושי חייט במהלך הקריירה האמנותית שלה.' : 'Exhibitions of Shoshi Chayat during her artistic career.'} />
         <meta property="og:image" content={logoEN} />
-        <meta property="og:url" content="https://artchayat.netlify.app/shoshi-exhibitions" />
+        <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="website" />
+
+         {/* Canonical URL */}
+         <link rel="canonical" href={pageUrl} />
       </Helmet>
       <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
       <p>{isHebrew ? 'במהלך הקריירה האמנותית שלה הציגה שושי חייט 27 תערוכות יחיד ועוד 36 תערוכות קבוצתיות בישראל ובעולם.' : 'During her artistic career, Shoshi Chayat presented 27 solo exhibitions and 36 group exhibitions in Israel and around the world.'}</p>
@@ -98,6 +106,7 @@ function ShoshiExhibitions({ language }) {
         </ul>
       </div>
     </div>
+    </HelmetProvider>
   );
 }
 

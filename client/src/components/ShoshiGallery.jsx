@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
@@ -129,7 +129,12 @@ function ShoshiGallery({ language }) {
     return acc;
   }, {});
 
+  const pageUrl = language === 'he' 
+    ? "https://artchayat.netlify.app/he/shoshi-gallery" 
+    : "https://artchayat.netlify.app/en/about";
+
   return (
+    <HelmetProvider>
     <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
       <Helmet>
         <title>{language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Chayat'}</title>
@@ -141,8 +146,11 @@ function ShoshiGallery({ language }) {
         <meta property="og:title" content={language === 'he' ? 'גלריה - שושי חייט' : 'Gallery - Shoshi Chayat'} />
         <meta property="og:description" content={language === 'he' ? 'גלריה של יצירות שושי חייט' : 'Gallery of Shoshi Chayat\'s works'} />
         <meta property="og:image" content={logoEN} />
-        <meta property="og:url" content="https://artchayat.netlify.app/shoshi-gallery" />
+        <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="website" />
+
+         {/* Canonical URL */}
+         <link rel="canonical" href={pageUrl} />
       </Helmet>
       <div className={styles['gallery-filters']}>
         <select name="category" onChange={handleFilterChange} value={filters.category}>
@@ -199,6 +207,7 @@ function ShoshiGallery({ language }) {
         ↑
       </button>
     </div>
+    </HelmetProvider>
   );
 }
 
