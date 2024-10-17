@@ -49,6 +49,10 @@ function Press({ language }) {
     ? "https://artchayat.netlify.app/he/press"
     : "https://artchayat.netlify.app/en/press";
 
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/press"
+    : "https://artchayat.netlify.app/he/press";
+
   return (
     <HelmetProvider>
       <div className={styles['press-container']}>
@@ -67,6 +71,10 @@ function Press({ language }) {
 
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
         <header>
           <h1>{language === 'he' ? 'כתבות מאוסף אלבומים פרטי של זוג האומנים' : 'Articles from a private album collection of the artist couple'}</h1>

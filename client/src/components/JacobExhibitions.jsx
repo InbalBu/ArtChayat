@@ -10,6 +10,10 @@ function JacobExhibitions({ language }) {
     ? "https://artchayat.netlify.app/he/jacob/exhibitions"
     : "https://artchayat.netlify.app/en/jacob/exhibitions";
 
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/jacob/exhibitions"
+    : "https://artchayat.netlify.app/he/jacob/exhibitions";
+
   return (
     <HelmetProvider>
       <div className={`${styles['exhibitions-container']} ${isHebrew ? styles['exhibitions-rtl'] : styles['exhibitions-ltr']}`}>
@@ -28,6 +32,10 @@ function JacobExhibitions({ language }) {
 
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
         <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
         <p>{isHebrew ? 'רבות מיצירותיו של חייט מוצגות בגלריות ובקרב אספני אומנות בישראל וברחבי תבל.' : 'Many of Chayat\'s works are displayed in galleries and among art collectors in Israel and around the world.'}</p>

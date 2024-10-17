@@ -9,18 +9,33 @@ if (!existsSync(publicDir)) {
 }
 
 const links = [
-  { url: '/', changefreq: 'daily', priority: 1.0 },
-  { url: '/about', changefreq: 'weekly', priority: 0.8 },
-  { url: '/shoshi/biography', changefreq: 'monthly', priority: 0.7 },
-  { url: '/shoshi/exhibitions', changefreq: 'monthly', priority: 0.7 },
-  { url: '/shoshi/gallery', changefreq: 'monthly', priority: 0.7 },
-  { url: '/jacob/biography', changefreq: 'monthly', priority: 0.7 },
-  { url: '/jacob/exhibitions', changefreq: 'monthly', priority: 0.7 },
-  { url: '/jacob/gallery', changefreq: 'monthly', priority: 0.7 },
-  { url: '/press', changefreq: 'monthly', priority: 0.6 },
-  { url: '/articles', changefreq: 'monthly', priority: 0.6 },
-  { url: '/contact', changefreq: 'monthly', priority: 0.6 },
-  { url: '/personalGallery', changefreq: 'monthly', priority: 0.6 },
+  // Hebrew URLs
+  { url: '/he/', changefreq: 'daily', priority: 1.0 },
+  { url: '/he/about', changefreq: 'weekly', priority: 0.8 },
+  { url: '/he/shoshi/biography', changefreq: 'monthly', priority: 0.7 },
+  { url: '/he/shoshi/exhibitions', changefreq: 'monthly', priority: 0.7 },
+  { url: '/he/shoshi/gallery', changefreq: 'monthly', priority: 0.7 },
+  { url: '/he/jacob/biography', changefreq: 'monthly', priority: 0.7 },
+  { url: '/he/jacob/exhibitions', changefreq: 'monthly', priority: 0.7 },
+  { url: '/he/jacob/gallery', changefreq: 'monthly', priority: 0.7 },
+  { url: '/he/press', changefreq: 'monthly', priority: 0.6 },
+  { url: '/he/articles', changefreq: 'monthly', priority: 0.6 },
+  { url: '/he/contact', changefreq: 'monthly', priority: 0.6 },
+  { url: '/he/personalGallery', changefreq: 'monthly', priority: 0.6 },
+  
+  // English URLs
+  { url: '/en/', changefreq: 'daily', priority: 1.0 },
+  { url: '/en/about', changefreq: 'weekly', priority: 0.8 },
+  { url: '/en/shoshi/biography', changefreq: 'monthly', priority: 0.7 },
+  { url: '/en/shoshi/exhibitions', changefreq: 'monthly', priority: 0.7 },
+  { url: '/en/shoshi/gallery', changefreq: 'monthly', priority: 0.7 },
+  { url: '/en/jacob/biography', changefreq: 'monthly', priority: 0.7 },
+  { url: '/en/jacob/exhibitions', changefreq: 'monthly', priority: 0.7 },
+  { url: '/en/jacob/gallery', changefreq: 'monthly', priority: 0.7 },
+  { url: '/en/press', changefreq: 'monthly', priority: 0.6 },
+  { url: '/en/articles', changefreq: 'monthly', priority: 0.6 },
+  { url: '/en/contact', changefreq: 'monthly', priority: 0.6 },
+  { url: '/en/personalGallery', changefreq: 'monthly', priority: 0.6 },
 ];
 
 const sitemap = new SitemapStream({

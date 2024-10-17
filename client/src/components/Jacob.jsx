@@ -10,6 +10,10 @@ function Jacob({ language }) {
     ? "https://artchayat.netlify.app/he/jacob/biography"
     : "https://artchayat.netlify.app/en/jacob/biography";
 
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/jacob/biography"
+    : "https://artchayat.netlify.app/he/jacob/biography";
+
   return (
     <HelmetProvider>
       <div className={`${isHebrew ? styles['jacob-rtl'] : styles['jacob-ltr']}`}>
@@ -28,6 +32,10 @@ function Jacob({ language }) {
 
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
         <div className={styles['jacob-container']}>
           <div className={styles['jacob-content']}>

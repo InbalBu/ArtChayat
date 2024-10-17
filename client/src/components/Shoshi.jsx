@@ -6,9 +6,13 @@ import shoshiPortrait from '../images/shoshi_chayat_portrait.jpg';
 function Shoshi({ language }) {
   const isHebrew = language === 'he';
 
-  const pageUrl = language === 'he' 
-    ? "https://artchayat.netlify.app/he/shoshi" 
+  const pageUrl = language === 'he'
+    ? "https://artchayat.netlify.app/he/shoshi"
     : "https://artchayat.netlify.app/en/shoshi";
+
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/shoshi"
+    : "https://artchayat.netlify.app/he/shoshi";
 
   return (
     <HelmetProvider>
@@ -25,9 +29,13 @@ function Shoshi({ language }) {
           <meta property="og:image" content={shoshiPortrait} />
           <meta property="og:url" content={pageUrl} />
           <meta property="og:type" content="website" />
-          
+
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
         <div className={styles['shoshi-content']}>
           <div className={`${styles['shoshi-image-container']} ${isHebrew ? styles['shoshi-image-container-rtl'] : styles['shoshi-image-container-ltr']}`}>

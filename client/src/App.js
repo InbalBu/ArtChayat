@@ -27,6 +27,15 @@ function App() {
     localStorage.setItem('language', language);
   }, [language]);
 
+  // Handle redirect if no language is present in the URL
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    // If path does not start with /he or /en, redirect to /he (default)
+    if (!/^\/(he|en)/.test(currentPath)) {
+      navigate(`/he${currentPath}`);
+    }
+  }, [navigate]);
+
   const handleLanguageToggle = () => {
     const newLanguage = language === 'he' ? 'en' : 'he';
     setLanguage(newLanguage);

@@ -15,9 +15,12 @@ function About({ language }) {
         ? 'אודות | ארט חייט - ArtChayat'
         : 'Art Chayat - Painting a Love Story';
     const ogDescription = description;
-    const pageUrl = language === 'he' 
-    ? "https://artchayat.netlify.app/he/about" 
-    : "https://artchayat.netlify.app/en/about";
+    const pageUrl = language === 'he'
+        ? "https://artchayat.netlify.app/he/about"
+        : "https://artchayat.netlify.app/en/about";
+    const alternateUrl = language === 'he'
+        ? "https://artchayat.netlify.app/en/about"
+        : "https://artchayat.netlify.app/he/about";
 
     return (
         <HelmetProvider>
@@ -45,6 +48,10 @@ function About({ language }) {
 
                     {/* Canonical URL */}
                     <link rel="canonical" href={pageUrl} />
+
+                    {/* Hreflang alternate links */}
+                    <link rel="alternate" href={pageUrl} hreflang={language} />
+                    <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
                 </Helmet>
 
                 <h1>{language === 'he' ? 'ארט חייט - מציירים סיפור אהבה' : 'Art Chayat - Painting a Love Story'}</h1>

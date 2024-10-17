@@ -76,6 +76,10 @@ const PersonalGallery = ({ language }) => {
     ? "https://artchayat.netlify.app/he/personalGallery"
     : "https://artchayat.netlify.app/en/personalGallery";
 
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/personalGallery"
+    : "https://artchayat.netlify.app/he/personalGallery";
+
   return (
     <HelmetProvider>
       <div className={styles['homepage-gallery']}>
@@ -93,6 +97,10 @@ const PersonalGallery = ({ language }) => {
 
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
 
         <h2 className='gridTitle'>

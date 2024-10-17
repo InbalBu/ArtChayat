@@ -65,9 +65,13 @@ function ContactUs({ language }) {
 
   const isHebrew = language === 'he';
 
-  const pageUrl = language === 'he' 
-    ? "https://artchayat.netlify.app/he/contact" 
+  const pageUrl = language === 'he'
+    ? "https://artchayat.netlify.app/he/contact"
     : "https://artchayat.netlify.app/en/contact";
+
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/about"
+    : "https://artchayat.netlify.app/he/about";
 
   return (
     <HelmetProvider>
@@ -85,8 +89,12 @@ function ContactUs({ language }) {
           <meta property="og:url" content={pageUrl} />
           <meta property="og:type" content="website" />
 
-              {/* Canonical URL */}
-              <link rel="canonical" href={pageUrl} />
+          {/* Canonical URL */}
+          <link rel="canonical" href={pageUrl} />
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
         <h2>{isHebrew ? 'לייעוץ אומנותי ופרטים נוספים:' : 'For artistic advice and additional details:'}</h2>
         <p>{isHebrew ? 'טלפון:' : 'Phone:'}</p>
@@ -102,7 +110,7 @@ function ContactUs({ language }) {
               value={formData.name}
               onChange={handleChange}
               required
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <div className={styles['contact-form-group']}>
@@ -113,7 +121,7 @@ function ContactUs({ language }) {
               value={formData.email}
               onChange={handleChange}
               required
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <div className={styles['contact-form-group']}>
@@ -124,7 +132,7 @@ function ContactUs({ language }) {
               value={formData.phone}
               onChange={handleChange}
               required
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <div className={styles['contact-form-group']}>

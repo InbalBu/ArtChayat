@@ -130,6 +130,10 @@ function JacobGallery({ language }) {
     ? "https://artchayat.netlify.app/he/jacob/gallery"
     : "https://artchayat.netlify.app/en/jacob/gallery";
 
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/jacob/gallery"
+    : "https://artchayat.netlify.app/he/jacob/gallery";
+
   return (
     <HelmetProvider>
       <div className={`${styles['gallery-container']} ${language === 'he' ? styles['gallery-rtl'] : styles['gallery-ltr']}`}>
@@ -161,6 +165,11 @@ function JacobGallery({ language }) {
 
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
+
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
         <div className={styles['gallery-filters']}>
           <select name="category" onChange={handleFilterChange} value={filters.category}>
@@ -182,7 +191,7 @@ function JacobGallery({ language }) {
                   const price = parseFloat(product.price.replace(/,/g, ''));
                   return (
                     <div className={styles['gallery-item']} key={product._id}>
-                      <Link to={`/jacob/product/${product._id}`} className={styles['gallery-product-link']}>
+                      <Link to={`/${language}/jacob/product/${product._id}`} className={styles['gallery-product-link']}>
                         <LazyLoadImage
                           src={product.imageURL}
                           alt={product.name}

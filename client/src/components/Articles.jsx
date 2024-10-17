@@ -51,6 +51,10 @@ const Articles = ({ language }) => {
     ? "https://artchayat.netlify.app/he/articles"
     : "https://artchayat.netlify.app/en/articles";
 
+  const alternateUrl = language === 'he'
+    ? "https://artchayat.netlify.app/en/articles"
+    : "https://artchayat.netlify.app/he/articles";
+
   return (
     <HelmetProvider>
       <div className={`${styles.articlesPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
@@ -69,6 +73,10 @@ const Articles = ({ language }) => {
 
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
+
+          {/* Hreflang alternate links */}
+          <link rel="alternate" href={pageUrl} hreflang={language} />
+          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
         </Helmet>
         <header className={styles.header}>
           <h1>{language === 'he' ? 'כתבות' : 'Articles'}</h1>

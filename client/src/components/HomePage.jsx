@@ -31,13 +31,6 @@ function HomePage({ language }) {
         painting1, painting2, painting3, painting4, painting5, painting6, painting7, painting8, painting10, painting11, painting12, painting13, painting14, painting15, painting16, painting17, painting18, painting19
     ];
 
-    const getRandomImage = () => {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        return images[randomIndex];
-    };
-
-    const randomImage = getRandomImage();
-
     useEffect(() => {
         const fullText = language === 'he'
             ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
@@ -58,7 +51,6 @@ function HomePage({ language }) {
     useEffect(() => {
         const resizeVideo = () => {
             const video = videoRef.current;
-            console.log('Video ref:', video);
             if (video) {
                 if (video.videoWidth / video.videoHeight > window.innerWidth / window.innerHeight) {
                     video.style.width = '100%';
@@ -106,9 +98,13 @@ function HomePage({ language }) {
         };
     }, []);
 
-    const pageUrl = language === 'he' 
-    ? "https://artchayat.netlify.app/he/" 
-    : "https://artchayat.netlify.app/en/";
+    const pageUrl = language === 'he'
+        ? "https://artchayat.netlify.app/he/"
+        : "https://artchayat.netlify.app/en/";
+
+    const alternateUrl = language === 'he'
+        ? "https://artchayat.netlify.app/en/"
+        : "https://artchayat.netlify.app/he/";
 
     return (
         <HelmetProvider>
@@ -135,14 +131,18 @@ function HomePage({ language }) {
                         ? 'ארט חייט מציג יצירות מקוריות של יעקב ושושי חייט, ושוזר את סיפור אהבתם היוצא דופן.'
                         : 'ArtChayat presents the original works of Jacob and Shoshi Chayat, intertwined with their extraordinary love story.'} />
 
-                    <meta property="og:image" content={randomImage} />
+                    <meta property="og:image" content={language === 'he' ? 'https://artchayat.netlify.app/logoHe.png' : 'https://artchayat.netlify.app/logoEN.png'} />
                     <meta property="og:url" content={pageUrl} />
                     <meta property="og:type" content="website" />
                     <meta property="og:image:width" content="1200" />
                     <meta property="og:image:height" content="630" />
 
-                        {/* Canonical URL */}
-                        <link rel="canonical" href={pageUrl} />
+                    {/* Canonical URL */}
+                    <link rel="canonical" href={pageUrl} />
+
+                    {/* Hreflang alternate links */}
+                    <link rel="alternate" href={pageUrl} hreflang={language} />
+                    <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
                 </Helmet>
 
                 <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
