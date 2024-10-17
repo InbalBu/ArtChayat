@@ -22,8 +22,8 @@ import painting18 from '../images/homepage2.jpg';
 import painting19 from '../images/DSC05481.jpg';
 
 function HomePage({ language }) {
-    const [text, setText] = useState('');
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [text, setText] = useState([]);
+        const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [videoLoaded, setVideoLoaded] = useState(false);
     const videoRef = useRef(null);
 
@@ -32,12 +32,16 @@ function HomePage({ language }) {
     ];
 
     useEffect(() => {
-        const fullText = language === 'he'
+        const desktopText = language === 'he'
             ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
             : 'Painting, A Love Story | The Artists Shoshi and Jacob Chayat';
+        
+        const mobileText = language === 'he'
+            ? ['מציירים, סיפור אהבה', 'זוג האמנים שושי ויעקב חייט ז"ל']
+            : ['Painting, A Love Story', 'The Artists Shoshi and Jacob Chayat'];
 
-        setText(fullText);
-    }, [language]);
+        setText(isMobile ? mobileText : desktopText);
+    }, [language, isMobile]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -162,7 +166,21 @@ function HomePage({ language }) {
                         </video>
                     )}
                     <div className={styles['homepage-video-text']}>
-                        <h1 className={isMobile ? styles['typing-effect'] : ''}>{text}</h1>
+                    <h1
+                            className={isMobile ? styles['typing-effect'] : ''}
+                            style={isMobile ? { fontSize: '1.6rem' } : {}}
+                        >
+                            {isMobile ? (
+                                text.map((line, index) => (
+                                    <span key={index}>
+                                        {line}
+                                        {index < text.length - 1 && <br />}
+                                    </span>
+                                ))
+                            ) : (
+                                <span>{text}</span>
+                            )}
+                        </h1>
                         {language === 'he' ? (
                             <>
                                 <p>ארט חייט נולד מתוך יצירה ואהבה לאומנות, משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האומנים שושי ויעקב חייט ז"ל.</p>
