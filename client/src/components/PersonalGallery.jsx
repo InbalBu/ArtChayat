@@ -35,33 +35,33 @@ const PersonalGallery = ({ language }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
-    { src: painting20, description: language === 'he' ? 'תיבת נח | תערוכה בבנק הפועלים 2017' : 'Noah\'s ark Exhibition at Bank Hapoalim 2017' },
-    { src: painting21, description: language === 'he' ? 'בסטודיו, ציור \'ניו יורק\'' : 'In the studio, painting "New York"' },
-    { src: painting25, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
-    { src: painting26, description: language === 'he' ? 'תיבת נח - שושי חייט | תערוכה בבנק הפועלים 2023' : 'Noah\'s Ark - Shushi Hayat | Exhibition at Bank Hapoalim 2023' },
-    { src: painting27, description: language === 'he' ? 'חגיגה בכרם - יעקב חייט | תערוכה בבנק הפועלים 2023' : 'A celebration in the vineyard - Yaakov Hait | Exhibition at Bank Hapoalim 2023' },
-    { src: painting14, description: language === 'he' ? 'תיאור בעברית לתמונה 14' : 'Description for painting 14' },
-    { src: painting15, description: language === 'he' ? 'תיאור בעברית לתמונה 15' : 'Description for painting 15' },
-    { src: painting16, description: language === 'he' ? 'תיאור בעברית לתמונה 16' : 'Description for painting 16' },
-    { src: painting17, description: language === 'he' ? 'תיאור בעברית לתמונה 17' : 'Description for painting 17' },
-    { src: painting18, description: language === 'he' ? 'תיאור בעברית לתמונה 18' : 'Description for painting 18' },
-    { src: painting19, description: language === 'he' ? 'תיאור בעברית לתמונה 19' : 'Description for painting 19' },
-    { src: painting22, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
-    { src: painting1, description: language === 'he' ? 'תיאור בעברית לתמונה 1' : 'Description for painting 1' },
-    { src: painting2, description: language === 'he' ? 'תיאור בעברית לתמונה 2' : 'Description for painting 2' },
-    { src: painting3, description: language === 'he' ? 'תיאור בעברית לתמונה 3' : 'Description for painting 3' },
-    { src: painting4, description: language === 'he' ? 'תיאור בעברית לתמונה 4' : 'Description for painting 4' },
-    { src: painting5, description: language === 'he' ? 'תיאור בעברית לתמונה 5' : 'Description for painting 5' },
-    { src: painting6, description: language === 'he' ? 'תיאור בעברית לתמונה 6' : 'Description for painting 6' },
-    { src: painting7, description: language === 'he' ? 'תיאור בעברית לתמונה 7' : 'Description for painting 7' },
-    { src: painting8, description: language === 'he' ? 'תיאור בעברית לתמונה 8' : 'Description for painting 8' },
-    { src: painting23, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
-    { src: painting9, description: language === 'he' ? 'תיאור בעברית לתמונה 9' : 'Description for painting 9' },
-    { src: painting10, description: language === 'he' ? 'תיאור בעברית לתמונה 10' : 'Description for painting 10' },
-    { src: painting11, description: language === 'he' ? 'תיאור בעברית לתמונה 11' : 'Description for painting 11' },
-    { src: painting12, description: language === 'he' ? 'תיאור בעברית לתמונה 12' : 'Description for painting 12' },
-    { src: painting24, description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
-    { src: painting13, description: language === 'he' ? 'תיאור בעברית לתמונה 13' : 'Description for painting 13' },
+    { src: painting20, dataId: 'painting20', description: language === 'he' ? 'תיבת נח | תערוכה בבנק הפועלים 2017' : 'Noah\'s ark Exhibition at Bank Hapoalim 2017' },
+    { src: painting21, dataId: 'painting21', description: language === 'he' ? 'בסטודיו, ציור \'ניו יורק\'' : 'In the studio, painting "New York"' },
+    { src: painting25, dataId: 'painting25', description: language === 'he' ? 'תיבת נח | יעקב חייט, מתוך תערוכה בבנק הפועלים' : 'Noah\'s ark - Jacob Chayat, from an exhibition at Bank Hapoalim' },
+    { src: painting26, dataId: 'painting26', description: language === 'he' ? 'תיבת נח - שושי חייט | תערוכה בבנק הפועלים 2023' : 'Noah\'s Ark - Shoshi Chayat | Exhibition at Bank Hapoalim 2023' },
+    { src: painting27, dataId: 'painting27', description: language === 'he' ? 'חגיגה בכרם - יעקב חייט | תערוכה בבנק הפועלים 2023' : 'A celebration in the vineyard - Yaakov Hait | Exhibition at Bank Hapoalim 2023' },
+    { src: painting14, dataId: 'painting14', description: language === 'he' ? '' : '' },
+    { src: painting15, dataId: 'painting15', description: language === 'he' ? 'שושי חייט, פתיחת תערוכת יחיד בגלרית "אחוזת בית" רעננה. שייקה לוי (הגששים) נשא דברי פתיחה' : 'Shoshi Chayat, opening of a solo exhibition at the Hazut Beit gallery in Ra\'anana. Shaika Levy (the trackers) delivered opening remarks' },
+    { src: painting16, dataId: 'painting16', description: language === 'he' ? 'שושי חייט וחבר ותיק האומן עימנואל קיפניס' : 'Shoshi Chayat and an old friend of the artist Emanuel Kipnis' },
+    { src: painting17, dataId: 'painting17', description: language === 'he' ? '' : '' },
+    { src: painting18, dataId: 'painting18', description: language === 'he' ? 'יעקב חײַט מנהל מוזיאון בן-ארי מארח את נשיא המדינה חײַם הרצוג 1984' : 'Jacob Chayat director of the Ben-Ari Museum hosts the country\'s president Chaim Herzog 1984' },
+    { src: painting19, dataId: 'painting19', description: language === 'he' ? 'יעקב חייט מנהל מוזיאון בן-ארי פותח תערוכה. ברקע מאחור, אהוד קינמון ראש עיריית בת-ים' : 'Jacob Chayat, director of the Ben-Ari Museum, opens an exhibition. In the background behind, Ehud Kinamon, Mayor of Bat-Yam' },
+    { src: painting22, dataId: 'painting22', description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
+    { src: painting1, dataId: 'painting1', description: language === 'he' ? 'יעקב חייט בשנותיו האחרונות בביתו בחולון' : 'Jacob Chayat in his last years at his home in Holon' },
+    { src: painting2, dataId: 'painting2', description: language === 'he' ? 'יעקב חייט בשנותיו האחרונות בביתו בחולון' : 'Jacob Chayat in his last years at his home in Holon' },
+    { src: painting3, dataId: 'painting3', description: language === 'he' ? 'יעקב חייט בשנותיו האחרונות בביתו בחולון' : 'Jacob Chayat in his last years at his home in Holon' },
+    { src: painting4, dataId: 'painting4', description: language === 'he' ? '' : '' },
+    { src: painting5, dataId: 'painting5', description: language === 'he' ? 'בסטודיו בביתו של הצייר יעקב חייט. מסדרת ציורי הילדים' : 'In the studio in the house of the painter Jacob Chayat. The series of children\'s drawings' },
+    { src: painting6, dataId: 'painting6', description: language === 'he' ? 'שושי חייט מלמדת בשיעור ציור, בסטודיו בביתם בברקן' : 'Shoshi Chayat teaches a painting class, in the studio at their home in Barkan' },
+    { src: painting7, dataId: 'painting7', description: language === 'he' ? 'יעקב חייט מלמד בשיעור ציור, בסטודיו בביתם בברקן' : 'Jacob Chayat teaches a painting class, in the studio at their home in Barkan' },
+    { src: painting8, dataId: 'painting8', description: language === 'he' ? 'שושי חייט מפסלת בסטודיו לפיסול בביתה בברקן' : 'Shoshi Chayat sculpts in the sculpture studio at her home in Barkan' },
+    { src: painting23, dataId: 'painting23', description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
+    { src: painting9, dataId: 'painting9', description: language === 'he' ? 'יום בסטודיו. שושי חייט, חולון' : 'A day in the studio. Shoshi Chayat, Holon' },
+    { src: painting10, dataId: 'painting10', description: language === 'he' ? 'פתיחת תערוכה רישומים של שושי חייט. יעקב חייט עם טל ברודי. שנות ה-70' : 'Opening of an exhibition of drawings by Shoshi Chayat. Jacob Chayat with Tal Brody. The 70s' },
+    { src: painting11, dataId: 'painting11', description: language === 'he' ? 'יעקב חייט בסטודיו. חולון' : 'Jacob Chayat in the studio. Holon' },
+    { src: painting12, dataId: 'painting12', description: language === 'he' ? 'שושי חייט בסטודיו לפיסול בביתה, ברקן' : 'Shoshi Chayat in the sculpture studio at her home in Barkan' },
+    { src: painting24, dataId: 'painting24', description: language === 'he' ? 'קיר אומן בגלריה אגוזי תל אביב 2016' : 'Artist\'s wall at the Agozi Gallery Tel Aviv 2016' },
+    { src: painting13, dataId: 'painting13', description: language === 'he' ? 'הזמנה לתערוכת רישומים, שושי חייט. שטיח קיר אומנותי, עבודת יד לפי רישום "שבת", שושי חייט' : 'Invitation to an exhibition of drawings, Shoshi Chayat. Artistic tapestry, handmade according to the inscription "Shabbat", Shoshi Chayat' },
   ];
 
   const handleImageClick = (index) => {
@@ -112,9 +112,10 @@ const PersonalGallery = ({ language }) => {
               <img
                 src={image.src}
                 alt={`${index + 1}`}
+                data-id={image.dataId}
                 onClick={() => handleImageClick(index)}
               />
-              <p className={styles['image-description']}>{image.description}</p>
+              <p dir={language === 'he' ? 'rtl' : 'ltr'} className={styles['image-description']}>{image.description}</p>
             </div>
           ))}
         </div>

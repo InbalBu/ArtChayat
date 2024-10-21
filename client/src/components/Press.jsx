@@ -4,22 +4,22 @@ import Modal from 'react-modal';
 import styles from '../css/Press.module.css'; // Import the CSS module
 
 const images = [
-  'pressImages/article3.jpg',
-  'pressImages/article24.jpeg',
-  'pressImages/article20.jpeg',
-  'pressImages/article21.jpeg',
-  'pressImages/article22.jpeg',
-  'pressImages/article23.jpeg',
-  'pressImages/article25.jpg',
-  'pressImages/article4.jpg',
-  'pressImages/article27.jpg',
-  'pressImages/article26.jpg',
-  'pressImages/article28.jpg',
-  'pressImages/article29.jpg',
-  'pressImages/article30.jpg',
-  'pressImages/article31.jpg',
-  'pressImages/article32.jpg',
-  'pressImages/article33.jpg',
+  '/pressImages/article3.jpg',
+  '/pressImages/article24.jpeg',
+  '/pressImages/article20.jpeg',
+  '/pressImages/article21.jpeg',
+  '/pressImages/article22.jpeg',
+  '/pressImages/article23.jpeg',
+  '/pressImages/article25.jpg',
+  '/pressImages/article4.jpg',
+  '/pressImages/article27.jpg',
+  '/pressImages/article26.jpg',
+  '/pressImages/article28.jpg',
+  '/pressImages/article29.jpg',
+  '/pressImages/article30.jpg',
+  '/pressImages/article31.jpg',
+  '/pressImages/article32.jpg',
+  '/pressImages/article33.jpg',
 ];
 
 Modal.setAppElement('#root');
