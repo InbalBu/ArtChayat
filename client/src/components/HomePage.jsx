@@ -37,9 +37,9 @@ function HomePage({ language }) {
             : 'Painting, A Love Story | The Artists Shoshi and Jacob Chayat';
         
         const mobileText = language === 'he'
-            ? ['מציירים, סיפור אהבה', 'זוג האמנים שושי ויעקב חייט ז"ל']
-            : ['Painting, A Love Story', 'The Artists Shoshi and Jacob Chayat'];
-
+            ? ['מציירים, סיפור אהבה', 'זוג האמנים', 'שושי ויעקב חייט ז"ל']
+            : ['Painting, A Love Story', 'The Artists', 'Shoshi and Jacob Chayat'];
+    
         setText(isMobile ? mobileText : desktopText);
     }, [language, isMobile]);
 
@@ -168,7 +168,6 @@ function HomePage({ language }) {
                     <div className={styles['homepage-video-text']}>
                     <h1
                             className={isMobile ? styles['typing-effect'] : ''}
-                            style={isMobile ? { fontSize: '1.6rem' } : {}}
                         >
                             {isMobile ? (
                                 text.map((line, index) => (
