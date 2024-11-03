@@ -106,10 +106,6 @@ function HomePage({ language }) {
         ? "https://artchayat.netlify.app/he/"
         : "https://artchayat.netlify.app/en/";
 
-    const alternateUrl = language === 'he'
-        ? "https://artchayat.netlify.app/en/"
-        : "https://artchayat.netlify.app/he/";
-
     return (
         <HelmetProvider>
             <div className='container'>

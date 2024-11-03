@@ -18,9 +18,6 @@ function About({ language }) {
     const pageUrl = language === 'he'
         ? "https://artchayat.netlify.app/he/about"
         : "https://artchayat.netlify.app/en/about";
-    const alternateUrl = language === 'he'
-        ? "https://artchayat.netlify.app/en/about"
-        : "https://artchayat.netlify.app/he/about";
 
     return (
         <HelmetProvider>

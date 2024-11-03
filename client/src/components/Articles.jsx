@@ -51,10 +51,6 @@ const Articles = ({ language }) => {
     ? "https://artchayat.netlify.app/he/articles"
     : "https://artchayat.netlify.app/en/articles";
 
-  const alternateUrl = language === 'he'
-    ? "https://artchayat.netlify.app/en/articles"
-    : "https://artchayat.netlify.app/he/articles";
-
   return (
     <HelmetProvider>
       <div className={`${styles.articlesPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
