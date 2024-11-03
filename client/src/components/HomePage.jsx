@@ -23,7 +23,7 @@ import painting19 from '../images/DSC05481.jpg';
 
 function HomePage({ language }) {
     const [text, setText] = useState([]);
-        const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [videoLoaded, setVideoLoaded] = useState(false);
     const videoRef = useRef(null);
 
@@ -35,11 +35,11 @@ function HomePage({ language }) {
         const desktopText = language === 'he'
             ? 'מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז"ל'
             : 'Painting, A Love Story | The Artists Shoshi and Jacob Chayat';
-        
+
         const mobileText = language === 'he'
             ? ['מציירים, סיפור אהבה', 'זוג האמנים', 'שושי ויעקב חייט ז"ל']
             : ['Painting, A Love Story', 'The Artists', 'Shoshi and Jacob Chayat'];
-    
+
         setText(isMobile ? mobileText : desktopText);
     }, [language, isMobile]);
 
@@ -145,8 +145,8 @@ function HomePage({ language }) {
                     <link rel="canonical" href={pageUrl} />
 
                     {/* Hreflang alternate links */}
-                    <link rel="alternate" href={pageUrl} hreflang={language} />
-                    <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+                    <link rel="alternate" href="https://artchayat.netlify.app/he/" hreflang="he" />
+                    <link rel="alternate" href="https://artchayat.netlify.app/en/" hreflang="en" />
                 </Helmet>
 
                 <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
@@ -166,7 +166,7 @@ function HomePage({ language }) {
                         </video>
                     )}
                     <div className={styles['homepage-video-text']}>
-                    <h1
+                        <h1
                             className={isMobile ? styles['typing-effect'] : ''}
                         >
                             {isMobile ? (

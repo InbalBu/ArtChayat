@@ -130,13 +130,8 @@ function ShoshiGallery({ language }) {
   }, {});
 
   const pageUrl = language === 'he'
-    ? "https://artchayat.netlify.app/he/shoshi-gallery"
-    : "https://artchayat.netlify.app/en/shoshi-gallery";
-
-  const alternateUrl = language === 'he'
-    ? "https://artchayat.netlify.app/en/shoshi-gallery"
-    : "https://artchayat.netlify.app/he/shoshi-gallery";
-
+    ? "https://artchayat.netlify.app/he/shoshi/gallery"
+    : "https://artchayat.netlify.app/en/shoshi/gallery";
 
   return (
     <HelmetProvider>
@@ -159,8 +154,8 @@ function ShoshiGallery({ language }) {
 
 
           {/* Hreflang alternate links */}
-          <link rel="alternate" href={pageUrl} hreflang={language} />
-          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+          <link rel="alternate" href="https://artchayat.netlify.app/he/shoshi/gallery" hreflang="he" />
+          <link rel="alternate" href="https://artchayat.netlify.app/en/shoshi/gallery" hreflang="en" />
         </Helmet>
         <div className={styles['gallery-filters']}>
           <select name="category" onChange={handleFilterChange} value={filters.category}>

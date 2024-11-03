@@ -44,10 +44,6 @@ function JacobProductPage({ language }) {
     ? `https://artchayat.netlify.app/he/jacob/product/${id}`
     : `https://artchayat.netlify.app/en/jacob/product/${id}`;
 
-  const alternateUrl = language === 'he'
-    ? `https://artchayat.netlify.app/en/jacob/product/${id}`
-    : `https://artchayat.netlify.app/he/jacob/product/${id}`;
-
   return (
     <HelmetProvider>
       <div className={`${styles.productPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
@@ -67,10 +63,9 @@ function JacobProductPage({ language }) {
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
 
-
           {/* Hreflang alternate links */}
-          <link rel="alternate" href={pageUrl} hreflang={language} />
-          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+          <link rel="alternate" href={`https://artchayat.netlify.app/he/jacob/product/${id}`} hreflang="he" />
+          <link rel="alternate" href={`https://artchayat.netlify.app/en/jacob/product/${id}`} hreflang="en" />
         </Helmet>
         <div className={`${styles.productGrid} ${language === 'he' ? styles.rtl : styles.ltr}`}>
           <div className={styles.productImage} onClick={handleImageClick}>

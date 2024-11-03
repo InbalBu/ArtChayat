@@ -30,9 +30,11 @@ function App() {
   // Handle redirect if no language is present in the URL
   useEffect(() => {
     const currentPath = window.location.pathname;
-    // If path does not start with /he or /en, redirect to /he (default)
+    // If path does not start with /he or /en, redirect based on the user's browser language
     if (!/^\/(he|en)/.test(currentPath)) {
-      navigate(`/he${currentPath}`);
+      const userLanguage = navigator.language || navigator.userLanguage;
+      const languagePrefix = userLanguage.startsWith('he') ? '/he' : '/en';
+      navigate(`${languagePrefix}${currentPath}`);
     }
   }, [navigate]);
 

@@ -69,10 +69,6 @@ function ContactUs({ language }) {
     ? "https://artchayat.netlify.app/he/contact"
     : "https://artchayat.netlify.app/en/contact";
 
-  const alternateUrl = language === 'he'
-    ? "https://artchayat.netlify.app/en/about"
-    : "https://artchayat.netlify.app/he/about";
-
   return (
     <HelmetProvider>
       <div className={`${styles['contact-container']} ${isHebrew ? styles['contact-rtl'] : styles['contact-ltr']}`}>
@@ -93,8 +89,8 @@ function ContactUs({ language }) {
           <link rel="canonical" href={pageUrl} />
 
           {/* Hreflang alternate links */}
-          <link rel="alternate" href={pageUrl} hreflang={language} />
-          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+          <link rel="alternate" href="https://artchayat.netlify.app/he/contact" hreflang="he" />
+            <link rel="alternate" href="https://artchayat.netlify.app/en/contact" hreflang="en" />
         </Helmet>
         <h2>{isHebrew ? 'לייעוץ אומנותי ופרטים נוספים:' : 'For artistic advice and additional details:'}</h2>
         <p>{isHebrew ? 'טלפון:' : 'Phone:'}</p>

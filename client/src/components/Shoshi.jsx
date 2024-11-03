@@ -7,12 +7,8 @@ function Shoshi({ language }) {
   const isHebrew = language === 'he';
 
   const pageUrl = language === 'he'
-    ? "https://artchayat.netlify.app/he/shoshi"
-    : "https://artchayat.netlify.app/en/shoshi";
-
-  const alternateUrl = language === 'he'
-    ? "https://artchayat.netlify.app/en/shoshi"
-    : "https://artchayat.netlify.app/he/shoshi";
+    ? "https://artchayat.netlify.app/he/shoshi/biography"
+    : "https://artchayat.netlify.app/en/shoshi/biography";
 
   return (
     <HelmetProvider>
@@ -34,8 +30,8 @@ function Shoshi({ language }) {
           <link rel="canonical" href={pageUrl} />
 
           {/* Hreflang alternate links */}
-          <link rel="alternate" href={pageUrl} hreflang={language} />
-          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+          <link rel="alternate" href="https://artchayat.netlify.app/he/shoshi/biography" hreflang="he" />
+          <link rel="alternate" href="https://artchayat.netlify.app/en/shoshi/biography" hreflang="en" />
         </Helmet>
         <div className={styles['shoshi-content']}>
           <div className={`${styles['shoshi-image-container']} ${isHebrew ? styles['shoshi-image-container-rtl'] : styles['shoshi-image-container-ltr']}`}>

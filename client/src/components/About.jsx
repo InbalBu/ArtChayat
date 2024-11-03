@@ -50,8 +50,8 @@ function About({ language }) {
                     <link rel="canonical" href={pageUrl} />
 
                     {/* Hreflang alternate links */}
-                    <link rel="alternate" href={pageUrl} hreflang={language} />
-                    <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+                    <link rel="alternate" href="https://artchayat.netlify.app/he/about" hreflang="he" />
+                    <link rel="alternate" href="https://artchayat.netlify.app/en/about" hreflang="en" />
                 </Helmet>
 
                 <h1>{language === 'he' ? 'ארט חייט - מציירים סיפור אהבה' : 'Art Chayat - Painting a Love Story'}</h1>

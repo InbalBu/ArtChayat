@@ -7,13 +7,8 @@ function ShoshiExhibitions({ language }) {
   const isHebrew = language === 'he';
 
   const pageUrl = language === 'he'
-    ? "https://artchayat.netlify.app/he/shoshi-exhibitions"
-    : "https://artchayat.netlify.app/en/shoshi-exhibitions";
-
-  const alternateUrl = language === 'he'
-    ? "https://artchayat.netlify.app/en/shoshi-exhibitions"
-    : "https://artchayat.netlify.app/he/shoshi-exhibitions";
-
+    ? "https://artchayat.netlify.app/he/shoshi/exhibitions"
+    : "https://artchayat.netlify.app/en/shoshi/exhibitions";
 
   return (
     <HelmetProvider>
@@ -35,8 +30,8 @@ function ShoshiExhibitions({ language }) {
           <link rel="canonical" href={pageUrl} />
 
           {/* Hreflang alternate links */}
-          <link rel="alternate" href={pageUrl} hreflang={language} />
-          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+          <link rel="alternate" href="https://artchayat.netlify.app/he/shoshi/exhibitions" hreflang="he" />
+          <link rel="alternate" href="https://artchayat.netlify.app/en/shoshi/exhibitions" hreflang="en" />
         </Helmet>
         <h2>{isHebrew ? 'תערוכות' : 'Exhibitions'}</h2>
         <p>{isHebrew ? 'במהלך הקריירה האמנותית שלה הציגה שושי חייט 27 תערוכות יחיד ועוד 36 תערוכות קבוצתיות בישראל ובעולם.' : 'During her artistic career, Shoshi Chayat presented 27 solo exhibitions and 36 group exhibitions in Israel and around the world.'}</p>

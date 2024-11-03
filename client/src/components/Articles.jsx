@@ -74,9 +74,9 @@ const Articles = ({ language }) => {
           {/* Canonical URL */}
           <link rel="canonical" href={pageUrl} />
 
-          {/* Hreflang alternate links */}
-          <link rel="alternate" href={pageUrl} hreflang={language} />
-          <link rel="alternate" href={alternateUrl} hreflang={language === 'he' ? 'en' : 'he'} />
+            {/* Hreflang alternate links */}
+            <link rel="alternate" href="https://artchayat.netlify.app/he/articles" hreflang="he" />
+            <link rel="alternate" href="https://artchayat.netlify.app/en/articles" hreflang="en" />
         </Helmet>
         <header className={styles.header}>
           <h1>{language === 'he' ? 'כתבות' : 'Articles'}</h1>
