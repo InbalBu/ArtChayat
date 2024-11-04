@@ -39,7 +39,8 @@ function JacobGallery({ language }) {
       tributeToInbal: 'A Tribute To Inbal',
       tanachPaintings: 'The Tanach Paintings',
       views: 'Views',
-      bookSeries: 'A Series Of Paintings From The Book Of Songs "Seeing God through the Darkness"'
+      bookSeries: 'A Series Of Paintings From The Book Of Songs "Seeing God through the Darkness"',
+      prints: 'Prints'
     },
     he: {
       all: 'כל הקטגוריות',
@@ -48,7 +49,8 @@ function JacobGallery({ language }) {
       tributeToInbal: 'מחווה לענבל',
       tanachPaintings: 'ציורי התנך',
       views: 'נופים',
-      bookSeries: '"סדרת ציורים מתוך ספר השירים "לראות את אלוהים מבעד לחשכה'
+      bookSeries: '"סדרת ציורים מתוך ספר השירים "לראות את אלוהים מבעד לחשכה',
+      prints: 'הדפסים'
     }
   }), []);
 
@@ -176,6 +178,7 @@ function JacobGallery({ language }) {
             <option value="tanachPaintings">{getCategoryLabel('tanachPaintings')}</option>
             <option value="views">{getCategoryLabel('views')}</option>
             <option value="bookSeries">{getCategoryLabel('bookSeries')}</option>
+            <option value="prints">{getCategoryLabel('prints')}</option>
           </select>
         </div>
         {Object.keys(groupedProducts).length > 0 ? (

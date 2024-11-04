@@ -31,18 +31,26 @@ header p {
 
 /* Make articles larger */
 .article {
+  position: relative;
   overflow: hidden;
   transition: transform 0.3s ease;
   cursor: pointer;
   display: flex;
-  align-items: center; /* Center align content */
-  justify-content: center; /* Center align content */
+  flex-direction: column; /* Stack image and caption */
+  align-items: center;
 }
 
 .article img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover; /* Ensure image covers the container */
+  object-fit: cover;
+}
+
+.caption {
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  left: 0;
 }
 
 /* Responsive behavior for smaller screens */
@@ -52,14 +60,31 @@ header p {
   }
 
   .article {
-    height: 300px; /* Adjust height for smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+    display: flex;
+    flex-direction: column; /* Stack image and caption vertically */
+    align-items: center;
+    overflow: hidden;
   }
 
   .article img {
+    width: 100%;
     height: auto; /* Allow image height to adjust */
     max-height: 100%; /* Prevent overflow */
   }
 
+  .caption {
+    position: static; /* Remove absolute positioning */
+    margin-top: 10px; /* Add some spacing between image and caption */
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    color: #333;
+    padding: 8px 0;
+    background-color: transparent; /* Optional: can add a background for better readability */
+  }
+
+  /* Adjust header font sizes for mobile */
   header h1 {
     font-size: 1.5em;
   }
