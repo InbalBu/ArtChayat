@@ -66,7 +66,7 @@ function ShoshiProductPage({ language }) {
 
           {/* Hreflang alternate links */}
           <link rel="alternate" href={`https://artchayat.netlify.app/he/shoshi/product/${id}`} hreflang="he" />
-    <link rel="alternate" href={`https://artchayat.netlify.app/en/shoshi/product/${id}`} hreflang="en" />
+          <link rel="alternate" href={`https://artchayat.netlify.app/en/shoshi/product/${id}`} hreflang="en" />
         </Helmet>
         <div className={`${styles.productGrid} ${language === 'he' ? styles.rtl : styles.ltr}`}>
           <div className={styles.productImage} onClick={handleImageClick}>
@@ -74,7 +74,12 @@ function ShoshiProductPage({ language }) {
           </div>
           <div className={styles.productDetails}>
             <h1>{product.name} / {product.artist}</h1>
-            <p>{language === 'he' ? 'גודל' : 'Size'}: {product.size} {language === 'he' ? 'ס"מ' : 'cm'}</p>
+            <div className={styles['gallery-product-size']}>
+              {language === 'he' ? 'גודל:' : 'Size:'}{' '}
+              {product.category === 'טריפטיכון, קרקס החיים של שושי' || product.category === "Triptych, Shoshi's Circus of Life"
+                ? `${product.size} ${language === 'he' ? 'מטר' : 'M'}`
+                : `${product.size} ${language === 'he' ? 'ס"מ' : 'cm'}`}
+            </div>
             <p>{language === 'he' ? 'טכניקת עבודה' : 'Technic'}: {product.technic}</p>
             <p>
               {price === 0

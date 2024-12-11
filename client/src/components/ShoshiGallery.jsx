@@ -41,7 +41,8 @@ function ShoshiGallery({ language }) {
       tanachPaintings: 'The Tanach Paintings',
       sketches: 'Sketches',
       watercolor: 'Watercolor',
-      prints: 'Prints'
+      prints: 'Prints',
+      triptychCircus: "Triptych, Shoshi's Circus of Life"
     },
     he: {
       all: 'כל הקטגוריות',
@@ -51,7 +52,8 @@ function ShoshiGallery({ language }) {
       tanachPaintings: 'ציורי התנך',
       sketches: 'רישומים',
       watercolor: 'אקוורל',
-      prints: 'הדפסים'
+      prints: 'הדפסים',
+      triptychCircus: 'טריפטיכון, קרקס החיים של שושי'
     }
   }), []);
 
@@ -167,6 +169,7 @@ function ShoshiGallery({ language }) {
             <option value="sketches">{getCategoryLabel('sketches')}</option>
             <option value="watercolor">{getCategoryLabel('watercolor')}</option>
             <option value="prints">{getCategoryLabel('prints')}</option>
+            <option value="triptychCircus">{getCategoryLabel('triptychCircus')}</option> 
           </select>
         </div>
         {Object.keys(groupedProducts).length > 0 ? (
