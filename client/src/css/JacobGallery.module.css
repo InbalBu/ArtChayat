@@ -306,5 +306,37 @@
     width: 100%; /* Ensure it spans the full width */
   }
 
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    /* Adjust the gallery item for mobile */
+    .gallery-item-triptych {
+        max-width: 100%; /* Allow item to take up full width on mobile */
+        padding: 10px; /* Add padding for better spacing */
+    }
 
+    /* Scale the image for smaller screens */
+    .gallery-product-image-triptych {
+        width: 100%; /* Ensure the image fills its container */
+        max-width: 100%; /* Remove the max-width limitation on mobile */
+        height: auto; /* Keep the aspect ratio intact */
+    }
 
+    /* Stack the gallery items on mobile */
+    .JacobGallery_gallery-grid__triptych {
+        flex-direction: column; /* Ensure items are stacked vertically */
+        align-items: center; /* Center the items in the container */
+    }
+}
+
+/* Optional: Add additional styling for very small screens */
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .gallery-item-triptych {
+        padding: 5px; /* Reduce padding */
+    }
+
+    .gallery-product-image-triptych {
+        max-width: 100%; /* Ensure image scales properly */
+        width: 100%; /* Scale the image to the full width */
+    }
+}
