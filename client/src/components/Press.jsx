@@ -5,6 +5,16 @@ import styles from '../css/Press.module.css';
 
 const images = [
 
+  '/pressImages/article24.jpeg',
+  '/pressImages/article27.jpg',
+
+  // תערוכה תל אביב 1967
+  '/pressImages/article44.jpg',
+  '/pressImages/article23.jpeg',
+
+  '/pressImages/article43.jpg',
+  '/pressImages/article20.jpeg',
+
   // כתבה מלאה
   '/pressImages/article4.jpg',
   '/pressImages/article34.jpg',
@@ -22,18 +32,9 @@ const images = [
   '/pressImages/article41.jpg',
   '/pressImages/article42.jpg',
 
-  '/pressImages/article24.jpeg',
-
-  // תערוכה תל אביב 1967
-  '/pressImages/article44.jpg',
-  '/pressImages/article43.jpg',
-  
-  '/pressImages/article20.jpeg',
   '/pressImages/article21.jpeg',
   '/pressImages/article22.jpeg',
-  '/pressImages/article23.jpeg',
   '/pressImages/article25.jpg',
-  '/pressImages/article27.jpg',
   '/pressImages/article28.jpg',
   '/pressImages/article29.jpg',
   '/pressImages/article30.jpg',
