@@ -277,3 +277,34 @@
     100% { transform: rotate(360deg); }
   }
   
+
+  /* Center the product in the grid for triptychCircus */
+  .gallery-item-triptych {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center the content */
+    justify-content: center; /* Vertically center the content */
+    margin: 0 auto; /* Center the entire item in the grid */
+    max-width: 400px; /* Optional: constrain the width */
+    text-align: center; /* Align text for the content */
+}
+/* Make the image larger for triptychCircus */
+.gallery-product-image-triptych {
+    width: 400%; /* Scale up the image */
+    max-width: 970px; /* Set a max width to prevent excessive scaling */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Removes any inline space */
+    margin: 0 auto; /* Center the image within its container */
+    object-fit: contain; /* Ensure the image is fully visible */
+}
+
+.JacobGallery_gallery-grid__triptych {
+    display: flex; /* Change grid to flex for this category */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items in the container */
+    gap: 30px; /* Add spacing between items */
+    width: 100%; /* Ensure it spans the full width */
+  }
+
+
+

@@ -76,9 +76,7 @@ function ShoshiProductPage({ language }) {
             <h1>{product.name} / {product.artist}</h1>
             <div className={styles['gallery-product-size']}>
               {language === 'he' ? 'גודל:' : 'Size:'}{' '}
-              {product.category === 'טריפטיכון, קרקס החיים של שושי' || product.category === "Triptych, Shoshi's Circus of Life"
-                ? `${product.size} ${language === 'he' ? 'מטר' : 'M'}`
-                : `${product.size} ${language === 'he' ? 'ס"מ' : 'cm'}`}
+              {product.size} {language === 'he' ? 'ס"מ' : 'cm'}
             </div>
             <p>{language === 'he' ? 'טכניקת עבודה' : 'Technic'}: {product.technic}</p>
             <p>

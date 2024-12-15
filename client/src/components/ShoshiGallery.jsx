@@ -131,6 +131,11 @@ function ShoshiGallery({ language }) {
     return acc;
   }, {});
 
+  // Ensure 'triptychCircus' is the first category
+  const triptychLabel = getCategoryLabel('triptychCircus');
+  const sortedCategories = Object.keys(groupedProducts).filter(category => category !== triptychLabel);
+  sortedCategories.unshift(triptychLabel);
+
   const pageUrl = language === 'he'
     ? "https://artchayat.netlify.app/he/shoshi/gallery"
     : "https://artchayat.netlify.app/en/shoshi/gallery";
@@ -162,6 +167,7 @@ function ShoshiGallery({ language }) {
         <div className={styles['gallery-filters']}>
           <select name="category" onChange={handleFilterChange} value={filters.category}>
             <option value="">{getCategoryLabel('all')}</option>
+            <option value="triptychCircus">{getCategoryLabel('triptychCircus')}</option>
             <option value="clowns">{getCategoryLabel('clowns')}</option>
             <option value="flowers">{getCategoryLabel('flowers')}</option>
             <option value="colorfulHarmony">{getCategoryLabel('colorfulHarmony')}</option>
@@ -169,47 +175,72 @@ function ShoshiGallery({ language }) {
             <option value="sketches">{getCategoryLabel('sketches')}</option>
             <option value="watercolor">{getCategoryLabel('watercolor')}</option>
             <option value="prints">{getCategoryLabel('prints')}</option>
-            <option value="triptychCircus">{getCategoryLabel('triptychCircus')}</option> 
           </select>
         </div>
-        {Object.keys(groupedProducts).length > 0 ? (
-          Object.keys(groupedProducts).map(category => (
-            <div key={category} className={styles['gallery-category-section']}>
-              <h2 className={styles['gallery-category-header']}>{category}</h2>
-              <div className={styles['gallery-grid']}>
-                {groupedProducts[category].map(product => {
-                  const price = parseFloat(product.price.replace(/,/g, ''));
-                  return (
-                    <div className={styles['gallery-item']} key={product._id}>
-                      <Link to={`/${language}/shoshi/product/${product._id}`} className={styles['gallery-product-link']}>
-                        <LazyLoadImage
-                          src={product.imageURL}
-                          alt={product.name}
-                          className={styles['gallery-product-image']}
-                          effect="blur"
-                        />
-                        <div className={styles['gallery-product-info']}>
-                          <div className={styles['gallery-product-name']}>{product.name}</div>
-                          <div className={styles['gallery-product-price']}>
-                            {price === 0
-                              ? <span className={styles['gallery-not-for-sale']}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span>
-                              : price === 1
-                                ? <span className={styles['gallery-sold']}>{language === 'he' ? 'נמכר' : 'Sold'}</span>
-                                : `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
-                            }
-                          </div>
-                          <div className={styles['gallery-product-size']}>{language === 'he' ? 'גודל:' : 'Size:'} {product.size}</div>
-                        </div>
-                      </Link>
+        {Object.keys(sortedCategories).length > 0 ? (
+  sortedCategories.map(category => {
+    const isTriptychCircus = category === triptychLabel; // Check if it's the triptychCircus category
+
+    return (
+      <div key={category} className={styles['gallery-category-section']}>
+        <h2 className={styles['gallery-category-header']}>{category}</h2>
+        <div
+          className={`${styles['gallery-grid']} ${
+            isTriptychCircus ? styles['gallery-grid-triptych'] : ''
+          }`}
+        >
+          {groupedProducts[category].map(product => {
+            const price = parseFloat(product.price.replace(/,/g, ''));
+            return (
+              <div
+                className={`${styles['gallery-item']} ${
+                  isTriptychCircus ? styles['gallery-item-triptych'] : ''
+                }`}
+                key={product._id}
+              >
+                <Link
+                  to={`/${language}/shoshi/product/${product._id}`}
+                  className={styles['gallery-product-link']}
+                >
+                  <LazyLoadImage
+                    src={product.imageURL}
+                    alt={product.name}
+                    className={`${styles['gallery-product-image']} ${
+                      isTriptychCircus ? styles['gallery-product-image-triptych'] : ''
+                    }`}
+                    effect="blur"
+                  />
+                  <div className={styles['gallery-product-info']}>
+                    <div className={styles['gallery-product-name']}>{product.name}</div>
+                    <div className={styles['gallery-product-price']}>
+                      {price === 0 ? (
+                        <span className={styles['gallery-not-for-sale']}>
+                          {language === 'he' ? 'לא למכירה' : 'Not for Sale'}
+                        </span>
+                      ) : price === 1 ? (
+                        <span className={styles['gallery-sold']}>
+                          {language === 'he' ? 'נמכר' : 'Sold'}
+                        </span>
+                      ) : (
+                        `${language === 'he' ? 'מחיר:' : 'Price:'} ${product.price}₪`
+                      )}
                     </div>
-                  );
-                })}
+                    <div className={styles['gallery-product-size']}>
+                      {language === 'he' ? 'גודל:' : 'Size:'} {product.size}
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </div>
-          ))
-        ) : (
-          <div>{language === 'he' ? 'לא נמצאו ציורים' : 'No products found'}</div>
-        )}
+            );
+          })}
+        </div>
+      </div>
+    );
+  })
+) : (
+  <div>{language === 'he' ? 'לא נמצאו ציורים' : 'No products found'}</div>
+)}
+
 
         <button className={`${styles['gallery-scroll-to-top']} ${showScrollTop ? styles['show'] : ''}`} onClick={scrollToTop}>
           ↑
