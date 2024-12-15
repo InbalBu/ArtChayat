@@ -5,6 +5,8 @@ import styles from '../css/ContactUs.module.css';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'; // Importing icons
 import logoEN from '../images/logoEN.png';
 import { Oval } from 'react-loader-spinner'; // Importing Oval loader
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 function ContactUs({ language }) {
   const [formData, setFormData] = useState({
@@ -90,12 +92,40 @@ function ContactUs({ language }) {
 
           {/* Hreflang alternate links */}
           <link rel="alternate" href="https://artchayat.netlify.app/he/contact" hreflang="he" />
-            <link rel="alternate" href="https://artchayat.netlify.app/en/contact" hreflang="en" />
+          <link rel="alternate" href="https://artchayat.netlify.app/en/contact" hreflang="en" />
         </Helmet>
         <h2>{isHebrew ? 'לייעוץ אומנותי ופרטים נוספים:' : 'For artistic advice and additional details:'}</h2>
         <p>{isHebrew ? 'טלפון:' : 'Phone:'}</p>
-        <p>{isHebrew ? '053-8311215 - מיכל בוקריס' : '053-8311215 - Michal Bukris'}</p>
-        <p>{isHebrew ? '052-6652571 - ריקי חייט' : '052-6652571 - Riki Chayat'}</p>
+        <p>
+  {isHebrew ? 'מיכל בוקריס - ' : 'Michal Bukris - '}
+  <a
+    href="https://api.whatsapp.com/send/?phone=972538311215&type=phone_number&app_absent=0"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}
+  >
+    {isHebrew ? '053-8311215' : '053-8311215'}
+    <FontAwesomeIcon 
+      icon={faWhatsapp} 
+      style={{ marginRight: '10px', marginLeft: '10px', color: '#25D366' }} 
+    />
+  </a>
+</p>
+<p>
+  {isHebrew ? 'ריקי חייט - ' : 'Riki Chayat - '}
+  <a
+    href="https://api.whatsapp.com/send/?phone=972526652571&type=phone_number&app_absent=0"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}
+  >
+    {isHebrew ? '052-6652571' : '052-6652571'}
+    <FontAwesomeIcon 
+      icon={faWhatsapp} 
+      style={{ marginRight: '10px', marginLeft: '10px', color: '#25D366' }} 
+    />
+  </a>
+</p>
         <p>{isHebrew ? 'או מלאו את הטופס ונדאג ליצור אתכם קשר בהקדם.' : 'Or fill out the form and we will get back to you as soon as possible.'}</p>
         <form onSubmit={handleSubmit} className={styles['contact-form']}>
           <div className={styles['contact-form-group']}>
