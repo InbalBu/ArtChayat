@@ -43,7 +43,7 @@ function Footer({ language }) {
                     </div>
                     <div className={styles['credits']}>
                         <p>
-                        {language === 'he' ? 'צילום היצירות המוצגות באתר: טל בנדרק' : 'Photography of the artworks displayed on the site: Tal Banderek'}
+                        {language === 'he' ? 'צילום היצירות המוצגות באתר: טל בדרק' : 'Photography of the artworks displayed on the site: Tal Bedrack'}
                         </p>
                     </div>
                 </div>
