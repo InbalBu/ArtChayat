@@ -44,6 +44,8 @@ function ShoshiProductPage({ language }) {
     ? `https://artchayat.netlify.app/he/shoshi/product/${id}`
     : `https://artchayat.netlify.app/en/shoshi/product/${id}`;
 
+    console.log(product);
+
   return (
     <HelmetProvider>
       <div className={`${styles.productPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
@@ -110,7 +112,7 @@ function ShoshiProductPage({ language }) {
           <div className={styles.modal} onClick={closeModal}>
             <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
               <span className={styles.close} onClick={closeModal}>&times;</span>
-              <img src={product.imageURL} alt={product.name} className={styles.modalImage} />
+              <img src={product.imageURL} alt={product.name}  className={`${styles.modalImage} ${product.category === 'Triptych, Shoshi\'s Circus of Life' || product.category === 'טריפטיכון, קרקס החיים של שושי' ? styles.tryptichCircus : ''}`} />
             </div>
           </div>
         )}

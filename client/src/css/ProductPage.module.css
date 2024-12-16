@@ -147,6 +147,11 @@
       max-width: 70vw;  /* Smaller on medium/smaller devices */
       max-height: 70vh;
   }
+
+  .tryptichCircus {
+    max-width: 88vw; /* סגנון ייחודי לקטגוריית tryptichCircus */
+    max-height: 17vh;
+}
 }
 
 /* Further scaling down for very small screens */
@@ -155,6 +160,11 @@
       max-width: 60vw;  /* Even smaller for very small screens */
       max-height: 60vh;
   }
+
+  .tryptichCircus {
+    max-width: 88vw; /* סגנון ייחודי לקטגוריית tryptichCircus */
+    max-height: 17vh;
+}
 
   .close {
     font-size: 28px; /* Slightly smaller close button for smaller screens */

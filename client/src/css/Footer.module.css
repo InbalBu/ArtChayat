@@ -58,3 +58,17 @@
         max-width: 50%; /* Increases logo size on mobile */
     }
 }
+
+.credits {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa; /* צבע קרדיטים */
+}
+
+.credits p {
+    margin: 0;
+}
+
+.credits p:hover {
+    color: white; /* שינוי צבע בעת מעבר עכבר */
+}

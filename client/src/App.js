@@ -18,8 +18,9 @@ import Articles from './components/Articles';
 import PersonalGallery from './components/PersonalGallery';
 
 function App() {
-  // Initialize language state from localStorage or default to 'he'
-  const [language, setLanguage] = useState(localStorage.getItem('language') || 'he');
+  // Initialize language state based on URL or localStorage
+  const initialLanguage = window.location.pathname.startsWith('/en') ? 'en' : 'he';
+  const [language, setLanguage] = useState(localStorage.getItem('language') || initialLanguage);
   const navigate = useNavigate();
 
   // Update localStorage whenever language state changes
@@ -27,10 +28,18 @@ function App() {
     localStorage.setItem('language', language);
   }, [language]);
 
+  // Update language state based on URL changes
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const currentLang = currentPath.startsWith('/en') ? 'en' : 'he';
+    if (currentLang !== language) {
+      setLanguage(currentLang);
+    }
+  }, [language]);
+
   // Handle redirect if no language is present in the URL
   useEffect(() => {
     const currentPath = window.location.pathname;
-    // If path does not start with /he or /en, redirect based on the user's browser language
     if (!/^\/(he|en)/.test(currentPath)) {
       const userLanguage = navigator.language || navigator.userLanguage;
       const languagePrefix = userLanguage.startsWith('he') ? '/he' : '/en';
@@ -40,12 +49,10 @@ function App() {
 
   const handleLanguageToggle = () => {
     const newLanguage = language === 'he' ? 'en' : 'he';
-    setLanguage(newLanguage);
-
-    // Get the current path and replace the language prefix
     const currentPath = window.location.pathname;
-    const newPath = currentPath.replace(/^\/(he|en)?/, `/${newLanguage}`);
-    navigate(newPath); // Navigate to the new path
+    const newPath = currentPath.replace(/^\/(he|en)/, `/${newLanguage}`);
+    setLanguage(newLanguage);
+    navigate(newPath);
   };
 
   return (

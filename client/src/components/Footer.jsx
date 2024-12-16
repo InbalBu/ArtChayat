@@ -31,15 +31,20 @@ function Footer({ language }) {
                     </div>
                     <p>{language === 'he' ? 'עקבו אחרינו ברשתות החברתיות:' : 'Follow us on social media:'}</p>
                     <div className={styles['social-media']}>
-                        <a href="https://www.facebook.com/JacobChayat" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/share/15PjAaoQRL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faFacebook} />
                         </a>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/artchayat?igsh=MXRlYjJicXY5ZGt2" target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faInstagram} />
                         </a>
                     </div>
                     <div className={styles['footer-signature']}>
                         <img src={signature} alt="Signature" />
+                    </div>
+                    <div className={styles['credits']}>
+                        <p>
+                        {language === 'he' ? 'צילום היצירות המוצגות באתר: טל בנדרק' : 'Photography of the artworks displayed on the site: Tal Banderek'}
+                        </p>
                     </div>
                 </div>
             </footer>
