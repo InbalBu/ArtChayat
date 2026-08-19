@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../css/About.module.css';
 
+// Vite doesn't support webpack's dynamic require(); import.meta.glob loads
+// every slide eagerly, keyed by file path, so we look each one up by index.
+const slideModules = import.meta.glob('../images/presentation/*.GIF', {
+  eager: true,
+  import: 'default',
+});
+
 function Presentation() {
   const slides = []; // Array of GIFs
   for (let i = 1; i <= 51; i++) {
-    slides.push(require(`../images/presentation/שקופית${i}.GIF`)); // Dynamically import GIFs
+    const path = Object.keys(slideModules).find((p) => p.endsWith(`שקופית${i}.GIF`));
+    slides.push(slideModules[path]);
   }
 
   const [currentIndex, setCurrentIndex] = useState(0);

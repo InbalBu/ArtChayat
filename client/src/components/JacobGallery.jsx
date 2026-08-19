@@ -59,7 +59,7 @@ function JacobGallery({ language }) {
   }, [categoryMapping, language]);
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_BACKEND_API_URL || 'http://localhost:5000';
+    const apiUrl = import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:5000';
     setLoading(true); // Set loading to true before fetch
     fetch(`${apiUrl}/api/products/jacob-gallery?lang=${language}`)
       .then(response => {
