@@ -3,6 +3,11 @@
   publish = "build"
   command = "npm run build"
 
+[build.environment]
+  # Vite 8 requires Node ^20.19 || >=22.12; Netlify's default image (18.x)
+  # can't run it (fails on node:util's styleText export).
+  NODE_VERSION = "22"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
