@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import styles from '../css/JacobGallery.module.css';
+import { cloudinarySrcSet } from '../utils/cloudinary';
+
+// Grid thumbnails render around 215-370px wide depending on the current
+// column count (see the media queries in JacobGallery.module.css), so there's
+// no reason to ship the full-size Cloudinary original (often 1-2MB) to every
+// visitor - these widths let the browser pick whichever is closest to its
+// actual rendered size.
+const THUMBNAIL_WIDTHS = [300, 500, 800];
+const THUMBNAIL_SIZES = '(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 220px';
 
 // CSS for the loader
 const loaderStyle = {
@@ -188,11 +197,14 @@ function JacobGallery({ language }) {
               <div className={styles['gallery-grid']}>
                 {groupedProducts[category].map(product => {
                   const price = parseFloat(product.price.replace(/,/g, ''));
+                  const { src, srcSet } = cloudinarySrcSet(product.imageURL, THUMBNAIL_WIDTHS);
                   return (
                     <div className={styles['gallery-item']} key={product._id}>
                       <Link to={`/${language}/jacob/product/${product._id}`} className={styles['gallery-product-link']}>
                         <LazyLoadImage
-                          src={product.imageURL}
+                          src={src}
+                          srcSet={srcSet}
+                          sizes={THUMBNAIL_SIZES}
                           alt={product.name}
                           className={styles['gallery-product-image']}
                           effect="blur"

@@ -5,6 +5,18 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css'; // Optional: for blur effect on loading
 import styles from '../css/JacobGallery.module.css'; // Import the CSS module
 import logoEN from '../images/logoEN.png';
+import { cloudinarySrcSet } from '../utils/cloudinary';
+
+// Same rationale as JacobGallery.jsx: grid thumbnails render far smaller
+// than the full Cloudinary original, so let the browser pick a size that
+// actually matches how large the image is displayed.
+const THUMBNAIL_WIDTHS = [300, 500, 800];
+const THUMBNAIL_SIZES = '(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 220px';
+// The "Triptych, Shoshi's Circus of Life" category renders each image up to
+// ~970px wide (see .gallery-product-image-triptych), much bigger than a
+// regular grid thumbnail, so it gets its own wider width set.
+const TRIPTYCH_WIDTHS = [500, 800, 1000];
+const TRIPTYCH_SIZES = '(max-width: 768px) 100vw, 970px';
 
 // CSS for the loader
 const loaderStyle = {
@@ -195,6 +207,10 @@ function ShoshiGallery({ language }) {
         >
           {groupedProducts[category].map(product => {
             const price = parseFloat(product.price.replace(/,/g, ''));
+            const { src, srcSet } = cloudinarySrcSet(
+              product.imageURL,
+              isTriptychCircus ? TRIPTYCH_WIDTHS : THUMBNAIL_WIDTHS
+            );
             return (
               <div
                 className={`${styles['gallery-item']} ${
@@ -207,7 +223,9 @@ function ShoshiGallery({ language }) {
                   className={styles['gallery-product-link']}
                 >
                   <LazyLoadImage
-                    src={product.imageURL}
+                    src={src}
+                    srcSet={srcSet}
+                    sizes={isTriptychCircus ? TRIPTYCH_SIZES : THUMBNAIL_SIZES}
                     alt={product.name}
                     className={`${styles['gallery-product-image']} ${
                       isTriptychCircus ? styles['gallery-product-image-triptych'] : ''

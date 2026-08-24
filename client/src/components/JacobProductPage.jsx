@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../css/ProductPage.module.css'; // Import the CSS module
+import { cloudinarySrcSet } from '../utils/cloudinary';
+
+// Main image renders up to 500px wide; the click-to-zoom modal goes up to
+// 80vw, so it gets a separate, larger width set (and a larger default, since
+// zooming in is exactly when quality matters most).
+const MAIN_IMAGE_WIDTHS = [500, 800, 1200];
+const MODAL_IMAGE_WIDTHS = [800, 1200, 1600];
 
 function JacobProductPage({ language }) {
   const { id } = useParams(); // Get the product ID from the URL
@@ -44,6 +51,9 @@ function JacobProductPage({ language }) {
     ? `https://artchayat.netlify.app/he/jacob/product/${id}`
     : `https://artchayat.netlify.app/en/jacob/product/${id}`;
 
+  const mainImage = cloudinarySrcSet(product.imageURL, MAIN_IMAGE_WIDTHS);
+  const modalImage = cloudinarySrcSet(product.imageURL, MODAL_IMAGE_WIDTHS, 1200);
+
   return (
     <HelmetProvider>
       <div className={`${styles.productPage} ${language === 'he' ? styles.rtl : styles.ltr}`}>
@@ -69,7 +79,7 @@ function JacobProductPage({ language }) {
         </Helmet>
         <div className={`${styles.productGrid} ${language === 'he' ? styles.rtl : styles.ltr}`}>
           <div className={styles.productImage} onClick={handleImageClick}>
-            <img src={product.imageURL} alt={product.name} />
+            <img src={mainImage.src} srcSet={mainImage.srcSet} sizes="500px" alt={product.name} />
           </div>
           <div className={styles.productDetails}>
             <h1>{product.name} / {product.artist}</h1>
@@ -106,7 +116,7 @@ function JacobProductPage({ language }) {
           <div className={styles.modal} onClick={closeModal}>
             <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
               <span className={styles.close} onClick={closeModal}>&times;</span>
-              <img src={product.imageURL} alt={product.name} className={styles.modalImage} />
+              <img src={modalImage.src} srcSet={modalImage.srcSet} sizes="80vw" alt={product.name} className={styles.modalImage} />
             </div>
           </div>
         )}

@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../css/ProductPage.module.css'; // Import the CSS module
+import { cloudinarySrcSet } from '../utils/cloudinary';
+
+const MAIN_IMAGE_WIDTHS = [500, 800, 1200];
+const MODAL_IMAGE_WIDTHS = [800, 1200, 1600];
 
 function ShoshiProductPage({ language }) {
   const { id } = useParams(); // Get the product ID from the URL
@@ -44,7 +48,8 @@ function ShoshiProductPage({ language }) {
     ? `https://artchayat.netlify.app/he/shoshi/product/${id}`
     : `https://artchayat.netlify.app/en/shoshi/product/${id}`;
 
-    console.log(product);
+  const mainImage = cloudinarySrcSet(product.imageURL, MAIN_IMAGE_WIDTHS);
+  const modalImage = cloudinarySrcSet(product.imageURL, MODAL_IMAGE_WIDTHS, 1200);
 
   return (
     <HelmetProvider>
@@ -72,7 +77,7 @@ function ShoshiProductPage({ language }) {
         </Helmet>
         <div className={`${styles.productGrid} ${language === 'he' ? styles.rtl : styles.ltr}`}>
           <div className={styles.productImage} onClick={handleImageClick}>
-            <img src={product.imageURL} alt={product.name} />
+            <img src={mainImage.src} srcSet={mainImage.srcSet} sizes="500px" alt={product.name} />
           </div>
           <div className={styles.productDetails}>
             <h1>{product.name} / {product.artist}</h1>
@@ -112,7 +117,7 @@ function ShoshiProductPage({ language }) {
           <div className={styles.modal} onClick={closeModal}>
             <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
               <span className={styles.close} onClick={closeModal}>&times;</span>
-              <img src={product.imageURL} alt={product.name}  className={`${styles.modalImage} ${product.category === 'Triptych, Shoshi\'s Circus of Life' || product.category === 'טריפטיכון, קרקס החיים של שושי' ? styles.tryptichCircus : ''}`} />
+              <img src={modalImage.src} srcSet={modalImage.srcSet} sizes="80vw" alt={product.name}  className={`${styles.modalImage} ${product.category === 'Triptych, Shoshi\'s Circus of Life' || product.category === 'טריפטיכון, קרקס החיים של שושי' ? styles.tryptichCircus : ''}`} />
             </div>
           </div>
         )}
