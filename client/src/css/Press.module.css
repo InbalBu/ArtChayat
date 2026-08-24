@@ -2,7 +2,8 @@
   text-align: center;
   padding: 20px;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: var(--content-max-width); /* align with the header's boundary */
+  box-sizing: border-box; /* padding stays inside the boundary, not added to it */
 }
 
 header {

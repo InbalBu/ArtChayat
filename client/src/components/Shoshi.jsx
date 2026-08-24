@@ -15,13 +15,13 @@ function Shoshi({ language }) {
       <div className={`${styles['shoshi-container']} ${isHebrew ? styles['shoshi-rtl'] : styles['shoshi-ltr']}`}>
         <Helmet>
           <title>{language === 'he' ? 'ArtChayat - שושי חייט | ביוגרפיה | ארט חייט' : 'Shoshi Chayat | Biography | ArtChayat - ארט חייט'}</title>
-          <meta name="description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Khayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
-          <meta name="keywords" content={isHebrew ? 'שושי חייט, אומנות, ביוגרפיה' : 'Shoshi Khayat, art, biography'} />
+          <meta name="description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Chayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
+          <meta name="keywords" content={isHebrew ? 'שושי חייט, אומנות, ביוגרפיה' : 'Shoshi Chayat, art, biography'} />
           <meta name="robots" content="index, follow" />
 
           {/* Open Graph tags */}
           <meta property="og:title" content={isHebrew ? 'ArtChayat - שושי חייט | ביוגרפיה | ארט חייט' : 'Shoshi Chayat | Biography | ArtChayat - ארט חייט'} />
-          <meta property="og:description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Khayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
+          <meta property="og:description" content={isHebrew ? 'ביוגרפיה של שושי חייט, אמנית ישראלית ידועה, דור שני לשואה.' : 'Biography of Shoshi Chayat, a renowned Israeli artist, second generation Holocaust survivor.'} />
           <meta property="og:image" content={shoshiPortrait} />
           <meta property="og:url" content={pageUrl} />
           <meta property="og:type" content="website" />
@@ -32,18 +32,43 @@ function Shoshi({ language }) {
           {/* Hreflang alternate links */}
           <link rel="alternate" href="https://artchayat.netlify.app/he/shoshi/biography" hreflang="he" />
           <link rel="alternate" href="https://artchayat.netlify.app/en/shoshi/biography" hreflang="en" />
+
+          {/* Person schema so Google can associate this page with searches
+              for "שושי חייט" / "Shoshi Chayat" as an entity, not just text. */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Shoshi Chayat',
+              alternateName: ['שושי חייט', 'Shoshi Hait'],
+              url: pageUrl,
+              image: 'https://artchayat.netlify.app/shoshi_chayat_portrait.jpg',
+              jobTitle: isHebrew ? 'ציירת ופסלת' : 'Painter and Sculptor',
+              birthDate: '1947',
+              deathDate: '2011',
+              birthPlace: 'Cluj, Transylvania, Romania',
+              nationality: 'Israeli',
+              spouse: {
+                '@type': 'Person',
+                name: 'Yaakov Chayat',
+              },
+              sameAs: [
+                'https://artchayat.netlify.app/he/shoshi/biography',
+              ],
+            })}
+          </script>
         </Helmet>
         <div className={styles['shoshi-content']}>
           <div className={`${styles['shoshi-image-container']} ${isHebrew ? styles['shoshi-image-container-rtl'] : styles['shoshi-image-container-ltr']}`}>
             <img src={shoshiPortrait} alt="שושי חייט" className={styles['shoshi-image']} />
           </div>
           <div className={styles['shoshi-text-container']}>
-            <h1>{isHebrew ? 'שושי חייט' : 'Shoshi Khayat'}</h1>
+            <h1>{isHebrew ? 'שושי חייט' : 'Shoshi Chayat'}</h1>
             <h2>{isHebrew ? 'ביוגרפיה' : 'Biography'}</h2>
             <p>
               {isHebrew
                 ? 'נולדה למשפחת גולדמן, דור שני לשואה בעיר קלוז\' בטרנסליבניה, רומניה. בשנת 1950 עלתה לישראל. חיי ילדותה ונערותה היו קשים מנשוא היות שאביה נטש אותה בהיותה תינוקת ואמה התאבדה כשהייתה נערה בת 12. בשנת 1964 נישאה לצייר יעקב חייט. לזוג שתי בנות ו5 נכדים.'
-                : 'Born to the Goldman family, a second generation Holocaust survivor in Cluj, Transylvania, Romania. In 1950, she immigrated to Israel. Her childhood and youth were unbearably difficult as her father abandoned her as a baby and her mother committed suicide when she was a 12-year-old girl. In 1964, she married the painter Yaakov Khayat. The couple has two daughters and 5 grandchildren.'
+                : 'Born to the Goldman family, a second generation Holocaust survivor in Cluj, Transylvania, Romania. In 1950, she immigrated to Israel. Her childhood and youth were unbearably difficult as her father abandoned her as a baby and her mother committed suicide when she was a 12-year-old girl. In 1964, she married the painter Yaakov Chayat. The couple has two daughters and 5 grandchildren.'
               }
             </p>
 
@@ -65,7 +90,7 @@ function Shoshi({ language }) {
             <p>
               {isHebrew
                 ? 'בחייט דבק הכינוי \'ציירת הליצנים\', משום שהדמויות האנושיות בציוריה עוטות על פניהן לרוב מסכה. סימטריה, שקט, סמכותיות ושלוות צבע עבדו אצל הציירת כמין בולם זעזועים מפני רקמת המציאות הקשה. חייט אפשרה ביצירותיה למצוא גוונים רבים ולעיתים הניחה רק לשחור וללבן, הפשוטים לכאורה של העיפרון, להעניק הבעות אנושיות מגוונות כחכמה, תמימות, ערמומיות ואומללות.'
-                : 'Khayat was nicknamed the "Clown Painter" because the human figures in her paintings often wear masks. Symmetry, tranquility, authority, and color calmness acted as shock absorbers against the harsh reality. In her works, Khayat allowed finding many shades and sometimes left only black and white, seemingly simple pencil drawings, to express diverse human expressions such as wisdom, innocence, cunning, and misery.'
+                : 'Chayat was nicknamed the "Clown Painter" because the human figures in her paintings often wear masks. Symmetry, tranquility, authority, and color calmness acted as shock absorbers against the harsh reality. In her works, Chayat allowed finding many shades and sometimes left only black and white, seemingly simple pencil drawings, to express diverse human expressions such as wisdom, innocence, cunning, and misery.'
               }
             </p>
 

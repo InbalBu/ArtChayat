@@ -7,12 +7,18 @@
   <link id="favicon" rel="icon" href="/logoHe.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז״ל" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap">
   <link rel="manifest" href="/manifest.json" />
-  <meta name="keywords"
-    content="Art Chayat, ארט חייט, fine art, Shoshi Chayat, Yaakov Chayat, contemporary art, modern art, art gallery, שושי חייט, יעקב חייט, אמנות, גלריה, אמנות עכשווית">
   <title>Art Chayat | ארט חייט</title>
+
+  <!-- name="description" / name="keywords" are intentionally NOT set here:
+       every route sets its own via react-helmet-async, and Helmet cannot
+       remove a tag it didn't render, so a static default here would sit
+       alongside (not replace) each page's real one - two description
+       tags on every URL, with this generic one first in the DOM where
+       crawlers look first. og:*/twitter:* stay static below since those
+       genuinely need a fallback for non-JS-executing bots. -->
+
 
   <!-- Default Open Graph / Twitter Card tags. Each page overrides these at
        runtime via react-helmet-async, but crawlers/bots that don't execute

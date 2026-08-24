@@ -6,7 +6,7 @@
 }
 
 .footer-content {
-    max-width: 1200px;
+    max-width: var(--content-max-width); /* align with the header's boundary */
     margin: 0 auto;
 }
 

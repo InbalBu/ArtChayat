@@ -104,7 +104,7 @@ function ShoshiExhibitions({ language }) {
                 <li>2003 - "At Eye Level" Gallery, Holon.</li>
                 <li>2004 - "Culture Palace" Gallery, Petah Tikva.</li>
                 <li>2008 - Yad LaBanim House, Ness Ziona.</li>
-                <li>2012 - Exhibition marking the first anniversary of Shoshi Khayat's passing at Beit Ariela, Tel Aviv.</li>
+                <li>2012 - Exhibition marking the first anniversary of Shoshi Chayat's passing at Beit Ariela, Tel Aviv.</li>
               </>
             )}
           </ul>

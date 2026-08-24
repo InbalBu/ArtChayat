@@ -6,6 +6,13 @@
   --accent: #af8248;
   --accent-dark: #8a6535;
   --accent-light: #d9bd8e;
+
+  /* Site-wide content boundary. Matches the header's logo block
+     (Navbar.module.css .navbar-logo-container), so every page's left/right
+     edges line up with the header instead of each page picking its own
+     max-width. Full-bleed elements (e.g. the homepage hero video) are the
+     deliberate exception and stay edge-to-edge. */
+  --content-max-width: 929.35px;
 }
 
 body {

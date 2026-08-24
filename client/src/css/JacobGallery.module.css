@@ -63,7 +63,7 @@
     grid-template-columns: repeat(4, 1fr); /* 4 columns by default */
     gap: 20px; /* Space between items */
     width: 100%;
-    max-width: 1200px; /* Adjust as needed */
+    max-width: var(--content-max-width); /* align with the header's boundary */
 }
 
 /* Responsive Grid Layout */

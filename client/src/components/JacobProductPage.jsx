@@ -93,7 +93,7 @@ function JacobProductPage({ language }) {
                 <>
                   <p>For purchase and more details, please contact:</p>
                   <p>Michal Bukris - <a href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
-                  <p>Riki Khayat - <a href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                  <p>Riki Chayat - <a href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
                   <p>Email - <a href="mailto:artchayat@gmail.com">artchayat@gmail.com</a></p>
                 </>
               )}

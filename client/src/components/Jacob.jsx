@@ -32,6 +32,36 @@ function Jacob({ language }) {
           {/* Hreflang alternate links */}
           <link rel="alternate" href="https://artchayat.netlify.app/he/jacob/biography" hreflang="he" />
           <link rel="alternate" href="https://artchayat.netlify.app/en/jacob/biography" hreflang="en" />
+
+          {/* Person schema so Google can associate this page with searches
+              for "יעקב חייט" / "Yaakov Chayat" as an entity, not just text. */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Yaakov Chayat',
+              alternateName: ['יעקב חייט', 'Jacob Chayat'],
+              url: pageUrl,
+              image: 'https://artchayat.netlify.app/jacob_chayat_portrait.jpg',
+              jobTitle: isHebrew ? 'צייר' : 'Painter',
+              birthDate: '1939-08-06',
+              deathDate: '2018-11-13',
+              birthPlace: 'Baghdad, Iraq',
+              nationality: 'Israeli',
+              spouse: {
+                '@type': 'Person',
+                name: 'Shoshi Chayat',
+              },
+              memberOf: {
+                '@type': 'Organization',
+                name: 'Tel Aviv Association of Painters and Sculptors',
+              },
+              sameAs: [
+                'https://www.facebook.com/JacobChayat',
+                'https://artchayat.netlify.app/he/jacob/biography',
+              ],
+            })}
+          </script>
         </Helmet>
         <div className={styles['jacob-container']}>
           <div className={styles['jacob-content']}>
@@ -44,7 +74,7 @@ function Jacob({ language }) {
               <p>
                 {isHebrew
                   ? 'יעקב חייט (6 באוגוסט 1939 – 13 בנובמבר 2018) היה צייר ישראלי, חבר באגודת הציירים והפסלים תל אביב ובין התורמים להכרה ולהתפתחות של האמנות בישראל. בשנת 1964 נישא יעקב לציירת, הפסלת, שושי חייט ז"ל, לבית גנץ- גולדמן (1947-2011). לזוג שתי בנות, ריקי ומיכל, ארבעה נכדים ונכדה. בשנים האחרונות לחייו התגורר ויצר בסטודיו שלו בעיר חולון.'
-                  : 'Yaakov Chayat (August 6, 1939 – November 13, 2018) was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel. In 1964, Jacob married the painter, sculptor, Shushi Hait, nee Gantz-Goldman (1947-2011). The couple has two daughters, Ricky and Michal, four grandsons and a granddaughter. In the last years of his life, he lived and created in his studio in the city of Holon.'
+                  : 'Yaakov Chayat (August 6, 1939 – November 13, 2018) was an Israeli painter, a member of the Tel Aviv Association of Painters and Sculptors, and a contributor to the recognition and development of art in Israel. In 1964, Jacob married the painter, sculptor, Shoshi Chayat, nee Gantz-Goldman (1947-2011). The couple has two daughters, Ricky and Michal, four grandsons and a granddaughter. In the last years of his life, he lived and created in his studio in the city of Holon.'
                 }
               </p>
               <p>
@@ -62,21 +92,21 @@ function Jacob({ language }) {
               <p>
                 {isHebrew
                   ? 'ביקוריו של חייט מעת לעת בירושלים צרבו בתוכו את הזיכרון ההיסטורי-הקולקטיבי הקשור בחשיבות העיר ועל כן רבות מיצירותיו, לאורך השנים, מתייחסות אל העיר ואל אתרי הקודש בה. כמו כן חייט שילב לא אחת ביצירותיו דמויות תנ"כיות שמעוררות בו עניין רב. ביום שלישי, ה-13 בנובמבר 2018, הלך לעולמו בגיל 79.'
-                  : 'Visits to Jerusalem periodically etched in him the historical and collective memory associated with the city’s importance, and therefore many of his works, over the years, refer to the city and its holy sites. Khayat also frequently incorporated biblical figures into his works that fascinated him. On Tuesday, November 13, 2018, he passed away at the age of 79.'
+                  : 'Visits to Jerusalem periodically etched in him the historical and collective memory associated with the city’s importance, and therefore many of his works, over the years, refer to the city and its holy sites. Chayat also frequently incorporated biblical figures into his works that fascinated him. On Tuesday, November 13, 2018, he passed away at the age of 79.'
                 }
               </p>
               <h2>{isHebrew ? 'לימודים' : 'Education'}</h2>
               <p>
                 {isHebrew
                   ? 'חייט למד אמנות וגרפיקה במכונים הטכנולוגים בתל אביב ובשנות ה-60 עד לשנות ה-80 עבד, במקביל לעיסוקו כצייר, כגרפיקאי וכמאייר בבית דפוס. את יצירותיו הגרפיות עשה במלאכת יד.'
-                  : 'Khayat studied art and graphics at technological institutes in Tel Aviv and worked as a graphic designer and illustrator in a printing house from the 1960s to the 1980s, alongside his painting career. His graphic works were handmade.'
+                  : 'Chayat studied art and graphics at technological institutes in Tel Aviv and worked as a graphic designer and illustrator in a printing house from the 1960s to the 1980s, alongside his painting career. His graphic works were handmade.'
                 }
               </p>
               <h2>{isHebrew ? 'סגנון היצירה' : 'Artistic Style'}</h2>
               <p>
                 {isHebrew
                   ? 'חייט הרבה לשלב מגוון סגנונות וטכניקות של ציור ונמנע מלהגדיר תחום וסגנון בלעדי. בתפיסת עולמו האמנותית צריך היוצר ללכת עם התקופה, עם הזמן ועם הסביבה ובהתאם לכך להשתנות ולהתפתח כל עת. לפיכך תערוכותיו הרבות שונות האחת מקודמתה והציגו פנים ותחומי עניין מגוונים של היוצר.'
-                  : 'Khayat often combined various painting styles and techniques and avoided defining an exclusive field and style. In his artistic view, the creator should go with the times and adapt and evolve continuously. Consequently, his many exhibitions varied from one to another, showcasing different aspects and interests of the artist.'
+                  : 'Chayat often combined various painting styles and techniques and avoided defining an exclusive field and style. In his artistic view, the creator should go with the times and adapt and evolve continuously. Consequently, his many exhibitions varied from one to another, showcasing different aspects and interests of the artist.'
                 }
               </p>
               <p>
@@ -88,7 +118,7 @@ function Jacob({ language }) {
               <p>
                 {isHebrew
                   ? 'חייט חתם על כלל יצירותיו וכמו כן החל משנת 2009 להטביע בגב היצירה סמל הייחודי רק לו.'
-                  : 'Khayat signed all his works and, starting from 2009, began to emboss a unique symbol on the back of the artwork.'
+                  : 'Chayat signed all his works and, starting from 2009, began to emboss a unique symbol on the back of the artwork.'
                 }
               </p>
             </div>
@@ -98,13 +128,13 @@ function Jacob({ language }) {
           <p>
             {isHebrew
               ? 'סרט דוקומנטרי על יצירתו וחייו של הצייר הישראלי יעקב חייט ז"ל.'
-              : 'Documentary about the life and work of the Israeli painter Yaakov Khayat.'
+              : 'Documentary about the life and work of the Israeli painter Yaakov Chayat.'
             }
           </p>
           <p>
             {isHebrew
               ? 'בסרט אזכורים רבים לרעייתו, הציירת שושי חייט ז"ל.'
-              : 'The film includes many references to his wife, the painter Shoshi Khayat.'
+              : 'The film includes many references to his wife, the painter Shoshi Chayat.'
             }
           </p>
           <div className={styles['jacob-video-container']}>
@@ -113,7 +143,7 @@ function Jacob({ language }) {
               width="890"
               height="515"
               src="https://www.youtube.com/embed/QifoTZm_NdM" // Replace with your video ID
-              title="Documentary on Jacob Khayat"
+              title="Documentary on Jacob Chayat"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

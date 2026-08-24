@@ -113,7 +113,7 @@
 .homepage-grid {
     column-count: 4; /* Number of columns in the masonry layout */
     column-gap: 20px; /* Space between columns */
-    max-width: 1200px; /* Limit grid width */
+    max-width: var(--content-max-width); /* align with the header's boundary */
     margin: 0 auto; /* Center align grid horizontally */
     padding-bottom: 50px;
 }
