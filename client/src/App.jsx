@@ -16,6 +16,7 @@ import ShoshiGallery from './components/ShoshiGallery';
 import ShoshiProductPage from './components/ShoshiProductPage';
 import Articles from './components/Articles';
 import PersonalGallery from './components/PersonalGallery';
+import NotFound from './components/NotFound';
 
 function App() {
   // The site's language always defaults to Hebrew. It only becomes English if
@@ -70,7 +71,15 @@ function App() {
     <>
       <Navbar language={language} handleLanguageToggle={handleLanguageToggle} />
       <Routes>
-        <Route path="/:lang?" element={<HomePage language={language} />} />
+        {/* Home is only "/" or an exact "/he" / "/en" - deliberately NOT the
+            generic "/:lang?" pattern that used to sit here, which matched
+            ANY single-segment path (e.g. a typo'd "/press" one level off,
+            or a stale external link) and silently rendered the homepage
+            instead of a real 404. Anything else falls through to the
+            catch-all "*" route below. */}
+        <Route path="/" element={<HomePage language={language} />} />
+        <Route path="/he" element={<HomePage language={language} />} />
+        <Route path="/en" element={<HomePage language={language} />} />
         <Route path="/:lang/about" element={<About language={language} />} />
         <Route path="/:lang/shoshi" element={<Shoshi language={language} />} />
         <Route path="/:lang/shoshi/biography" element={<Shoshi language={language} />} />
@@ -86,6 +95,7 @@ function App() {
         <Route path="/:lang/contact" element={<ContactUs language={language} />} />
         <Route path="/:lang/articles" element={<Articles language={language} />} />
         <Route path="/:lang/personalGallery" element={<PersonalGallery language={language} />} />
+        <Route path="*" element={<NotFound language={language} />} />
       </Routes>
       <Footer language={language} />
     </>
