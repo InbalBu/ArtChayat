@@ -123,14 +123,7 @@ async function main() {
       // Give React a moment to settle past the very first paint (route
       // sync effects, etc.) before we snapshot the DOM.
       await page.waitForSelector('h1', { timeout: 5000 }).catch(() => {});
-      // React.lazy()'s dynamic import() makes Vite's runtime inject
-      // <link rel="modulepreload"/"stylesheet"> tags for that chunk with an
-      // ABSOLUTE href baked in at this local build server's origin
-      // (http://localhost:8991/assets/...). Left as-is, every real
-      // visitor's browser would try to fetch assets from localhost - this
-      // broke the live site the first time this script shipped. Rewrite
-      // them back to root-relative before saving.
-      const html = (await page.content()).replaceAll(`http://localhost:${PORT}`, '');
+      const html = await page.content();
 
       const outPath = route === '/' ? path.join(BUILD_DIR, 'index.html') : path.join(BUILD_DIR, route, 'index.html');
       await mkdir(path.dirname(outPath), { recursive: true });
