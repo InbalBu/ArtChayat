@@ -82,7 +82,7 @@ const Articles = ({ language }) => {
           <div className={styles.articlesGrid}>
             {articles.map((article, index) => (
               <div key={index} className={styles.card}>
-                <img src={article.image} alt={article.title[language]} className={styles.image} />
+                <img src={article.image} alt={article.title[language]} className={styles.image} loading="lazy" />
                 <div className={styles.content}>
                   <p className={styles.author}>{article.author[language]}</p>
                   <p className={styles.date}>{article.date[language]}</p>

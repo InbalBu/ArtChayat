@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Shoshi from './components/Shoshi';
@@ -18,34 +18,45 @@ import Articles from './components/Articles';
 import PersonalGallery from './components/PersonalGallery';
 
 function App() {
-  // Initialize language state based on URL or localStorage
-  const initialLanguage = window.location.pathname.startsWith('/en') ? 'en' : 'he';
-  const [language, setLanguage] = useState(localStorage.getItem('language') || initialLanguage);
+  // The site's language always defaults to Hebrew. It only becomes English if
+  // the URL explicitly says so, or the visitor previously chose English themselves
+  // (remembered in localStorage). We deliberately do NOT infer it from the
+  // browser/OS language - that was the cause of the site randomly opening in English.
+  const pathLanguage = window.location.pathname.match(/^\/(he|en)(\/|$)/)?.[1];
+  const initialLanguage = pathLanguage || localStorage.getItem('language') || 'he';
+  const [language, setLanguage] = useState(initialLanguage);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Update localStorage whenever language state changes
   useEffect(() => {
     localStorage.setItem('language', language);
   }, [language]);
 
-  // Update language state based on URL changes
+  // Set the <html lang> and dir attributes so the page is properly
+  // right-to-left in Hebrew and readable by screen readers/browsers natively.
   useEffect(() => {
-    const currentPath = window.location.pathname;
-    const currentLang = currentPath.startsWith('/en') ? 'en' : 'he';
-    if (currentLang !== language) {
-      setLanguage(currentLang);
-    }
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
   }, [language]);
 
-  // Handle redirect if no language is present in the URL
+  // Keep language state in sync with the URL (e.g. back/forward navigation
+  // or following a direct link with a language prefix already in it).
+  useEffect(() => {
+    const currentLang = location.pathname.match(/^\/(he|en)(\/|$)/)?.[1];
+    if (currentLang && currentLang !== language) {
+      setLanguage(currentLang);
+    }
+  }, [location.pathname]);
+
+  // If the URL has no language prefix at all, add one based on the
+  // resolved language above (always Hebrew unless the visitor chose English).
   useEffect(() => {
     const currentPath = window.location.pathname;
-    if (!/^\/(he|en)/.test(currentPath)) {
-      const userLanguage = navigator.language || navigator.userLanguage;
-      const languagePrefix = userLanguage.startsWith('he') ? '/he' : '/en';
-      navigate(`${languagePrefix}${currentPath}`);
+    if (!/^\/(he|en)(\/|$)/.test(currentPath)) {
+      navigate(`/${language}${currentPath}`, { replace: true });
     }
-  }, [navigate]);
+  }, []);
 
   const handleLanguageToggle = () => {
     const newLanguage = language === 'he' ? 'en' : 'he';

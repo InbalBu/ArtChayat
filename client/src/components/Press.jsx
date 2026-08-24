@@ -107,7 +107,7 @@ function Press({ language }) {
         <div className={styles['articles-grid']}>
           {images.map((img, index) => (
             <div key={index} className={styles['article']} onClick={() => openModal(index)}>
-              <img src={img} alt={`Article ${index + 1}`} />
+              <img src={img} alt={`Article ${index + 1}`} loading="lazy" />
               {captions[img] && (
                 <p className={styles['caption']}>{captions[img]}</p>
               )}

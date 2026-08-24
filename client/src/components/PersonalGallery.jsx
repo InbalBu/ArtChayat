@@ -110,6 +110,7 @@ const PersonalGallery = ({ language }) => {
                 alt={`${index + 1}`}
                 data-id={image.dataId}
                 onClick={() => handleImageClick(index)}
+                loading="lazy"
               />
               <p dir={language === 'he' ? 'rtl' : 'ltr'} className={styles['image-description']}>{image.description}</p>
             </div>

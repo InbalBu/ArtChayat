@@ -48,9 +48,13 @@
     color: #333;
 }
 
+.gallery-filter-button:hover {
+    border-color: var(--accent);
+}
+
 .gallery-filter-button.active {
     background-color: #f0f0f0;
-    border-color: #aaa;
+    border-color: var(--accent);
 }
 
 /* Grid Layout */
@@ -99,6 +103,14 @@
 
 .gallery-item:hover {
     transform: scale(1.05); /* Slightly enlarge image on hover */
+}
+
+.gallery-product-image {
+    transition: box-shadow 0.3s ease;
+}
+
+.gallery-item:hover .gallery-product-image {
+    box-shadow: 0 10px 24px rgba(175, 130, 72, 0.35); /* Warm accent-tinted shadow on hover */
 }
 
 /* Link Style */
@@ -164,7 +176,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: var(--accent);
     color: white;
     border: none;
     border-radius: 50%;
@@ -175,7 +187,7 @@
     justify-content: center;
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, background-color 0.2s ease;
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
@@ -184,6 +196,10 @@
 .gallery-scroll-to-top.show {
     opacity: 1;
     visibility: visible;
+}
+
+.gallery-scroll-to-top:hover {
+    background-color: var(--accent-dark);
 }
 
 /* Dropdown Styles */
@@ -205,13 +221,13 @@
 }
 
 .gallery-filters select:hover {
-    border-color: #007bff; /* Border color on hover */
+    border-color: var(--accent); /* Border color on hover */
 }
 
 .gallery-filters select:focus {
     outline: none; /* Remove default focus outline */
-    border-color: #007bff; /* Border color on focus */
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.25); /* Box shadow on focus */
+    border-color: var(--accent); /* Border color on focus */
+    box-shadow: 0 0 10px rgba(175, 130, 72, 0.25); /* Box shadow on focus */
 }
 
 /* Custom arrow for dropdown */

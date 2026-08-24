@@ -56,6 +56,27 @@
   margin: 0 0 10px 0;
 }
 
+.about-text-container p {
+  line-height: 1.7;
+}
+
+.about-container > h1 {
+  position: relative;
+  padding-bottom: 16px;
+  margin-bottom: 30px;
+}
+
+.about-container > h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background-color: var(--accent);
+}
+
 /* Centered Presentation Section */
 .presentation-container {
   margin-top: 50px; /* Space above the presentation */
@@ -168,6 +189,7 @@
   width: 100%;
   border-radius: 8px;
   opacity: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   transition: opacity 0.5s ease-in-out; /* Ensure the transition is smooth */
 }
 
@@ -182,32 +204,56 @@
 /* Container for buttons */
 .buttons-container {
   position: absolute;
-  bottom: 10px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 10px; /* Space between buttons */
+  gap: 14px; /* Space between buttons */
+  /* Keep transport controls in a fixed left-to-right order (prev, play/pause,
+     next) regardless of the page's Hebrew/RTL direction - like a video
+     scrubber, these arrows should always point the way they visually move,
+     not flip with the surrounding text direction. */
+  direction: ltr;
 }
 
-/* Media Player Style Buttons without background */
+/* Media Player Style Buttons: circular, frosted-glass icon buttons */
 .prev-button,
 .next-button,
 .play-pause-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white; /* Icon color */
-  border: none;
-  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   cursor: pointer;
-  font-size: 20px; /* Adjust size of icons */
   outline: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.prev-button,
+.next-button {
+  width: 36px;
+  height: 36px;
+}
+
+.play-pause-button {
+  width: 44px;
+  height: 44px;
 }
 
 /* Hover effect for buttons */
 .prev-button:hover,
 .next-button:hover,
 .play-pause-button:hover {
-  color: #ccc; /* Lighter color on hover */
+  background-color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 

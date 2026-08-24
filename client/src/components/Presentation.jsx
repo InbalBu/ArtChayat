@@ -3,15 +3,17 @@ import styles from '../css/About.module.css';
 
 // Vite doesn't support webpack's dynamic require(); import.meta.glob loads
 // every slide eagerly, keyed by file path, so we look each one up by index.
-const slideModules = import.meta.glob('../images/presentation/*.GIF', {
+// (Originally .GIF files - they were single-frame photos, not animations,
+// so they were converted to .jpg: same images, a fraction of the size.)
+const slideModules = import.meta.glob('../images/presentation/*.jpg', {
   eager: true,
   import: 'default',
 });
 
 function Presentation() {
-  const slides = []; // Array of GIFs
+  const slides = []; // Array of slide images
   for (let i = 1; i <= 51; i++) {
-    const path = Object.keys(slideModules).find((p) => p.endsWith(`שקופית${i}.GIF`));
+    const path = Object.keys(slideModules).find((p) => p.endsWith(`שקופית${i}.jpg`));
     slides.push(slideModules[path]);
   }
 
@@ -65,14 +67,39 @@ function Presentation() {
         />
       </div>
       <div className={styles['buttons-container']}>
-        <button className={styles['prev-button']} onClick={goToPreviousSlide}>
-          &#9664; {/* Left arrow */}
+        <button
+          className={styles['prev-button']}
+          onClick={goToPreviousSlide}
+          aria-label="Previous slide"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
         </button>
-        <button className={styles['play-pause-button']} onClick={togglePlayPause}>
-          {isPlaying ? '⏸️' : '▶️'} {/* Pause or Play */}
+        <button
+          className={styles['play-pause-button']}
+          onClick={togglePlayPause}
+          aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
+        >
+          {isPlaying ? (
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <rect x="6" y="5" width="4" height="14" rx="1" />
+              <rect x="14" y="5" width="4" height="14" rx="1" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
         </button>
-        <button className={styles['next-button']} onClick={goToNextSlide}>
-          &#9654; {/* Right arrow */}
+        <button
+          className={styles['next-button']}
+          onClick={goToNextSlide}
+          aria-label="Next slide"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
         </button>
       </div>
     </div>

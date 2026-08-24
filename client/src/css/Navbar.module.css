@@ -80,10 +80,13 @@
     color: black;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.2s ease;
 }
 
 .navbar-nav a:hover {
+    color: var(--accent);
     text-decoration: underline;
+    text-decoration-color: var(--accent);
 }
 
 /* Adjusted Dropdown Styles */
@@ -106,6 +109,11 @@
 .navbar-dropdown li a {
     color: black;
     display: block; /* Ensure full clickable area */
+    transition: color 0.2s ease;
+}
+
+.navbar-dropdown li a:hover {
+    color: var(--accent);
 }
 
 /* CSS for English mode */

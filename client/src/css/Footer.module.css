@@ -20,10 +20,13 @@
     color: white;
     text-decoration: none;
     margin: 0 15px;
+    transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
+    color: var(--accent);
     text-decoration: underline; /* Adds an underline on hover */
+    text-decoration-color: var(--accent);
 }
 
 .social-media {
@@ -35,10 +38,13 @@
     margin: 0 10px;
     text-decoration: none;
     font-size: 24px; /* Adjust the size of the icons */
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
 }
 
 .social-media a:hover {
-    color: #ccc; /* Changes the color on hover */
+    color: var(--accent); /* Changes the color on hover */
+    transform: translateY(-2px);
 }
 
 .footer-signature {

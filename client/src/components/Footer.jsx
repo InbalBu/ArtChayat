@@ -39,7 +39,7 @@ function Footer({ language }) {
                         </a>
                     </div>
                     <div className={styles['footer-signature']}>
-                        <img src={signature} alt="Signature" />
+                        <img src={signature} alt="Signature" loading="lazy" />
                     </div>
                     <div className={styles['credits']}>
                         <p>

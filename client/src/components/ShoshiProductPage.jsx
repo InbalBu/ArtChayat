@@ -31,7 +31,7 @@ function ShoshiProductPage({ language }) {
   };
 
   const handleReturnToGallery = () => {
-    navigate('/shoshi/gallery'); // Navigate back to the gallery page
+    navigate(`/${language}/shoshi/gallery`); // Navigate back to the gallery page
   };
 
   if (error) return <div>{error}</div>;

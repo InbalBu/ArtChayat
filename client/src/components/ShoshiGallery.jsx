@@ -131,10 +131,14 @@ function ShoshiGallery({ language }) {
     return acc;
   }, {});
 
-  // Ensure 'triptychCircus' is the first category
+  // Ensure 'triptychCircus' is the first category, but only if the current
+  // filter actually left any products in it - otherwise groupedProducts has
+  // no entry for it and rendering would crash trying to map over undefined.
   const triptychLabel = getCategoryLabel('triptychCircus');
   const sortedCategories = Object.keys(groupedProducts).filter(category => category !== triptychLabel);
-  sortedCategories.unshift(triptychLabel);
+  if (groupedProducts[triptychLabel]) {
+    sortedCategories.unshift(triptychLabel);
+  }
 
   const pageUrl = language === 'he'
     ? "https://artchayat.netlify.app/he/shoshi/gallery"

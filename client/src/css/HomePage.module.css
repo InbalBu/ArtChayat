@@ -18,10 +18,48 @@
     left: 0;
     min-width: 100%;
     min-height: 100%;
-    z-index: -1; /* Ensure video stays behind content */
+    z-index: -2; /* Ensure video stays behind content and overlay */
     object-fit:contain; /* Cover the entire container */
     filter: brightness(0.6); /* Slightly darker video for better text contrast */
-    transition: top 0.5s ease-out, height 0.5s ease-out;
+    transition: top 0.5s ease-out, height 0.5s ease-out, opacity 0.9s ease-in;
+}
+
+.homepage-video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 70%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.homepage-scroll-cue {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+}
+
+.homepage-scroll-cue::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: homepage-scroll-cue-move 1.6s ease-in-out infinite;
+}
+
+@keyframes homepage-scroll-cue-move {
+    0% { opacity: 1; top: 6px; }
+    70% { opacity: 0; top: 18px; }
+    100% { opacity: 0; top: 18px; }
 }
 
 .homepage-video-text {
@@ -90,7 +128,7 @@
 
 .homepage-grid img:hover {
     transform: scale(1.05); /* Slightly enlarge image on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
+    box-shadow: 0 8px 20px rgba(175, 130, 72, 0.4); /* Warm accent-tinted shadow on hover */
 }
 
 /* Responsive Styles for Smaller Devices */
@@ -165,6 +203,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     overflow: auto;
+    animation: homepage-modal-fade-in 0.25s ease;
 }
 
 .homepage-modal-content {
@@ -173,6 +212,17 @@
     display: block;
     max-width: 90%;
     max-height: 90%;
+    animation: homepage-modal-scale-in 0.25s ease;
+}
+
+@keyframes homepage-modal-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes homepage-modal-scale-in {
+    from { transform: scale(0.96); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .homepage-modal img {
@@ -198,4 +248,10 @@
     align-items: center;
     border: 2px solid white; /* Adds a border for visibility */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.homepage-close:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
 }

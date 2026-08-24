@@ -147,19 +147,24 @@ function HomePage({ language }) {
 
                 <div className={styles.homepage} dir={language === 'he' ? 'rtl' : 'ltr'}>
                     {!isMobile && (
-                        <video
-                            id='video_bg'
-                            className={styles['homepage-video-bg']}
-                            autoPlay
-                            loop
-                            muted
-                            onCanPlayThrough={() => setVideoLoaded(true)}
-                            preload="auto"
-                            style={{ opacity: videoLoaded ? 1 : 0 }}
-                        >
-                            <source src={video} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                        <>
+                            <video
+                                id='video_bg'
+                                className={styles['homepage-video-bg']}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                poster={painting1}
+                                onCanPlayThrough={() => setVideoLoaded(true)}
+                                preload="auto"
+                                style={{ opacity: videoLoaded ? 1 : 0 }}
+                            >
+                                <source src={video} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                            <div className={styles['homepage-video-overlay']} />
+                        </>
                     )}
                     <div className={styles['homepage-video-text']}>
                         <h1
@@ -197,6 +202,9 @@ function HomePage({ language }) {
                             </>
                         )}
                     </div>
+                    {!isMobile && (
+                        <span className={styles['homepage-scroll-cue']} aria-hidden="true" />
+                    )}
                 </div>
 
                 <div className={styles['homepage-gallery']}>
@@ -208,6 +216,7 @@ function HomePage({ language }) {
                                 src={image}
                                 alt={`Painting ${index + 1}`}
                                 onClick={() => handleImageClick(index)}
+                                loading="lazy"
                             />
                         ))}
                     </div>

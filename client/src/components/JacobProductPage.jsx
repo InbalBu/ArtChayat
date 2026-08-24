@@ -31,7 +31,7 @@ function JacobProductPage({ language }) {
   };
 
   const handleReturnToGallery = () => {
-    navigate('/jacob/gallery'); // Navigate back to the gallery page
+    navigate(`/${language}/jacob/gallery`); // Navigate back to the gallery page
   };
 
   if (error) return <div>{error}</div>;

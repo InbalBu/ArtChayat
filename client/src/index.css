@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap');
 
+:root {
+  /* Warm bronze accent used sparingly across links, hovers and buttons,
+     alongside the site's existing black/white palette. */
+  --accent: #af8248;
+  --accent-dark: #8a6535;
+  --accent-light: #d9bd8e;
+}
 
 body {
   margin: 0;
