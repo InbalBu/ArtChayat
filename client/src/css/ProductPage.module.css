@@ -1,7 +1,8 @@
 /* Existing Desktop Styles */
 .productPage {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* stack the product grid and the room-preview section - row (the default) sat them side by side instead, which only went unnoticed while productPage had a single child */
+  justify-content: flex-start;
   align-items: center;
   padding: 20px;
   margin-bottom: 60px;
@@ -40,6 +41,7 @@
 .productImage {
   cursor: pointer;
   max-width: 100%;
+  min-width: 0; /* lets this grid item actually shrink below its image's intrinsic width instead of overflowing its column */
   overflow: hidden; /* Ensure border-radius is applied */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -50,7 +52,9 @@
 }
 
 .productImage img {
-  max-width: 500px; /* Make the image larger */
+  display: block;
+  width: 100%; /* fill the grid column - previously a bare max-width let the image stay at its full 500px even in a narrower column, and overflow:hidden above silently clipped the difference */
+  max-width: 500px; /* ...but don't grow past the image's own intended size if the column is ever wider */
   height: auto;
 }
 
@@ -111,24 +115,81 @@
   border-color: var(--accent);
 }
 
-.notForSale {
-  color: red;
-}
-
-.contactInfo {
-  margin-top: 20px;
-  line-height: 1.6;
-}
-
-.contactInfo a {
+/* Price + purchase CTA - previously three plain inline text links buried in
+   a paragraph, easy to miss entirely. A distinct card with the price made
+   prominent and real branded buttons (WhatsApp green, with its own icon)
+   reads as "this is how you buy it" at a glance instead of just more text. */
+.priceTag {
+  display: inline-block;
+  font-size: 1.7rem;
+  font-weight: 600;
   color: var(--accent-dark);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  margin: 2px 0 20px;
 }
 
-.contactInfo a:hover {
-  color: var(--accent);
-  text-decoration: underline;
+.notForSale {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #a33;
+  background: #fbeaea;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin: 2px 0 20px;
+}
+
+.purchaseBox {
+  margin-top: 6px;
+  padding: 20px 24px;
+  background: #faf6ef;
+  border: 1px solid var(--accent-light);
+  border-radius: 12px;
+}
+
+.purchaseBox h3 {
+  margin: 0 0 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.contactButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contactButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 24px;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.whatsappButton {
+  background: #25d366; /* WhatsApp's own brand green - instantly recognizable as "tap to message" */
+  color: white;
+}
+
+.whatsappButton:hover {
+  background: #1ebe5b;
+}
+
+.emailButton {
+  background: black;
+  color: white;
+}
+
+.emailButton:hover {
+  background: var(--accent);
 }
 
 .button {
@@ -146,6 +207,18 @@
 
 .button:hover {
   background: var(--accent);
+}
+
+.roomPreviewSection {
+  max-width: var(--content-max-width);
+  margin: 50px auto 0;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.roomPreviewSection h2 {
+  font-weight: 100;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 1440px) { /* For tablets and smaller PCs */
@@ -208,11 +281,6 @@
     padding: 0; /* Remove padding for mobile */
   }
 
-  .productTitle {
-    order: 1 !important; /* Place the title first */
-    text-align: center; /* Center title on mobile */
-  }
-
   .productDetails-rtl {
     direction: rtl;
     text-align: right;
@@ -235,5 +303,14 @@
   .productImage img {
     width: 100%; /* Ensure image takes full width on mobile */
     height: auto;
+  }
+
+  .purchaseBox {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contactButtons {
+    justify-content: center;
   }
 }

@@ -1,0 +1,101 @@
+/* Swipeable "see it in a room" widget - a horizontally snapping row of real
+   room photos, each with the painting warped flush onto its wall. Mirrors
+   the homepage mobile artwork carousel's interaction (drag/swipe, no visible
+   scrollbar, no arrows) so it feels like part of the same site. */
+.roomPreview {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.roomPreview-track {
+    display: flex;
+    align-items: flex-start; /* a flex row's height still defaults to its tallest child even with this set - the inline `height` set in RoomPreview.jsx (locked to just the active room) is what actually closes the gap; this only stops the *shorter* rooms from being stretched to match while that height is briefly unset */
+    width: 100%;
+    overflow: auto hidden; /* x auto: horizontal swipe; y hidden: clips the other two (off-screen but still-tall) rooms to the active room's own height instead of showing through beneath it */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain; /* don't let a swipe that runs past the first/last room drag the whole page along with it */
+    transition: height 0.25s ease;
+}
+
+.roomPreview-track::-webkit-scrollbar {
+    display: none;
+}
+
+.roomPreview-track:active {
+    cursor: grabbing;
+}
+
+.roomPreview-slide {
+    position: relative;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.roomPreview-room {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* Positioned/sized at the room photo's own (0,0)-(w,h) box - the matrix3d
+   transform (computed in RoomPreview.jsx via quadTransform.js) does the
+   actual warp onto the wall, so this box's static position doesn't matter
+   beyond matching what that math assumes. */
+.roomPreview-art {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: contain; /* the box is already sized to the painting's own aspect ratio (fitQuad in quadTransform.js) - contain is just a safety net against sub-pixel rounding */
+    transform-origin: 0 0;
+    pointer-events: none;
+    /* Two layers - a tight contact shadow right under the frame plus a
+       softer, wider one - reads as an actual frame sitting slightly off
+       the wall rather than a flat sticker. Both follow the matrix3d warp
+       since box-shadow respects a transformed element's rendered shape. */
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.35),
+        0 14px 28px rgba(0, 0, 0, 0.3);
+}
+
+.roomPreview-tabs {
+    display: flex;
+    flex-wrap: wrap; /* the 3 room-name buttons wrap instead of overflowing on very narrow screens */
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.roomPreview-tab {
+    padding: 8px 18px;
+    font-size: 14px;
+    color: black;
+    background: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.roomPreview-tab:hover {
+    border-color: var(--accent);
+}
+
+.roomPreview-tab-active {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+@media (max-width: 768px) {
+    .roomPreview-tab {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+}

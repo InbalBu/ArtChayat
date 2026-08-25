@@ -21,6 +21,7 @@ const ShoshiGallery = lazy(() => import('./components/ShoshiGallery'));
 const ShoshiProductPage = lazy(() => import('./components/ShoshiProductPage'));
 const Articles = lazy(() => import('./components/Articles'));
 const PersonalGallery = lazy(() => import('./components/PersonalGallery'));
+const RoomShowcase = lazy(() => import('./components/RoomShowcase'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
 // Shown briefly while a lazy-loaded page's code downloads. Route chunks are
@@ -122,6 +123,7 @@ function App() {
           <Route path="/:lang/contact" element={<ContactUs language={language} />} />
           <Route path="/:lang/articles" element={<Articles language={language} />} />
           <Route path="/:lang/personalGallery" element={<PersonalGallery language={language} />} />
+          <Route path="/:lang/room-showcase" element={<RoomShowcase language={language} />} />
           <Route path="*" element={<NotFound language={language} />} />
         </Routes>
       </Suspense>

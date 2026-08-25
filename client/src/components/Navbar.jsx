@@ -114,6 +114,9 @@ const Navbar = ({ language, handleLanguageToggle }) => {
             )}
           </li>
           <li>
+            <Link to={`/${language}/room-showcase`} onClick={closeMenu}>{language === 'he' ? 'דמיינו בבית' : 'See It In A Room'}</Link>
+          </li>
+          <li>
             <Link to={`/${language}/press`} onClick={closeMenu}>{language === 'he' ? 'קטעי עיתונות ופרסים' : 'Press Clips And Videos'}</Link>
           </li>
           <li>

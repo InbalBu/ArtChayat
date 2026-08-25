@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import styles from '../css/ProductPage.module.css'; // Import the CSS module
 import { cloudinarySrcSet } from '../utils/cloudinary';
+import RoomPreview from './RoomPreview/RoomPreview';
 
 const MAIN_IMAGE_WIDTHS = [500, 800, 1200];
 const MODAL_IMAGE_WIDTHS = [800, 1200, 1600];
@@ -86,31 +90,34 @@ function ShoshiProductPage({ language }) {
               {product.size} {language === 'he' ? 'ס"מ' : 'cm'}
             </div>
             <p>{language === 'he' ? 'טכניקת עבודה' : 'Technic'}: {product.technic}</p>
-            <p>
-              {price === 0
-                ? <span className={styles.notForSale}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span>
-                : `${language === 'he' ? 'מחיר' : 'Price'}: ${product.price}₪`
-              }
-            </p>
-            <div className={styles.contactInfo}>
-              {language === 'he' ? (
-                <>
-                  <p>לרכישה ופרטים נוספים נא ליצור קשר בטלפונים:</p>
-                  <p>מיכל בוקריס - <a href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">וואטסאפ</a></p>
-                  <p>ריקי חייט - <a href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">וואטסאפ</a></p>
-                  <p>אימייל - <a href="mailto:artchayat@gmail.com">artchayat@gmail.com</a></p>
-                </>
-              ) : (
-                <>
-                  <p>For purchase and more details, please contact:</p>
-                  <p>Michal Bukris - <a href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
-                  <p>Riki Chayat - <a href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
-                  <p>Email - <a href="mailto:artchayat@gmail.com">artchayat@gmail.com</a></p>
-                </>
-              )}
+            {price === 0
+              ? <span className={styles.notForSale}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span>
+              : <span className={styles.priceTag}>{product.price}₪</span>
+            }
+            <div className={styles.purchaseBox}>
+              <h3>{language === 'he' ? 'מעוניינים ברכישה? צרו קשר:' : 'Interested in purchasing? Get in touch:'}</h3>
+              <div className={styles.contactButtons}>
+                <a className={`${styles.contactButton} ${styles.whatsappButton}`} href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faWhatsapp} />
+                  {language === 'he' ? 'מיכל בוקריס' : 'Michal Bukris'}
+                </a>
+                <a className={`${styles.contactButton} ${styles.whatsappButton}`} href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faWhatsapp} />
+                  {language === 'he' ? 'ריקי חייט' : 'Riki Chayat'}
+                </a>
+                <a className={`${styles.contactButton} ${styles.emailButton}`} href="mailto:artchayat@gmail.com">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                  {language === 'he' ? 'אימייל' : 'Email'}
+                </a>
+              </div>
             </div>
             <button className={styles.button} onClick={handleReturnToGallery}>{language === 'he' ? 'חזרה לגלריה' : 'Return to Gallery'}</button>
           </div>
+        </div>
+
+        <div className={styles.roomPreviewSection}>
+          <h2>{language === 'he' ? 'כך תיראה היצירה הזו בבית שלכם' : 'See This Artwork In Your Home'}</h2>
+          <RoomPreview image={product.imageURL} alt={product.name} language={language} />
         </div>
 
         {isModalOpen && (
