@@ -179,10 +179,10 @@ function HomePage({ language }) {
         <HelmetProvider>
             <div className='container'>
                 <Helmet>
-                    <title>{language === 'he' ? 'ארט חייט - אמנות יעקב ושושי חייט' : 'ArtChayat - Art of Jacob and Shoshi Chayat'}</title>
+                    <title>{language === 'he' ? 'ארט חייט אומנות ישראלית | ArtChayat' : 'ArtChayat - Art of Jacob and Shoshi Chayat'}</title>
 
                     <meta name="description" content={language === 'he'
-                        ? 'ארט חייט מציג את יצירותיהם של האמנים יעקב חייט ושושי חייט, המספרים סיפור של אהבה, יצירה ואמנות. הגלריה שלנו מציגה אומנות מקורית של יעקב ושושי חייט ז"ל.'
+                        ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות, משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האומנים שושי ויעקב חייט ז"ל.'
                         : 'ArtChayat showcases the works of artists Jacob Chayat and Shoshi Chayat, telling a story of love, creation, and art. Our gallery presents original art by Jacob and Shoshi Chayat.'} />
 
                     <meta name="keywords" content={language === 'he'
@@ -193,11 +193,11 @@ function HomePage({ language }) {
 
                     {/* Open Graph tags */}
                     <meta property="og:title" content={language === 'he'
-                        ? 'ארט חייט - אמנות יעקב ושושי חייט'
+                        ? 'ארט חייט אומנות ישראלית | ArtChayat'
                         : 'ArtChayat - Art of Jacob and Shoshi Chayat'} />
 
                     <meta property="og:description" content={language === 'he'
-                        ? 'ארט חייט מציג יצירות מקוריות של יעקב ושושי חייט, ושוזר את סיפור אהבתם היוצא דופן.'
+                        ? 'ארט חייט נולד מתוך יצירה ואהבה לאומנות, משולב בסיפור אהבתם יוצא הדופן והמרגש של הורינו, זוג האומנים שושי ויעקב חייט ז"ל.'
                         : 'ArtChayat presents the original works of Jacob and Shoshi Chayat, intertwined with their extraordinary love story.'} />
 
                     <meta property="og:image" content={language === 'he' ? 'https://artchayat.netlify.app/logoHe.png' : 'https://artchayat.netlify.app/logoEN.png'} />

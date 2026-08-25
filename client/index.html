@@ -4,12 +4,20 @@
 <head>
   <meta name="google-site-verification" content="1mLEa9PZka9OeDM2PExHNbnqSIeiAB0ZnUlR1c5HpZ0" />
   <meta charset="utf-8" />
-  <link id="favicon" rel="icon" href="/logoHe.png" />
+  <!-- The site's full wordmark logo (logoHe.png) is a wide rectangle with
+       small text, illegible at the tiny square size browser tabs and
+       Google search results actually render a favicon at. This is a
+       square crop of just the signature-mark portion of that same logo
+       (the "אומנות ישראלית" text bar dropped, the scribble kept) - one
+       consistent icon for every page/language rather than swapped via
+       JS per URL, since a favicon doesn't need to be bilingual. -->
+  <link rel="icon" type="image/png" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap">
   <link rel="manifest" href="/manifest.json" />
-  <title>Art Chayat | ארט חייט</title>
+  <title>ארט חייט אומנות ישראלית | ArtChayat</title>
 
   <!-- name="description" / name="keywords" are intentionally NOT set here:
        every route sets its own via react-helmet-async, and Helmet cannot
@@ -23,16 +31,20 @@
   <!-- Default Open Graph / Twitter Card tags. Each page overrides these at
        runtime via react-helmet-async, but crawlers/bots that don't execute
        JavaScript (e.g. WhatsApp, Slack link previews) only ever see this
-       static markup, so it needs sane defaults of its own. -->
-  <meta property="og:title" content="ארט חייט - מציירים, סיפור אהבה" />
-  <meta property="og:description" content="מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז״ל" />
+       static markup - and since the site is a single-page app with one
+       index.html served for every URL (see the Netlify redirect rule),
+       there's no way for a non-JS bot to tell /he/ links from /en/ links
+       apart. So these are intentionally one bilingual line each (Hebrew +
+       English together) rather than picked per language. -->
+  <meta property="og:title" content="ארט חייט אומנות ישראלית | ArtChayat" />
+  <meta property="og:description" content="יצירות מקוריות מאת האמנים שושי ויעקב חייט ז״ל | Original artworks by Jacob &amp; Shoshi Chayat" />
   <meta property="og:image" content="https://artchayat.netlify.app/shoshiandjacob.jpeg" />
   <meta property="og:url" content="https://artchayat.netlify.app/he/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="he_IL" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ארט חייט - מציירים, סיפור אהבה" />
-  <meta name="twitter:description" content="מציירים, סיפור אהבה | זוג האמנים שושי ויעקב חייט ז״ל" />
+  <meta name="twitter:title" content="ארט חייט אומנות ישראלית | ArtChayat" />
+  <meta name="twitter:description" content="יצירות מקוריות מאת האמנים שושי ויעקב חייט ז״ל | Original artworks by Jacob &amp; Shoshi Chayat" />
   <meta name="twitter:image" content="https://artchayat.netlify.app/shoshiandjacob.jpeg" />
 </head>
 
@@ -55,10 +67,12 @@
   </script>
 
   <script>
-    // Function to update the logo and favicon based on the URL
+    // Keeps the Organization structured data pointed at whichever language's
+    // wordmark logo matches the current URL (favicon itself is static now -
+    // see the <link rel="icon"> above - a tab icon doesn't need to change
+    // per language the way this SEO logo reference still should).
     function updateLogo() {
       const currentUrl = window.location.href;
-      const favicon = document.getElementById("favicon");
       const orgLogoScript = document.getElementById("org-logo");
       let logoUrl;
 
@@ -70,9 +84,6 @@
         // Default logo (Hebrew)
         logoUrl = "https://artchayat.netlify.app/logoHe.png";
       }
-
-      // Update favicon
-      favicon.href = logoUrl;
 
       // Update the logo in structured data (ld+json)
       const orgLogoJson = JSON.parse(orgLogoScript.innerHTML);

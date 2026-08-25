@@ -236,7 +236,7 @@
     padding: 4px 20px 50px; /* small top room for the hover shadow/scale */
     -webkit-overflow-scrolling: touch;
     cursor: grab;
-    touch-action: pan-y pinch-zoom; /* let horizontal drags scroll the carousel, not the page */
+    touch-action: pan-x pinch-zoom; /* pan-y here was backwards - it told the browser to treat vertical drags as native scrolling and left horizontal (the carousel's actual scroll axis) unhandled by anything, since the JS pointer handler below explicitly ignores touch and defers to native scrolling. pan-x is what actually lets a touch swipe scroll the carousel. */
     scrollbar-width: none; /* Firefox */
 }
 
