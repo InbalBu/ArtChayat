@@ -286,7 +286,7 @@ function HomePage({ language }) {
                             </button>
                         </div>
                         <div className={styles['homepage-artist-card']}>
-                            <img src={shoshiPortrait} alt={language === 'he' ? 'שושי חייט' : 'Shoshi Chayat'} loading="lazy" />
+                            <img src={shoshiPortrait} alt={language === 'he' ? 'שושי חייט' : 'Shoshi Chayat'} loading="lazy" className={styles['homepage-artist-portrait-shoshi']} />
                             <h3>{language === 'he' ? 'שושי חייט' : 'Shoshi Chayat'}</h3>
                             <button
                                 className={styles['homepage-artist-button']}

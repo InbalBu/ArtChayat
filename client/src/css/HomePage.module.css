@@ -153,6 +153,19 @@
     box-shadow: 0 8px 20px rgba(175, 130, 72, 0.4);
 }
 
+/* Shoshi's source photo (220x284) is noticeably taller than Jacob's
+   (220x246), so the shared "center top" crop above - which always shows
+   the top 220px of whichever photo it's given - cropped hers right at her
+   jawline, cutting off her neck and jacket collar entirely. This nudges
+   just her circle's crop window down (verified against a few offsets:
+   35% keeps her full head in frame while finally showing some neck/collar,
+   matching how much headroom Jacob's photo already has). Needs the extra
+   class for specificity, since it's overriding the base img rule above,
+   not just its own new property. */
+.homepage-artist-card img.homepage-artist-portrait-shoshi {
+    object-position: center 35%;
+}
+
 .homepage-artist-card h3 {
     margin: 18px 0 12px;
     font-size: 1.3rem;
@@ -237,6 +250,7 @@
     -webkit-overflow-scrolling: touch;
     cursor: grab;
     touch-action: pan-x pinch-zoom; /* pan-y here was backwards - it told the browser to treat vertical drags as native scrolling and left horizontal (the carousel's actual scroll axis) unhandled by anything, since the JS pointer handler below explicitly ignores touch and defers to native scrolling. pan-x is what actually lets a touch swipe scroll the carousel. */
+    overscroll-behavior-x: contain; /* Without this, dragging past the first/last slide on a real touch device (confirmed on Galaxy hardware) chains the horizontal overscroll up to the page itself - Chrome then rubber-bands the whole body sideways for an instant, revealing the white page background beyond its edge and making the video/hero look like it doesn't fill the screen. RoomPreview's own carousel already had this; this one didn't. contain stops the bounce at the carousel's own edge instead of leaking to the body. */
     scrollbar-width: none; /* Firefox */
 }
 

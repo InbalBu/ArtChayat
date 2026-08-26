@@ -20,6 +20,14 @@ body {
   font-family: 'Heebo', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Nothing on the site is meant to scroll sideways except the two
+     contained horizontal carousels (each opts back in with its own
+     overflow-x: auto). This is a backstop, not the fix for any one
+     widget - it stops a touch drag anywhere else on the page from ever
+     rubber-banding the whole body horizontally and flashing white
+     background past its edge (confirmed on real Android hardware). */
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 code {
