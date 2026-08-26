@@ -20,7 +20,6 @@
     z-index: -2; /* Ensure video stays behind content and overlay */
     object-fit: cover; /* Fill the container, cropping the video's edges instead of letterboxing */
     object-position: center; /* Always crop from the center, on every screen size */
-    filter: brightness(0.6); /* Slightly darker video for better text contrast */
     transition: opacity 0.9s ease-in;
 }
 
@@ -29,6 +28,17 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
+    /* This gradient was already the thing actually doing the "darker video
+       for text contrast" job - the video element ALSO had its own
+       filter:brightness(0.6) stacked on top, which was redundant for
+       contrast but not free: a CSS filter on a <video> knocks it off
+       Android's hardware video-decode compositing path onto a software
+       one, and that's expensive enough that a touch gesture (carousel
+       drag, page swipe) competing for the main thread could stall the
+       video's own frame updates entirely - it'd go blank/gray mid-drag
+       instead of just dropping a frame or two. Confirmed live on real
+       Galaxy hardware. Removed the filter from the video; this alone
+       already provides the same darkening. */
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 70%, rgba(0, 0, 0, 0.55) 100%);
 }
 
