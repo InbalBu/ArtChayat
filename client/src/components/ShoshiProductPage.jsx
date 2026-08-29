@@ -92,20 +92,25 @@ function ShoshiProductPage({ language }) {
             <p>{language === 'he' ? 'טכניקת עבודה' : 'Technic'}: {product.technic}</p>
             {price === 0
               ? <span className={styles.notForSale}>{language === 'he' ? 'לא למכירה' : 'Not for Sale'}</span>
-              : <span className={styles.priceTag}>{product.price}₪</span>
+              : price === 1
+                // ₪1 is the gallery's own convention for "sold" (see ShoshiGallery.jsx) -
+                // this page was missing that branch entirely, so a sold piece fell through
+                // to the price tag and displayed literally "1₪".
+                ? <span className={styles.sold}>{language === 'he' ? 'נמכר' : 'Sold'}</span>
+                : <span className={styles.priceTag}>{product.price}₪</span>
             }
             <div className={styles.purchaseBox}>
               <h3>{language === 'he' ? 'מעוניינים ברכישה? צרו קשר:' : 'Interested in purchasing? Get in touch:'}</h3>
               <div className={styles.contactButtons}>
-                <a className={`${styles.contactButton} ${styles.whatsappButton}`} href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                <a className={styles.contactButton} href="https://api.whatsapp.com/send/?phone=9720538311215&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faWhatsapp} />
                   {language === 'he' ? 'מיכל בוקריס' : 'Michal Bukris'}
                 </a>
-                <a className={`${styles.contactButton} ${styles.whatsappButton}`} href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                <a className={styles.contactButton} href="https://api.whatsapp.com/send/?phone=9720526652571&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faWhatsapp} />
                   {language === 'he' ? 'ריקי חייט' : 'Riki Chayat'}
                 </a>
-                <a className={`${styles.contactButton} ${styles.emailButton}`} href="mailto:artchayat@gmail.com">
+                <a className={styles.contactButton} href="mailto:artchayat@gmail.com">
                   <FontAwesomeIcon icon={faEnvelope} />
                   {language === 'he' ? 'אימייל' : 'Email'}
                 </a>
@@ -117,7 +122,7 @@ function ShoshiProductPage({ language }) {
 
         <div className={styles.roomPreviewSection}>
           <h2>{language === 'he' ? 'כך תיראה היצירה הזו בבית שלכם' : 'See This Artwork In Your Home'}</h2>
-          <RoomPreview image={product.imageURL} alt={product.name} language={language} />
+          <RoomPreview image={product.imageURL} alt={product.name} language={language} size={product.size} />
         </div>
 
         {isModalOpen && (

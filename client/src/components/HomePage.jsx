@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import styles from '../css/HomePage.module.css';
 import RoomPreview from './RoomPreview/RoomPreview';
-import video from "../images/artNewcut.mp4";
+import video from "../images/artChayatVideo.mp4";
 import jacobPortrait from '../images/jacob_chayat_portrait.jpg';
 import shoshiPortrait from '../images/shoshi_chayat_portrait.jpg';
 import painting1 from '../images/homepagefirst.jpg';
@@ -273,7 +273,7 @@ function HomePage({ language }) {
                 </div>
 
                 <div className={styles['homepage-artists']}>
-                    <h2 className='gridTitle'>{language === 'he' ? 'האמנים' : 'The Artists'}</h2>
+                    <h2 className='gridTitle'>{language === 'he' ? 'זוג האמנים' : 'The Artist Couple'}</h2>
                     <div className={styles['homepage-artists-grid']}>
                         <div className={styles['homepage-artist-card']}>
                             <img src={jacobPortrait} alt={language === 'he' ? 'יעקב חייט' : 'Jacob Chayat'} loading="lazy" />
@@ -299,13 +299,19 @@ function HomePage({ language }) {
                 </div>
 
                 <div className={styles['homepage-room-teaser']}>
-                    <h2 className='gridTitle'>{language === 'he' ? 'דמיינו בבית' : 'See It In A Room'}</h2>
+                    <h2 className='gridTitle'>{language === 'he' ? 'היצירות שלהם, בבית שלכם' : 'Their Creations, In Your Home'}</h2>
                     <p className={styles['homepage-room-teaser-text']}>
                         {language === 'he'
                             ? 'לפני שמחליטים, אפשר לראות איך היצירה תיראה על הקיר בבית שלכם - במטבח, בסלון או בחדר השינה.'
                             : 'Before you decide, see how a piece would look on your own wall - in the kitchen, living room, or bedroom.'}
                     </p>
-                    <RoomPreview image={painting1} alt={language === 'he' ? 'תצוגה מקדימה' : 'Preview'} language={language} />
+                    {/* "Noah's Ark" (homepagefirst.jpg) is a real 160x140cm
+                        piece - hardcoded here since this teaser draws from a
+                        local demo image, not a product API response, so
+                        there's no product.size to read the way the product
+                        pages do. Keeps this preview's scale in sync with how
+                        the same painting renders on its own product page. */}
+                    <RoomPreview image={painting1} alt={language === 'he' ? 'תצוגה מקדימה' : 'Preview'} language={language} size="160x140" />
                     <button
                         className={styles['homepage-room-teaser-button']}
                         onClick={() => navigate(`/${language}/room-showcase`)}

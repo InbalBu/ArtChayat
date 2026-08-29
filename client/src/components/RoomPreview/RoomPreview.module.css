@@ -8,6 +8,14 @@
     margin: 0 auto;
 }
 
+/* Wraps just the track (not the tabs below it) so the zoom button can be
+   positioned against the photo's own box - the track's height is already
+   locked to the active room via an inline style, so this shrink-wraps to
+   match it exactly without needing to duplicate that measurement. */
+.roomPreview-photoWrap {
+    position: relative;
+}
+
 .roomPreview-track {
     display: flex;
     align-items: flex-start; /* a flex row's height still defaults to its tallest child even with this set - the inline `height` set in RoomPreview.jsx (locked to just the active room) is what actually closes the gap; this only stops the *shorter* rooms from being stretched to match while that height is briefly unset */
@@ -18,6 +26,11 @@
     cursor: grab;
     scrollbar-width: none;
     overscroll-behavior-x: contain; /* don't let a swipe that runs past the first/last room drag the whole page along with it */
+    /* pan-x (not pan-y) is what actually lets a touch swipe scroll this -
+       the JS pointer handler below explicitly ignores touch and defers to
+       native scrolling, same structure as the homepage carousel, which
+       needed this same fix for the same reason (HomePage.module.css). */
+    touch-action: pan-x pinch-zoom;
     transition: height 0.25s ease;
 }
 
@@ -64,6 +77,94 @@
         0 14px 28px rgba(0, 0, 0, 0.3);
 }
 
+/* Real-world scale (RoomPreview.jsx's scaledQuad) means a modest painting
+   can render as a genuinely tiny detail once the whole wall is squeezed
+   into a phone-width strip - this is the "look closer" escape hatch, most
+   useful on mobile but shown everywhere. Sized well above the 44px touch-
+   target guideline (mobile bump below goes even bigger) since this is
+   exactly the kind of small-icon-in-a-corner button that's easy to fat-
+   finger-miss otherwise. */
+.roomPreview-zoomBtn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.roomPreview-zoomBtn:hover {
+    background: var(--accent);
+    transform: scale(1.06);
+}
+
+.roomPreview-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 16px;
+    animation: roomPreview-fade-in 0.2s ease;
+}
+
+@keyframes roomPreview-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.roomPreview-modalContent {
+    position: relative;
+    width: min(720px, 94vw);
+    max-height: 92vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.roomPreview-modalPhoto {
+    position: relative;
+    width: 100%;
+}
+
+.roomPreview-modalClose {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: black;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.2s ease;
+    z-index: 1;
+}
+
+.roomPreview-modalClose:hover {
+    background: var(--accent);
+}
+
 .roomPreview-tabs {
     display: flex;
     flex-wrap: wrap; /* the 3 room-name buttons wrap instead of overflowing on very narrow screens */
@@ -94,8 +195,27 @@
 }
 
 @media (max-width: 768px) {
+    /* The old 6px/13px pill worked out to a ~28px-tall touch target - well
+       under the ~44px comfortable-tap-target guideline. This is exactly the
+       kind of "hard to use on mobile" control that's easy to mistap or
+       double-tap by accident, so it's sized up specifically here rather
+       than just inheriting the desktop hover-oriented sizing. */
     .roomPreview-tab {
-        padding: 6px 14px;
-        font-size: 13px;
+        padding: 11px 18px;
+        font-size: 14px;
+    }
+
+    .roomPreview-tabs {
+        gap: 12px;
+    }
+
+    .roomPreview-zoomBtn {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .roomPreview-modalContent {
+        padding: 12px;
     }
 }

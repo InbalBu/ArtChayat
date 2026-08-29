@@ -48,6 +48,52 @@ export function fitQuad(quad, paintingAspect) {
     ];
 }
 
+// Unlike fitQuad (which always blows a painting up to the largest size that
+// fits the wall, so a postcard-sized piece and a huge canvas render
+// identically big), this sizes the painting at its real physical scale
+// relative to the wall - a 40cm painting looks small on the wall, a 150cm
+// one looks genuinely large, the way it would on an actual wall. `widthCm`/
+// `heightCm` are the painting's real dimensions; `wallWidthCm` is the real
+// width the wall quad's own bounding box represents (see roomConfig.js).
+// Both fractions are scaled down together (never independently) when the
+// painting is too big for the wall, so an oversized piece still shrinks to
+// fit without distorting its aspect ratio - the same "never stretch, only
+// shrink-to-fit" contract fitQuad already has.
+//
+// `hAnchor`/`vAnchor` (0-1, default 0.5) place the painting within whatever
+// slack space is left after sizing it - 0.5 centers it (the default, used
+// everywhere except where a room calls out a different anchor and says why),
+// 0 pins it to the quad's own left/top edge, 1 to its right/bottom edge.
+// This only repositions the painting *within* the wall zone chosen in
+// roomConfig.js - it's a smaller adjustment than moving the zone itself, for
+// e.g. lining a painting up with a specific piece of furniture (living
+// room's console) without changing the zone's size (and so its wallWidthCm
+// calibration) at all.
+export function scaledQuad(quad, widthCm, heightCm, wallWidthCm, hAnchor = 0.5, vAnchor = 0.5) {
+    const xs = quad.map(p => p[0]);
+    const ys = quad.map(p => p[1]);
+    const boundW = Math.max(...xs) - Math.min(...xs);
+    const boundH = Math.max(...ys) - Math.min(...ys);
+    // The quad is treated as a plain rectangle for real-world scale too (see
+    // fitQuad's own comment above) - its height in cm follows from its own
+    // pixel aspect ratio, so a single wallWidthCm constant is enough per room.
+    const wallHeightCm = wallWidthCm * (boundH / boundW);
+
+    let uSize = widthCm / wallWidthCm;
+    let vSize = heightCm / wallHeightCm;
+    const overflow = Math.max(uSize, vSize, 1);
+    uSize /= overflow;
+    vSize /= overflow;
+
+    const u0 = hAnchor * (1 - uSize), u1 = u0 + uSize;
+    const v0 = vAnchor * (1 - vSize), v1 = v0 + vSize;
+
+    return [
+        quadPoint(quad, u0, v0), quadPoint(quad, u1, v0),
+        quadPoint(quad, u1, v1), quadPoint(quad, u0, v1),
+    ];
+}
+
 // quad = [[x,y], [x,y], [x,y], [x,y]] for [topLeft, topRight, bottomRight, bottomLeft],
 // all in the same pixel space the transformed element is positioned in
 // (i.e. absolute coordinates within its `position: relative` parent).

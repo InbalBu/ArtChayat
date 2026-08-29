@@ -18,10 +18,28 @@ import painting13 from '../images/homepage13.jpg';
 
 // A curated, alternating pick from both galleries - the same "Selected
 // Artworks" set the homepage draws from - so this page can show a variety
-// without depending on the backend product API.
+// without depending on the backend product API. That also means there's no
+// product.size to read the way the product pages do - each `size` below was
+// looked up by hand (matched to its real DB record via a perceptual-hash
+// comparison against every product photo in both galleries, then confirmed
+// visually) so RoomPreview can render these at real physical scale too, the
+// same as it does on every product page. Four (marked below) matched
+// nothing in either gallery - not a bug, they're just not in the current
+// product catalog (older/archived pieces) - so those keep the generic
+// fallback size until/unless a real one turns up.
 const images = [
-    painting1, painting2, painting3, painting4, painting5, painting6,
-    painting7, painting8, painting10, painting11, painting12, painting13,
+    { src: painting1, size: '160x140' }, // "Noah's Ark" (Jacob)
+    { src: painting2, size: '135x210' }, // "The Wall" (Jacob)
+    { src: painting3, size: '80x80' }, // "The Violinist" (Shoshi)
+    { src: painting4, size: '80x80' }, // "Two Clowns In The Circus" (Shoshi)
+    { src: painting5 }, // not in the current catalog - no real size to read
+    { src: painting6, size: '80x100' }, // "When I Come Back" (Jacob)
+    { src: painting7, size: '100x100' }, // "Graphic View" (Jacob)
+    { src: painting8 }, // not in the current catalog - no real size to read
+    { src: painting10, size: '100x130' }, // "Stage Workers" (Shoshi)
+    { src: painting11 }, // not in the current catalog - no real size to read
+    { src: painting12, size: '140x150' }, // "Jerusalem" (Jacob)
+    { src: painting13 }, // not in the current catalog - no real size to read
 ];
 
 function RoomShowcase({ language }) {
@@ -55,9 +73,10 @@ function RoomShowcase({ language }) {
                 </p>
 
                 <RoomPreview
-                    image={images[selectedIndex]}
+                    image={images[selectedIndex].src}
                     alt={`Painting ${selectedIndex + 1}`}
                     language={language}
+                    size={images[selectedIndex].size}
                 />
 
                 <div className={styles['roomShowcase-thumbs']}>
@@ -68,7 +87,7 @@ function RoomShowcase({ language }) {
                             className={`${styles['roomShowcase-thumb']} ${index === selectedIndex ? styles['roomShowcase-thumb-active'] : ''}`}
                             onClick={() => setSelectedIndex(index)}
                         >
-                            <img src={image} alt={`Painting ${index + 1}`} loading="lazy" />
+                            <img src={image.src} alt={`Painting ${index + 1}`} loading="lazy" />
                         </button>
                     ))}
                 </div>
